@@ -79,6 +79,14 @@ class TestDatenbank(unittest.TestCase):
                  if s.get("ergebnis")]
         self.assertEqual(texte, ["560 mg", "140 mg", "20 - 40 mg"])
 
+    def test_web_export(self):
+        html = dosisrechner.web_seite(self.con)
+        self.assertTrue(html.startswith("<!doctype html>"))
+        self.assertIn('"name": "Ibuprofen"', html)
+        self.assertNotIn("__DATEN__", html)
+        ohne = dosisrechner.web_seite(self.con, eigenstaendig=False)
+        self.assertNotIn("<!doctype", ohne)
+
 
 if __name__ == "__main__":
     unittest.main()

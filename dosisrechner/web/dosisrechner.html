@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dosisrechner Tierarzneimittel</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  /* Layout: schmale Arbeitsfläche – Eingabeleiste oben, darunter je Tierart eine Karte mit Dosierungstabelle */
+  :root {
+    --bg: #f3f5f4; --flaeche: #ffffff; --text: #18211e; --leise: #5a6863; --linie: #d9e0dd;
+    --akzent: #17695a; --akzent-hell: #e1efea; --ergebnis: #0b4f96; --ergebnis-hell: #e3edf9;
+    --warn: #a3281c; --warn-hell: #fbe9e6; --info-hell: #eaeff4;
+    --schrift: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --zahl: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111614; --flaeche: #19201d; --text: #e4ebe8; --leise: #98a6a0; --linie: #2b3531;
+      --akzent: #5cc2a6; --akzent-hell: #1c3330; --ergebnis: #8fbfff; --ergebnis-hell: #182a40;
+      --warn: #ff9c8f; --warn-hell: #3a1c18; --info-hell: #1d2530; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111614; --flaeche: #19201d; --text: #e4ebe8; --leise: #98a6a0; --linie: #2b3531;
+    --akzent: #5cc2a6; --akzent-hell: #1c3330; --ergebnis: #8fbfff; --ergebnis-hell: #182a40;
+    --warn: #ff9c8f; --warn-hell: #3a1c18; --info-hell: #1d2530; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 var(--schrift); }
+  main { max-width: 980px; margin: 0 auto; padding-block: 24px 48px;
+         padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  h1 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 4px; text-wrap: balance; }
+  .sub { color: var(--leise); margin: 0 0 20px; max-width: 65ch; }
+  .eingabe { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 1.3fr); gap: 12px;
+             background: var(--flaeche); border: 1px solid var(--linie); border-radius: 10px; padding: 16px; }
+  @media (max-width: 680px) { .eingabe { grid-template-columns: minmax(0, 1fr); } }
+  label { display: block; font-size: .75rem; font-weight: 600; color: var(--leise);
+          text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+  input, select { width: 100%; font: inherit; color: var(--text); background: var(--bg);
+                  border: 1px solid var(--linie); border-radius: 8px; padding: 10px 12px; min-width: 0; }
+  input:focus-visible, select:focus-visible { outline: 2px solid var(--akzent); outline-offset: 1px; }
+  #gewicht { font-family: var(--zahl); font-size: 1.1rem; }
+  .gewicht { display: flex; gap: 6px; }
+  .gewicht select { width: 5.2em; flex: none; }
+  .suchfeld { position: relative; }
+  #vorschlaege { position: absolute; z-index: 5; left: 0; right: 0; top: 100%; margin: 4px 0 0; padding: 4px;
+                 list-style: none; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 8px;
+                 box-shadow: 0 8px 24px rgba(0, 0, 0, .14); max-height: 300px; overflow: auto; }
+  #vorschlaege li { padding: 8px 10px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; }
+  #vorschlaege li .n { color: var(--leise); font-size: .85rem; }
+  #vorschlaege li.aktiv, #vorschlaege li[data-i]:hover { background: var(--akzent-hell); }
+  .kopf { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 16px; flex-wrap: wrap; margin: 28px 0 8px; }
+  .kopf h2 { margin: 0; font-size: 1.4rem; }
+  .kopf .stand { color: var(--leise); font-size: .92rem; }
+  .kopf .stand b { color: var(--ergebnis); font-family: var(--zahl); font-weight: 600; }
+  a { color: var(--akzent); }
+  .box { border-radius: 8px; padding: 10px 14px; font-size: .95rem; max-width: 80ch; }
+  .box.warn { background: var(--warn-hell); color: var(--warn); }
+  .box.info { background: var(--info-hell); }
+  .box b { display: block; margin-bottom: 2px; }
+  .boxen { display: grid; gap: 8px; }
+  .gruppe { background: var(--flaeche); border: 1px solid var(--linie); border-radius: 10px; margin: 14px 0; overflow: hidden; }
+  .gruppe > h3 { margin: 0; padding: 12px 16px; font-size: 1.05rem; background: var(--akzent-hell); }
+  .gruppe > h3 span { font-weight: 400; color: var(--leise); font-size: .9rem; margin-left: 4px; }
+  .gruppe .boxen { padding: 12px 16px 4px; }
+  .gruppe .boxen:empty { display: none; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { text-align: left; vertical-align: top; padding: 10px 16px; border-top: 1px solid var(--linie); }
+  th { font-size: .72rem; color: var(--leise); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+  td.app { white-space: nowrap; font-weight: 600; width: 1%; }
+  .ind { display: block; font-size: .8rem; font-weight: 600; color: var(--akzent); }
+  .lit { color: var(--leise); font-size: .85rem; width: 9em; }
+  .dosis { font-family: var(--zahl); font-size: .92em; background: var(--akzent-hell); border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+  .erg { display: inline-block; margin: 0 2px 0 4px; white-space: nowrap; font-family: var(--zahl); font-weight: 600; font-size: .92em;
+         color: var(--ergebnis); background: var(--ergebnis-hell); border-radius: 4px; padding: 0 6px; font-variant-numeric: tabular-nums; }
+  @media (max-width: 680px) {
+    thead { display: none; }
+    tr, td { display: block; width: auto !important; }
+    td { border-top: none; padding: 2px 16px; }
+    tr { border-top: 1px solid var(--linie); padding: 10px 0; }
+    .erg { white-space: normal; }
+  }
+  .leer { color: var(--leise); text-align: center; padding: 40px 0; }
+  footer { margin-top: 32px; color: var(--leise); font-size: .82rem; max-width: 80ch; }
+</style>
+</head>
+<body>
+
+<main>
+  <h1>Dosisrechner Tierarzneimittel</h1>
+  <p class="sub">Wirkstoff suchen und Körpergewicht eingeben. Jede Angabe in mg/kg wird auf die Dosis pro Gabe umgerechnet.</p>
+
+  <section class="eingabe">
+    <div class="suchfeld">
+      <label for="suche">Wirkstoff</label>
+      <input id="suche" type="search" placeholder="z. B. Ibuprofen" autocomplete="off" role="combobox" aria-controls="vorschlaege" aria-expanded="false">
+      <ul id="vorschlaege" role="listbox" hidden></ul>
+    </div>
+    <div>
+      <label for="gewicht">Körpergewicht</label>
+      <div class="gewicht">
+        <input id="gewicht" type="text" inputmode="decimal" placeholder="z. B. 12,5" autocomplete="off">
+        <select id="einheit" aria-label="Gewichtseinheit"><option value="kg">kg</option><option value="g">g</option></select>
+      </div>
+    </div>
+    <div>
+      <label for="tierart">Tierart</label>
+      <select id="tierart"><option value="">Alle Tierarten</option></select>
+    </div>
+  </section>
+
+  <div id="ergebnis"><p class="leer">Bitte einen Wirkstoff suchen.</p></div>
+
+  <footer>
+    Datenquelle: CliniPharm/CliniTox, Institut für Veterinärpharmakologie und ‑toxikologie, Universität Zürich (vetpharm.uzh.ch). Stand dieser Fassung: 15.11.2026.
+    Die Berechnung ersetzt keine tierärztliche Beurteilung. Angaben vor der Anwendung immer prüfen.
+  </footer>
+</main>
+<script id="daten" type="application/json">[{"name": "Ibuprofen", "quelle": "https://www.vetpharm.uzh.ch/Wirkstoffe/000000001568/7211_05.html?Submit=Hier+KLICKEN+zum+Weiterlesen+-+sponsored+by+Laboklin", "hinweise": [{"tierart": "Hund", "text": "Von der Verabreichung von Ibuprofen an Hunde wird aufgrund von toxischen Reaktionen abgeraten, welche bereits im Bereich therapeutischer Dosierungen beobachtet wurden (Scherkl 1987a; Adams 1969a). Als besonders empfindlich gilt der Deutsche Schäferhund (Poortinga 1998a)."}, {"tierart": "Milchkuh", "text": "Bei Milchkühen mit experimentell erzeugten Mastitiden, führte eine Behandlung mit Ibuprofen zu deutlichen antipyretischen Effekten, sowie weniger starkem Anstieg der Atem- und Herzschlagfrequenz im Vergleich zu Kontrolltieren. Ein antiinflammatorischer Effekt in den Zitzen konnte mit systemischen Applikationen jedoch nicht erzielt werden (DeGraves 1993b)."}, {"tierart": "Pony", "text": "Basierend auf einer Studie an Ponies, hat die gleichzeitige Gabe von Futter- und Ibuprofen keinen Einfluss auf die Absorptionsrate des Wirkstoffes."}], "dosierungen": [{"tierart": "Pferd, Pony", "alter": "adultes Tier", "applikation": "intravenös", "indikation": "", "text": "10 mg/kg", "literatur": "Vandenbossche 1992a"}, {"tierart": "Pferd, Pony", "alter": "adultes Tier", "applikation": "oral", "indikation": "", "text": "10 mg/kg", "literatur": "Vandenbossche 1992a"}, {"tierart": "Hund", "alter": "adultes Tier", "applikation": "intramuskulär", "indikation": "", "text": "10 mg/kg täglich, über 7 Tage", "literatur": "Raut 1995a"}, {"tierart": "Hund", "alter": "adultes Tier", "applikation": "intravenös", "indikation": "", "text": "initial: 15 mg/kg, folgend: 12 mg/kg alle 8 Stunden", "literatur": "Raut 1995b"}, {"tierart": "Hund", "alter": "adultes Tier", "applikation": "intravenös", "indikation": "", "text": "zum Erhalt der minimalen Plasmakonzentration von 20 µg/ml: 3 × täglich 12 - 15 mg/kg alle 8 Stunden, über 7 Tage", "literatur": "Scherkl 1987a"}, {"tierart": "Hund", "alter": "adultes Tier", "applikation": "oral", "indikation": "", "text": "zum Erhalt der minimalen Plasmakonzentration von 20 µg/ml: 3 × täglich 12 - 15 mg/kg alle 8 Stunden, über 7 Tage", "literatur": "Scherkl 1987a"}, {"tierart": "Rind", "alter": "adultes Tier", "applikation": "intravenös", "indikation": "", "text": "25 mg/kg einmalig", "literatur": "DeGraves 1993b"}, {"tierart": "Kaninchen & Hase", "alter": "adultes Tier", "applikation": "oral", "indikation": "Prä- und Postoperative Analgesie", "text": "280 mg/kg eine Stunde vor chirurgischem Eingriff. Dann 70 mg/kg 2 - 3 × täglich postoperativ. Kann Adhäsionenbildung vorbeugen", "literatur": "Harkness 1995a"}, {"tierart": "Kaninchen & Hase", "alter": "adultes Tier", "applikation": "oral", "indikation": "Analgesie", "text": "10 - 20 mg/kg 6 × täglich", "literatur": "Hernandez-Divers 2001a"}, {"tierart": "Maus", "alter": "adultes Tier", "applikation": "oral", "indikation": "Analgesie", "text": "4 - 7 mg/kg", "literatur": "Visser 1995a"}, {"tierart": "Huhn, Trute, Fasan & Wachtel", "alter": "Jungtier", "applikation": "intramuskulär", "indikation": "", "text": "Broiler: 50 mg/kg einmalig", "literatur": "Roder 1996a"}, {"tierart": "Huhn, Trute, Fasan & Wachtel", "alter": "Jungtier", "applikation": "intravenös", "indikation": "", "text": "Broiler: 25 mg/kg einmalig", "literatur": "Roder 1996a"}, {"tierart": "Huhn, Trute, Fasan & Wachtel", "alter": "Jungtier", "applikation": "oral", "indikation": "", "text": "Broiler: 50 mg/kg einmalig", "literatur": "Roder 1996a"}]}]</script>
+<script>
+(() => {
+  const WIRKSTOFFE = JSON.parse(document.getElementById("daten").textContent);
+  const WARNWOERTER = ["abgeraten", "toxisch", "kontraindiziert", "nicht verabreich", "todlich", "vorsicht"];
+  const $ = (id) => document.getElementById(id);
+  const suche = $("suche"), liste = $("vorschlaege"), gewicht = $("gewicht"),
+        einheit = $("einheit"), tierart = $("tierart"), ergebnis = $("ergebnis");
+  let aktuell = null, aktivIdx = -1, treffer = [];
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const norm = (s) => s.normalize("NFKD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+  // ---------- Berechnung ----------
+  const NUM = "\\d+(?:[.,]\\d+)?";
+  const DOSIS_RE = new RegExp(`(${NUM})(?:\\s*[-–]\\s*(${NUM}))?\\s*(mg|µg|μg|mcg|ng|g|ml|mL|IE|I\\.E\\.|U|mmol)\\s*/\\s*kg\\b`, "g");
+  const UMRECHNUNG = { mg: ["µg", 1000, "g", 0.001], "µg": ["ng", 1000, "mg", 0.001] };
+
+  function formatZahl(x) {
+    if (x === 0) return "0";
+    let s;
+    if (Math.abs(x) >= 100) s = x.toFixed(1);
+    else if (Math.abs(x) >= 1) s = x.toFixed(2);
+    else s = String(Number(x.toPrecision(3)));
+    if (s.includes(".")) s = s.replace(/0+$/, "").replace(/\.$/, "");
+    return s.replace(".", ",");
+  }
+  const fmt = (werte, e) => werte.map(formatZahl).join(" - ") + " " + e;
+
+  function ergebnisText(werte, e) {
+    let t = fmt(werte, e);
+    const u = UMRECHNUNG[e === "μg" || e === "mcg" ? "µg" : e];
+    if (u) {
+      if (Math.max(...werte) < 1) t += ` (= ${fmt(werte.map((v) => v * u[1]), u[0])})`;
+      else if (Math.min(...werte) >= 1000) t += ` (= ${fmt(werte.map((v) => v * u[3]), u[2])})`;
+    }
+    return t;
+  }
+
+  function berechne(text, kg) {
+    const seg = [];
+    let pos = 0;
+    for (const m of text.matchAll(DOSIS_RE)) {
+      if (m.index > pos) seg.push({ text: text.slice(pos, m.index) });
+      const werte = [m[1], m[2]].filter(Boolean).map((v) => parseFloat(v.replace(",", ".")));
+      seg.push({ text: m[0], dosis: true, ergebnis: kg ? ergebnisText(werte.map((w) => w * kg), m[3]) : null });
+      pos = m.index + m[0].length;
+    }
+    if (pos < text.length) seg.push({ text: text.slice(pos) });
+    return seg;
+  }
+
+  // ---------- Daten ----------
+  const passt = (hinweisTier, tier) =>
+    tier.replace(/&/g, ",").split(",").map((t) => norm(t.trim())).includes(norm(hinweisTier));
+  const istWarnung = (text) => WARNWOERTER.some((w) => norm(text).includes(w));
+  const tierarten = (w) => [...new Set(w.dosierungen.map((d) => d.tierart))];
+
+  function gewichtKg() {
+    const v = parseFloat(gewicht.value.replace(",", "."));
+    if (!isFinite(v) || v <= 0) return null;
+    return einheit.value === "g" ? v / 1000 : v;
+  }
+
+  // ---------- Suche ----------
+  function sucheWirkstoffe(q) {
+    q = norm(q.trim());
+    return WIRKSTOFFE.filter((w) => norm(w.name).includes(q))
+      .sort((a, b) => (norm(b.name).startsWith(q) - norm(a.name).startsWith(q)) || a.name.localeCompare(b.name, "de"));
+  }
+
+  function zeigeVorschlaege() {
+    treffer = sucheWirkstoffe(suche.value);
+    aktivIdx = treffer.length ? Math.min(Math.max(aktivIdx, 0), treffer.length - 1) : -1;
+    liste.innerHTML = treffer.length
+      ? treffer.map((t, i) => `<li role="option" data-i="${i}" class="${i === aktivIdx ? "aktiv" : ""}" aria-selected="${i === aktivIdx}">
+          <span>${esc(t.name)}</span><span class="n">${t.dosierungen.length} Dosierungen</span></li>`).join("")
+      : `<li class="n">Kein Wirkstoff gefunden</li>`;
+    liste.hidden = false;
+    suche.setAttribute("aria-expanded", "true");
+  }
+  function schliesseVorschlaege() { liste.hidden = true; suche.setAttribute("aria-expanded", "false"); }
+
+  function waehle(w) {
+    aktuell = w;
+    suche.value = w.name;
+    schliesseVorschlaege();
+    tierart.innerHTML = `<option value="">Alle Tierarten</option>` + tierarten(w).map((t) => `<option>${esc(t)}</option>`).join("");
+    render();
+  }
+
+  // ---------- Darstellung ----------
+  const hinweisBox = (h) => {
+    const warn = istWarnung(h.text);
+    return `<div class="box ${warn ? "warn" : "info"}"><b>${warn ? "⚠ Warnung" : "Hinweis"}: ${esc(h.tierart)}</b>${esc(h.text)}</div>`;
+  };
+
+  function zeile(d, kg) {
+    const txt = berechne(d.text, kg).map((s) => s.dosis
+      ? `<span class="dosis">${esc(s.text)}</span>${s.ergebnis ? `<span class="erg">= ${esc(s.ergebnis)}</span>` : ""}`
+      : esc(s.text)).join("");
+    return `<tr><td class="app">${esc(d.applikation)}</td>
+      <td>${d.indikation ? `<span class="ind">${esc(d.indikation)}</span>` : ""}${txt}</td>
+      <td class="lit">${esc(d.literatur)}</td></tr>`;
+  }
+
+  function render() {
+    if (!aktuell) { ergebnis.innerHTML = `<p class="leer">Bitte einen Wirkstoff suchen.</p>`; return; }
+    const w = aktuell, kg = gewichtKg(), filter = tierart.value, alle = tierarten(w);
+    const gruppen = new Map();
+    for (const d of w.dosierungen) {
+      if (filter && d.tierart !== filter) continue;
+      const key = d.tierart + "|" + d.alter;
+      if (!gruppen.has(key)) gruppen.set(key, { tierart: d.tierart, alter: d.alter, liste: [],
+        hinweise: w.hinweise.filter((h) => passt(h.tierart, d.tierart)) });
+      gruppen.get(key).liste.push(d);
+    }
+    const allgemein = filter ? [] : w.hinweise.filter((h) => !alle.some((t) => passt(h.tierart, t)));
+    const stand = kg
+      ? `Berechnet für <b>${formatZahl(kg)} kg</b>${einheit.value === "g" ? ` (${esc(gewicht.value.trim())} g)` : ""}`
+      : "Gewicht eingeben, um die Dosis zu berechnen";
+    const quelle = /^https?:/.test(w.quelle || "") ? ` · <a href="${esc(w.quelle)}" target="_blank" rel="noopener">Originalseite</a>` : "";
+    ergebnis.innerHTML = `
+      <div class="kopf"><h2>${esc(w.name)}</h2><span class="stand">${stand}${quelle}</span></div>
+      ${allgemein.length ? `<div class="boxen">${allgemein.map(hinweisBox).join("")}</div>` : ""}
+      ${[...gruppen.values()].map((g) => `<section class="gruppe">
+          <h3>${esc(g.tierart)}<span>${esc(g.alter)}</span></h3>
+          <div class="boxen">${g.hinweise.map(hinweisBox).join("")}</div>
+          <table><thead><tr><th>Applikation</th><th>Dosierung</th><th>Literatur</th></tr></thead>
+          <tbody>${g.liste.map((d) => zeile(d, kg)).join("")}</tbody></table></section>`).join("")}`;
+  }
+
+  // ---------- Ereignisse ----------
+  suche.addEventListener("input", () => { aktivIdx = 0; zeigeVorschlaege(); });
+  suche.addEventListener("focus", zeigeVorschlaege);
+  suche.addEventListener("blur", () => setTimeout(schliesseVorschlaege, 150));
+  suche.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      if (liste.hidden) zeigeVorschlaege();
+      if (!treffer.length) return;
+      aktivIdx = (aktivIdx + (e.key === "ArrowDown" ? 1 : -1) + treffer.length) % treffer.length;
+      zeigeVorschlaege();
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (treffer[aktivIdx]) { waehle(treffer[aktivIdx]); gewicht.focus(); }
+    } else if (e.key === "Escape") schliesseVorschlaege();
+  });
+  liste.addEventListener("mousedown", (e) => {
+    const li = e.target.closest("li[data-i]");
+    if (li) { e.preventDefault(); waehle(treffer[+li.dataset.i]); gewicht.focus(); }
+  });
+  gewicht.addEventListener("input", render);
+  einheit.addEventListener("change", render);
+  tierart.addEventListener("change", render);
+
+  // Beim Öffnen gleich den ersten Wirkstoff zeigen, damit die Tabelle sichtbar ist
+  if (WIRKSTOFFE.length) waehle([...WIRKSTOFFE].sort((a, b) => a.name.localeCompare(b.name, "de"))[0]);
+})();
+</script>
+</body>
+</html>

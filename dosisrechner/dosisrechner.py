@@ -4,6 +4,7 @@
 Starten:            python3 dosisrechner.py
 Wirkstoff import:   python3 dosisrechner.py import <vetpharm-URL der Dosierungsseite>
 Wirkstoffe listen:  python3 dosisrechner.py liste
+Web-Version:        python3 dosisrechner.py export-web   (schreibt web/dosisrechner.html)
 
 Benötigt nur Python 3.8+ (keine Zusatzpakete).
 """
@@ -25,6 +26,8 @@ BASIS = Path(__file__).resolve().parent
 DB_PFAD = BASIS / "data" / "dosierungen.db"
 STARTDATEN = BASIS / "data" / "startdaten.json"
 INDEX_HTML = BASIS / "static" / "index.html"
+WEB_VORLAGE = BASIS / "static" / "web_vorlage.html"
+WEB_ZIEL = BASIS / "web" / "dosisrechner.html"
 HOST, PORT = "127.0.0.1", 8765
 
 SCHEMA = """
@@ -147,6 +150,37 @@ def wirkstoff_details(con, wid: int, gewicht_kg: float | None, tierart: str = ""
     }
 
 
+# ---------------------------------------------------------------- Web-Version
+def alle_wirkstoffe(con: sqlite3.Connection) -> list[dict]:
+    daten = []
+    for w in con.execute("SELECT * FROM wirkstoff ORDER BY name"):
+        daten.append({
+            "name": w["name"], "quelle": w["quelle"],
+            "hinweise": [{"tierart": h["tierart"], "text": h["text"]} for h in con.execute(
+                "SELECT tierart, text FROM hinweis WHERE wirkstoff_id = ? ORDER BY id", (w["id"],))],
+            "dosierungen": [
+                {"tierart": d["tierart"], "alter": d["alter_"], "applikation": d["applikation"],
+                 "indikation": d["indikation"], "text": d["text"], "literatur": d["literatur"]}
+                for d in con.execute("SELECT * FROM dosierung WHERE wirkstoff_id = ? ORDER BY id", (w["id"],))],
+        })
+    return daten
+
+
+def web_seite(con: sqlite3.Connection, eigenstaendig: bool = True) -> str:
+    """Erzeugt eine einzelne HTML-Datei mit allen Daten, die ohne Python im Browser läuft."""
+    import datetime
+
+    kopf, rumpf = WEB_VORLAGE.read_text(encoding="utf-8").split("<!--BODY-->", 1)
+    daten = json.dumps(alle_wirkstoffe(con), ensure_ascii=False).replace("</", "<\\/")
+    rumpf = rumpf.replace("__DATEN__", daten).replace(
+        "__STAND__", datetime.date.today().strftime("%d.%m.%Y"))
+    if not eigenstaendig:  # für Seiten, die das Grundgerüst selbst ergänzen
+        return kopf + rumpf
+    return ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+            + kopf + "</head>\n<body>\n" + rumpf + "</body>\n</html>\n")
+
+
 # ---------------------------------------------------------------- Webserver
 class Handler(BaseHTTPRequestHandler):
     con: sqlite3.Connection
@@ -216,6 +250,11 @@ def main(argv: list[str]) -> None:
     elif argv and argv[0] == "liste":
         for r in suche(con, ""):
             print(f"{r['name']}: {r['anzahl']} Dosierungen")
+    elif argv and argv[0] == "export-web":
+        ziel = Path(argv[1]) if len(argv) > 1 else WEB_ZIEL
+        ziel.parent.mkdir(parents=True, exist_ok=True)
+        ziel.write_text(web_seite(con, eigenstaendig="--ohne-geruest" not in argv), encoding="utf-8")
+        print(f"Web-Version geschrieben: {ziel}")
     elif not argv or argv[0] in ("start", "--kein-browser"):
         starte_server(con, oeffnen="--kein-browser" not in argv)
     else:
