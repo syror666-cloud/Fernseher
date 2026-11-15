@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dosisrechner</title>
+<style>
+  :root {
+    --bg: #f5f6f4; --card: #ffffff; --text: #1d2420; --muted: #5d6862; --line: #dfe3df;
+    --accent: #1f6f5c; --accent-soft: #e3f1ec; --warn-bg: #fdecea; --warn: #a32a1f;
+    --info-bg: #eef2f7; --result: #0d4f9e; --result-bg: #e6effb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141816; --card: #1c211f; --text: #e6ebe8; --muted: #9aa5a0; --line: #2d3531;
+      --accent: #5fc3a6; --accent-soft: #1f3530; --warn-bg: #3a1d1a; --warn: #ff9a8d;
+      --info-bg: #1f2630; --result: #8cbcff; --result-bg: #1b2a40;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 960px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: .95rem; }
+  .eingabe { display: grid; grid-template-columns: 2fr 1fr 1.2fr; gap: 12px;
+             background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  @media (max-width: 640px) { .eingabe { grid-template-columns: 1fr; } }
+  label { display: block; font-size: .8rem; font-weight: 600; color: var(--muted);
+          text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+  input, select { width: 100%; font: inherit; color: var(--text); background: var(--bg);
+                  border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+  .gewicht { display: flex; gap: 6px; }
+  .gewicht select { width: 5.5em; flex: none; }
+  .suchfeld { position: relative; }
+  #vorschlaege { position: absolute; z-index: 5; left: 0; right: 0; top: 100%; margin: 4px 0 0; padding: 4px;
+                 list-style: none; background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+                 box-shadow: 0 6px 20px rgba(0,0,0,.12); max-height: 300px; overflow: auto; }
+  #vorschlaege li { padding: 8px 10px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between; }
+  #vorschlaege li .n { color: var(--muted); font-size: .85rem; }
+  #vorschlaege li.aktiv, #vorschlaege li:hover { background: var(--accent-soft); }
+  #vorschlaege:empty { display: none; }
+  .kopf { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 28px 0 8px; }
+  .kopf h2 { margin: 0; font-size: 1.35rem; }
+  .kopf a { color: var(--accent); font-size: .9rem; }
+  .box { border-radius: 10px; padding: 10px 14px; margin: 8px 0; font-size: .95rem; }
+  .box.warn { background: var(--warn-bg); color: var(--warn); border-left: 4px solid var(--warn); }
+  .box.info { background: var(--info-bg); }
+  .box b { display: block; margin-bottom: 2px; }
+  .gruppe { background: var(--card); border: 1px solid var(--line); border-radius: 12px; margin: 16px 0; overflow: hidden; }
+  .gruppe > h3 { margin: 0; padding: 12px 16px; font-size: 1.05rem; background: var(--accent-soft); }
+  .gruppe > h3 span { font-weight: 400; color: var(--muted); font-size: .9rem; }
+  .gruppe .boxen { padding: 4px 16px 0; }
+  .gruppe .boxen:empty { display: none; }
+  table { width: 100%; border-collapse: collapse; }
+  td, th { text-align: left; vertical-align: top; padding: 10px 16px; border-top: 1px solid var(--line); }
+  th { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; font-weight: 600; }
+  td.app { white-space: nowrap; font-weight: 600; width: 1%; }
+  .ind { display: inline-block; font-size: .8rem; font-weight: 600; color: var(--accent); margin-bottom: 2px; }
+  .lit { color: var(--muted); font-size: .85rem; }
+  .dosis { background: var(--accent-soft); border-radius: 4px; padding: 0 3px; white-space: nowrap; }
+  .erg { display: inline-block; margin-left: 4px; white-space: nowrap; font-weight: 700; color: var(--result);
+         background: var(--result-bg); border-radius: 4px; padding: 0 6px; font-variant-numeric: tabular-nums; }
+  @media (max-width: 640px) {
+    thead { display: none; }
+    tr, td { display: block; }
+    td { border-top: none; padding: 4px 16px; }
+    tr { border-top: 1px solid var(--line); padding: 8px 0; }
+  }
+  .leer { color: var(--muted); text-align: center; padding: 40px 0; }
+  footer { margin-top: 32px; color: var(--muted); font-size: .82rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Dosisrechner Tierarzneimittel</h1>
+  <p class="sub">Wirkstoff suchen, Gewicht eingeben – die Dosis pro Gabe wird aus den mg/kg-Angaben berechnet.</p>
+
+  <section class="eingabe">
+    <div class="suchfeld">
+      <label for="suche">Wirkstoff</label>
+      <input id="suche" type="search" placeholder="z. B. Ibuprofen" autocomplete="off" autofocus>
+      <ul id="vorschlaege" role="listbox"></ul>
+    </div>
+    <div>
+      <label for="gewicht">Körpergewicht</label>
+      <div class="gewicht">
+        <input id="gewicht" type="text" inputmode="decimal" placeholder="z. B. 12,5">
+        <select id="einheit" aria-label="Einheit"><option value="kg">kg</option><option value="g">g</option></select>
+      </div>
+    </div>
+    <div>
+      <label for="tierart">Tierart</label>
+      <select id="tierart"><option value="">Alle Tierarten</option></select>
+    </div>
+  </section>
+
+  <div id="ergebnis"><p class="leer">Bitte einen Wirkstoff suchen.</p></div>
+
+  <footer>
+    Daten: CliniPharm/CliniTox, Institut für Veterinärpharmakologie und ‑toxikologie, Universität Zürich (vetpharm.uzh.ch).
+    Die Berechnung ersetzt keine tierärztliche Beurteilung – Angaben vor Anwendung immer prüfen.
+  </footer>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const suche = $("suche"), liste = $("vorschlaege"), gewicht = $("gewicht"),
+      einheit = $("einheit"), tierart = $("tierart"), ergebnis = $("ergebnis");
+let aktuell = null, aktivIdx = -1, treffer = [];
+
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function gewichtKg() {
+  const v = parseFloat(gewicht.value.replace(",", "."));
+  if (!isFinite(v) || v <= 0) return null;
+  return einheit.value === "g" ? v / 1000 : v;
+}
+
+async function ladeVorschlaege() {
+  const r = await fetch("/api/wirkstoffe?q=" + encodeURIComponent(suche.value));
+  treffer = await r.json();
+  aktivIdx = treffer.length ? 0 : -1;
+  zeigeVorschlaege();
+}
+
+function zeigeVorschlaege() {
+  if (document.activeElement !== suche) { liste.innerHTML = ""; return; }
+  liste.innerHTML = treffer.length
+    ? treffer.map((t, i) => `<li role="option" data-i="${i}" class="${i === aktivIdx ? "aktiv" : ""}">
+        <span>${esc(t.name)}</span><span class="n">${t.anzahl} Dosierungen</span></li>`).join("")
+    : `<li class="n">Kein Wirkstoff gefunden</li>`;
+}
+
+function waehle(t) {
+  aktuell = t; suche.value = t.name; liste.innerHTML = ""; tierart.value = "";
+  lade(true);
+}
+
+async function lade(neuerWirkstoff = false) {
+  if (!aktuell) return;
+  const kg = gewichtKg();
+  const p = new URLSearchParams({ tierart: tierart.value });
+  if (kg) p.set("gewicht", kg);
+  const d = await (await fetch(`/api/wirkstoff/${aktuell.id}?` + p)).json();
+  if (neuerWirkstoff) {
+    tierart.innerHTML = `<option value="">Alle Tierarten</option>` +
+      d.tierarten.map((t) => `<option>${esc(t)}</option>`).join("");
+  }
+  render(d, kg);
+}
+
+const hinweisBox = (h) =>
+  `<div class="box ${h.warnung ? "warn" : "info"}"><b>${h.warnung ? "⚠ Warnung" : "Hinweis"} – ${esc(h.tierart)}</b>${esc(h.text)}</div>`;
+
+function render(d, kg) {
+  const zeile = (x) => {
+    const txt = x.segmente.map((s) => s.dosis_pro_kg
+      ? `<span class="dosis">${esc(s.text)}</span>${s.ergebnis ? `<span class="erg">= ${esc(s.ergebnis)}</span>` : ""}`
+      : esc(s.text)).join("");
+    return `<tr><td class="app">${esc(x.applikation)}</td>
+      <td>${x.indikation ? `<span class="ind">${esc(x.indikation)}</span><br>` : ""}${txt}</td>
+      <td class="lit">${esc(x.literatur)}</td></tr>`;
+  };
+  const gewichtTxt = kg ? `Berechnet für ${String(+(kg).toPrecision(6)).replace(".", ",")} kg`
+                        : "Gewicht eingeben, um die Dosis zu berechnen";
+  ergebnis.innerHTML = `
+    <div class="kopf"><h2>${esc(d.name)}</h2>
+      <span>${gewichtTxt}${d.quelle && d.quelle.startsWith("http") ? ` · <a href="${esc(d.quelle)}" target="_blank" rel="noopener">Quelle</a>` : ""}</span></div>
+    ${d.hinweise_allgemein.map(hinweisBox).join("")}
+    ${d.gruppen.map((g) => `<section class="gruppe">
+        <h3>${esc(g.tierart)} <span>${esc(g.alter)}</span></h3>
+        <div class="boxen">${g.hinweise.map(hinweisBox).join("")}</div>
+        <table><thead><tr><th>Applikation</th><th>Dosierung</th><th>Literatur</th></tr></thead>
+        <tbody>${g.dosierungen.map(zeile).join("")}</tbody></table></section>`).join("")}`;
+}
+
+let t1, t2;
+suche.addEventListener("input", () => { clearTimeout(t1); t1 = setTimeout(ladeVorschlaege, 120); });
+suche.addEventListener("focus", ladeVorschlaege);
+suche.addEventListener("blur", () => setTimeout(() => (liste.innerHTML = ""), 150));
+suche.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    if (!treffer.length) return;
+    aktivIdx = (aktivIdx + (e.key === "ArrowDown" ? 1 : -1) + treffer.length) % treffer.length;
+    zeigeVorschlaege();
+  } else if (e.key === "Enter" && treffer[aktivIdx]) {
+    e.preventDefault(); waehle(treffer[aktivIdx]); gewicht.focus();
+  } else if (e.key === "Escape") { liste.innerHTML = ""; }
+});
+liste.addEventListener("mousedown", (e) => {
+  const li = e.target.closest("li[data-i]");
+  if (li) { e.preventDefault(); waehle(treffer[+li.dataset.i]); gewicht.focus(); }
+});
+gewicht.addEventListener("input", () => { clearTimeout(t2); t2 = setTimeout(lade, 150); });
+einheit.addEventListener("change", () => lade());
+tierart.addEventListener("change", () => lade());
+</script>
+</body>
+</html>

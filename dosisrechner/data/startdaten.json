@@ -1,0 +1,126 @@
+[
+  {
+    "name": "Ibuprofen",
+    "quelle": "https://www.vetpharm.uzh.ch/Wirkstoffe/000000001568/7211_05.html?Submit=Hier+KLICKEN+zum+Weiterlesen+-+sponsored+by+Laboklin",
+    "hinweise": [
+      {
+        "tierart": "Hund",
+        "text": "Von der Verabreichung von Ibuprofen an Hunde wird aufgrund von toxischen Reaktionen abgeraten, welche bereits im Bereich therapeutischer Dosierungen beobachtet wurden (Scherkl 1987a; Adams 1969a). Als besonders empfindlich gilt der Deutsche Schäferhund (Poortinga 1998a)."
+      },
+      {
+        "tierart": "Milchkuh",
+        "text": "Bei Milchkühen mit experimentell erzeugten Mastitiden, führte eine Behandlung mit Ibuprofen zu deutlichen antipyretischen Effekten, sowie weniger starkem Anstieg der Atem- und Herzschlagfrequenz im Vergleich zu Kontrolltieren. Ein antiinflammatorischer Effekt in den Zitzen konnte mit systemischen Applikationen jedoch nicht erzielt werden (DeGraves 1993b)."
+      },
+      {
+        "tierart": "Pony",
+        "text": "Basierend auf einer Studie an Ponies, hat die gleichzeitige Gabe von Futter- und Ibuprofen keinen Einfluss auf die Absorptionsrate des Wirkstoffes."
+      }
+    ],
+    "dosierungen": [
+      {
+        "tierart": "Pferd, Pony",
+        "alter": "adultes Tier",
+        "applikation": "intravenös",
+        "indikation": "",
+        "text": "10 mg/kg",
+        "literatur": "Vandenbossche 1992a"
+      },
+      {
+        "tierart": "Pferd, Pony",
+        "alter": "adultes Tier",
+        "applikation": "oral",
+        "indikation": "",
+        "text": "10 mg/kg",
+        "literatur": "Vandenbossche 1992a"
+      },
+      {
+        "tierart": "Hund",
+        "alter": "adultes Tier",
+        "applikation": "intramuskulär",
+        "indikation": "",
+        "text": "10 mg/kg täglich, über 7 Tage",
+        "literatur": "Raut 1995a"
+      },
+      {
+        "tierart": "Hund",
+        "alter": "adultes Tier",
+        "applikation": "intravenös",
+        "indikation": "",
+        "text": "initial: 15 mg/kg, folgend: 12 mg/kg alle 8 Stunden",
+        "literatur": "Raut 1995b"
+      },
+      {
+        "tierart": "Hund",
+        "alter": "adultes Tier",
+        "applikation": "intravenös",
+        "indikation": "",
+        "text": "zum Erhalt der minimalen Plasmakonzentration von 20 µg/ml: 3 × täglich 12 - 15 mg/kg alle 8 Stunden, über 7 Tage",
+        "literatur": "Scherkl 1987a"
+      },
+      {
+        "tierart": "Hund",
+        "alter": "adultes Tier",
+        "applikation": "oral",
+        "indikation": "",
+        "text": "zum Erhalt der minimalen Plasmakonzentration von 20 µg/ml: 3 × täglich 12 - 15 mg/kg alle 8 Stunden, über 7 Tage",
+        "literatur": "Scherkl 1987a"
+      },
+      {
+        "tierart": "Rind",
+        "alter": "adultes Tier",
+        "applikation": "intravenös",
+        "indikation": "",
+        "text": "25 mg/kg einmalig",
+        "literatur": "DeGraves 1993b"
+      },
+      {
+        "tierart": "Kaninchen & Hase",
+        "alter": "adultes Tier",
+        "applikation": "oral",
+        "indikation": "Prä- und Postoperative Analgesie",
+        "text": "280 mg/kg eine Stunde vor chirurgischem Eingriff. Dann 70 mg/kg 2 - 3 × täglich postoperativ. Kann Adhäsionenbildung vorbeugen",
+        "literatur": "Harkness 1995a"
+      },
+      {
+        "tierart": "Kaninchen & Hase",
+        "alter": "adultes Tier",
+        "applikation": "oral",
+        "indikation": "Analgesie",
+        "text": "10 - 20 mg/kg 6 × täglich",
+        "literatur": "Hernandez-Divers 2001a"
+      },
+      {
+        "tierart": "Maus",
+        "alter": "adultes Tier",
+        "applikation": "oral",
+        "indikation": "Analgesie",
+        "text": "4 - 7 mg/kg",
+        "literatur": "Visser 1995a"
+      },
+      {
+        "tierart": "Huhn, Trute, Fasan & Wachtel",
+        "alter": "Jungtier",
+        "applikation": "intramuskulär",
+        "indikation": "",
+        "text": "Broiler: 50 mg/kg einmalig",
+        "literatur": "Roder 1996a"
+      },
+      {
+        "tierart": "Huhn, Trute, Fasan & Wachtel",
+        "alter": "Jungtier",
+        "applikation": "intravenös",
+        "indikation": "",
+        "text": "Broiler: 25 mg/kg einmalig",
+        "literatur": "Roder 1996a"
+      },
+      {
+        "tierart": "Huhn, Trute, Fasan & Wachtel",
+        "alter": "Jungtier",
+        "applikation": "oral",
+        "indikation": "",
+        "text": "Broiler: 50 mg/kg einmalig",
+        "literatur": "Roder 1996a"
+      }
+    ]
+  }
+]
