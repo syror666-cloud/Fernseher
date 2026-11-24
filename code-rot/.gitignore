@@ -2,3 +2,4 @@
 folge01_gsg9/build/
 *.key
 folge01_gsg9/anim/*/h_*.png
+folge01_gsg9/anim/*/*.png
