@@ -30,7 +30,7 @@ html,body {{ margin:0; width:1080px; height:1920px; overflow:hidden; background:
 .regeln .body {{ background:rgba(8,8,10,.9); border:3px solid {ROT}; border-top:none; border-radius:0 0 12px 12px; padding:16px 20px; min-height:10px; }}
 .regeln .zeile {{ color:#fff; font-size:34px; margin:8px 0; }}
 .regeln .zeile.r {{ color:{ROT}; }}
-.logo {{ position:absolute; top:120px; left:0; right:0; text-align:center; font-family:MB; font-size:96px;
+.logo {{ position:absolute; top:34px; left:0; right:0; text-align:center; font-family:MB; font-size:78px;
   color:{ROT}; letter-spacing:6px; -webkit-text-stroke:6px #000; paint-order:stroke fill; }}
 .titel {{ position:absolute; left:0; right:0; top:1200px; text-align:center; font-family:MB; font-size:190px;
   color:#fff; -webkit-text-stroke:16px #000; paint-order:stroke fill; text-shadow:0 10px 30px rgba(0,0,0,.8); line-height:1; }}
