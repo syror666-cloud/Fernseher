@@ -15,8 +15,9 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 FPS = 30
 W, H = 1080, 1920
 ROT_ASS, GELB_ASS = "&H002A2AFF&", "&H001ED2FF&"  # BGR
-SFX_PEGEL = {"whoosh": -9, "impact": -6, "tick": -12, "heartbeat": -6, "static": -12, "funk": -9, "atem": -8,
-             "stimmen": -10, "feuer": -8, "tuer": -5, "schuesse": -7, "alarm": -14, "drone_hit": -7, "schrei": -10}
+SFX_PEGEL = {"whoosh": -9, "impact": -10, "tick": -12, "heartbeat": -11, "static": -16, "funk": -12, "atem": -8,
+             "stimmen": -12, "feuer": -11, "tuer": -12, "schuesse": -10, "alarm": -14, "drone_hit": -14, "schrei": -10,
+             "feuerwerk": -9}
 
 
 def sh(cmd, **kw):
@@ -227,7 +228,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 
 # ---------------------------------------------------------------- Audio
-def mix(ep, timing, folge, out_wav):
+def mix(ep, timing, folge, out_wav, ohne_vo=False, norm=True):
     sfx_dir = ROOT / "assets/sfx"; real = ROOT / "assets/sfx_real"
     def sfx(name):  # echte Aufnahme bevorzugen, sonst synthetisch
         return real / f"{name}.wav" if (real / f"{name}.wav").exists() else sfx_dir / f"{name}.wav"
@@ -248,14 +249,28 @@ def mix(ep, timing, folge, out_wav):
             continue
         inputs += ["-i", str(sfx(s))]
         d = max(0, int((sh_["schnitt"] - (0.25 if s == "whoosh" else 0)) * 1000))
-        filt.append(f"[{n}:a]volume={SFX_PEGEL.get(s, -10)}dB,adelay={d}|{d}[s{n}]")
+        cap = min(6.0 if s == "feuerwerk" else 4.0, (sh_["ende"] - sh_["schnitt"]) + 1.2)
+        filt.append(f"[{n}:a]atrim=0:{cap:.2f},afade=t=out:st={max(0, cap - 0.4):.2f}:d=0.4,"
+                    f"volume={SFX_PEGEL.get(s, -10) - (6 if sfx(s).parent == real else 0)}dB,adelay={d}|{d}[s{n}]")
         labels.append(f"[s{n}]"); n += 1
     filt.append(f"{''.join(labels)}amix=inputs={len(labels)}:normalize=0:duration=first,"
                 f"atrim=0:{total:.2f},loudnorm=I=-14:TP=-1.5:LRA=11[aout]")
     # VO ist [0:a] und bestimmt mit duration=first die Länge -> VO vorher auf Gesamtlänge auffüllen
-    filt.insert(0, f"[0:a]apad=whole_dur={total:.2f}[vo]")
-    labels[0] = "[vo]"
-    filt[-1] = f"{''.join(labels)}amix=inputs={len(labels)}:normalize=0:duration=first,atrim=0:{total:.2f},loudnorm=I=-14:TP=-1.5:LRA=11[aout]"
+    # Stimme als Schlüssel für Ducking: Hintergrund + Geräusche werden leiser, sobald gesprochen wird
+    filt.insert(0, f"[0:a]apad=whole_dur={total:.2f},asplit=2[vo0][key]")
+    filt.insert(1, f"[vo0]{'volume=0' if ohne_vo else 'anull'}[vo]")
+    ln = ",loudnorm=I=-14:TP=-1.5:LRA=11" if norm else ""
+    bett = labels[1:]
+    # zwei Busse: Atmosphäre (sanft geduckt) und Effekte (stark geduckt, damit Akzente kein Wort verdecken)
+    fx = bett[1:]
+    filt[0] = filt[0].replace("asplit=2[vo0][key]", "asplit=3[vo0][key][key2]")
+    if fx:
+        filt[-1] = (f"{''.join(fx)}amix=inputs={len(fx)}:normalize=0,apad=whole_dur={total:.2f},atrim=0:{total:.2f}[fxb];"
+                    f"[fxb][key2]sidechaincompress=threshold=0.01:ratio=12:attack=4:release=250:makeup=1[fxd];")
+    else:
+        filt[-1] = f"anullsrc=r=44100:cl=stereo,atrim=0:{total:.2f}[fxd];[key2]anullsink;"
+    filt[-1] += (f"{bett[0]}[key]sidechaincompress=threshold=0.02:ratio=6:attack=15:release=350:makeup=1[atd];"
+                 f"[vo][atd][fxd]amix=inputs=3:normalize=0:duration=first,atrim=0:{total:.2f}{ln}[aout]")
     sh(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(filt), "-map", "[aout]",
         "-ar", "48000", "-ac", "2", str(out_wav)])
     return out_wav

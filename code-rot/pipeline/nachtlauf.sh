@@ -31,7 +31,14 @@ folge() {
   python3 -I pipeline/freesound.py >> $LOG 2>&1 || true
   log "== $name: Schnitt (Animator, Untertitel, Ton) =="
   if ANIM_JOBS=3 python3 -I pipeline/cut.py $f/episode.py >> $LOG 2>&1; then
-    log "$name: FERTIG -> $f/export/$f.mp4"
+    log "$name: Hörprüfung"
+    nice python3 -I pipeline/hoerpruefung.py $f/episode.py --fix >> $LOG 2>&1; rc=$?
+    if [ $rc -eq 3 ]; then
+      log "$name: Geräusche aussortiert -> neu schneiden"
+      ANIM_JOBS=3 python3 -I pipeline/cut.py $f/episode.py >> $LOG 2>&1
+      nice python3 -I pipeline/hoerpruefung.py $f/episode.py >> $LOG 2>&1
+    fi
+    log "$name: FERTIG -> $f/export/$f.mp4 (Hörbericht: $f/export/HOERPRUEFUNG.md)"
     echo "- $name: fertig ($(date +%H:%M)) -> $f/export/$f.mp4" >> STATUS.md
     push "CODE ROT $name: fertige Folge"
   else

@@ -102,7 +102,7 @@ SHOTS = [
     S("Dunkel. Hitze.", "kabine_reihe", move="shake", uhr="02:06", tint="rgba(255,90,20,.18)"),
     S("Ein Gang voller Köpfe.", "kabine_zugriff", move="zoom_in", uhr="02:07"),
     S("„*Köpfe runter!*“", "kabine_zugriff", [fig("du_schreien.svg", NAH)], bgfilter=UNSCHARF, move="shake_stark", uhr="02:07",
-      sfx="schrei"),
+      sfx="impact"),
     S("*Schüsse*.", "kabine_zugriff", move="shake_stark", uhr="02:07", blitz=True, sfx="schuesse"),
     S("Von vorne.", "kabine_zugriff", move="shake", uhr="02:08", tint="rgba(255,255,255,.08)"),
     S("Neben dir geht ein Kollege zu Boden.", "kabine_reihe", [fig("kollege_angst.svg", MITTE, aktion="fallen", ab=0.9)], bgfilter=UNSCHARF,
