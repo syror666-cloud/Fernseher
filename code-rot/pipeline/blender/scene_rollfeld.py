@@ -17,6 +17,10 @@ ap.add_argument("--fire", type=float, default=1.0, help="0 = kein Feuer")
 ap.add_argument("--leiter", action="store_true")
 ap.add_argument("--offen", action="store_true", help="Notausstiege offen (Licht)")
 ap.add_argument("--rutsche", action="store_true")
+ap.add_argument("--engine", default="cycles", help="cycles | eevee")
+ap.add_argument("--pfad", default="", help="JSON-Datei mit Kamerapfad (Animation)")
+ap.add_argument("--leer", action="store_true", help="ohne Zusatz-Requisiten (alte Szene)")
+ap.add_argument("--zuendung", type=int, default=0, help="Frame, ab dem das Feuer brennt (Animation)")
 args = ap.parse_args(argv)
 
 random.seed(7)
@@ -44,6 +48,29 @@ def obj_from_bm(name, bm, material):
     for p in o.data.polygons:
         p.use_smooth = False
     return o
+
+
+class Masse:
+    """Sammelt viele kleine Primitive in EINEM Mesh (schnell statt tausender Objekte)."""
+    def __init__(self, name, material):
+        self.bm = bmesh.new(); self.name = name; self.material = material
+    def _add(self, fn, loc, rot=(0, 0, 0), scale=(1, 1, 1), **kw):
+        import mathutils
+        tmp = bmesh.new(); fn(tmp, **kw)
+        M = mathutils.Matrix.LocRotScale(Vector(loc), mathutils.Euler(rot), Vector(scale))
+        bmesh.ops.transform(tmp, matrix=M, verts=tmp.verts)
+        me = bpy.data.meshes.new("tmp"); tmp.to_mesh(me); tmp.free(); self.bm.from_mesh(me); bpy.data.meshes.remove(me)
+    def kegel(self, loc, r, h, rot=(0, 0, 0), verts=3):
+        self._add(lambda b, **k: bmesh.ops.create_cone(b, cap_ends=True, segments=verts, radius1=r, radius2=0, depth=h),
+                  Vector(loc) + Vector((0, 0, h / 2)), rot)
+    def kugel(self, loc, r, scale=(1, 1, 1), sub=1):
+        self._add(lambda b, **k: bmesh.ops.create_icosphere(b, subdivisions=sub, radius=r), loc, (0, 0, 0), scale)
+    def quader(self, loc, scale, rot=(0, 0, 0)):
+        self._add(lambda b, **k: bmesh.ops.create_cube(b, size=2.0), loc, rot, scale)
+    def zylinder(self, loc, r, h, rot=(0, 0, 0), verts=6):
+        self._add(lambda b, **k: bmesh.ops.create_cone(b, cap_ends=True, segments=verts, radius1=r, radius2=r, depth=h), loc, rot)
+    def fertig(self):
+        return obj_from_bm(self.name, self.bm, self.material)
 
 def cube(name, loc, scale, material, rot=(0, 0, 0)):
     bpy.ops.mesh.primitive_cube_add(location=loc, rotation=rot)
@@ -213,6 +240,214 @@ for i in range(6):
 cube("tower", (40, 80, 10), (2.5, 2.5, 10), M_BLDG)
 cube("tower_kanzel", (40, 80, 21), (3.5, 3.5, 1.4), M_WIN)
 
+
+# ---------- Requisiten: Rollfeld füllen ----------
+anim_objs = {}
+if not args.leer:
+    import json as _json
+    M_ARMY = mat("armee", (0.16, 0.17, 0.1), 0.85)
+    M_ARMY_D = mat("armee_dunkel", (0.08, 0.085, 0.05), 0.9)
+    M_CANVAS = mat("plane_stoff", (0.22, 0.2, 0.12), 1.0)
+    M_TIRE = mat("reifen", (0.02, 0.02, 0.02), 0.9)
+    M_HEAD = mat("scheinwerfer", (1, 1, 0.9), 0.3, emit=(1.0, 0.92, 0.7), strength=30.0)
+    M_TAIL_L = mat("ruecklicht", (0.5, 0.0, 0.0), 0.3, emit=(1.0, 0.05, 0.02), strength=12.0)
+    M_SANDBAG = mat("sandsack", (0.38, 0.32, 0.22), 1.0)
+    M_METAL = mat("metall", (0.3, 0.3, 0.32), 0.4)
+    M_FUEL = mat("tankwagen", (0.75, 0.74, 0.7), 0.5)
+    M_STAIRS = mat("treppe", (0.85, 0.78, 0.2), 0.6)
+    M_SOLDIER = mat("soldat", (0.12, 0.13, 0.08), 0.9)
+    M_SKIN_D = mat("haut_d", (0.18, 0.11, 0.07), 0.9)
+    M_FLOOD = mat("flutlicht", (1, 1, 1), 0.3, emit=(1.0, 0.95, 0.8), strength=40.0)
+    M_GRASS = mat("gras", (0.32, 0.3, 0.14), 1.0)
+    M_HILL = mat("huegel", (0.03, 0.035, 0.05), 1.0)
+    M_CITY = mat("stadtlicht", (1, 0.7, 0.4), 0.5, emit=(1.0, 0.7, 0.35), strength=20.0)
+    M_BEACON = mat("leuchtfeuer", (1, 0, 0), 0.3, emit=(1.0, 0.03, 0.02), strength=60.0)
+    M_HANGAR = mat("hangar", (0.17, 0.17, 0.18), 0.7)
+    M_STONE = mat("stein", (0.25, 0.22, 0.18), 1.0)
+
+    def truck(pos, rotz, licht=True, plane=True):
+        import mathutils
+        R = mathutils.Matrix.Rotation(rotz, 4, "Z")
+        def P(v): return Vector(pos) + (R @ Vector(v))
+        cube("lkw_kabine", P((2.6, 0, 1.5)), (0.9, 1.15, 0.9), M_ARMY, rot=(0, 0, rotz))
+        cube("lkw_haube", P((3.7, 0, 1.0)), (0.5, 1.0, 0.45), M_ARMY, rot=(0, 0, rotz))
+        cube("lkw_rahmen", P((0, 0, 0.75)), (3.6, 1.15, 0.12), M_ARMY_D, rot=(0, 0, rotz))
+        cube("lkw_ladeflaeche", P((-0.8, 0, 1.2)), (2.4, 1.2, 0.4), M_ARMY, rot=(0, 0, rotz))
+        if plane:
+            cube("lkw_plane", P((-0.8, 0, 2.15)), (2.4, 1.2, 0.6), M_CANVAS, rot=(0, 0, rotz))
+        for dx in (2.8, -0.5, -2.2):
+            for dy in (-1.1, 1.1):
+                cyl("rad", P((dx, dy, 0.5)), 0.5, 0.35, M_TIRE, verts=10, rot=(math.pi / 2, 0, rotz))
+        if licht:
+            for dy in (-0.7, 0.7):
+                cube("lkw_licht", P((4.21, dy, 1.1)), (0.03, 0.15, 0.12), M_HEAD, rot=(0, 0, rotz))
+                bpy.ops.object.light_add(type="SPOT", location=P((4.3, dy, 1.1)))
+                sp = bpy.context.object; sp.data.energy = 1800; sp.data.spot_size = 0.75; sp.data.spot_blend = 0.4
+                sp.data.color = (1.0, 0.9, 0.7)
+                d = (R @ Vector((1, 0, -0.06)))
+                sp.rotation_euler = d.to_track_quat("-Z", "Y").to_euler()
+            for dy in (-1.0, 1.0):
+                cube("lkw_rueck", P((-3.22, dy, 1.0)), (0.03, 0.1, 0.08), M_TAIL_L, rot=(0, 0, rotz))
+
+    def jeep(pos, rotz, licht=True):
+        import mathutils
+        R = mathutils.Matrix.Rotation(rotz, 4, "Z")
+        def P(v): return Vector(pos) + (R @ Vector(v))
+        cube("jeep", P((0, 0, 0.85)), (1.7, 0.85, 0.35), M_ARMY, rot=(0, 0, rotz))
+        cube("jeep_scheibe", P((0.5, 0, 1.4)), (0.05, 0.8, 0.25), M_METAL, rot=(0, 0, rotz))
+        for dx in (1.1, -1.1):
+            for dy in (-0.85, 0.85):
+                cyl("rad", P((dx, dy, 0.42)), 0.42, 0.3, M_TIRE, verts=10, rot=(math.pi / 2, 0, rotz))
+        if licht:
+            for dy in (-0.55, 0.55):
+                cube("jeep_licht", P((1.71, dy, 0.95)), (0.03, 0.12, 0.1), M_HEAD, rot=(0, 0, rotz))
+            bpy.ops.object.light_add(type="SPOT", location=P((1.9, 0, 1.0)))
+            sp = bpy.context.object; sp.data.energy = 2200; sp.data.spot_size = 0.8; sp.data.spot_blend = 0.5
+            sp.data.color = (1.0, 0.9, 0.7)
+            sp.rotation_euler = (R @ Vector((1, 0, -0.05))).to_track_quat("-Z", "Y").to_euler()
+
+    def soldat(pos, rotz=0):
+        cyl("soldat_bein", Vector(pos) + Vector((0, 0, 0.45)), 0.18, 0.9, M_SOLDIER, verts=8)
+        cyl("soldat_koerper", Vector(pos) + Vector((0, 0, 1.25)), 0.24, 0.75, M_SOLDIER, verts=8)
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=10, ring_count=6, radius=0.16, location=Vector(pos) + Vector((0, 0, 1.8)))
+        bpy.context.object.data.materials.append(M_SKIN_D)
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=10, ring_count=6, radius=0.18, location=Vector(pos) + Vector((0, 0, 1.88)))
+        o = bpy.context.object; o.scale = (1, 1, 0.55); o.data.materials.append(M_SOLDIER)
+        cyl("gewehr", Vector(pos) + Vector((0.15, 0.2, 1.35)), 0.03, 1.0, M_TIRE, verts=6, rot=(0.4, 0, rotz))
+
+    def flutlicht(pos, ziel):
+        cyl("mast", Vector(pos) + Vector((0, 0, 9)), 0.18, 18, M_METAL, verts=6)
+        cube("lampenkopf", Vector(pos) + Vector((0, 0, 18.3)), (1.4, 0.3, 0.6), M_METAL)
+        for k in range(4):
+            cube("lampe", Vector(pos) + Vector((-1.05 + k * 0.7, -0.32, 18.3)), (0.28, 0.03, 0.4), M_FLOOD)
+        bpy.ops.object.light_add(type="SPOT", location=Vector(pos) + Vector((0, -0.5, 18.2)))
+        sp = bpy.context.object; sp.data.energy = 90000; sp.data.spot_size = 0.55; sp.data.spot_blend = 0.6
+        sp.data.color = (1.0, 0.93, 0.8)
+        sp.rotation_euler = (Vector(ziel) - sp.location).to_track_quat("-Z", "Y").to_euler()
+
+    SACK = Masse("sandsaecke", M_SANDBAG)
+    def sandsaecke(x0, x1, y, rotz=0, reihen=3):
+        n = int((x1 - x0) / 0.85)
+        for r in range(reihen):
+            for i in range(n):
+                SACK.quader((x0 + i * 0.85 + (r % 2) * 0.42, y, 0.22 + r * 0.38), (0.4, 0.3, 0.18), (0, 0, random.uniform(-0.08, 0.08)))
+
+    # Fahrzeuge der somalischen Armee (Absperrung, Scheinwerfer auf das Flugzeug)
+    truck((-34, 24, 0), math.radians(-35))
+    truck((30, 27, 0), math.radians(215))
+    truck((-58, 40, 0), math.radians(-10), licht=False)
+    truck((-30, -14, 0), math.radians(20))            # links vor dem Flugzeug, Scheinwerfer aufs Heck
+    truck((-46, -6, 0), math.radians(5), licht=False)
+    jeep((26, -16, 0), math.radians(165))              # rechts vorne, Licht auf den Bug
+    jeep((-14, -19, 0), math.radians(40), licht=False)
+    # Absperrring der Armee rund um das Flugzeug (aus jedem Winkel sichtbar)
+    for k in range(16):
+        ang = k / 16 * math.tau
+        if abs(((ang - math.radians(-110)) + math.pi) % math.tau - math.pi) < math.radians(18):
+            continue  # Sichtachse der Hauptkamera frei lassen
+        r = random.uniform(34, 40)
+        px, py = math.cos(ang) * r * 1.25, math.sin(ang) * r
+        rot = math.atan2(-py, -px) + random.uniform(-0.3, 0.3)
+        if k % 3 == 0:
+            truck((px, py, 0), rot, licht=(k % 2 == 0))
+        else:
+            jeep((px, py, 0), rot, licht=(k % 2 == 1))
+        for m in range(random.randint(1, 3)):
+            soldat((px + random.uniform(-3, 3), py + random.uniform(-3, 3), 0))
+    # Treppenwagen und Tankwagen
+    cube("treppenwagen", (11, -11, 0.7), (2.2, 1.0, 0.5), M_STAIRS)
+    for k in range(10):
+        cube("stufe", (11 - 1.5 + k * 0.25, -8.0, 0.9 + k * 0.22), (0.15, 0.7, 0.04), M_STAIRS)
+    cube("treppe_seite", (11.0, -8.6, 2.0), (1.6, 0.03, 0.9), M_STAIRS, rot=(0, -0.65, 0))
+    cube("tankwagen_tank", (-30, 12, 2.0), (3.5, 1.2, 1.1), M_FUEL)
+    cube("tankwagen_kabine", (-25.6, 12, 1.6), (0.9, 1.1, 1.0), M_FUEL)
+    for dx in (-32, -28.5, -25.8):
+        for dy in (10.9, 13.1):
+            cyl("rad", (dx, dy, 0.5), 0.5, 0.35, M_TIRE, verts=10, rot=(math.pi / 2, 0, 0))
+    # Soldaten an der Absperrung
+    for x, y in [(-31, 21), (-29, 22.5), (-36.5, 20), (27, 23), (25, 24.5), (33, 23.5), (-40, 26),
+                 (-24, -16), (-22.5, -17.5), (-26, -11), (22, -18), (23.5, -19.5), (-12, -21), (-16, -22)]:
+        soldat((x, y, 0))
+    # Flutlichtmasten
+    flutlicht((-48, 34, 0), (0, 0, 0))
+    flutlicht((52, 36, 0), (5, 0, 0))
+    flutlicht((-40, -20, 0), (-5, 0, 0))
+    # Sandsäcke, Fässer, Kisten
+    sandsaecke(-45, -36, 17)
+    sandsaecke(34, 42, 19)
+    sandsaecke(-27, -19, -21, reihen=2)
+    sandsaecke(14, 21, -22, reihen=2)
+    for i in range(7):
+        cyl("fass", (-39 + random.uniform(-2, 2), 15 + random.uniform(-1.5, 1.5), 0.45), 0.3, 0.9,
+            random.choice([M_ARMY, M_METAL, M_STAIRS]), verts=10)
+    for i in range(4):
+        cube("kiste", (44 + i * 1.3, 15 + random.uniform(-0.5, 0.5), 0.4), (0.6, 0.5, 0.4), M_CANVAS)
+    # Zaun entlang des Vorfelds
+    ZAUN = Masse("zaun", M_METAL)
+    for i in range(-40, 41):
+        ZAUN.zylinder((i * 3.5, 46, 1.2), 0.05, 2.4, verts=5)
+    ZAUN.fertig()
+    for zh in (0.6, 1.3, 2.0):
+        cube("zaundraht", (0, 46, zh), (140, 0.01, 0.01), M_METAL)
+    # Hangar
+    cube("hangar", (-90, 62, 7), (16, 10, 7), M_HANGAR)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=16, radius=10.5, depth=32, location=(-90, 62, 13.5), rotation=(0, math.pi / 2, 0))
+    o = bpy.context.object; o.scale = (1, 1, 1); o.data.materials.append(M_HANGAR)
+    cube("hangartor", (-90, 51.9, 5), (10, 0.1, 5), M_WIN)
+    bpy.ops.object.light_add(type="AREA", location=(-90, 50, 6), rotation=(math.pi / 2, 0, 0))
+    hl = bpy.context.object; hl.data.energy = 6000; hl.data.size = 18; hl.data.color = (1, 0.8, 0.55)
+    # Windsack
+    cyl("windsack_mast", (70, -20, 3), 0.08, 6, M_METAL, verts=6)
+    cyl("windsack", (71.2, -20, 5.8), 0.35, 2.2, mat("windsack_stoff", (0.9, 0.35, 0.05), 0.8), verts=8,
+        rot=(0, math.pi / 2, 0), r2=0.15)
+    # Tower: Leuchtfeuer (blinkt) + Radar (dreht sich)
+    cube("leuchtfeuer", (40, 80, 23.2), (0.4, 0.4, 0.4), M_BEACON)
+    bpy.ops.object.light_add(type="POINT", location=(40, 80, 24))
+    bl = bpy.context.object; bl.data.energy = 8000; bl.data.color = (1, 0.05, 0.03)
+    anim_objs["leuchtfeuer"] = bl
+    bpy.ops.object.empty_add(location=(40, 84, 23))
+    radar = bpy.context.object
+    cyl("radarmast", (40, 84, 22.5), 0.15, 1.5, M_METAL, verts=6)
+    bpy.ops.mesh.primitive_cube_add(location=(40, 84, 23.6)); rd = bpy.context.object
+    rd.scale = (2.2, 0.15, 0.5); rd.data.materials.append(M_METAL); rd.parent = radar
+    rd.location = (0, 0, 0.6)
+    anim_objs["radar"] = radar
+    # Hügel am Horizont mit Lichtern der Stadt
+    HUEGEL = Masse("huegel", M_HILL)
+    for i in range(70):
+        a = i / 70 * math.tau
+        r = random.uniform(230, 280)
+        HUEGEL.kugel((math.cos(a) * r, math.sin(a) * r, 0), 1, (random.uniform(25, 45), random.uniform(25, 45), random.uniform(8, 26)))
+    HUEGEL.fertig()
+    STADT = Masse("stadtlichter", M_CITY)
+    for i in range(160):
+        a = random.uniform(math.radians(40), math.radians(140))
+        r = random.uniform(190, 225)
+        STADT.quader((math.cos(a) * r, math.sin(a) * r, random.uniform(0.5, 4)), (0.35, 0.35, 0.35))
+    STADT.fertig()
+    # Dünen, Grasbüschel, Steine im Vordergrund (für Bodenperspektiven)
+    DUENE = Masse("duenen", M_SAND)
+    for i in range(26):
+        dx = random.choice([random.uniform(-45, -18), random.uniform(8, 45)])
+        DUENE.kugel((dx, random.uniform(-55, -17), -0.2), 1,
+                    (random.uniform(3, 7), random.uniform(1.5, 3), random.uniform(0.4, 1.0)), sub=2)
+    DUENE.fertig()
+    GRAS = Masse("gras", M_GRASS)
+    for i in range(420):
+        x = random.uniform(-45, 45); y = random.uniform(-50, -16)
+        for k in range(random.randint(3, 6)):
+            GRAS.kegel((x + random.uniform(-0.15, 0.15), y + random.uniform(-0.15, 0.15), 0.0), 0.025, random.uniform(0.12, 0.35),
+                       (random.uniform(-0.4, 0.4), random.uniform(-0.4, 0.4), 0))
+    GRAS.fertig()
+    STEIN = Masse("steine", M_STONE)
+    for i in range(140):
+        STEIN.kugel((random.uniform(-45, 45), random.uniform(-50, -16), 0.0), random.uniform(0.05, 0.2), (1, 1, 0.6))
+    STEIN.fertig()
+    SACK.fertig()
+    # zusätzliche Palmen nahe an den Bildrändern
+    for x, y in [(-38, -20), (36, -24), (-55, -8), (60, -12), (-20, -46), (24, -48)]:
+        palm(Vector((x, y, 0)), random.uniform(8, 12))
+
 # ---------- Licht & Welt ----------
 world = bpy.data.worlds.new("nacht"); scn.world = world; world.use_nodes = True
 wn = world.node_tree.nodes; wl = world.node_tree.links
@@ -276,13 +511,69 @@ else:
 # ---------- Render ----------
 w, h = map(int, args.res.split("x"))
 scn.render.resolution_x, scn.render.resolution_y = w, h
-scn.render.engine = "CYCLES"
-scn.cycles.device = "CPU"
-scn.cycles.samples = args.samples
-scn.cycles.use_denoising = True
-scn.cycles.max_bounces = 4
 scn.view_settings.view_transform = "AgX"
 scn.view_settings.look = "AgX - Punchy"
-scn.render.filepath = args.out
-bpy.ops.render.render(write_still=True)
-print("FERTIG", args.out)
+if args.engine == "eevee":
+    import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import anim_common
+    anim_common.engine(scn, "eevee", args.samples, bloom=False)
+    bg.inputs["Strength"].default_value = 1.1
+    scn.render.engine = "BLENDER_EEVEE_NEXT"
+    scn.eevee.taa_render_samples = args.samples
+    scn.eevee.use_shadows = True
+    scn.eevee.use_raytracing = False
+    fill.data.energy = 2500
+    moon.data.energy = 0.9
+    M_SAND.node_tree.nodes["Principled BSDF"].inputs["Base Color"].default_value = (0.26, 0.21, 0.15, 1)
+    scn.eevee.volumetric_end = 260
+    scn.eevee.volumetric_tile_size = "8"
+    # Glühen (Bloom) über den Compositor
+    scn.use_nodes = True
+    nt = scn.node_tree; rl = nt.nodes["Render Layers"]; comp = nt.nodes["Composite"]
+    gl = nt.nodes.new("CompositorNodeGlare"); gl.glare_type = "FOG_GLOW"; gl.quality = "MEDIUM"; gl.threshold = 1.2; gl.size = 8
+    nt.links.new(rl.outputs["Image"], gl.inputs["Image"]); nt.links.new(gl.outputs["Image"], comp.inputs["Image"])
+else:
+    scn.render.engine = "CYCLES"
+    scn.cycles.device = "CPU"
+    scn.cycles.samples = args.samples
+    scn.cycles.use_denoising = True
+    scn.cycles.max_bounces = 4
+
+if args.pfad:
+    import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import anim_common, json
+    P = json.load(open(args.pfad))
+    anim_common.kamerapfad(scn, cam, args.pfad)
+    n = P["frames"]; off = P.get("offset", 0)
+    scn.frame_start = 1 + off; scn.frame_end = n + off
+    # Animation: Feuer flackert, Leuchtfeuer blinkt, Radar dreht sich
+    rnd = random.Random(5)
+    for f in range(1, n + off + 2):
+        t = (f - 1) / 30.0
+        if args.fire > 0:
+            fl.data.energy = 20000 * args.fire * (0.75 + 0.5 * rnd.random()); fl.data.keyframe_insert("energy", frame=f)
+            an = 1.0 if f >= args.zuendung else 0.0
+            if args.zuendung and f < args.zuendung + 8:
+                an = max(0.0, min(1.0, (f - args.zuendung) / 8))
+            fl.data.energy *= an; fl.data.keyframe_insert("energy", frame=f)
+            for ob in bpy.data.objects:
+                if ob.name.startswith("flamme") and (f % 2 == 1 or an < 1):
+                    ob.scale = (an, an, max(0.001, an * (0.7 + 0.6 * rnd.random()))); ob.keyframe_insert("scale", frame=f)
+        if "leuchtfeuer" in anim_objs:
+            anim_objs["leuchtfeuer"].data.energy = 8000 if (t % 1.2) < 0.25 else 0
+            anim_objs["leuchtfeuer"].data.keyframe_insert("energy", frame=f)
+    if "radar" in anim_objs:
+        r_ = anim_objs["radar"]; r_.rotation_euler = (0, 0, 0); r_.keyframe_insert("rotation_euler", frame=1)
+        r_.rotation_euler = (0, 0, math.tau * (n + off) / 30 / 4); r_.keyframe_insert("rotation_euler", frame=n + off + 1)
+        for fc in r_.animation_data.action.fcurves:
+            for kp in fc.keyframe_points:
+                kp.interpolation = "LINEAR"
+    scn.render.fps = 30
+    scn.render.filepath = args.out  # z. B. /pfad/shot_####.png
+    scn.render.image_settings.file_format = "PNG"
+    bpy.ops.render.render(animation=True)
+    print("FERTIG_ANIM", args.out, n)
+else:
+    scn.render.filepath = args.out
+    bpy.ops.render.render(write_still=True)
+    print("FERTIG", args.out)

@@ -4,7 +4,8 @@ Rendert einen breiten Streifen (orthografisch), der im Schnitt horizontal
 abgefahren wird (Roulette). Aufruf:
   blender -b -P scene_spinde.py -- --out streifen.png [--hoehe 1920] [--samples 32] [--fokus GSG 9]
 """
-import bpy, math, sys, argparse, random
+import bpy, math, sys, argparse, random, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 argv = sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else []
 ap = argparse.ArgumentParser()
@@ -14,6 +15,9 @@ ap.add_argument("--samples", type=int, default=32)
 ap.add_argument("--fokus", default="GSG 9")
 ap.add_argument("--font", default="")
 ap.add_argument("--figuren", default=".")
+ap.add_argument("--engine", default="cycles")
+ap.add_argument("--pfad", default="", help="Animation: JSON mit Kamerapfad (Perspektive)")
+ap.add_argument("--res", default="720x1280")
 args = ap.parse_args(argv)
 random.seed(3)
 
@@ -97,6 +101,8 @@ _l.new(_add.outputs[0], _n["Material Output"].inputs["Surface"])
 M_SCRATCH = mat("zellennr", (0.6, 0.62, 0.66), 0.6, emit=(0.5, 0.52, 0.56), strength=0.6)
 
 W = 2.0  # Zellenbreite
+ALARM = []
+SPOTS = []
 N = len(EINHEITEN)
 x0 = -(N - 1) * W / 2
 
@@ -119,6 +125,7 @@ for i, (name, land, kopf) in enumerate(EINHEITEN):
     bpy.ops.object.light_add(type="SPOT", location=(x, -0.2, 3.1), rotation=(0.12, 0, 0))
     sp = bpy.context.object; sp.data.energy = 260; sp.data.spot_size = 0.9; sp.data.spot_blend = 0.6
     sp.data.color = (0.85, 0.9, 1.0)
+    SPOTS.append(sp)
     bpy.ops.mesh.primitive_cone_add(vertices=24, radius1=0.95, radius2=0.12, depth=3.0, location=(x, -0.1, 1.6))
     kegel = bpy.context.object; kegel.data.materials.append(M_CONE)
     # Namensschild + Land
@@ -143,6 +150,7 @@ for i, (name, land, kopf) in enumerate(EINHEITEN):
         cube((x + W / 2 - 0.25, -0.85, 3.0), (0.06, 0.02, 0.06), M_RED)
         bpy.ops.object.light_add(type="POINT", location=(x + W / 2 - 0.25, -1.0, 3.0))
         r = bpy.context.object; r.data.energy = 120; r.data.color = (1, 0.05, 0.03)
+        ALARM.append(r)
 
 # Weltlicht + Kamera
 world = bpy.data.worlds.new("w"); scn.world = world; world.use_nodes = True
@@ -150,6 +158,30 @@ world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.005, 0.00
 vol = world.node_tree.nodes.new("ShaderNodeVolumePrincipled")
 vol.inputs["Density"].default_value = 0.0
 world.node_tree.links.new(vol.outputs["Volume"], world.node_tree.nodes["World Output"].inputs["Volume"])
+
+if args.pfad:
+    import anim_common
+    w, h = map(int, args.res.split("x"))
+    scn.render.resolution_x, scn.render.resolution_y = w, h
+    bpy.ops.object.camera_add(location=(0, -8, 1.9)); cam = bpy.context.object; scn.camera = cam
+    anim_common.engine(scn, args.engine, args.samples)
+    if args.engine == "eevee":
+        scn.render.use_motion_blur = True; scn.render.motion_blur_shutter = 0.6
+    n, off = anim_common.kamerapfad(scn, cam, args.pfad)
+    # Rotes Alarm-Strobo + flackernde Deckenspots
+    for k, r in enumerate(ALARM):
+        frames = [f for f in range(1, n + off + 2) if ((f + k * 4) // 6) % 3 == 0]
+        anim_common.blitze(r, 260, frames)
+    for k, sp in enumerate(SPOTS):
+        anim_common.flackern(sp, 260, 1, n + off + 1, 0.25, seed=k, takt=3)
+    # zusätzliches rotes Rundumlicht im Gang
+    bpy.ops.object.light_add(type="AREA", location=(0, -3, 4.5), rotation=(0.3, 0, 0))
+    gl = bpy.context.object; gl.data.color = (1, 0.08, 0.05); gl.data.size = 30
+    anim_common.blitze(gl, 900, [f for f in range(1, n + off + 2) if (f // 8) % 2 == 0])
+    scn.render.filepath = args.out
+    bpy.ops.render.render(animation=True)
+    print("FERTIG_ANIM", args.out, n)
+    raise SystemExit(0)
 
 bpy.ops.object.camera_add(location=(0, -12, 1.95), rotation=(math.pi / 2, 0, 0))
 cam = bpy.context.object; scn.camera = cam

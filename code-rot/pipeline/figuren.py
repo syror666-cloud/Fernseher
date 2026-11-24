@@ -29,13 +29,13 @@ class Figur:
     zivil: bool = False           # Hemd statt Weste
 
 
-def _augen(expr, cx, cy):
-    """Augenpaar je nach Ausdruck."""
-    out = []
+def _augen(expr, cx, cy, haut="#EBC09A"):
+    """Augenpaar je nach Ausdruck. Pupillen und Lider als animierbare Gruppen (rig-pupillen, rig-lider)."""
+    weiss, pup, lid, deckel = [], [], [], []
     for dx in (-48, 48):
         x = cx + dx
         if expr in ("erleichtert", "zu"):
-            out.append(f'<path d="M{x-24},{cy+4} Q{x},{cy-16} {x+24},{cy+4}" stroke="#2B1B14" stroke-width="7" fill="none" stroke-linecap="round"/>')
+            weiss.append(f'<path d="M{x-24},{cy+4} Q{x},{cy-16} {x+24},{cy+4}" stroke="#2B1B14" stroke-width="7" fill="none" stroke-linecap="round"/>')
             continue
         r = 36 if expr in ("angst", "schock") else 32
         px, py = (x + 4, cy + 4)
@@ -44,12 +44,19 @@ def _augen(expr, cx, cy):
         if expr == "entschlossen":
             py = cy + 6
         pr = 10 if expr == "schock" else 14
-        out.append(f'<circle cx="{x}" cy="{cy}" r="{r}" fill="#FFFFFF"/>')
-        out.append(f'<circle cx="{px}" cy="{py}" r="{pr}" fill="#1A1210"/>')
-        out.append(f'<circle cx="{px+4}" cy="{py-4}" r="3.5" fill="#FFFFFF"/>')
-        if expr == "entschlossen":  # obere Lidkante
-            out.append(f'<path d="M{x-32},{cy-6} L{x+32},{cy-6} L{x+32},{cy-40} L{x-32},{cy-40} Z" fill="var(--hautfarbe)"/>')
-    return "".join(out)
+        weiss.append(f'<circle cx="{x}" cy="{cy}" r="{r}" fill="#FFFFFF"/>')
+        pup.append(f'<circle cx="{px}" cy="{py}" r="{pr}" fill="#1A1210"/><circle cx="{px+4}" cy="{py-4}" r="3.5" fill="#FFFFFF"/>')
+        if expr == "entschlossen":
+            deckel.append(f'<path d="M{x-38},{cy-6} L{x+38},{cy-6} L{x+38},{cy-44} L{x-38},{cy-44} Z" fill="{haut}"/>')
+        lid.append(f'<ellipse cx="{x}" cy="{cy}" rx="{r+3}" ry="{r+3}" fill="{haut}"/>'
+                   f'<path d="M{x-r},{cy} Q{x},{cy+10} {x+r},{cy}" stroke="#2B1B14" stroke-width="6" fill="none"/>')
+    out = "".join(weiss)
+    if pup:
+        out += f'<g class="rig-pupillen">{"".join(pup)}</g>'
+    out += "".join(deckel)
+    if lid:
+        out += f'<g class="rig-lider" data-o="{cx},{cy}" transform="scale(1,0)" style="transform-origin:{cx}px {cy}px">{"".join(lid)}</g>'
+    return out
 
 
 def _brauen(expr, cx, cy):
@@ -118,19 +125,25 @@ def _kopfbedeckung(f, cx, ky, kr):
 def svg_ganz(f: Figur, expr: str = "neutral", width: int = 600, height: int = 1600) -> str:
     """Ganzkörper: Halbnah-Figur plus Gürtel, Beine, Stiefel (viewBox 600x1600)."""
     oben = svg(f, expr).split(">", 1)[1].rsplit("</svg>", 1)[0]
+    oben = oben.replace('Q150,820 168,690 Z" fill="' + f.jacke + '"/></g>', 'Q150,820 168,690 Z" fill="' + f.jacke + '"/><circle cx="132" cy="1000" r="34" fill="#141414"/></g>', 1)
+    oben = oben.replace('Q450,820 432,690 Z" fill="' + f.jacke + '"/></g>', 'Q450,820 432,690 Z" fill="' + f.jacke + '"/><circle cx="468" cy="1000" r="34" fill="#141414"/></g>', 1)
+    # Beine hinter den Oberkörper legen
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1600" width="{width}" height="{height}">'
+            f'<g class="rig-ganz">{_beine(f)}{oben}</g></svg>')
+
+
+def _beine(f):
     hose = f.hose or f.jacke
     unten = (f'<rect x="150" y="960" width="300" height="50" rx="10" fill="#151719"/>'
              f'<rect x="282" y="966" width="36" height="38" rx="6" fill="#5C5E60"/>'
-             f'<path d="M160,1000 L290,1000 L282,1500 L176,1500 Z" fill="{hose}"/>'
-             f'<path d="M310,1000 L440,1000 L424,1500 L318,1500 Z" fill="{hose}"/>'
+             f'<g class="rig-bein-l" data-o="225,1000"><path d="M160,1000 L290,1000 L282,1500 L176,1500 Z" fill="{hose}"/>'
              f'<path d="M160,1000 L200,1000 L196,1500 L176,1500 Z" fill="#000" opacity="0.15"/>'
              f'<rect x="168" y="1180" width="110" height="80" rx="12" fill="#000" opacity="0.18"/>'
+             f'<path d="M168,1490 L288,1490 L300,1590 L140,1590 Q140,1540 168,1490 Z" fill="#111214"/></g>'
+             f'<g class="rig-bein-r" data-o="375,1000"><path d="M310,1000 L440,1000 L424,1500 L318,1500 Z" fill="{hose}"/>'
              f'<rect x="322" y="1180" width="110" height="80" rx="12" fill="#000" opacity="0.18"/>'
-             f'<path d="M168,1490 L288,1490 L300,1590 L140,1590 Q140,1540 168,1490 Z" fill="#111214"/>'
-             f'<path d="M312,1490 L432,1490 L460,1590 L300,1590 Z" fill="#111214"/>'
-             f'<circle cx="132" cy="1000" r="34" fill="#141414"/><circle cx="468" cy="1000" r="34" fill="#141414"/>')
-    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1600" width="{width}" height="{height}">'
-            f'{oben}{unten}</svg>')
+             f'<path d="M312,1490 L432,1490 L460,1590 L300,1590 Z" fill="#111214"/></g>')
+    return unten
 
 
 def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, height: int = 1000) -> str:
@@ -138,6 +151,8 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
     cx, kopf_y, kopf_r = 300, 330, 160
     p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1000" width="{width}" height="{height}" style="--hautfarbe:{haut}">']
     # --- Torso ---
+    p.append('<g class="rig-figur">')
+    p.append('<g class="rig-koerper" data-o="300,1000">')
     p.append(f'<path d="M110,1000 L118,640 Q124,560 210,540 L390,540 Q476,560 482,640 L490,1000 Z" fill="{f.jacke}"/>')
     p.append(f'<path d="M110,1000 L118,640 Q124,575 180,552 L170,1000 Z" fill="{f.jacke_schatten}"/>')
     # Kragen
@@ -154,20 +169,23 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
             p.append(f'<rect x="{x}" y="760" width="52" height="74" rx="8" fill="#2B3036"/><rect x="{x}" y="760" width="52" height="18" rx="6" fill="#353B42"/>')
         if f.funk:
             p.append('<rect x="372" y="640" width="34" height="70" rx="6" fill="#121416"/><rect x="384" y="596" width="7" height="48" rx="3" fill="#121416"/><circle cx="389" cy="660" r="5" fill="#C0392B"/>')
+    p.append('</g>')  # Ende Körper
     # Arme
+    ARM_L = f'<g class="rig-arm-l" data-o="140,650"><path d="M118,640 Q90,800 104,1000 L160,1000 Q150,820 168,690 Z" fill="{f.jacke}"/>{{hand_l}}</g>'
     if arm == "unten":
-        p.append(f'<path d="M118,640 Q90,800 104,1000 L160,1000 Q150,820 168,690 Z" fill="{f.jacke}"/>')
-        p.append(f'<path d="M482,640 Q510,800 496,1000 L440,1000 Q450,820 432,690 Z" fill="{f.jacke}"/>')
+        p.append(ARM_L.replace("{hand_l}", ""))
+        p.append(f'<g class="rig-arm-r" data-o="460,650"><path d="M482,640 Q510,800 496,1000 L440,1000 Q450,820 432,690 Z" fill="{f.jacke}"/></g>')
     elif arm == "funk":  # rechte Hand am Funkgerät
-        p.append(f'<path d="M118,640 Q90,800 104,1000 L160,1000 Q150,820 168,690 Z" fill="{f.jacke}"/>')
-        p.append(f'<path d="M482,640 Q540,760 470,820 L420,760 Q470,720 432,690 Z" fill="{f.jacke}"/>')
-        p.append('<circle cx="412" cy="728" r="30" fill="#1B1D1F"/>')
+        p.append(ARM_L.replace("{hand_l}", ""))
+        p.append(f'<g class="rig-arm-r" data-o="460,650"><path d="M482,640 Q540,760 470,820 L420,760 Q470,720 432,690 Z" fill="{f.jacke}"/>'
+                 '<circle cx="412" cy="728" r="30" fill="#1B1D1F"/></g>')
     elif arm == "zeigen":  # Handzeichen nach vorne
-        p.append(f'<path d="M118,640 Q90,800 104,1000 L160,1000 Q150,820 168,690 Z" fill="{f.jacke}"/>')
-        p.append(f'<path d="M470,620 L590,500 L612,540 L500,690 Z" fill="{f.jacke}"/>')
-        p.append('<circle cx="600" cy="510" r="30" fill="#1B1D1F"/>')
+        p.append(ARM_L.replace("{hand_l}", ""))
+        p.append(f'<g class="rig-arm-r" data-o="480,640"><path d="M470,620 L590,500 L612,540 L500,690 Z" fill="{f.jacke}"/>'
+                 '<circle cx="600" cy="510" r="30" fill="#1B1D1F"/></g>')
     # --- Hals & Kopf ---
     p.append(f'<rect x="262" y="470" width="76" height="80" rx="20" fill="{haut_s}"/>')
+    p.append(f'<g class="rig-kopf" data-o="{cx},{kopf_y+170}">')
     p.append(f'<circle cx="{cx}" cy="{kopf_y}" r="{kopf_r}" fill="{haut}"/>')
     p.append(f'<path d="M{cx-kopf_r},{kopf_y} A{kopf_r},{kopf_r} 0 0 0 {cx+kopf_r*0.2},{kopf_y+kopf_r*0.99} A{kopf_r*1.1},{kopf_r*1.1} 0 0 1 {cx-kopf_r},{kopf_y} Z" fill="{haut_s}" opacity="0.55"/>')
     # Ohren
@@ -190,8 +208,8 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
     elif f.frisur == "seitenscheitel":
         p.append(f'<path d="M{cx-150},{kopf_y+10} Q{cx-160},{kopf_y-170} {cx+10},{kopf_y-160} Q{cx+160},{kopf_y-150} {cx+150},{kopf_y-10} Q{cx+130},{kopf_y-70} {cx+60},{kopf_y-100} Q{cx-20},{kopf_y-40} {cx-120},{kopf_y-60} Q{cx-140},{kopf_y-20} {cx-150},{kopf_y+10} Z" fill="{f.haar}"/>')
     # Gesicht
-    p.append(_brauen(expr, cx, kopf_y))
-    p.append(_augen(expr, cx, kopf_y))
+    p.append(f'<g class="rig-brauen">{_brauen(expr, cx, kopf_y)}</g>')
+    p.append(_augen(expr, cx, kopf_y, haut))
     p.append(f'<ellipse cx="{cx}" cy="{kopf_y+42}" rx="14" ry="10" fill="{haut_s}"/>')
     if f.bart == "schnurrbart":
         p.append(f'<path d="M{cx-46},{kopf_y+74} Q{cx},{kopf_y+50} {cx+46},{kopf_y+74} Q{cx+20},{kopf_y+66} {cx},{kopf_y+68} Q{cx-20},{kopf_y+66} {cx-46},{kopf_y+74} Z" fill="{f.haar}"/>')
@@ -202,10 +220,12 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
             x = cx + rnd.uniform(-90, 90)
             y = kopf_y + (rnd.uniform(70, 125) if f.bart == "stoppeln" else rnd.uniform(25, 55))
             p.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="3.2" fill="{"#7A4A30" if f.bart=="stoppeln" else "#B5704A"}"/>')
-    p.append(_mund(expr, cx, kopf_y + 92))
+    p.append(f'<g class="rig-mund" data-o="{cx},{kopf_y+92}">{_mund(expr, cx, kopf_y + 92)}</g>')
     p.append(_kopfbedeckung(f, cx, kopf_y, kopf_r))
     if expr in ("angst", "schock"):
-        p.append(f'<path d="M{cx+128},{kopf_y-90} Q{cx+142},{kopf_y-60} {cx+128},{kopf_y-52} Q{cx+114},{kopf_y-60} {cx+128},{kopf_y-90} Z" fill="#9FD3F0"/>')
+        p.append(f'<g class="rig-schweiss"><path d="M{cx+128},{kopf_y-90} Q{cx+142},{kopf_y-60} {cx+128},{kopf_y-52} Q{cx+114},{kopf_y-60} {cx+128},{kopf_y-90} Z" fill="#9FD3F0"/></g>')
+    p.append("</g>")  # Ende Kopf
+    p.append("</g>")  # Ende Figur
     p.append("</svg>")
     return "".join(p).replace("var(--hautfarbe)", haut)
 

@@ -53,12 +53,14 @@ def fenster_silhouette(anzahl=1, licht="#F2B26B"):
          f'<radialGradient id="glow"><stop offset="0" stop-color="{licht}"/><stop offset="1" stop-color="#7A3A10"/></radialGradient></defs>',
          '<rect y="1240" width="1080" height="90" fill="#0B1A3A"/>']
     xs = [540] if anzahl == 1 else [260, 820]
-    for x in xs:
+    for k, x in enumerate(xs):
+        b.append(f'<clipPath id="fc{k}"><rect x="{x-160}" y="590" width="320" height="460" rx="130"/></clipPath>')
         b.append(f'<rect x="{x-190}" y="560" width="380" height="520" rx="150" fill="#9AA0AA"/>')
         b.append(f'<rect x="{x-160}" y="590" width="320" height="460" rx="130" fill="url(#glow)"/>')
+        b.append(f'<g clip-path="url(#fc{k})">')
         # Kopf + Schultern im Gegenlicht
-        b.append(f'<path d="M{x-150},1050 Q{x-140},900 {x-60},880 Q{x-110},800 {x-70},730 Q{x},670 {x+70},730 '
-                 f'Q{x+110},800 {x+60},880 Q{x+140},900 {x+150},1050 Z" fill="#0A0806"/>')
+        b.append(f'<g class="rig-silhouette"><path d="M{x-150},1050 Q{x-140},900 {x-60},880 Q{x-110},800 {x-70},730 Q{x},670 {x+70},730 '
+                 f'Q{x+110},800 {x+60},880 Q{x+140},900 {x+150},1050 Z" fill="#0A0806"/></g></g>')
     b.append('<rect width="1080" height="1920" fill="#0A1230" opacity=".25"/>')
     return _svg("".join(b))
 
@@ -73,7 +75,7 @@ def tv(text_oben="SONDERSENDUNG", text_unten="MÜNCHEN · 1972", rauschen=True):
          '<rect x="150" y="650" width="780" height="640" rx="50" fill="#3E2F22"/>',
          '<rect x="190" y="700" width="700" height="540" rx="70" fill="#7C8078"/>']
     if rauschen:
-        b.append('<rect x="190" y="700" width="700" height="540" filter="url(#n)" clip-path="url(#bild)" opacity=".75"/>')
+        b.append('<g clip-path="url(#bild)"><g class="rig-tvbild"><rect x="190" y="660" width="700" height="620" filter="url(#n)" opacity=".75"/></g></g>')
     b += ['<rect x="190" y="700" width="700" height="540" rx="70" fill="#C8CFC0" opacity=".18"/>',
           f'<rect x="240" y="1110" width="600" height="90" fill="#101010" opacity=".85" clip-path="url(#bild)"/>',
           f'<text x="540" y="1172" font-family="MB" font-size="54" fill="#F2F2F2" text-anchor="middle">{text_unten}</text>',

@@ -13,7 +13,12 @@ ap.add_argument("--out", default="/tmp/kabine.png")
 ap.add_argument("--res", default="540x960")
 ap.add_argument("--samples", type=int, default=24)
 ap.add_argument("--licht", default="dunkel")
+ap.add_argument("--engine", default="cycles")
+ap.add_argument("--pfad", default="")
+ap.add_argument("--schuesse", default="", help="Frames mit Mündungsfeuer, z. B. 3,4,9,10")
 args = ap.parse_args(argv)
+import os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import anim_common
 random.seed(11)
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scn = bpy.context.scene
@@ -90,12 +95,12 @@ if args.licht == "zugriff":
     for x in (-1.2,):
         for side in (-1, 1):
             bpy.ops.object.light_add(type="AREA", location=(x, side * (R - 0.3), 2.0), rotation=(side * math.pi / 2, 0, 0))
-            l = bpy.context.object; l.data.energy = 400; l.data.size = 0.8; l.data.color = (0.6, 0.7, 1.0)
+            l = bpy.context.object; l.data.energy = 400 if args.engine != "eevee" else 22; l.data.size = 0.8; l.data.color = (0.6, 0.7, 1.0)
     bpy.ops.object.light_add(type="POINT", location=(L / 2 + 1.5, -1.5, 1.5))
-    f = bpy.context.object; f.data.energy = 900; f.data.color = (1.0, 0.45, 0.15)
+    f = bpy.context.object; f.data.energy = 900 if args.engine != "eevee" else 250; f.data.color = (1.0, 0.45, 0.15)
     for i in range(4):
         bpy.ops.object.light_add(type="SPOT", location=(-9 + i * 0.4, 0.3 * (i % 2), 1.9), rotation=(0, -math.pi / 2 + 0.1, 0))
-        sp = bpy.context.object; sp.data.energy = 300; sp.data.spot_size = 0.35; sp.data.color = (1, 1, 0.95)
+        sp = bpy.context.object; sp.data.energy = 300 if args.engine != "eevee" else 40; sp.data.spot_size = 0.35; sp.data.color = (1, 1, 0.95)
 else:
     bpy.ops.object.light_add(type="POINT", location=(L / 2 + 1.5, -1.5, 1.5))
     f = bpy.context.object; f.data.energy = 200; f.data.color = (1.0, 0.6, 0.3)
@@ -117,9 +122,19 @@ else:
 
 w, h = map(int, args.res.split("x"))
 scn.render.resolution_x, scn.render.resolution_y = w, h
-scn.render.engine = "CYCLES"; scn.cycles.device = "CPU"; scn.cycles.samples = args.samples
-scn.cycles.use_denoising = True; scn.cycles.max_bounces = 4
-scn.view_settings.view_transform = "AgX"; scn.view_settings.look = "AgX - Punchy"
-scn.render.filepath = args.out
-bpy.ops.render.render(write_still=True)
-print("FERTIG", args.out)
+anim_common.engine(scn, args.engine, args.samples)
+if args.pfad:
+    n, off = anim_common.kamerapfad(scn, cam, args.pfad)
+    # Kabinenlicht flackert leicht, Feuerschein von vorne pulsiert
+    anim_common.flackern(f, f.data.energy, 1, n + off + 1, 0.6, seed=3, takt=2)
+    if args.schuesse:
+        bpy.ops.object.light_add(type="POINT", location=(3.0, 0.2, 1.6))
+        mz = bpy.context.object; mz.data.color = (1.0, 0.8, 0.4)
+        anim_common.blitze(mz, 6000, [int(x) for x in args.schuesse.split(",")])
+    scn.render.filepath = args.out
+    bpy.ops.render.render(animation=True)
+    print("FERTIG_ANIM", args.out, n)
+else:
+    scn.render.filepath = args.out
+    bpy.ops.render.render(write_still=True)
+    print("FERTIG", args.out)

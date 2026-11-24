@@ -9,6 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import compose
+import animator
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FPS = 30
@@ -310,6 +311,98 @@ def main():
         "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)])
     print("FERTIG", out)
 
+# ---------------------------------------------------------------- Animator (bewegte Fassung)
+FEUER_BG = {"boden_feuer", "nase_feuer"}
+
+
+def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
+    s = dict(ep.SHOTS[k]); t = shots[k]
+    f0, f1 = round(t["schnitt"] * FPS), round(t["ende"] * FPS)
+    n = max(f1 - f0, 1); dauer = n / FPS
+    bgname = s["bg"]; anim = getattr(ep, "ANIM_SHOTS", {}).get(k)
+    bg = None
+    if anim and (folge / "anim" / anim / "f_0001.png").exists():
+        g = gruppen[anim]
+        nf = len(list((folge / "anim" / anim).glob("f_*.png")))
+        bg = {"typ": "seq", "muster": f"file://{folge}/anim/{anim}/f_####.png", "start": g["start"][str(k)],
+              "n": nf, "loop": g["loop"]}
+        szene = ep.ANIM[anim]["szene"]
+        bg["himmel"] = szene == "rollfeld"
+    elif bgname.startswith("svg:"):
+        bg = {"typ": "svg", "src": str(folge / "svg" / (bgname[4:] + ".svg"))}; szene = "svg"
+    elif bgname.startswith("intro_zelle:"):
+        bg = {"typ": "bild", "src": str(streifen.zelle_png(int(bgname.split(":")[1]), tmp / f"zelle_{bgname.split(':')[1]}.png"))}
+        szene = "titel"
+    elif bgname == "intro":
+        bg = {"typ": "bild", "src": str(streifen.zelle_png(6, tmp / "zelle_6.png"))}; szene = "intro"
+    else:
+        bg = {"typ": "bild", "src": str(folge / "bg" / f"{bgname}.png"), "himmel": not bgname.startswith("kabine")}
+        szene = "kabine" if bgname.startswith("kabine") else "rollfeld"
+    # Partikel
+    if "fx" in s:
+        fx = s["fx"]
+    elif bgname.startswith("svg:tv"):
+        fx = animator.FX_STANDARD["tv"]
+    elif bgname in FEUER_BG and not (anim == "nase_feuer" and k < 41):
+        fx = animator.FX_STANDARD["feuer"]
+    elif szene == "kabine":
+        fx = animator.FX_STANDARD["kabine_zugriff" if "zugriff" in bgname or "ausstieg" in bgname else "kabine"]
+    elif szene in animator.FX_STANDARD:
+        fx = animator.FX_STANDARD[szene]
+    else:
+        fx = animator.FX_STANDARD["rollfeld"] if szene != "svg" else []
+    # HUD
+    hud = {"logo": bool(s.get("logo")), "linie": bgname == "intro", "ringe": bool(s.get("ringe")),
+           "titel": s.get("titel"), "untertitel": s.get("untertitel", "")}
+    if s.get("uhr"):
+        hud["uhr"] = s["uhr"]; hud["uhr_neu"] = (prev or {}).get("uhr") != s["uhr"]
+    if s.get("regeln") is not None and s.get("regeln") is not False:
+        nr = s["regeln"]; pr = (prev or {}).get("regeln")
+        hud["regeln"] = {"zeilen": ep.BEFEHLE[:nr] or [], "neu": isinstance(pr, int) and nr > pr}
+        hud["regeln_neu_box"] = not isinstance(pr, int)
+    out = tmp / f"anim_{k:03d}.mp4"
+    html = animator.baue(s, k, dauer, folge, bg, hud, fx)
+    key = hashlib.md5((html + str(n)).encode()).hexdigest()[:12]
+    stamp = out.with_suffix(".key")
+    if out.exists() and stamp.exists() and stamp.read_text() == key:
+        return out
+    animator.render(html, out, n)
+    stamp.write_text(key)
+    return out
+
+
+def main_animiert():
+    ep_path = pathlib.Path(sys.argv[1]).resolve(); folge = ep_path.parent
+    spec = importlib.util.spec_from_file_location("episode", ep_path); ep = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ep)
+    timing = json.loads((folge / "audio/timing.json").read_text())
+    gruppen = json.loads((folge / "anim/gruppen.json").read_text())
+    tmp = folge / "build"; tmp.mkdir(exist_ok=True); (folge / "export").mkdir(exist_ok=True)
+    sp = folge / "bg/spinde_streifen.png"
+    streifen = Streifen(sp)
+    shots = timing["shots"]
+    von = int(sys.argv[sys.argv.index("--von") + 1]) if "--von" in sys.argv else 0
+    bis = int(sys.argv[sys.argv.index("--bis") + 1]) if "--bis" in sys.argv else len(shots) - 1
+    def mach(k):
+        return animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, ep.SHOTS[k - 1] if k > 0 else None)
+    with ThreadPoolExecutor(int(os.environ.get("ANIM_JOBS", "3"))) as ex:
+        clips = list(ex.map(mach, range(von, bis + 1)))
+    print("Animierte Clips fertig:", len(clips), flush=True)
+    liste = tmp / "liste_anim.txt"
+    liste.write_text("".join(f"file '{c}'\n" for c in clips))
+    roh = tmp / "roh_anim.mp4"
+    sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(liste), "-c", "copy", str(roh)])
+    ass = ass_datei(ep, timing, tmp / "untertitel.ass")
+    audio = mix(ep, timing, folge, tmp / "mix.wav")
+    out = folge / "export" / (f"{folge.name}.mp4" if von == 0 and bis == len(shots) - 1 else f"{folge.name}_teil_{von}-{bis}.mp4")
+    fonts = ROOT / "assets/fonts"
+    t_von = shots[von]["schnitt"]
+    sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(roh), "-ss", f"{t_von:.3f}", "-i", str(audio),
+        "-vf", f"setpts=PTS-STARTPTS+{t_von:.3f}/TB,ass={ass}:fontsdir={fonts},setpts=PTS-STARTPTS",
+        "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p",
+        "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)])
+    print("FERTIG", out)
+
 
 if __name__ == "__main__":
-    main()
+    main_animiert() if "--statisch" not in sys.argv else main()
