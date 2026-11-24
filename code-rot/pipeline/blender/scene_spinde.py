@@ -90,7 +90,7 @@ M_BERET = {"SAS": mat("barett_sas", (0.6, 0.55, 0.4), 0.9), "BOPE": mat("barett_
 M_CONE = bpy.data.materials.new("kegel"); M_CONE.use_nodes = True
 _n = M_CONE.node_tree.nodes; _l = M_CONE.node_tree.links
 _n.remove(_n["Principled BSDF"])
-_em = _n.new("ShaderNodeEmission"); _em.inputs["Color"].default_value = (0.8, 0.85, 1.0, 1); _em.inputs["Strength"].default_value = 0.06
+_em = _n.new("ShaderNodeEmission"); _em.inputs["Color"].default_value = (0.8, 0.85, 1.0, 1); _em.inputs["Strength"].default_value = 0.018
 _tr = _n.new("ShaderNodeBsdfTransparent"); _add = _n.new("ShaderNodeAddShader")
 _l.new(_em.outputs[0], _add.inputs[0]); _l.new(_tr.outputs[0], _add.inputs[1])
 _l.new(_add.outputs[0], _n["Material Output"].inputs["Surface"])

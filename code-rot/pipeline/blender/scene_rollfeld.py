@@ -14,6 +14,9 @@ ap.add_argument("--out", default="/tmp/rollfeld.png")
 ap.add_argument("--res", default="540x960")
 ap.add_argument("--samples", type=int, default=32)
 ap.add_argument("--fire", type=float, default=1.0, help="0 = kein Feuer")
+ap.add_argument("--leiter", action="store_true")
+ap.add_argument("--offen", action="store_true", help="Notausstiege offen (Licht)")
+ap.add_argument("--rutsche", action="store_true")
 args = ap.parse_args(argv)
 
 random.seed(7)
@@ -70,7 +73,7 @@ M_WIN = mat("fenster", (0.1, 0.07, 0.03), 0.3, emit=(1.0, 0.72, 0.38), strength=
 M_COCKPIT = mat("cockpit", (0.02, 0.02, 0.03), 0.2, emit=(0.4, 0.5, 0.7), strength=0.6)
 M_PALM = mat("palme", (0.03, 0.05, 0.035), 0.9)
 M_TRUNK = mat("stamm", (0.06, 0.045, 0.03), 0.9)
-M_FIRE = mat("feuer", (1, 0.4, 0.1), 0.5, emit=(1.0, 0.35, 0.05), strength=6.0)
+M_FIRE = mat("feuer", (1, 0.2, 0.02), 0.5, emit=(1.0, 0.18, 0.01), strength=3.5)
 M_BLDG = mat("gebaeude", (0.12, 0.12, 0.13), 0.9)
 M_LAMP = mat("lampe", (0.1, 0.1, 0.1), 0.5, emit=(1.0, 0.8, 0.5), strength=25.0)
 
@@ -149,6 +152,38 @@ obj_from_bm("seitenleitwerk", bm, M_TAIL)
 for side in (-1, 1):
     cube(f"notausstieg{side}", PLANE + Vector((-1.2, side * (R - 0.005), 3.4)), (0.45, 0.02, 0.6), M_GREY)
 
+# ---------- Leitern, offene Ausstiege, Rutschen ----------
+M_LADDER = mat("leiter", (0.08, 0.08, 0.08), 0.8)
+M_OPEN = mat("offen", (0.1, 0.07, 0.03), 0.5, emit=(1.0, 0.75, 0.45), strength=12.0)
+M_SLIDE = mat("rutsche", (0.85, 0.65, 0.08), 0.5)
+if args.leiter:
+    for side in (-1, 1):
+        for k, (x0, y0) in enumerate([(-1.2, side * 6.5)]):
+            top = PLANE + Vector((-1.6, side * 3.2, 2.55)); bot = PLANE + Vector((x0, y0, 0.0))
+            mid = (top + bot) / 2; d = top - bot
+            for off in (-0.25, 0.25):
+                bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=0.04, depth=d.length, location=mid + Vector((off, 0, 0)))
+                o = bpy.context.object; o.rotation_euler = d.to_track_quat("Z", "Y").to_euler(); o.data.materials.append(M_LADDER)
+            for r in range(9):
+                pos = bot + d * (r + 0.5) / 9
+                cube("sprosse", pos, (0.27, 0.025, 0.025), M_LADDER)
+if args.offen:
+    for side in (-1, 1):
+        cube(f"offen{side}", PLANE + Vector((-1.2, side * (R + 0.01), 3.4)), (0.42, 0.02, 0.56), M_OPEN)
+        cube(f"tuer_vorn{side}", PLANE + Vector((L / 2 - 1.0, side * (R + 0.01), 3.2)), (0.5, 0.02, 0.9), M_OPEN)
+        cube(f"tuer_hinten{side}", PLANE + Vector((-L / 2 + 1.0, side * (R + 0.01), 3.2)), (0.5, 0.02, 0.9), M_OPEN)
+    bpy.ops.object.light_add(type="POINT", location=PLANE + Vector((0, -4, 3.5)))
+    ol = bpy.context.object; ol.data.energy = 3000; ol.data.color = (1, 0.75, 0.45)
+if args.rutsche:
+    for side in (-1, 1):
+        for xd in (L / 2 - 1.0, -L / 2 + 1.0):
+            top = PLANE + Vector((xd, side * (R + 0.1), 2.4)); bot = PLANE + Vector((xd, side * (R + 5.8), 0.15))
+            mid = (top + bot) / 2; d = bot - top
+            bpy.ops.mesh.primitive_cube_add(location=mid)
+            o = bpy.context.object; o.scale = (0.75, d.length / 2, 0.12)
+            o.rotation_euler = (math.atan2(d.z, abs(d.y)) * (-side), 0, 0)
+            o.data.materials.append(M_SLIDE)
+
 # ---------- Feuer vor dem Cockpit (Ablenkung) ----------
 if args.fire > 0:
     FIRE = PLANE + Vector((L / 2 + 12, -3, 0))
@@ -226,7 +261,15 @@ if args.shot == "boden":
 elif args.shot == "drohne":
     cam.location = (-45, -55, 55); look_at(cam, (8, 0, 0)); cam.data.lens = 28
 elif args.shot == "tragflaeche":
-    cam.location = (-6, -9.5, 0.9); look_at(cam, (-1.2, -1.9, 3.6)); cam.data.lens = 18
+    cam.location = (-10, -15, 1.0); look_at(cam, (-1.5, -3.0, 2.6)); cam.data.lens = 22
+elif args.shot == "nase":
+    cam.location = (40, -16, 1.2); look_at(cam, (17, 0, 3.0)); cam.data.lens = 26
+elif args.shot == "fenster":
+    cam.location = (6, -8.5, 3.0); look_at(cam, (0, -1.9, 3.5)); cam.data.lens = 30
+elif args.shot == "rutsche":
+    cam.location = (-30, -26, 1.6); look_at(cam, (2, 0, 2.5)); cam.data.lens = 26
+elif args.shot == "boden_tief":
+    cam.location = (-4, -24, 0.35); look_at(cam, (4, 0, 3.8)); cam.data.lens = 32
 else:
     raise SystemExit(f"unbekannter shot {args.shot}")
 

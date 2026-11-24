@@ -26,6 +26,7 @@ class Figur:
     kopf: str = ""                # "" | barett | kappe | nachtsicht | sturmhaube | gasmaske | visier
     kopf_farbe: str = "#1A1A1A"
     hose: str = ""                # leer = wie Jacke
+    zivil: bool = False           # Hemd statt Weste
 
 
 def _augen(expr, cx, cy):
@@ -141,12 +142,18 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
     p.append(f'<path d="M110,1000 L118,640 Q124,575 180,552 L170,1000 Z" fill="{f.jacke_schatten}"/>')
     # Kragen
     p.append(f'<path d="M230,540 L300,610 L370,540 L350,532 L300,580 L250,532 Z" fill="{f.jacke_schatten}"/>')
+    if f.zivil:
+        p.append(f'<path d="M262,540 L300,640 L338,540 Z" fill="#F2EEE6"/>')
+        p.append(f'<path d="M240,536 L300,600 L280,640 L222,560 Z M360,536 L300,600 L320,640 L378,560 Z" fill="{f.jacke_schatten}"/>')
+        for yy in (700, 780, 860, 940):
+            p.append(f'<circle cx="300" cy="{yy}" r="7" fill="{f.jacke_schatten}"/>')
     # Weste mit Taschen
-    p.append(f'<path d="M160,1000 L168,660 Q172,600 236,585 L300,640 L364,585 Q428,600 432,660 L440,1000 Z" fill="{f.weste}"/>')
-    for i, x in enumerate((190, 252, 318, 380)):
-        p.append(f'<rect x="{x}" y="760" width="52" height="74" rx="8" fill="#2B3036"/><rect x="{x}" y="760" width="52" height="18" rx="6" fill="#353B42"/>')
-    if f.funk:
-        p.append('<rect x="372" y="640" width="34" height="70" rx="6" fill="#121416"/><rect x="384" y="596" width="7" height="48" rx="3" fill="#121416"/><circle cx="389" cy="660" r="5" fill="#C0392B"/>')
+    if not f.zivil:
+        p.append(f'<path d="M160,1000 L168,660 Q172,600 236,585 L300,640 L364,585 Q428,600 432,660 L440,1000 Z" fill="{f.weste}"/>')
+        for i, x in enumerate((190, 252, 318, 380)):
+            p.append(f'<rect x="{x}" y="760" width="52" height="74" rx="8" fill="#2B3036"/><rect x="{x}" y="760" width="52" height="18" rx="6" fill="#353B42"/>')
+        if f.funk:
+            p.append('<rect x="372" y="640" width="34" height="70" rx="6" fill="#121416"/><rect x="384" y="596" width="7" height="48" rx="3" fill="#121416"/><circle cx="389" cy="660" r="5" fill="#C0392B"/>')
     # Arme
     if arm == "unten":
         p.append(f'<path d="M118,640 Q90,800 104,1000 L160,1000 Q150,820 168,690 Z" fill="{f.jacke}"/>')
@@ -177,6 +184,9 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
         pass
     elif f.frisur == "kurz":
         p.append(f'<path d="M{cx-148},{kopf_y-20} Q{cx-150},{kopf_y-160} {cx},{kopf_y-158} Q{cx+150},{kopf_y-160} {cx+148},{kopf_y-20} Q{cx+120},{kopf_y-90} {cx+40},{kopf_y-96} Q{cx-60},{kopf_y-70} {cx-148},{kopf_y-20} Z" fill="{f.haar}"/>')
+    elif f.frisur == "lang":
+        p.append(f'<path d="M{cx-165},{kopf_y+170} L{cx-162},{kopf_y-30} Q{cx-160},{kopf_y-175} {cx},{kopf_y-172} Q{cx+160},{kopf_y-175} {cx+162},{kopf_y-30} '
+                 f'L{cx+165},{kopf_y+170} L{cx+120},{kopf_y+170} L{cx+118},{kopf_y-40} Q{cx+60},{kopf_y-110} {cx},{kopf_y-100} Q{cx-60},{kopf_y-110} {cx-118},{kopf_y-40} L{cx-120},{kopf_y+170} Z" fill="{f.haar}"/>')
     elif f.frisur == "seitenscheitel":
         p.append(f'<path d="M{cx-150},{kopf_y+10} Q{cx-160},{kopf_y-170} {cx+10},{kopf_y-160} Q{cx+160},{kopf_y-150} {cx+150},{kopf_y-10} Q{cx+130},{kopf_y-70} {cx+60},{kopf_y-100} Q{cx-20},{kopf_y-40} {cx-120},{kopf_y-60} Q{cx-140},{kopf_y-20} {cx-150},{kopf_y+10} Z" fill="{f.haar}"/>')
     # Gesicht
@@ -218,6 +228,10 @@ EINHEITEN_FIGUREN = {
     "SAT": Figur("sat", haar="#0E0E10", jacke="#1A2233", jacke_schatten="#121828", weste="#232C40", kopf="visier", kopf_farbe="#1A2233"),
 }
 
+ZIVIL_M = Figur("zivil_m", haut="hell", haar="#4A3420", frisur="seitenscheitel", bart="", jacke="#A86A3A", jacke_schatten="#8A552D", zivil=True, funk=False, hose="#3B3328")
+ZIVIL_F = Figur("zivil_f", haut="hell", haar="#B8862E", frisur="lang", jacke="#5C7FA8", jacke_schatten="#4A6A90", zivil=True, funk=False, hose="#2E3A4A")
+ZIVIL_K = Figur("zivil_k", haut="mittel", haar="#1C1410", frisur="kurz", jacke="#B9463A", jacke_schatten="#9A3A30", zivil=True, funk=False, hose="#2A2A30")
+
 # ---------- Besetzung Folge 1 ----------
 DU = Figur("du", haut="hell", haar="#6B4429", frisur="kurz", sommersprossen=True, helm=False)
 TRUPPFUEHRER = Figur("truppfuehrer", haut="hell", haar="#2E2018", frisur="seitenscheitel", bart="schnurrbart",
@@ -230,6 +244,11 @@ if __name__ == "__main__":
     out.mkdir(parents=True, exist_ok=True)
     for name, fig in EINHEITEN_FIGUREN.items():
         (out / f"einheit_{fig.name}.svg").write_text(svg_ganz(fig, "entschlossen"))
+    for fig in (ZIVIL_M, ZIVIL_F, ZIVIL_K):
+        for e in ("angst", "erleichtert", "schock"):
+            (out / f"{fig.name}_{e}_ganz.svg").write_text(svg_ganz(fig, e))
+    (out / "truppfuehrer_erleichtert_funk.svg").write_text(svg(TRUPPFUEHRER, "erleichtert", arm="funk"))
+    (out / "truppfuehrer_entschlossen_zeigen.svg").write_text(svg(TRUPPFUEHRER, "entschlossen", arm="zeigen"))
     for fig in (DU, TRUPPFUEHRER, KOLLEGE):
         for e in ("neutral", "angst", "entschlossen", "erleichtert", "schreien", "seitenblick"):
             (out / f"{fig.name}_{e}.svg").write_text(svg(fig, e, arm="funk" if fig is TRUPPFUEHRER and e == "entschlossen" else "unten"))

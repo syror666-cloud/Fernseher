@@ -14,7 +14,7 @@ ROT, GELB = "#FF2A2A", "#FFD21E"
 CSS = f"""
 @font-face {{ font-family: MB; src: url('file://{FONT_BLACK}'); }}
 @font-face {{ font-family: MXB; src: url('file://{FONT_XB}'); }}
-html,body {{ margin:0; width:1080px; height:1920px; overflow:hidden; background:#000; }}
+html,body {{ margin:0; width:1080px; height:1920px; overflow:hidden; background:transparent; }}
 .ebene {{ position:absolute; inset:0; }}
 .bg {{ width:1080px; height:1920px; object-fit:cover; }}
 .fig {{ position:absolute; }}
@@ -64,8 +64,17 @@ def ringe_svg(n=4, farbe=ROT):
 
 def frame_html(spec: dict) -> str:
     teile = []
+    bgf = f' style="filter:{spec["bgfilter"]}"' if spec.get("bgfilter") else ""
     if spec.get("bg"):
-        teile.append(f'<img class="ebene bg" src="file://{spec["bg"]}">')
+        if spec["bg"].endswith(".svg"):
+            inner = re.sub(r'<svg([^>]*?) width="\d+" height="\d+"', r'<svg\1', pathlib.Path(spec["bg"]).read_text(), count=1)
+            teile.append(f'<div class="ebene"{bgf}>{inner.replace("<svg ", '<svg style="width:1080px;height:1920px" ', 1)}</div>')
+        else:
+            teile.append(f'<img class="ebene bg"{bgf} src="file://{spec["bg"]}">')
+    if spec.get("himmel"):
+        teile.append('<div class="ebene" style="mix-blend-mode:screen;background:linear-gradient(to bottom, '
+                     'rgba(38,62,130,.75) 0%, rgba(30,50,110,.45) 35%, rgba(20,35,80,.12) 60%, rgba(0,0,0,0) 75%)"></div>')
+        teile.append('<div class="ebene" style="mix-blend-mode:soft-light;background:rgba(40,70,160,.35)"></div>')
     if spec.get("ringe"):
         teile.append(ringe_svg())
     for fig in spec.get("figuren", []):
@@ -74,10 +83,22 @@ def frame_html(spec: dict) -> str:
             style += "transform:scaleX(-1);"
         if fig.get("filter"):
             style += f'filter:{fig["filter"]};'
-        teile.append(f'<img class="fig" style="{style}" src="file://{fig["src"]}">')
+        src = fig["src"]
+        if src.endswith(".svg"):
+            inner = re.sub(r'<svg([^>]*?) width="\d+" height="\d+"', r'<svg\1', pathlib.Path(src).read_text(), count=1)
+            inner = inner.replace("<svg ", '<svg style="width:100%;height:auto;display:block" ', 1)
+            teile.append(f'<div class="fig" style="{style}">{inner}</div>')
+        else:
+            teile.append(f'<img class="fig" style="{style}" src="file://{src}">')
     if spec.get("tint"):
         teile.append(f'<div class="ebene tint" style="background:{spec["tint"]}"></div>')
-    teile.append('<div class="ebene vignette"></div>')
+    if not spec.get("overlay"):
+        teile.append('<div class="ebene vignette"></div>')
+    if spec.get("linie"):
+        teile.append('<div style="position:absolute;left:534px;top:250px;width:12px;height:1250px;background:#F4C21A;'
+                     'box-shadow:0 0 18px #F4C21A;border-radius:6px"></div>'
+                     '<div style="position:absolute;left:510px;top:240px;width:60px;height:14px;background:#F4C21A;border-radius:7px"></div>'
+                     '<div style="position:absolute;left:510px;top:1494px;width:60px;height:14px;background:#F4C21A;border-radius:7px"></div>')
     if spec.get("logo"):
         teile.append(f'<div class="logo">{html.escape(spec["logo"])}</div>')
     if spec.get("titel"):
@@ -92,7 +113,9 @@ def frame_html(spec: dict) -> str:
                      f'<div class="body">{zeilen}</div></div>')
     if spec.get("cap"):
         teile.append(f'<div class="cap">{caption_html(spec["cap"])}</div>')
-    return f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(teile)}</body></html>'
+    body_bg = "transparent" if spec.get("overlay") else "#000"
+    return (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head>'
+            f'<body style="background:{body_bg}">{"".join(teile)}</body></html>')
 
 
 def render(spec: dict, out_png: str):

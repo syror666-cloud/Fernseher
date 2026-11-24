@@ -77,11 +77,12 @@ Aber im hinteren Teil der Maschine
 bewegt sich noch etwas.
 Die Vierte *lebt*.
 Schwer verletzt. Sie wird überleben.
-Und Jahrzehnte später in Deutschland vor Gericht stehen.
+Und Jahre später in Deutschland vor Gericht stehen.
 
 **[10 · LOOP-ENDE]**
 Erinnerst du dich? Fünf Jahre vorher gab es deine Einheit nicht.
-_München_, 1972. Olympia. Geiselnahme. Niemand konnte eingreifen.
+_München_, 1972. Olympia. Geiselnahme.
+Der Befreiungsversuch *scheitert*. Keine Geisel überlebt.
 Danach schwor Deutschland: *Nie wieder*.
 _München_ hat sie erschaffen.
 _Mogadischu_ hat sie *unsterblich* gemacht.
@@ -105,6 +106,7 @@ Und morgen? Holt dich eine *andere*.
 | 3 von 4 Entführern getötet, eine Entführerin schwer verletzt, überlebte | ✅ | esut.de, Wikipedia Souhaila Andrawes |
 | Codewort „Springtime“ für Erfolg (00:12 Uhr) | ✅ (eine Quelle) | esut.de |
 | Gründung 26.09.1972 nach Olympia-Attentat München | ✅ | Wikipedia GSG 9 |
+| München 1972: Befreiungsversuch gescheitert, keine der israelischen Geiseln überlebte | ✅ (allgemein bekannt; vor Veröffentlichung gegenprüfen) | Wikipedia Olympia-Attentat |
 | Entführerin später in Deutschland vor Gericht | ⚠️ nach meinem Wissen 1994 in Norwegen festgenommen, 1996 in Hamburg verurteilt – vor Produktion prüfen | Wikipedia Souhaila Andrawes |
 | „Fast neunzig Menschen“ (86 Passagiere + Besatzung) | ✅ (Angaben schwanken 86–91) | Wikipedia, esut.de |
 | Gummi-umwickelte Leitern, Notausstiege über Tragflächen | ✅ (gängige Darstellung; Detail vor Produktion prüfen) | Wikipedia LH181 |
@@ -112,3 +114,6 @@ Und morgen? Holt dich eine *andere*.
 | Uhrzeiten 02:01–02:04 | dramatisiert (Rahmen 02:05–02:12 belegt) | – |
 
 **Bewusst weggelassen** (nicht sicher belegt): SAS-Beteiligung, Blendgranaten, Alkohol/Sprengstoff-Details, Siegeszeichen auf der Trage, Auswahlquote.
+
+
+> Stand Produktion: Diese Fassung ist 1:1 in `episode.py` umgesetzt (Voiceover-Länge 2:02).
