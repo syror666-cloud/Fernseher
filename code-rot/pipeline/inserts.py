@@ -112,9 +112,48 @@ def gericht():
     return _svg("".join(b))
 
 
+def zielfernrohr():
+    """Blick durch das Zielfernrohr: schwarze Maske mit rundem Ausschnitt, Fadenkreuz, Mil-Dots."""
+    r = 470
+    b = ['<defs><mask id="loch"><rect width="1080" height="1920" fill="white"/>'
+         f'<circle cx="540" cy="900" r="{r}" fill="black"/></mask>'
+         '<radialGradient id="rand"><stop offset=".78" stop-color="#000" stop-opacity="0"/>'
+         '<stop offset="1" stop-color="#000" stop-opacity=".85"/></radialGradient></defs>',
+         '<rect width="1080" height="1920" fill="#030303" mask="url(#loch)"/>',
+         f'<circle cx="540" cy="900" r="{r}" fill="url(#rand)"/>',
+         f'<circle cx="540" cy="900" r="{r}" fill="none" stroke="#111" stroke-width="18"/>',
+         '<g class="rig-fadenkreuz">',
+         f'<line x1="{540-r}" y1="900" x2="{540+r}" y2="900" stroke="#0a0a0a" stroke-width="3"/>',
+         f'<line x1="540" y1="{900-r}" x2="540" y2="{900+r}" stroke="#0a0a0a" stroke-width="3"/>',
+         f'<line x1="{540-r}" y1="900" x2="440" y2="900" stroke="#0a0a0a" stroke-width="12"/>',
+         f'<line x1="640" y1="900" x2="{540+r}" y2="900" stroke="#0a0a0a" stroke-width="12"/>',
+         f'<line x1="540" y1="1000" x2="540" y2="{900+r}" stroke="#0a0a0a" stroke-width="12"/>',
+         *[f'<circle cx="{540 + d*38}" cy="900" r="5" fill="#0a0a0a"/>' for d in (-4, -3, -2, -1, 1, 2, 3, 4)],
+         *[f'<circle cx="540" cy="{900 + d*38}" r="5" fill="#0a0a0a"/>' for d in (-4, -3, -2, -1, 1, 2, 3, 4)],
+         '<circle cx="540" cy="900" r="4" fill="#E02020"/>',
+         '</g>',
+         '<text x="540" y="1460" font-family="MB" font-size="34" fill="#9a9a9a" text-anchor="middle" letter-spacing="6">DIST 0032 M</text>']
+    return _svg("".join(b))
+
+
+def pirat_silhouette():
+    """Sitzende Silhouette in einem Schiffsraum, Kopf gesenkt, Gegenlicht (keine Gesichtszüge)."""
+    b = ['<defs><radialGradient id="lampe" cx=".5" cy=".25" r=".7"><stop offset="0" stop-color="#E8D9B0" stop-opacity=".55"/>'
+         '<stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient></defs>',
+         '<rect width="1080" height="1920" fill="url(#lampe)"/>',
+         '<g class="rig-silhouette" fill="#050506">',
+         '<circle cx="540" cy="980" r="95"/>',
+         '<path d="M400,1110 Q540,1050 680,1110 L720,1420 L360,1420 Z"/>',
+         '<rect x="330" y="1400" width="420" height="60" rx="20"/>',
+         '<rect x="380" y="1440" width="70" height="330" rx="25"/><rect x="630" y="1440" width="70" height="330" rx="25"/>',
+         '</g>',
+         '<rect x="250" y="1780" width="580" height="30" fill="#0a0a0a"/>']
+    return _svg("".join(b))
+
+
 ALLE = {"hand_funk": hand_funk, "hand_leiter": hand_leiter, "fenster1": lambda: fenster_silhouette(1),
         "fenster2": lambda: fenster_silhouette(2), "tv_1972": tv, "tv_rauschen": lambda: tv("", "", True),
-        "trage": trage, "gericht": gericht}
+        "trage": trage, "gericht": gericht, "zielfernrohr": zielfernrohr, "pirat_silhouette": pirat_silhouette}
 
 if __name__ == "__main__":
     import sys, pathlib

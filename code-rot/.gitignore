@@ -4,3 +4,6 @@ folge01_gsg9/build/
 folge01_gsg9/anim/*/h_*.png
 folge01_gsg9/anim/*/*.png
 folge01_gsg9/anim/render.log
+nacht.log
+*/anim/render.log
+*/build/

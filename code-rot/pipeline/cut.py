@@ -228,10 +228,14 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 # ---------------------------------------------------------------- Audio
 def mix(ep, timing, folge, out_wav):
-    sfx_dir = ROOT / "assets/sfx"
+    sfx_dir = ROOT / "assets/sfx"; real = ROOT / "assets/sfx_real"
+    def sfx(name):  # echte Aufnahme bevorzugen, sonst synthetisch
+        return real / f"{name}.wav" if (real / f"{name}.wav").exists() else sfx_dir / f"{name}.wav"
     shots = timing["shots"]; total = timing["gesamt"]
-    inputs = ["-i", str(folge / "audio/vo.wav"), "-i", str(sfx_dir / "atmo.wav")]
-    filt = [f"[1:a]atrim=0:{total:.2f},volume=-20dB"]
+    atmo_name = getattr(ep, "ATMO", "atmo_nacht")
+    atmo = real / f"{atmo_name}.wav" if (real / f"{atmo_name}.wav").exists() else sfx_dir / "atmo.wav"
+    inputs = ["-i", str(folge / "audio/vo.wav"), "-stream_loop", "-1", "-i", str(atmo)]
+    filt = [f"[1:a]atrim=0:{total:.2f},volume={'-17dB' if atmo.parent == real else '-20dB'}"]
     # Atmo-Loch bei "Stille"
     stille = [(sh_["schnitt"], sh_["ende"]) for sh_, sp in zip(shots, ep.SHOTS) if sp.get("stille")]
     vol_expr = "+".join(f"between(t,{a:.2f},{b:.2f})" for a, b in stille) or "0"
@@ -242,7 +246,7 @@ def mix(ep, timing, folge, out_wav):
         s = sp.get("sfx")
         if not s:
             continue
-        inputs += ["-i", str(sfx_dir / f"{s}.wav")]
+        inputs += ["-i", str(sfx(s))]
         d = max(0, int((sh_["schnitt"] - (0.25 if s == "whoosh" else 0)) * 1000))
         filt.append(f"[{n}:a]volume={SFX_PEGEL.get(s, -10)}dB,adelay={d}|{d}[s{n}]")
         labels.append(f"[s{n}]"); n += 1

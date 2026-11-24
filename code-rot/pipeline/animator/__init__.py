@@ -48,6 +48,9 @@ FX_STANDARD = {
     "kabine_zugriff": [dict(typ="staub", n=90, alpha=1.0, seed=6), dict(typ="rauch", x=540, y=1300, breite=900, hoehe=900, n=8, farbe="90,90,100", alpha=0.6, seed=7)],
     "intro": [dict(typ="staub", n=60, alpha=0.7, seed=8), dict(typ="flimmern", x=540, y=300, r=1200, alpha=0.18, farbe="255,30,30", seed=9)],
     "tv": [dict(typ="scanlines", seed=10)],
+    "meer": [dict(typ="staub", n=30, alpha=0.4, seed=13)],
+    "favela": [dict(typ="staub", n=50, alpha=0.6, seed=14)],
+    "feuerwerk": [dict(typ="feuerwerk", n=7, seed=15), dict(typ="staub", n=40, alpha=0.5, seed=16)],
     "titel": [dict(typ="glut", x=540, y=1900, breite=1000, hoehe=1700, n=60, seed=11), dict(typ="flimmern", x=540, y=800, r=1000, alpha=0.25, farbe="255,40,40", seed=12)],
 }
 
@@ -69,7 +72,7 @@ def _ausdruck_aktion(name):
         if f"_{e}" in n:
             return e, ""
     return "neutral", {"hand_funk": "funk", "hand_leiter": "klettern", "trage": "trage", "fenster1": "silhouetten",
-                       "fenster2": "silhouetten", "tv_1972": "tv", "tv_rauschen": "tv"}.get(n, "pop" if n.startswith("einheit_") else "")
+                       "fenster2": "silhouetten", "tv_1972": "tv", "tv_rauschen": "tv", "zielfernrohr": "scope", "pirat_silhouette": "silhouetten"}.get(n, "pop" if n.startswith("einheit_") else "")
 
 
 def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
@@ -125,6 +128,9 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
         zeilen = "".join(f'<div class="zeile {"r" if x.startswith("!") else ""} {"neu" if neu and i == len(z) - 1 else ""}">'
                          f'{_html.escape(x.lstrip("!"))}</div>' for i, x in enumerate(z))
         teile.append(f'<div class="regeln"><div class="kopf">Deine Befehle</div><div class="body">{zeilen}</div></div>')
+    if shot.get("hinweis") and not hud.get("titel"):
+        teile.append(f'<div style="position:absolute;left:40px;bottom:60px;font-family:MXB;font-size:26px;letter-spacing:4px;'
+                     f'color:rgba(255,255,255,.55);text-shadow:0 2px 6px #000">{_html.escape(shot["hinweis"])}</div>')
     teile.append('<div id="blitz"></div><div id="schwarz"></div>')
     shotjs = dict(dauer=dauer, fps=FPS, move=shot.get("move_2d", "drift" if bg["typ"] == "seq" else shot["move"]),
                   bg=bg if bg["typ"] == "seq" else None, figuren=figdaten, fx=fx, hud=hud,

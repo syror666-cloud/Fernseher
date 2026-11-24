@@ -7,7 +7,7 @@ import json, pathlib, subprocess, sys, importlib.util, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BLENDER = "/home/user/tools/blender-4.2.3-linux-x64/blender"
-SZENEN = {"rollfeld": "scene_rollfeld.py", "kabine": "scene_kabine.py", "spinde": "scene_spinde.py"}
+SZENEN = {"rollfeld": "scene_rollfeld.py", "kabine": "scene_kabine.py", "spinde": "scene_spinde.py", "meer": "scene_meer.py", "favela": "scene_favela.py"}
 FPS = 30
 
 
@@ -32,9 +32,19 @@ def gruppen(ep, timing):
                 zuordnung[k] = pos % n; pos += d + 17
             out[name] = dict(frames=n, start={k: v for k, v in zuordnung.items()}, loop=True)
         else:
-            f0 = round(shots[idx[0]]["schnitt"] * FPS)
-            f1 = round(shots[idx[-1]]["ende"] * FPS)
-            out[name] = dict(frames=f1 - f0 + 2, start={k: round(shots[k]["schnitt"] * FPS) - f0 for k in idx}, loop=False)
+            # zusammenhängende Läufe; nicht benachbarte Einstellungen werden hintereinander gehängt
+            start, pos, lauf_f0, prev = {}, 0, None, None
+            for k in idx:
+                ks, ke = round(shots[k]["schnitt"] * FPS), round(shots[k]["ende"] * FPS)
+                if prev is not None and k == prev + 1:
+                    start[k] = pos + (ks - lauf_f0)
+                else:
+                    if prev is not None:
+                        pos += round(shots[prev]["ende"] * FPS) - lauf_f0
+                    lauf_f0 = ks; start[k] = pos
+                prev = k
+            pos += round(shots[prev]["ende"] * FPS) - lauf_f0
+            out[name] = dict(frames=pos + 2, start=start, loop=False)
     return out
 
 

@@ -125,6 +125,18 @@ def schrei(d=0.6):
     return norm(impact(d) * 0.5 + whoosh(d) * 0.5, 0.6)
 
 
+def feuerwerk(d=3.0):
+    x = np.zeros(int(SR * d))
+    for s0 in (0.0, 0.7, 1.5):
+        aufstieg = hp(noise(0.5), 2500) * np.linspace(0.05, 0.4, int(SR * 0.5))
+        knall = impact(0.9) * 0.9
+        knistern = hp((rng.random(int(SR * 1.2)) > 0.996) * rng.standard_normal(int(SR * 1.2)) * 4, 2000) * decay(1.2, 2.5)
+        i = int(SR * s0)
+        for seg, off in ((aufstieg, 0), (knall, 0.5), (knistern, 0.6)):
+            j = i + int(SR * off); x[j:j + len(seg)] += seg[: max(0, len(x) - j)]
+    return norm(x, 0.9)
+
+
 def atmo(d=150.0):
     """Nacht-Atmosphäre: Wind, tiefer Drone, ferne Grillen."""
     wind = lp(np.cumsum(noise(d)) * 0.02, 500)
@@ -138,7 +150,7 @@ def atmo(d=150.0):
 
 
 ALLE = dict(whoosh=whoosh, impact=impact, tick=tick, heartbeat=heartbeat, static=static, funk=funk, atem=atem,
-            stimmen=stimmen, feuer=feuer, tuer=tuer, schuesse=schuesse, alarm=alarm, drone_hit=drone_hit, schrei=schrei)
+            stimmen=stimmen, feuer=feuer, tuer=tuer, schuesse=schuesse, alarm=alarm, drone_hit=drone_hit, schrei=schrei, feuerwerk=feuerwerk)
 
 if __name__ == "__main__":
     out = pathlib.Path(sys.argv[1]); out.mkdir(parents=True, exist_ok=True)

@@ -76,3 +76,35 @@ def blitze(licht, energie, frames):
         for fc in licht.data.animation_data.action.fcurves:
             for kp in fc.keyframe_points:
                 kp.interpolation = "CONSTANT"
+
+
+class Masse:
+    """Sammelt viele Primitive in EINEM Mesh-Objekt (schnell statt tausender Einzelobjekte)."""
+    def __init__(self, name, material):
+        import bmesh
+        self.bm = bmesh.new(); self.name = name; self.material = material
+
+    def _add(self, fn, loc, rot=(0, 0, 0), scale=(1, 1, 1)):
+        import bmesh, mathutils
+        tmp = bmesh.new(); fn(tmp)
+        M = mathutils.Matrix.LocRotScale(mathutils.Vector(loc), mathutils.Euler(rot), mathutils.Vector(scale))
+        bmesh.ops.transform(tmp, matrix=M, verts=tmp.verts)
+        me = bpy.data.meshes.new("tmp"); tmp.to_mesh(me); tmp.free(); self.bm.from_mesh(me); bpy.data.meshes.remove(me)
+
+    def quader(self, loc, scale, rot=(0, 0, 0)):
+        import bmesh
+        self._add(lambda b: bmesh.ops.create_cube(b, size=2.0), loc, rot, scale)
+
+    def zylinder(self, loc, r, h, rot=(0, 0, 0), verts=8):
+        import bmesh
+        self._add(lambda b: bmesh.ops.create_cone(b, cap_ends=True, segments=verts, radius1=r, radius2=r, depth=h), loc, rot)
+
+    def kugel(self, loc, r, scale=(1, 1, 1), sub=1):
+        import bmesh
+        self._add(lambda b: bmesh.ops.create_icosphere(b, subdivisions=sub, radius=r), loc, (0, 0, 0), scale)
+
+    def fertig(self):
+        me = bpy.data.meshes.new(self.name); self.bm.to_mesh(me); self.bm.free()
+        o = bpy.data.objects.new(self.name, me); bpy.context.scene.collection.objects.link(o)
+        o.data.materials.append(self.material)
+        return o

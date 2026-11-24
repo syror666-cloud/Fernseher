@@ -116,6 +116,9 @@
       el.querySelectorAll("feTurbulence").forEach(n => n.setAttribute("seed", String(Math.floor(t * S.fps) % 97 + 1)));
       const roll = el.querySelector(".rig-tvbild"); if (roll) setzeT(roll, `translate(0,${(t * 90) % 40 - 20})`);
     }
+    if (a === "scope") {
+      F.wrap.style.transform = `translate(${14 * noise1(t * 0.9, s) + 6 * Math.sin(t * 1.6)}px,${10 * Math.sin(t * 1.4 + s) + 6 * noise1(t * 1.1, s + 3)}px)`;
+    }
     if (a === "trage") { F.wrap.style.transform = `translate(${-t * 80}px,${-6 * Math.abs(Math.sin(t * 6))}px)`; }
   }
 
@@ -155,6 +158,23 @@
           const g = cx.createRadialGradient(fx.x, fx.y, 0, fx.x, fx.y, fx.r || 700);
           g.addColorStop(0, `rgba(${fx.farbe || "255,140,50"},${a})`); g.addColorStop(1, "rgba(0,0,0,0)");
           cx.fillStyle = g; cx.fillRect(0, 0, W, H); break;
+        } else if (fx.typ === "feuerwerk") {
+          const per = 2.2 + r3 * 1.2, start = r1 * per, ph = ((t + start) % per) / per;
+          const zyk = Math.floor((t + start) / per);
+          const bx = 120 + rnd(i * 5.5 + zyk * 3.3 + fx.seed) * 840, by = 220 + rnd(i * 2.1 + zyk * 1.7 + fx.seed) * 700;
+          const farben = ["255,80,60", "255,220,90", "120,200,255", "255,255,255", "120,255,140"];
+          const fb = farben[Math.floor(rnd(i * 9.1 + zyk) * farben.length)];
+          if (ph < 0.25) { // Aufstieg
+            const p = ph / 0.25; cx.fillStyle = `rgba(255,220,160,${0.9})`;
+            cx.beginPath(); cx.arc(bx, H - (H - by) * p, 4, 0, 7); cx.fill();
+          } else { // Explosion
+            const p = (ph - 0.25) / 0.75, rad = 260 * Math.pow(p, 0.5), a = Math.max(0, 1 - p * 1.15);
+            for (let k = 0; k < 28; k++) {
+              const an = k / 28 * 6.283 + i, x = bx + Math.cos(an) * rad, y = by + Math.sin(an) * rad + p * p * 120;
+              cx.fillStyle = `rgba(${fb},${a})`; cx.beginPath(); cx.arc(x, y, 3.5 * (1 - p) + 1, 0, 7); cx.fill();
+            }
+            if (p < 0.12) { const g = cx.createRadialGradient(bx, by, 0, bx, by, 500); g.addColorStop(0, `rgba(${fb},${0.35 * (1 - p / 0.12)})`); g.addColorStop(1, "rgba(0,0,0,0)"); cx.fillStyle = g; cx.fillRect(0, 0, W, H); }
+          }
         } else if (fx.typ === "scanlines") {
           cx.fillStyle = "rgba(0,0,0,0.12)"; for (let yy = (t * 120) % 8; yy < H; yy += 8) cx.fillRect(0, yy, W, 3); break;
         }
