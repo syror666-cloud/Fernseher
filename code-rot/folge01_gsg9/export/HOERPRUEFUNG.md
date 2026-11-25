@@ -28,7 +28,7 @@
 Übereinstimmung Skript ↔ Gehörtes: **94%** (gut ab ~85 %).
 
 ## E) Lautheit
-Integriert: -15.2 LUFS (Ziel −14 … −16), True Peak: -0.6 dBFS
+Integriert: -15.2 LUFS (Ziel −14 … −16), True Peak: -1.3 dBFS
 
 ## Ergebnis
 - Geräusch 'stimmen' (synthetisch) klingt nicht wie 'people talking indistinctly' (Platz 17)
