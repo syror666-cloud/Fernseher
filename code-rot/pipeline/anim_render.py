@@ -3,10 +3,10 @@
 python anim_render.py <folge>/episode.py [--res 540x960] [--samples 8] [--nur name1,name2]
 Ausgabe: <folge>/anim/<name>/f_####.png  und  <folge>/anim/<name>/info.json (Frames je Einstellung)
 """
-import json, pathlib, subprocess, sys, importlib.util, time
+import json, os, pathlib, subprocess, sys, importlib.util, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-BLENDER = "/home/user/tools/blender-4.2.3-linux-x64/blender"
+BLENDER = os.environ.get("BLENDER", "/home/user/tools/blender-4.2.3-linux-x64/blender")  # auf dem PC: Pfad zu blender.exe
 SZENEN = {"rollfeld": "scene_rollfeld.py", "kabine": "scene_kabine.py", "spinde": "scene_spinde.py", "meer": "scene_meer.py", "favela": "scene_favela.py"}
 FPS = 30
 

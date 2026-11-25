@@ -4,7 +4,7 @@ python cut.py <folge>/episode.py [--nur-plates] [--von N --bis M]
 Voraussetzungen: <folge>/audio/timing.json (vo.py), <folge>/bg/*.png (Blender), assets/sfx (sfx.py)
 Ergebnis: <folge>/export/<folge>.mp4
 """
-import json, hashlib, pathlib, subprocess, sys, importlib.util, math, re, os
+import shutil, json, hashlib, pathlib, subprocess, sys, importlib.util, math, re, os
 from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
@@ -669,7 +669,11 @@ def hook_gesprochen(ep, folge, ks, roh, t0, bett, t_ton, tmp, out):
     sys.path.insert(0, str(ROOT / "pipeline")); import vo as vomod
     sp = getattr(ep, "SPRACHE", "de"); text = ks["sprich"]; klar = re.sub(r"[*_]", "", text)
     key = hashlib.md5((text + ep.STIMME + json.dumps(ep.STIMM_EINSTELLUNG, sort_keys=True)).encode()).hexdigest()[:10]
-    mp3, alj = tmp / f"hook_vo_{key}.mp3", tmp / f"hook_vo_{key}.json"
+    # im Projekt (audio/) zwischengespeichert, damit auch ein Schnitt auf einem anderen Rechner keine neue Sprachausgabe braucht
+    mp3, alj = folge / "audio" / f"hook_vo_{key}.mp3", folge / "audio" / f"hook_vo_{key}.json"
+    for alt in (tmp / mp3.name, tmp / alj.name):
+        if alt.exists() and not (folge / "audio" / alt.name).exists():
+            shutil.copy(alt, folge / "audio" / alt.name)
     if not (mp3.exists() and alj.exists()):
         al = vomod.tts(klar, ep.STIMME, ep.MODELL, ep.STIMM_EINSTELLUNG, mp3, sp)
         alj.write_text(json.dumps(al, ensure_ascii=False))
