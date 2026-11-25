@@ -118,7 +118,10 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
                      '<div style="position:absolute;left:510px;top:240px;width:60px;height:14px;background:#F4C21A;border-radius:7px"></div>'
                      '<div style="position:absolute;left:510px;top:1494px;width:60px;height:14px;background:#F4C21A;border-radius:7px"></div>')
     if hud.get("logo"):
-        teile.append('<div class="logo">CODE ROT</div>')
+        # dunkles Band hinter dem Logo, damit Namensschilder der Spinde beim Zoom nicht mit dem Logo kollidieren
+        teile.append('<div style="position:absolute;top:0;left:0;right:0;height:290px;'
+                     'background:linear-gradient(#000 0%,#000 62%,rgba(0,0,0,0) 100%)"></div>'
+                     '<div class="logo">CODE ROT</div>')
     if hud.get("titel"):
         teile.append(f'<div class="titel">{_cap(hud["titel"])}</div><div class="untertitel">{_html.escape(hud.get("untertitel", ""))}</div>')
     if hud.get("uhr") and not hud.get("regeln"):
