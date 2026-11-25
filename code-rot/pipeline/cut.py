@@ -374,6 +374,57 @@ def aggressiv_extras(k, s, t, dauer, prev_s):
     return ex
 
 
+STILLE_MAX = 0.7    # stumme Einstellungen (z. B. Titelkarte) höchstens so lang
+LUECKE_MAX = 0.22   # Sprechpause zwischen zwei Einstellungen höchstens so lang
+ENDE_NACH = 0.3     # nach dem letzten Wort: sofort zurück zum Anfang (Loop)
+
+
+def stille_kuerzen(timing, vo_in, vo_out):
+    """Tote Luft raus: lange stumme Einstellungen und Pausen zwischen Einstellungen kürzen, Ende direkt nach dem
+    letzten Wort (nahtloser Loop). Schneidet die Stimme mit und verschiebt alle Zeiten."""
+    shots = timing["shots"]; schnitte = []
+    for k, sh_ in enumerate(shots):
+        if not sh_["words"] and sh_["ende"] - sh_["schnitt"] > STILLE_MAX:
+            schnitte.append((sh_["schnitt"] + STILLE_MAX, sh_["ende"]))
+        if k + 1 < len(shots) and sh_["words"] and shots[k + 1]["words"]:
+            a, b = sh_["words"][-1]["ende"], shots[k + 1]["words"][0]["start"]
+            if b - a > LUECKE_MAX + 0.05:
+                schnitte.append((a + LUECKE_MAX * 0.6, b - LUECKE_MAX * 0.4))
+    letztes = max(w["ende"] for sh_ in shots for w in sh_["words"])
+    if timing["gesamt"] - letztes > ENDE_NACH:
+        schnitte.append((letztes + ENDE_NACH, timing["gesamt"]))
+    schnitte = sorted((a, b) for a, b in schnitte if b > a + 0.02)
+
+    def neu(t):
+        d = 0.0
+        for a, b in schnitte:
+            if t >= b:
+                d += b - a
+            elif t > a:
+                d += t - a
+        return t - d
+    import numpy as np
+    r = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(vo_in), "-ac", "2", "-ar", "44100", "-f", "f32le", "-"],
+                       capture_output=True, check=True)
+    y = np.frombuffer(r.stdout, np.float32).reshape(-1, 2)
+    teile, cur = [], 0
+    for a, b in schnitte:
+        ia, ib = int(a * 44100), int(b * 44100)
+        teile.append(y[cur:ia]); cur = ib
+    teile.append(y[cur:])
+    z = np.concatenate(teile)
+    n = int(0.004 * 44100)  # winzige Blenden gegen Knackser an den Schnittstellen
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", "44100", "-ac", "2", "-i", "-",
+                    "-c:a", "pcm_s16le", str(vo_out)], input=z.astype(np.float32).tobytes(), check=True)
+    out = dict(timing, gesamt=neu(timing["gesamt"]), shots=[])
+    for sh_ in shots:
+        out["shots"].append(dict(sh_, schnitt=neu(sh_["schnitt"]), ende=neu(sh_["ende"]), start=neu(sh_["start"]),
+                                 sprech_ende=neu(sh_["sprech_ende"]),
+                                 words=[dict(w, start=neu(w["start"]), ende=neu(w["ende"])) for w in sh_["words"]]))
+    print(f"Stille gekürzt: {sum(b - a for a, b in schnitte):.1f} s an {len(schnitte)} Stellen", flush=True)
+    return out
+
+
 def skaliere_timing(timing, f):
     def sk(x):
         return round(x / f, 4)
@@ -451,6 +502,7 @@ def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
         hud["regeln_neu_box"] = not isinstance(pr, int)
     if AGGR:
         s.update(aggressiv_extras(k, s, t, dauer, prev))
+        s["ende_schwarz"] = False  # Loop: letztes Bild geht direkt in den Kaltstart über
     out = tmp / f"anim_{k:03d}.mp4"
     html = animator.baue(s, k, dauer, folge, bg, hud, fx)
     key = hashlib.md5((html + str(n)).encode()).hexdigest()[:12]
@@ -470,10 +522,11 @@ def main_animiert():
     gruppen = json.loads((folge / "anim/gruppen.json").read_text())
     tmp = folge / ("build_aggr" if AGGR else "build"); tmp.mkdir(exist_ok=True); (folge / "export").mkdir(exist_ok=True)
     vo = None
-    if AGGR:  # Erzählung beschleunigen (Tonhöhe bleibt), Timing mitskalieren
+    if AGGR:  # tote Luft raus, Erzählung beschleunigen (Tonhöhe bleibt), Timing mitskalieren
+        timing = stille_kuerzen(timing, folge / "audio/vo.wav", tmp / "vo_kurz.wav")
         timing = skaliere_timing(timing, TEMPO)
         vo = tmp / "vo_schnell.wav"
-        sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(folge / "audio/vo.wav"), "-af", f"atempo={TEMPO}", str(vo)])
+        sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(tmp / "vo_kurz.wav"), "-af", f"atempo={TEMPO}", str(vo)])
     gruppen = gruppen_anpassen(ep, timing, folge, gruppen)
     sp = folge / "bg/spinde_streifen.png"
     streifen = Streifen(sp)
@@ -528,10 +581,10 @@ def kaltstart(ep, folge, timing, hook_clips, haupt, tmp, out, von, vo):
         bett = mix(ep, timing, folge, tmp / "bett.wav", ohne_vo=True, vo=vo)
         ev = []
         for i, z in enumerate(ks["text"].split("|")):
-            a = 0.08 + i * 0.35
+            a = i * 0.3
             txt = re.sub(r"\*(.+?)\*", lambda m: "{\\c" + ROT_ASS + "}" + m.group(1) + "{\\c&H00FFFFFF&}", z.upper())
             ev.append(f"Dialogue: 0,{ass_zeit(a)},{ass_zeit(d + 0.4)},Hook,,0,0,0,,"
-                      "{\\an5\\pos(540," + str(1180 + i * 150) + ")\\fscx50\\fscy50\\t(0,80,\\fscx118\\fscy118)\\t(80,160,\\fscx105\\fscy105)}" + txt)
+                      "{\\an5\\pos(540," + str(1180 + i * 150) + ")\\fscx" + ("100" if i == 0 else "50") + "\\fscy" + ("100" if i == 0 else "50") + "\\t(0,80,\\fscx118\\fscy118)\\t(80,160,\\fscx105\\fscy105)}" + txt)
         ass = tmp / "hook.ass"
         ass.write_text(f"""[Script Info]
 ScriptType: v4.00+
@@ -571,11 +624,100 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     fc = "".join(f"[{i}:v]fps=30,format=yuv420p,setsar=1[v{i}];[{i}:a]aresample=48000,aformat=channel_layouts=stereo[a{i}];"
                  for i in range(n))
     fc += "".join(f"[v{i}][a{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=1[cv][ca];"
+    vorlauf = sum(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                        str(x)], capture_output=True, text=True).stdout) for x in teile[:-1])
+    ov = overlay_ass(ep, folge, tmp, vorlauf, gesamt)
+    fc = fc.replace("concat=n=" + str(n) + ":v=1:a=1[cv][ca];", "concat=n=" + str(n) + ":v=1:a=1[cv0][ca];"
+                    + f"[cv0]ass={ov}:fontsdir={fonts}[cv];")
     fc += (f"color=c=0xFF2A2A:s=1080x12:r=30[bar];[cv][bar]overlay=x='-W+W*t/{gesamt:.3f}':y=0:eval=frame:shortest=1[vout];"
            "[ca]alimiter=limit=0.84:level=false[aout]")
     sh(["ffmpeg", "-y", "-loglevel", "error", *ein, "-filter_complex", fc, "-map", "[vout]", "-map", "[aout]",
         "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart", str(out)])
+    posting(ep, folge, out, gesamt)
+
+
+SERIE_TEXT = {
+    "de": dict(teil="TEIL {n}", frage="Welche Einheit als Nächstes?", folgen="Folg für Teil {m}"),
+    "en": dict(teil="PART {n}", frage="Which unit should be next?", folgen="Follow for part {m}"),
+    "es": dict(teil="PARTE {n}", frage="¿Qué unidad sigue?", folgen="Sígueme para la parte {m}"),
+}
+
+
+def folgen_nummer(folge):
+    m = re.match(r"folge(\d+)", folge.name)
+    return int(m.group(1)) if m else 0
+
+
+def overlay_ass(ep, folge, tmp, vorlauf, gesamt):
+    """„TEIL n“ direkt nach dem Kaltstart (Serie -> Profil -> weitere Folgen) und am Ende eine Frage an die Zuschauer
+    (Kommentare) plus „Folg für Teil n+1“."""
+    sp = getattr(ep, "SPRACHE", "de"); T = SERIE_TEXT.get(sp, SERIE_TEXT["de"]); n = folgen_nummer(folge)
+    kopf = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {W}
+PlayResY: {H}
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Teil,Montserrat Black,54,&H00FFFFFF,&H00FFFFFF,&H002A2AFF,&H00000000,0,0,0,0,100,100,6,0,3,14,0,5,40,40,0,1
+Style: Frage,Montserrat Black,72,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,8,5,5,60,60,0,1
+Style: Folgen,Montserrat Black,46,&H00FFFFFF,&H00FFFFFF,&H002A2AFF,&H00000000,0,0,0,0,100,100,4,0,3,12,0,5,40,40,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    ev = []
+    if n:
+        a = vorlauf + 0.15
+        ev.append(f"Dialogue: 0,{ass_zeit(a)},{ass_zeit(a + 3.0)},Teil,,0,0,0,,{{\\an5\\pos(540,175)\\fad(120,200)}}"
+                  + T["teil"].format(n=n, m=n + 1))
+    b = max(vorlauf, gesamt - 3.0)
+    ev.append(f"Dialogue: 0,{ass_zeit(b)},{ass_zeit(gesamt)},Frage,,0,0,0,,{{\\an5\\pos(540,640)\\fscx70\\fscy70"
+              f"\\t(0,140,\\fscx104\\fscy104)\\t(140,240,\\fscx100\\fscy100)}}" + T["frage"])
+    if n:
+        ev.append(f"Dialogue: 0,{ass_zeit(b + 0.5)},{ass_zeit(gesamt)},Folgen,,0,0,0,,{{\\an5\\pos(540,780)\\fad(150,0)}}"
+                  + T["folgen"].format(n=n, m=n + 1))
+    out = tmp / "overlay.ass"; out.write_text(kopf + "\n".join(ev) + "\n", encoding="utf-8")
+    return out
+
+
+HASHTAGS = {
+    "de": "#coderot #spezialeinheit #wahregeschichte #geschichte #fürdich #fyp",
+    "en": "#coderot #specialforces #truestory #history #fyp #foryou",
+    "es": "#coderot #fuerzasespeciales #historiareal #historia #parati #fyp",
+}
+POST_TEXT = {
+    "de": "Würdest du zurückkommen? 👀 Teil {n} von CODE ROT.",
+    "en": "Would you make it back? 👀 Part {n} of CODE ROT.",
+    "es": "¿Regresarías? 👀 Parte {n} de CODE ROT.",
+}
+
+
+def posting(ep, folge, mp4, dauer):
+    """Begleittext zum Hochladen: Beschreibung, Hashtags, Vorschaubild, erster Kommentar."""
+    sp = getattr(ep, "SPRACHE", "de"); n = folgen_nummer(folge)
+    titel = next((s_["titel"] for s_ in ep.SHOTS if s_.get("titel")), "")
+    einheit = re.sub(r"[*_]", "", titel).strip()
+    tag = "#" + re.sub(r"[^A-Za-z0-9ÁÉÍÓÚÜÑáéíóúüñ]", "", einheit).lower()
+    hook = re.sub(r"[*_]", "", getattr(ep, "KALTSTART", {}).get("text", "")).replace("|", " ")
+    T = SERIE_TEXT.get(sp, SERIE_TEXT["de"])
+    txt = f"""# Posting – {folge.name} ({sp.upper()})
+
+**Datei:** {mp4.name} · {dauer:.0f} s · 1080×1920
+
+**Beschreibung (kopieren):**
+{hook} {POST_TEXT.get(sp, POST_TEXT["de"]).format(n=n)} {tag} {HASHTAGS.get(sp, HASHTAGS["de"])}
+
+**Vorschaubild:** Sekunde 0 (Kaltstart mit Hook-Text) – in TikTok als Cover wählen.
+
+**Erster Kommentar (anpinnen):** {T["frage"]}
+
+**Hinweise:** Video als Teil der Playlist „CODE ROT“ speichern · in den ersten 60 Minuten auf Kommentare antworten ·
+optional einen Trend-Sound sehr leise (5–10 %) unterlegen.
+"""
+    (folge / "export" / f"POSTING_{sp}.md").write_text(txt, encoding="utf-8")
 
 
 
