@@ -27,7 +27,7 @@ for _k, _w in getattr(_T, "STIMME_AB", {}).items():
     SHOTS[_k]["stimme_ab"] = _w
 BEFEHLE = _T.BEFEHLE
 BEFEHLE_KOPF = _T.BEFEHLE_KOPF
-KALTSTART = dict(_basis.KALTSTART, text=_T.HOOK)
+KALTSTART = dict(_basis.KALTSTART, text=_T.HOOK, sprich=getattr(_T, "HOOK_SPRICH", None))
 ANIM = _copy.deepcopy(_basis.ANIM)
 for _a in ANIM.values():
     if _a["szene"] == "spinde":

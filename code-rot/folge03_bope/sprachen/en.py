@@ -2,6 +2,7 @@
 UNTERTITEL = "RIO DE JANEIRO · SINCE 1978"
 BEFEHLE = ["Stay behind the shield", "!Watch every window", "Families live here", "!Nobody gets left behind"]
 BEFEHLE_KOPF = "Your orders"
+HOOK_SPRICH = "You walk into the favela. But someone already *betrayed* you."
 HOOK = "Who|*betrayed* you?"
 HINWEIS = "SCENARIO · FREELY RETOLD"
 TEXTE = [

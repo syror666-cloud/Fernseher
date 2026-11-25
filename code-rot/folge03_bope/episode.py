@@ -28,7 +28,7 @@ def S(text, bg, figuren=(), move="zoom_in", **extra):
 
 BEFEHLE = ["Bleib hinter dem Schild", "!Kein Fenster aus den Augen", "Hier wohnen Familien", "!Niemand bleibt zurück"]
 # Hook für den aggressiven Schnitt (cut.py --aggressiv): Höhepunkt vorweg
-KALTSTART = dict(shot=53, dauer=1.6, text="Wer hat dich|*verraten*?")
+KALTSTART = dict(shot=53, dauer=1.6, text="Wer hat dich|*verraten*?", sprich="Du gehst in die Favela. Aber jemand hat dich längst *verraten*.")
 FW = [dict(typ="feuerwerk", n=7, seed=15), dict(typ="staub", n=40, alpha=0.5, seed=16)]
 FW_VIEL = [dict(typ="feuerwerk", n=16, seed=21), dict(typ="staub", n=40, alpha=0.5, seed=22)]
 

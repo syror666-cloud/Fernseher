@@ -2,6 +2,7 @@
 UNTERTITEL = "NATIONAL POLICE · COLOMBIA"
 BEFEHLE = ["Stay invisible", "!Wait for the signal", "No civilians", "!He must not escape"]
 BEFEHLE_KOPF = "Your orders"
+HOOK_SPRICH = "He's the most dangerous man in the world. And one *phone call* gives him away."
 HOOK = "One call.|Too *long*."
 HINWEIS = "BASED ON TRUE EVENTS · DRAMATIZED"
 SVG = {"tv_eilmeldung": ("BREAKING NEWS", "MEDELLÍN · 12/2/1993")}

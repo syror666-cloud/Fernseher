@@ -2,6 +2,7 @@
 UNTERTITEL = "FEDERAL POLICE · SINCE 1972"
 BEFEHLE = ["No sound until the signal", "!All doors at once", "Hostages first", "!No second try"]
 BEFEHLE_KOPF = "Your orders"
+HOOK_SPRICH = "Almost *90* hostages. And you get exactly *one* try."
 HOOK = "Almost *90* hostages.|One try."
 SVG = {"tv_1972": ("SPECIAL REPORT", "MUNICH · 1972")}
 TEXTE = [

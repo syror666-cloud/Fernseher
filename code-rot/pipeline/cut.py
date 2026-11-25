@@ -536,6 +536,12 @@ def main_animiert():
     shots = timing["shots"]
     von = int(sys.argv[sys.argv.index("--von") + 1]) if "--von" in sys.argv else 0
     bis = int(sys.argv[sys.argv.index("--bis") + 1]) if "--bis" in sys.argv else len(shots) - 1
+    ks = getattr(ep, "KALTSTART", None)
+    voll = "--von" not in sys.argv and "--bis" not in sys.argv
+    # Hook 2.0: gesprochener Hook ab Bild 1, kein Branding vorne -> Spind-Intro + Titelkarte entfallen
+    intro_weg = bool(AGGR and ks and ks.get("sprich") and voll)
+    if intro_weg:
+        von = next(i for i, s_ in enumerate(ep.SHOTS) if s_.get("titel")) + 1
     def mach(k):
         return animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, ep.SHOTS[k - 1] if k > 0 else None)
     with ThreadPoolExecutor(int(os.environ.get("ANIM_JOBS", "3"))) as ex:
@@ -548,7 +554,7 @@ def main_animiert():
     ass = ass_datei(ep, timing, tmp / "untertitel.ass")
     audio = mix(ep, timing, folge, tmp / "mix.wav", vo=vo)
     name = folge.name + ("_aggressiv" if AGGR else "")
-    out = folge / "export" / (f"{name}.mp4" if von == 0 and bis == len(shots) - 1 else f"{name}_teil_{von}-{bis}.mp4")
+    out = folge / "export" / (f"{name}.mp4" if voll or (von == 0 and bis == len(shots) - 1) else f"{name}_teil_{von}-{bis}.mp4")
     if AGGR:
         out_final, out = out, tmp / "haupt.mp4"
     fonts = ROOT / "assets/fonts"
@@ -558,14 +564,89 @@ def main_animiert():
         "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p",
         "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)])
     if AGGR:
-        ks = getattr(ep, "KALTSTART", None)
         hook_clips = []
-        if ks and von == 0:  # Clips des Höhepunkts (auch bei Teil-Vorschau) bereitstellen
+        if ks and (von == 0 or intro_weg):  # Clips des Höhepunkts (auch bei Teil-Vorschau) bereitstellen
             with ThreadPoolExecutor(int(os.environ.get("ANIM_JOBS", "3"))) as ex:
                 hook_clips = list(ex.map(mach, range(ks["shot"], min(ks["shot"] + 4, len(shots)))))
-        kaltstart(ep, folge, timing, hook_clips, out, tmp, out_final, von, vo)
+        kaltstart(ep, folge, timing, hook_clips, out, tmp, out_final, 0 if intro_weg else von, vo)
         out = out_final
     print("FERTIG", out)
+
+
+def hook_gesprochen(ep, folge, ks, roh, t0, bett, t_ton, tmp, out):
+    """Hook 2.0: Erzähler spricht ab Bild 1 den Einsatz-Satz (POV + was auf dem Spiel steht), Wörter poppen synchron
+    groß im oberen Drittel auf, eine erschrockene Figur (Gesicht!) steht groß im Bild, darunter der Höhepunkt."""
+    sys.path.insert(0, str(ROOT / "pipeline")); import vo as vomod
+    sp = getattr(ep, "SPRACHE", "de"); text = ks["sprich"]; klar = re.sub(r"[*_]", "", text)
+    key = hashlib.md5((text + ep.STIMME + json.dumps(ep.STIMM_EINSTELLUNG, sort_keys=True)).encode()).hexdigest()[:10]
+    mp3, alj = tmp / f"hook_vo_{key}.mp3", tmp / f"hook_vo_{key}.json"
+    if not (mp3.exists() and alj.exists()):
+        al = vomod.tts(klar, ep.STIMME, ep.MODELL, ep.STIMM_EINSTELLUNG, mp3, sp)
+        alj.write_text(json.dumps(al, ensure_ascii=False))
+    al = json.loads(alj.read_text()); st, en = al["character_start_times_seconds"], al["character_end_times_seconds"]
+    spans = [(m.start(), m.end() - 1) for m in re.finditer(r"\S+", klar)]
+    toks = text.split()
+    woerter = [(tok, st[a], en[b]) for tok, (a, b) in zip(toks, spans)]
+    d = min(5.0, max(2.0, woerter[-1][2] + 0.35))
+    # Gesicht: erschrockene Hauptfigur
+    gesicht = tmp / "hook_gesicht.png"
+    svg = folge / "svg" / "du_angst.svg"
+    if svg.exists() and not gesicht.exists():
+        env = dict(os.environ); env["NODE_PATH"] = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
+        subprocess.run(["node", str(ROOT / "pipeline/render_html.js"), str(svg), str(gesicht), "600", "1000", "1"],
+                       env=env, capture_output=True)
+    # Untertitel: 2-3 Wörter je Block, synchron zur Stimme
+    def farbe(t):
+        return re.sub(r"\*(.+?)\*", lambda m: "{\\c" + ROT_ASS + "}" + m.group(1) + "{\\c&H00FFFFFF&}", t.upper())
+    bloecke, cur = [], []
+    for w in woerter:
+        cur.append(w)
+        if len(cur) >= 3 or w[0].rstrip("“\"").endswith((".", ",", "?", "!")):
+            bloecke.append(cur); cur = []
+    if cur:
+        bloecke.append(cur)
+    ev = []
+    for j, b in enumerate(bloecke):
+        a = 0.0 if j == 0 else b[0][1]
+        e = bloecke[j + 1][0][1] if j + 1 < len(bloecke) else d
+        ev.append(f"Dialogue: 0,{ass_zeit(a)},{ass_zeit(e)},Hook,,0,0,0,,"
+                  "{\\an5\\pos(540,560)\\fscx" + ("100" if j == 0 else "70") + "\\fscy" + ("100" if j == 0 else "70")
+                  + "\\t(0,70,\\fscx116\\fscy116)\\t(70,150,\\fscx104\\fscy104)}" + farbe(" ".join(x[0] for x in b)))
+    ass = tmp / "hook.ass"
+    ass.write_text(f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {W}
+PlayResY: {H}
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Montserrat Black,112,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,10,6,5,50,50,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+""" + "\n".join(ev) + "\n", encoding="utf-8")
+    fonts = ROOT / "assets/fonts"; impact = ROOT / "assets/sfx/impact.wav"
+    ein = ["-ss", f"{t0:.3f}", "-i", str(roh), "-ss", f"{t_ton:.3f}", "-t", f"{d:.3f}", "-i", str(bett), "-i", str(mp3),
+           "-i", str(impact)]
+    fv = (f"[0:v]trim=0:{d:.3f},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={d:.3f},trim=0:{d:.3f},"
+          "eq=saturation=1.25:contrast=1.1:brightness=0.03[bg];")
+    if gesicht.exists():
+        ein += ["-framerate", str(FPS), "-loop", "1", "-t", f"{d:.3f}", "-i", str(gesicht)]
+        # Figur groß im unteren Teil, leichtes Heranzoomen (Bewegung im ersten Bild)
+        fv += (f"[4:v]format=rgba,scale=1000:1667,zoompan=z='1+0.0008*on':x='iw/2-(iw/zoom/2)':y='0':d=1:s=1000x1667:fps={FPS}[g];"
+               "[bg][g]overlay=x=40:y=720:eof_action=repeat[v1];")
+    else:
+        fv += "[bg]null[v1];"
+    fv += f"[v1]ass={ass}:fontsdir={fonts}[v]"
+    fa = ("[1:a]aresample=48000,aformat=channel_layouts=stereo,volume=-8dB,apad[b];"
+          "[2:a]aresample=48000,aformat=channel_layouts=stereo,volume=1dB,apad[s];"
+          "[3:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:1.5,volume=-7dB,apad[i];"
+          f"[b][s][i]amix=inputs=3:normalize=0,atrim=0:{d:.3f}[a]")
+    sh(["ffmpeg", "-y", "-loglevel", "error", *ein, "-filter_complex", fv + ";" + fa, "-map", "[v]", "-map", "[a]",
+        "-t", f"{d:.3f}", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p", "-r", str(FPS),
+        "-c:a", "aac", "-ar", "48000", "-ac", "2", str(out)])
+    return d
 
 
 def kaltstart(ep, folge, timing, hook_clips, haupt, tmp, out, von, vo):
@@ -582,6 +663,11 @@ def kaltstart(ep, folge, timing, hook_clips, haupt, tmp, out, von, vo):
             "-c", "copy", str(roh)])
         t0 = ks.get("versatz", 0.0)
         bett = mix(ep, timing, folge, tmp / "bett.wav", ohne_vo=True, vo=vo)
+        hook = tmp / "hook.mp4"
+        if ks.get("sprich"):
+            hook_gesprochen(ep, folge, ks, roh, t0, bett, t_ton, tmp, hook)
+        else:
+            hook = None
         ev = []
         for i, z in enumerate(ks["text"].split("|")):
             a = i * 0.3
@@ -602,9 +688,11 @@ Style: Hook,Montserrat Black,120,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """ + "\n".join(ev) + "\n", encoding="utf-8")
-        hook = tmp / "hook.mp4"; glitch = tmp / "glitch.mp4"
+        glitch = tmp / "glitch.mp4"
         whoosh = ROOT / "assets/sfx/whoosh.wav"
-        sh(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{t0:.3f}", "-t", f"{d:.3f}", "-i", str(roh),
+        if hook is None:
+          hook = tmp / "hook.mp4"
+          sh(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{t0:.3f}", "-t", f"{d:.3f}", "-i", str(roh),
             "-ss", f"{t_ton:.3f}", "-t", f"{d:.3f}", "-i", str(bett),
             "-vf", f"eq=saturation=1.25:contrast=1.08,ass={ass}:fontsdir={fonts}",
             "-af", "volume=2dB", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p",
@@ -653,6 +741,10 @@ SERIE_TEXT = {
 }
 
 
+def einheit_name(ep):
+    return re.sub(r"[*_]", "", next((s_["titel"] for s_ in ep.SHOTS if s_.get("titel")), "")).strip()
+
+
 def folgen_nummer(folge):
     m = re.match(r"folge(\d+)", folge.name)
     return int(m.group(1)) if m else 0
@@ -682,7 +774,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if n:
         a = vorlauf + 0.15
         ev.append(f"Dialogue: 0,{ass_zeit(a)},{ass_zeit(a + 3.0)},Teil,,0,0,0,,{{\\an5\\pos(540,175)\\fad(120,200)}}"
-                  + T["teil"].format(n=n, m=n + 1))
+                  + (einheit_name(ep) + " · " if einheit_name(ep) else "") + T["teil"].format(n=n, m=n + 1))
     # offene Schleife: Versprechen einer Wende -> Zuschauer bleiben bis zum Ende (Abschlussrate)
     ev.append(f"Dialogue: 0,{ass_zeit(vorlauf + 0.4)},{ass_zeit(vorlauf + 4.2)},Versprechen,,0,0,0,,"
               f"{{\\an5\\pos(540,262)\\fad(150,250)}}" + T["versprechen"])

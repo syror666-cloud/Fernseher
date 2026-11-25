@@ -28,7 +28,7 @@ def S(text, bg, figuren=(), move="zoom_in", **extra):
 
 BEFEHLE = ["Nur wenn sein Leben bedroht ist", "!Alle Ziele gleichzeitig", "Ein Schuss pro Ziel", "!Kein zweiter Versuch"]
 # Hook für den aggressiven Schnitt (cut.py --aggressiv): Höhepunkt vorweg
-KALTSTART = dict(shot=49, dauer=1.5, text="3 Piraten.|*3* Schüsse.|Eine Sekunde.")
+KALTSTART = dict(shot=49, dauer=1.5, text="3 Piraten.|*3* Schüsse.|Eine Sekunde.", sprich="Drei Piraten. Drei Schüsse. Und du hast genau *eine* Sekunde.")
 
 SHOTS = [
     # ---------- HOOK ----------

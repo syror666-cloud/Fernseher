@@ -2,6 +2,7 @@
 UNTERTITEL = "RÍO DE JANEIRO · DESDE 1978"
 BEFEHLE = ["Quédate detrás del escudo", "!Vigila cada ventana", "Aquí viven familias", "!Nadie se queda atrás"]
 BEFEHLE_KOPF = "Tus órdenes"
+HOOK_SPRICH = "Entras a la favela. Pero alguien ya te *delató*."
 HOOK = "¿Quién te|*delató*?"
 HINWEIS = "ESCENARIO · RELATO LIBRE"
 TEXTE = [

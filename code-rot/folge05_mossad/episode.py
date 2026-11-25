@@ -35,7 +35,7 @@ def S(text, bg, figuren=(), move="zoom_in", **extra):
 
 
 BEFEHLE = ["Kein Schuss", "!Er muss leben", "Keine Spuren", "!Kein zweiter Versuch"]
-KALTSTART = dict(shot=32, dauer=1.5, text="15 Jahre versteckt.|Dann: *ein* Bus.")
+KALTSTART = dict(shot=32, dauer=1.5, text="15 Jahre versteckt.|Dann: *ein* Bus.", sprich="Dieser Mann versteckt sich seit *15* Jahren. Heute Nacht holst du ihn.")
 MANN_SILH = fig("mann_ganz.svg", SILH, filter=SCHWARZ, aktion="gehen")
 
 SHOTS = [

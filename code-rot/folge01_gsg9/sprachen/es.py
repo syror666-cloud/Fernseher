@@ -2,6 +2,7 @@
 UNTERTITEL = "POLICÍA FEDERAL · DESDE 1972"
 BEFEHLE = ["Ni un ruido hasta la señal", "!Todas las puertas a la vez", "Primero los rehenes", "!No hay segundo intento"]
 BEFEHLE_KOPF = "Tus órdenes"
+HOOK_SPRICH = "Casi *90* rehenes. Y tienes exactamente *un* intento."
 HOOK = "Casi *90* rehenes.|Un intento."
 SVG = {"tv_1972": ("EDICIÓN ESPECIAL", "MÚNICH · 1972")}
 TEXTE = [

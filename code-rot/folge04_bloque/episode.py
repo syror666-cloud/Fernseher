@@ -32,7 +32,7 @@ def S(text, bg, figuren=(), move="zoom_in", **extra):
 
 BEFEHLE = ["Bleib unsichtbar", "!Warte auf das Signal", "Keine Zivilisten", "!Er darf nicht entkommen"]
 # Hook für den aggressiven Schnitt (cut.py --aggressiv): Höhepunkt vorweg
-KALTSTART = dict(shot=43, dauer=1.5, text="Ein Anruf.|Zu *lang*.")
+KALTSTART = dict(shot=43, dauer=1.5, text="Ein Anruf.|Zu *lang*.", sprich="Er ist der gefährlichste Mann der Welt. Und ein *Anruf* verrät ihn.")
 
 SHOTS = [
     # ---------- HOOK ----------

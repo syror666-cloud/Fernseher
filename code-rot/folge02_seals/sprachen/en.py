@@ -2,6 +2,7 @@
 UNTERTITEL = "US NAVY · SINCE 1962"
 BEFEHLE = ["Only if his life is threatened", "!All targets at once", "One shot per target", "!No second try"]
 BEFEHLE_KOPF = "Your orders"
+HOOK_SPRICH = "Three pirates. Three shots. And you have exactly *one* second."
 HOOK = "3 pirates.|*3* shots.|One second."
 STIMME_AB = {41: "Ready"}
 TEXTE = [
