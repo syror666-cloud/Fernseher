@@ -205,7 +205,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     # offene Markierungen über mehrere Wörter auflösen: pro Shot Markup auf Wortebene normalisieren
     for k, s in enumerate(shots):
         words = s["words"]
-        if not words:
+        if not words or ep.SHOTS[k].get("titel"):  # Titelkarte zeigt den Namen schon groß
             continue
         # Markierungen über mehrere Wörter (*Köpfe runter!*) auf jedes Wort einzeln verteilen
         txt = ep.SHOTS[k]["text"]
@@ -546,7 +546,7 @@ def main_animiert():
     # Hook 2.0: gesprochener Hook ab Bild 1, kein Branding vorne -> Spind-Intro + Titelkarte entfallen
     intro_weg = bool(AGGR and ks and ks.get("sprich") and voll and HOOK_MODUS != "roulette")
     if intro_weg:
-        von = next(i for i, s_ in enumerate(ep.SHOTS) if s_.get("titel")) + 1
+        von = next(i for i, s_ in enumerate(ep.SHOTS) if s_.get("titel"))  # Titelkarte bleibt: Name wird gesprochen
     def mach(k):
         return animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, ep.SHOTS[k - 1] if k > 0 else None)
     with ThreadPoolExecutor(int(os.environ.get("ANIM_JOBS", "3"))) as ex:

@@ -77,9 +77,9 @@ def schreibe_wav(y, p):
                     "-c:a", "pcm_s16le", str(p)], input=np.clip(y, -1, 1).astype(np.float32).tobytes(), check=True)
 
 
-def tts(text, rolle_name, cache, sprache="de"):
+def tts(text, rolle_name, cache, sprache="de", override=None):
     rolle = rolle_name
-    r = globals()["rolle"](rolle_name, sprache)
+    r = globals()["rolle"](rolle_name, sprache) if not override else dict(override, effekt="", pegel=0.0)
     key = hashlib.md5(json.dumps([text, r["id"], r["einstellung"]], sort_keys=True).encode()).hexdigest()[:12]
     mp3, js = cache / f"{rolle}_{key}.mp3", cache / f"{rolle}_{key}.json"
     if not (mp3.exists() and js.exists()):
@@ -127,6 +127,11 @@ def anwenden(ep, folge):
                 cur = {"rolle": r, "shots": [(k, ab)]}; bloecke.append(cur)
         else:
             cur = None
+    # Titelkarte: der Erzähler spricht den Namen der Einheit in die stumme Pause (Nutzerwunsch)
+    for k, s_ in enumerate(ep.SHOTS):
+        if s_.get("titel") and not shots[k]["words"]:
+            bloecke.append({"rolle": "erzaehler", "titel_k": k})
+    bloecke.sort(key=lambda b_: shots[b_["titel_k"] if "titel_k" in b_ else b_["shots"][0][0]]["schnitt"])
     if not bloecke:
         shutil.copy(t_basis, t_akt); shutil.copy(w_basis, w_akt); return 0
     y = lade_wav(w_basis)
@@ -134,7 +139,32 @@ def anwenden(ep, folge):
     teile, cursor, verschiebung = [], 0.0, []  # verschiebung: (b_basis, delta) kumulativ
     neu_words = {}
     kum = 0.0
+    titel_words = {}
     for bl in bloecke:
+        if "titel_k" in bl:
+            k = bl["titel_k"]; s_ = ep.SHOTS[k]
+            name = s_.get("titel_sprich") or re.sub(r"[*_]", "", s_["titel"]).strip()
+            if name.isupper() and not re.search(r"\d", name):
+                name = " ".join(w.capitalize() if len(w) > 2 else w.lower() for w in name.split())
+            text = name + "."
+            clip, al = tts(text, "erzaehler", cache, getattr(ep, "SPRACHE", "de"),
+                           override={"id": ep.STIMME, "einstellung": ep.STIMM_EINSTELLUNG})
+            chars, st, en = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
+            spans = [(m.start(), m.end() - 1) for m in re.finditer(r"\S+", "".join(chars))]
+            t0 = max(0.0, st[spans[0][0]] - 0.03); t1 = min(len(clip) / SR, en[spans[-1][1]] + 0.12)
+            c = clip[int(t0 * SR):int(t1 * SR)]
+            ref = y[int(shots[k + 1]["words"][0]["start"] * SR):int(shots[k + 1]["words"][-1]["ende"] * SR)] \
+                if k + 1 < len(shots) and shots[k + 1]["words"] else c
+            c = c * (rms(ref) / rms(c))
+            a = max(cursor, shots[k]["schnitt"] + 0.05); b = max(a, shots[k]["ende"] - 0.05)
+            teile.append(y[int(cursor * SR):int(a * SR)]); teile.append(c)
+            neu_a = a + kum
+            toks = re.sub(r"[*_]", "", s_["titel"]).split() if len(s_["titel"].split()) == len(spans) else name.split()
+            titel_words[k] = [{"w": tok, "start": neu_a + st[sa] - t0, "ende": neu_a + en[sb] - t0}
+                              for tok, (sa, sb) in zip(toks, spans)]
+            delta = (t1 - t0) - (b - a)
+            kum += delta; verschiebung.append((b, kum)); cursor = b
+            continue
         ws = [(k, i, w) for k, ab in bl["shots"] for i, w in enumerate(shots[k]["words"]) if i >= ab]
         a = max(cursor, ws[0][2]["start"] - 0.04); b = ws[-1][2]["ende"] + 0.08
         text = " ".join(plain(w["w"]) for _, _, w in ws)
@@ -173,6 +203,8 @@ def anwenden(ep, folge):
                 w["start"], w["ende"] = neu_words[(k, i)]
             else:
                 w["start"], w["ende"] = sh(w["start"]), sh(w["ende"])
+        if k in titel_words:
+            n["words"] = titel_words[k]
         if n["words"]:
             n["start"], n["sprech_ende"] = n["words"][0]["start"], n["words"][-1]["ende"]
         else:
