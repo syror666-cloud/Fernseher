@@ -3,7 +3,7 @@
 **Datei:** folge04_bloque_aggressiv.mp4 · 82 s · 1080×1920
 
 **Beschreibung (kopieren):**
-Ein Anruf. Zu lang. Würdest du zurückkommen? 👀 Teil 4 von CODE ROT. #bloquedebúsqueda #coderot #spezialeinheit #wahregeschichte #geschichte #fürdich #fyp
+Ein Anruf. Zu lang. Würdest du zurückkommen? 👀 Teil 4 von CODE ROT. #bloquedebusqueda #coderot #spezialeinheit #wahregeschichte #geschichte #fürdich #fyp
 
 **Vorschaubild:** Sekunde 0 (Kaltstart mit Hook-Text) – in TikTok als Cover wählen.
 

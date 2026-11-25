@@ -713,7 +713,8 @@ def posting(ep, folge, mp4, dauer):
     sp = getattr(ep, "SPRACHE", "de"); n = folgen_nummer(folge)
     titel = next((s_["titel"] for s_ in ep.SHOTS if s_.get("titel")), "")
     einheit = re.sub(r"[*_]", "", titel).strip()
-    tag = "#" + re.sub(r"[^A-Za-z0-9ÁÉÍÓÚÜÑáéíóúüñ]", "", einheit).lower()
+    import unicodedata
+    tag = "#" + re.sub(r"[^a-z0-9]", "", unicodedata.normalize("NFKD", einheit).encode("ascii", "ignore").decode().lower())
     hook = re.sub(r"[*_]", "", getattr(ep, "KALTSTART", {}).get("text", "")).replace("|", " ")
     T = SERIE_TEXT.get(sp, SERIE_TEXT["de"])
     txt = f"""# Posting – {folge.name} ({sp.upper()})
