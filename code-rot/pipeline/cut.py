@@ -236,7 +236,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 
 # ---------------------------------------------------------------- Audio
-ATMO_PEGEL = {"atmo_meer": -25, "atmo_stadt": -19, "atmo_nacht": -17}  # breitbandiges Meeresrauschen deckt Sprache stärker zu
+ATMO_PEGEL = {"atmo_meer": -25, "atmo_stadt": -25, "atmo_nacht": -17}  # breitbandiges Meeresrauschen deckt Sprache stärker zu
 
 
 def mix(ep, timing, folge, out_wav, ohne_vo=False, norm=True, vo=None):
