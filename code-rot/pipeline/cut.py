@@ -632,7 +632,7 @@ Style: Hook,Montserrat Black,112,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """ + "\n".join(ev) + "\n", encoding="utf-8")
     fonts = ROOT / "assets/fonts"; impact = ROOT / "assets/sfx/impact.wav"
-    ein = ["-ss", f"{t0:.3f}", "-i", str(roh), "-ss", f"{t_ton:.3f}", "-t", f"{d:.3f}", "-i", str(bett), "-i", str(mp3),
+    ein = ["-ss", f"{t0 + 0.25:.3f}", "-i", str(roh), "-ss", f"{t_ton:.3f}", "-t", f"{d:.3f}", "-i", str(bett), "-i", str(mp3),
            "-i", str(impact)]
     fv = (f"[0:v]trim=0:{d:.3f},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={d:.3f},trim=0:{d:.3f},"
           "boxblur=7:1,eq=saturation=1.25:contrast=1.1:brightness=-0.02[bg];")  # unscharf: Gesicht + Text stehen vorne
