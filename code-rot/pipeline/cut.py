@@ -221,6 +221,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             b = cs[j + 1][0]["start"] if j + 1 < len(cs) else min(shot_ende + 0.25, c[-1]["ende"] + 0.45)
             if j + 1 >= len(cs) and k + 1 < len(shots) and shots[k + 1]["words"]:
                 b = min(b, shots[k + 1]["words"][0]["start"])
+            if j + 1 >= len(cs) and k + 1 < len(shots) and ep.SHOTS[k + 1].get("titel"):
+                b = min(b, shots[k + 1]["schnitt"])  # Titelkarte frei halten
             pop = "{\\an5\\pos(540,1330)\\fscx82\\fscy82\\t(0,90,\\fscx100\\fscy100)}"
             if AGGR:
                 rot = any("*" in x["w"] for x in c)
