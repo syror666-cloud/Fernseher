@@ -1,0 +1,216 @@
+{
+ "intro": {
+  "frames": 147,
+  "start": {
+   "0": 0,
+   "1": 31,
+   "2": 92,
+   "3": 104
+  },
+  "loop": false
+ },
+ "outro": {
+  "frames": 86,
+  "start": {
+   "71": 0,
+   "72": 29
+  },
+  "loop": false
+ },
+ "anflug": {
+  "frames": 123,
+  "start": {
+   "5": 0,
+   "6": 33,
+   "7": 80
+  },
+  "loop": false
+ },
+ "frachter": {
+  "frames": 128,
+  "start": {
+   "8": 0,
+   "9": 79
+  },
+  "loop": false
+ },
+ "loop_frachter": {
+  "frames": 120,
+  "start": {
+   "10": 0,
+   "11": 71,
+   "28": 15,
+   "44": 76,
+   "54": 23,
+   "55": 69
+  },
+  "loop": true
+ },
+ "boot_nah": {
+  "frames": 72,
+  "start": {
+   "12": 0,
+   "13": 40
+  },
+  "loop": false
+ },
+ "boot_nah2": {
+  "frames": 121,
+  "start": {
+   "21": 0,
+   "23": 39,
+   "59": 78
+  },
+  "loop": false
+ },
+ "boot_nah3": {
+  "frames": 73,
+  "start": {
+   "45": 0,
+   "51": 32
+  },
+  "loop": false
+ },
+ "boot_nah4": {
+  "frames": 36,
+  "start": {
+   "53": 0
+  },
+  "loop": false
+ },
+ "loop_heck": {
+  "frames": 120,
+  "start": {
+   "14": 0,
+   "18": 46,
+   "19": 89,
+   "20": 7,
+   "25": 75,
+   "29": 25,
+   "30": 60,
+   "31": 7,
+   "32": 63,
+   "33": 115,
+   "40": 48,
+   "41": 86,
+   "48": 37,
+   "57": 69,
+   "58": 102,
+   "61": 23
+  },
+  "loop": true
+ },
+ "schiff_seite": {
+  "frames": 153,
+  "start": {
+   "15": 0,
+   "16": 68
+  },
+  "loop": false
+ },
+ "scope": {
+  "frames": 48,
+  "start": {
+   "17": 0
+  },
+  "loop": false
+ },
+ "scope2": {
+  "frames": 156,
+  "start": {
+   "22": 0,
+   "24": 67,
+   "60": 107
+  },
+  "loop": false
+ },
+ "scope3": {
+  "frames": 69,
+  "start": {
+   "38": 0,
+   "39": 39
+  },
+  "loop": false
+ },
+ "scope4": {
+  "frames": 42,
+  "start": {
+   "42": 0,
+   "43": 24
+  },
+  "loop": false
+ },
+ "scope5": {
+  "frames": 70,
+  "start": {
+   "46": 0,
+   "47": 24
+  },
+  "loop": false
+ },
+ "sprung": {
+  "frames": 80,
+  "start": {
+   "26": 0,
+   "27": 55
+  },
+  "loop": false
+ },
+ "daemmerung": {
+  "frames": 77,
+  "start": {
+   "34": 0,
+   "35": 35
+  },
+  "loop": false
+ },
+ "heck_pov": {
+  "frames": 79,
+  "start": {
+   "36": 0,
+   "37": 32
+  },
+  "loop": false
+ },
+ "schuss": {
+  "frames": 63,
+  "start": {
+   "49": 0,
+   "50": 19
+  },
+  "loop": false
+ },
+ "rhib": {
+  "frames": 35,
+  "start": {
+   "52": 0
+  },
+  "loop": false
+ },
+ "schiff_innen": {
+  "frames": 136,
+  "start": {
+   "62": 0,
+   "63": 50,
+   "64": 79,
+   "65": 111
+  },
+  "loop": false
+ },
+ "drohne_ende1": {
+  "frames": 49,
+  "start": {
+   "56": 0
+  },
+  "loop": false
+ },
+ "drohne_ende2": {
+  "frames": 79,
+  "start": {
+   "67": 0,
+   "68": 25,
+   "69": 47
+  },
+  "loop": false
+ }
+}
