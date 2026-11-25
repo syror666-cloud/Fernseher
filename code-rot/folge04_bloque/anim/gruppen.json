@@ -1,0 +1,166 @@
+{
+ "intro": {
+  "frames": 139,
+  "start": {
+   "0": 0,
+   "1": 35,
+   "2": 79,
+   "3": 99
+  },
+  "loop": false
+ },
+ "outro": {
+  "frames": 117,
+  "start": {
+   "61": 0,
+   "62": 35
+  },
+  "loop": false
+ },
+ "anflug": {
+  "frames": 163,
+  "start": {
+   "5": 0,
+   "6": 68
+  },
+  "loop": false
+ },
+ "anflug2": {
+  "frames": 84,
+  "start": {
+   "27": 0,
+   "28": 29
+  },
+  "loop": false
+ },
+ "huegel": {
+  "frames": 85,
+  "start": {
+   "8": 0
+  },
+  "loop": false
+ },
+ "huegel2": {
+  "frames": 66,
+  "start": {
+   "13": 0
+  },
+  "loop": false
+ },
+ "gasse": {
+  "frames": 86,
+  "start": {
+   "11": 0,
+   "25": 52
+  },
+  "loop": false
+ },
+ "gasse_tief": {
+  "frames": 26,
+  "start": {
+   "15": 0
+  },
+  "loop": false
+ },
+ "loop_wagen": {
+  "frames": 120,
+  "start": {
+   "7": 0,
+   "12": 66,
+   "14": 30,
+   "17": 87,
+   "18": 26,
+   "21": 67,
+   "22": 3,
+   "23": 42,
+   "26": 94,
+   "30": 54,
+   "31": 95,
+   "35": 14,
+   "40": 75,
+   "41": 2
+  },
+  "loop": true
+ },
+ "peil_nah": {
+  "frames": 180,
+  "start": {
+   "19": 0,
+   "20": 50,
+   "24": 106,
+   "34": 141
+  },
+  "loop": false
+ },
+ "peil_nah2": {
+  "frames": 56,
+  "start": {
+   "52": 0
+  },
+  "loop": false
+ },
+ "peil_fahrt": {
+  "frames": 81,
+  "start": {
+   "32": 0,
+   "33": 31
+  },
+  "loop": false
+ },
+ "haus": {
+  "frames": 57,
+  "start": {
+   "37": 0
+  },
+  "loop": false
+ },
+ "tuer2": {
+  "frames": 35,
+  "start": {
+   "42": 0
+  },
+  "loop": false
+ },
+ "dach_flucht": {
+  "frames": 71,
+  "start": {
+   "43": 0,
+   "44": 41
+  },
+  "loop": false
+ },
+ "dach_weit": {
+  "frames": 52,
+  "start": {
+   "45": 0,
+   "46": 21
+  },
+  "loop": false
+ },
+ "dach_weit2": {
+  "frames": 104,
+  "start": {
+   "51": 0,
+   "59": 48
+  },
+  "loop": false
+ },
+ "abend": {
+  "frames": 50,
+  "start": {
+   "48": 0
+  },
+  "loop": false
+ },
+ "loop_abend": {
+  "frames": 120,
+  "start": {
+   "47": 0,
+   "50": 42,
+   "53": 91,
+   "54": 22,
+   "58": 79
+  },
+  "loop": true
+ }
+}
