@@ -8,3 +8,4 @@ Ablauf (automatisch, `pipeline/nachtlauf.sh`, Log: `nacht.log`):
 Wiederaufnahme nach Abbruch: `nohup setsid pipeline/nachtlauf.sh &` – fertige Teile werden übersprungen.
 
 ## Ergebnisse
+- Folge 1 GSG 9: fertig (02:44) -> folge01_gsg9/export/folge01_gsg9.mp4
