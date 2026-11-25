@@ -215,14 +215,20 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         toks = txt.split()
         norm = [dict(w, w=t) for w, t in zip(words, toks)] if len(toks) == len(words) else words
         shot_ende = s["ende"]
-        cs = chunks(norm)
+        cs = chunks(norm, 2, 12) if AGGR else chunks(norm)
         for j, c in enumerate(cs):
             a = c[0]["start"]
             b = cs[j + 1][0]["start"] if j + 1 < len(cs) else min(shot_ende + 0.25, c[-1]["ende"] + 0.45)
             if j + 1 >= len(cs) and k + 1 < len(shots) and shots[k + 1]["words"]:
                 b = min(b, shots[k + 1]["words"][0]["start"])
             pop = "{\\an5\\pos(540,1330)\\fscx82\\fscy82\\t(0,90,\\fscx100\\fscy100)}"
+            if AGGR:
+                rot = any("*" in x["w"] for x in c)
+                pop = ("{\\an5\\pos(540,1330)\\fscx55\\fscy55\\t(0,70,\\fscx125\\fscy125)\\t(70,150,\\fscx112\\fscy112)"
+                       + ("\\frz-4" if rot else "") + "}")
             zeilen.append(f"Dialogue: 0,{ass_zeit(a)},{ass_zeit(b)},Cap,,0,0,0,,{pop}{ass_text([x['w'] for x in c])}")
+    if AGGR:
+        kopf = kopf.replace("Montserrat Black,100,", "Montserrat Black,112,")
     out.write_text(kopf + "\n".join(zeilen) + "\n", encoding="utf-8")
     return out
 
@@ -231,14 +237,14 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 ATMO_PEGEL = {"atmo_meer": -25, "atmo_stadt": -19, "atmo_nacht": -17}  # breitbandiges Meeresrauschen deckt Sprache stärker zu
 
 
-def mix(ep, timing, folge, out_wav, ohne_vo=False, norm=True):
+def mix(ep, timing, folge, out_wav, ohne_vo=False, norm=True, vo=None):
     sfx_dir = ROOT / "assets/sfx"; real = ROOT / "assets/sfx_real"
     def sfx(name):  # echte Aufnahme bevorzugen, sonst synthetisch
         return real / f"{name}.wav" if (real / f"{name}.wav").exists() else sfx_dir / f"{name}.wav"
     shots = timing["shots"]; total = timing["gesamt"]
     atmo_name = getattr(ep, "ATMO", "atmo_nacht")
     atmo = real / f"{atmo_name}.wav" if (real / f"{atmo_name}.wav").exists() else sfx_dir / "atmo.wav"
-    inputs = ["-i", str(folge / "audio/vo.wav"), "-stream_loop", "-1", "-i", str(atmo)]
+    inputs = ["-i", str(vo or folge / "audio/vo.wav"), "-stream_loop", "-1", "-i", str(atmo)]
     filt = [f"[1:a]atrim=0:{total:.2f},volume={ATMO_PEGEL.get(atmo_name, -17) if atmo.parent == real else -20}dB"]
     # Atmo-Loch bei "Stille"
     stille = [(sh_["schnitt"], sh_["ende"]) for sh_, sp in zip(shots, ep.SHOTS) if sp.get("stille")]
@@ -337,6 +343,45 @@ def main():
 FEUER_BG = {"boden_feuer", "nase_feuer"}
 
 
+AGGR = "--aggressiv" in sys.argv   # Schnitt für sehr kurze Aufmerksamkeitsspanne
+TEMPO = float(os.environ.get("TEMPO", "1.1"))  # Beschleunigung der Erzählung im aggressiven Modus
+PUNCH_STUFEN = [1.0, 1.17, 1.07, 1.26]
+
+
+def aggressiv_extras(k, s, t, dauer, prev_s):
+    """Punch-ins (harte Bildsprünge) etwa alle 0,6-0,9 s an Wortgrenzen, Stöße auf roten Wörtern,
+    kurzer Blitz bei Ortswechsel."""
+    ex = {}
+    if s.get("titel") or s.get("stille"):
+        return ex
+    rel = [(w["start"] - t["schnitt"], w) for w in t["words"]]
+    punches, letzte, stufe = [], 0.0, 1 + (k % 2)
+    kandidaten = [r for r, _ in rel[1:]] or ([dauer / 2] if dauer >= 1.2 else [])
+    for c in kandidaten:
+        if c - letzte >= 0.6 and dauer - c >= 0.4:
+            z = PUNCH_STUFEN[stufe % len(PUNCH_STUFEN)]; stufe += 1
+            dx = ((k * 37 + stufe * 53) % 61 - 30) * (z - 1) * 4
+            punches.append([round(c, 3), z, round(dx, 1), 0]); letzte = c
+    if dauer >= 1.0 and not punches:
+        punches.append([round(min(dauer * 0.5, dauer - 0.4), 3), PUNCH_STUFEN[stufe % 4], 0, 0])
+    ex["punches"] = punches
+    ex["stoesse"] = [[round(max(r, 0), 3), 0.28] for r, w in rel if "*" in w["w"]]
+    ort = (s.get("anim") or s["bg"]); ort_vorher = (prev_s.get("anim") or prev_s["bg"]) if prev_s else None
+    if ort != ort_vorher and not s.get("blitz"):
+        ex["blitz_kurz"] = True
+    return ex
+
+
+def skaliere_timing(timing, f):
+    def sk(x):
+        return round(x / f, 4)
+    neu = dict(timing, gesamt=sk(timing["gesamt"]), shots=[])
+    for s in timing["shots"]:
+        neu["shots"].append(dict(s, schnitt=sk(s["schnitt"]), ende=sk(s["ende"]),
+                                 words=[dict(w, start=sk(w["start"]), ende=sk(w["ende"])) for w in s["words"]]))
+    return neu
+
+
 def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
     s = dict(ep.SHOTS[k]); t = shots[k]
     f0, f1 = round(t["schnitt"] * FPS), round(t["ende"] * FPS)
@@ -382,6 +427,8 @@ def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
         nr = s["regeln"]; pr = (prev or {}).get("regeln")
         hud["regeln"] = {"zeilen": ep.BEFEHLE[:nr] or [], "neu": isinstance(pr, int) and nr > pr}
         hud["regeln_neu_box"] = not isinstance(pr, int)
+    if AGGR:
+        s.update(aggressiv_extras(k, s, t, dauer, prev))
     out = tmp / f"anim_{k:03d}.mp4"
     html = animator.baue(s, k, dauer, folge, bg, hud, fx)
     key = hashlib.md5((html + str(n)).encode()).hexdigest()[:12]
@@ -399,7 +446,12 @@ def main_animiert():
     spec.loader.exec_module(ep)
     timing = json.loads((folge / "audio/timing.json").read_text())
     gruppen = json.loads((folge / "anim/gruppen.json").read_text())
-    tmp = folge / "build"; tmp.mkdir(exist_ok=True); (folge / "export").mkdir(exist_ok=True)
+    tmp = folge / ("build_aggr" if AGGR else "build"); tmp.mkdir(exist_ok=True); (folge / "export").mkdir(exist_ok=True)
+    vo = None
+    if AGGR:  # Erzählung beschleunigen (Tonhöhe bleibt), Timing mitskalieren
+        timing = skaliere_timing(timing, TEMPO)
+        vo = tmp / "vo_schnell.wav"
+        sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(folge / "audio/vo.wav"), "-af", f"atempo={TEMPO}", str(vo)])
     sp = folge / "bg/spinde_streifen.png"
     streifen = Streifen(sp)
     shots = timing["shots"]
@@ -415,15 +467,93 @@ def main_animiert():
     roh = tmp / "roh_anim.mp4"
     sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(liste), "-c", "copy", str(roh)])
     ass = ass_datei(ep, timing, tmp / "untertitel.ass")
-    audio = mix(ep, timing, folge, tmp / "mix.wav")
-    out = folge / "export" / (f"{folge.name}.mp4" if von == 0 and bis == len(shots) - 1 else f"{folge.name}_teil_{von}-{bis}.mp4")
+    audio = mix(ep, timing, folge, tmp / "mix.wav", vo=vo)
+    name = folge.name + ("_aggressiv" if AGGR else "")
+    out = folge / "export" / (f"{name}.mp4" if von == 0 and bis == len(shots) - 1 else f"{name}_teil_{von}-{bis}.mp4")
+    if AGGR:
+        out_final, out = out, tmp / "haupt.mp4"
     fonts = ROOT / "assets/fonts"
     t_von = shots[von]["schnitt"]
     sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(roh), "-ss", f"{t_von:.3f}", "-i", str(audio),
         "-vf", f"setpts=PTS-STARTPTS+{t_von:.3f}/TB,ass={ass}:fontsdir={fonts},setpts=PTS-STARTPTS",
         "-map", "0:v", "-map", "1:a", "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p",
         "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", str(out)])
+    if AGGR:
+        ks = getattr(ep, "KALTSTART", None)
+        hook_clips = []
+        if ks and von == 0:  # Clips des Höhepunkts (auch bei Teil-Vorschau) bereitstellen
+            with ThreadPoolExecutor(int(os.environ.get("ANIM_JOBS", "3"))) as ex:
+                hook_clips = list(ex.map(mach, range(ks["shot"], min(ks["shot"] + 4, len(shots)))))
+        kaltstart(ep, folge, timing, hook_clips, out, tmp, out_final, von, vo)
+        out = out_final
     print("FERTIG", out)
+
+
+def kaltstart(ep, folge, timing, hook_clips, haupt, tmp, out, von, vo):
+    """Hook: ~1,5 s vom Höhepunkt (ohne Stimme) mit Hook-Text, Rückspul-Glitch, dann die Folge.
+    Darüber ein Fortschrittsbalken über die ganze Länge."""
+    ks = getattr(ep, "KALTSTART", None)
+    fonts = ROOT / "assets/fonts"; shots = timing["shots"]
+    teile = []
+    if ks and von == 0:
+        t_ton = shots[ks["shot"]]["schnitt"] + ks.get("versatz", 0.0); d = ks.get("dauer", 1.5)
+        (tmp / "hook_liste.txt").write_text("".join(f"file '{c}'\n" for c in hook_clips))
+        roh = tmp / "hook_roh.mp4"
+        sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(tmp / "hook_liste.txt"),
+            "-c", "copy", str(roh)])
+        t0 = ks.get("versatz", 0.0)
+        bett = mix(ep, timing, folge, tmp / "bett.wav", ohne_vo=True, vo=vo)
+        ev = []
+        for i, z in enumerate(ks["text"].split("|")):
+            a = 0.08 + i * 0.35
+            txt = re.sub(r"\*(.+?)\*", lambda m: "{\\c" + ROT_ASS + "}" + m.group(1) + "{\\c&H00FFFFFF&}", z.upper())
+            ev.append(f"Dialogue: 0,{ass_zeit(a)},{ass_zeit(d + 0.4)},Hook,,0,0,0,,"
+                      "{\\an5\\pos(540," + str(1180 + i * 150) + ")\\fscx50\\fscy50\\t(0,80,\\fscx118\\fscy118)\\t(80,160,\\fscx105\\fscy105)}" + txt)
+        ass = tmp / "hook.ass"
+        ass.write_text(f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {W}
+PlayResY: {H}
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Hook,Montserrat Black,120,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,10,6,5,40,40,0,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+""" + "\n".join(ev) + "\n", encoding="utf-8")
+        hook = tmp / "hook.mp4"; glitch = tmp / "glitch.mp4"
+        whoosh = ROOT / "assets/sfx/whoosh.wav"
+        sh(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{t0:.3f}", "-t", f"{d:.3f}", "-i", str(roh),
+            "-ss", f"{t_ton:.3f}", "-t", f"{d:.3f}", "-i", str(bett),
+            "-vf", f"eq=saturation=1.25:contrast=1.08,ass={ass}:fontsdir={fonts}",
+            "-af", "volume=2dB", "-c:v", "libx264", "-preset", "fast", "-crf", "17", "-pix_fmt", "yuv420p",
+            "-r", str(FPS), "-c:a", "aac", "-ar", "48000", "-ac", "2", str(hook)])
+        # Rückspulen: Hook-Bilder rückwärts, 4x schnell, RGB-Versatz + Rauschen; Ton rückwärts + Whoosh
+        sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(hook), "-i", str(whoosh), "-filter_complex",
+            "[0:v]reverse,setpts=PTS/4,fps=30,rgbashift=rh=-18:bh=18,noise=alls=40:allf=t,eq=brightness=0.06[v];"
+            "[0:a]areverse,atempo=2,atempo=2,volume=-6dB[r];[1:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:0.6,volume=-4dB[w];"
+            "[r][w]amix=inputs=2:normalize=0:duration=longest,atrim=0:0.38[a]",
+            "-map", "[v]", "-map", "[a]", "-t", "0.38", "-c:v", "libx264", "-preset", "fast", "-crf", "17",
+            "-pix_fmt", "yuv420p", "-c:a", "aac", "-ar", "48000", "-ac", "2", str(glitch)])
+        teile = [hook, glitch]
+    teile.append(haupt)
+    gesamt = sum(float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
+                                        str(x)], capture_output=True, text=True).stdout) for x in teile)
+    ein = []
+    for x in teile:
+        ein += ["-i", str(x)]
+    n = len(teile)
+    fc = "".join(f"[{i}:v]fps=30,format=yuv420p,setsar=1[v{i}];[{i}:a]aresample=48000,aformat=channel_layouts=stereo[a{i}];"
+                 for i in range(n))
+    fc += "".join(f"[v{i}][a{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=1[cv][ca];"
+    fc += (f"color=c=0xFF2A2A:s=1080x12:r=30[bar];[cv][bar]overlay=x='-W+W*t/{gesamt:.3f}':y=0:eval=frame:shortest=1[vout];"
+           "[ca]alimiter=limit=0.84:level=false[aout]")
+    sh(["ffmpeg", "-y", "-loglevel", "error", *ein, "-filter_complex", fc, "-map", "[vout]", "-map", "[aout]",
+        "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
+        "-movflags", "+faststart", str(out)])
+
 
 
 if __name__ == "__main__":

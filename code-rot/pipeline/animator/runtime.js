@@ -207,6 +207,7 @@
     const fl = document.getElementById("blitz"); let a = 0, c = "#fff";
     if (S.blitz) { a = Math.max(a, 1 - t / 0.2); if (S.blitz === "orange") c = "#ff8a2a"; }
     if (S.ende_blitz) a = Math.max(a, (t - (S.dauer - 0.15)) / 0.15);
+    if (S.blitz_kurz) a = Math.max(a, 0.55 * (1 - t / 0.08));
     fl.style.background = c; fl.style.opacity = clamp(a, 0, 1);
     const sw = document.getElementById("schwarz"); let b = 0;
     if (S.ende_schwarz) b = (t - (S.dauer - 0.5)) / 0.5;
@@ -225,6 +226,15 @@
   window.setzeZeit = async function (t) {
     await setzeBg(t);
     const k = kamera(t);
+    // Aggressiver Schnitt: harte Punch-ins (Sprungschnitte im Bild) und Stöße auf Schlüsselwörtern
+    if (S.punches && S.punches.length) {
+      let p = null; for (const q of S.punches) if (t >= q[0]) p = q;
+      if (p) { k.z *= p[1]; k.x += p[2]; k.y += p[3] + 160 * (p[1] - 1); }
+    }
+    (S.stoesse || []).forEach((q, i) => {
+      const d = (t - q[0]) / q[1]; if (d < 0 || d > 1) return; const a = 1 - d;
+      k.x += 30 * a * noise1(t * 45, 40 + i); k.y += 26 * a * noise1(t * 41, 60 + i); k.z *= 1 + 0.06 * a;
+    });
     document.querySelectorAll(".tiefe").forEach(l => {
       const d = parseFloat(l.dataset.tiefe || "1");
       l.style.transform = `translate(${k.x * d}px,${k.y * d}px) scale(${1 + (k.z - 1) * d})`;

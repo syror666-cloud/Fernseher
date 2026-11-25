@@ -139,7 +139,8 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
                   bg=bg if bg["typ"] == "seq" else None, figuren=figdaten, fx=fx, hud=hud,
                   blitz=shot.get("blitz", False), ende_blitz=shot.get("ende_blitz", False),
                   ende_schwarz=shot.get("ende_schwarz", False), stille=shot.get("stille", False),
-                  tint_puls=bool(shot.get("tint_puls")))
+                  tint_puls=bool(shot.get("tint_puls")), punches=shot.get("punches", []),
+                  stoesse=shot.get("stoesse", []), blitz_kurz=shot.get("blitz_kurz", False))
     runtime = (HIER / "runtime.js").read_text()
     return (f'<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(teile)}'
             f'<script>window.SHOT={json.dumps(shotjs)};</script><script>{runtime}</script></body></html>')

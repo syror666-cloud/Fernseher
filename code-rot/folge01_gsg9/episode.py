@@ -27,6 +27,8 @@ def S(text, bg, figuren=(), move="zoom_in", **extra):
 
 
 BEFEHLE = ["Kein Laut bis zum Signal", "!Alle Türen gleichzeitig", "Geiseln zuerst", "!Kein zweiter Versuch"]
+# Hook für den aggressiven Schnitt (cut.py --aggressiv): Höhepunkt vorweg
+KALTSTART = dict(shot=54, dauer=1.5, text="Fast *90* Geiseln.|Ein Versuch.")
 UNSCHARF = "blur(10px) brightness(.55)"
 
 SHOTS = [
