@@ -15,3 +15,6 @@ folge4.log
 */audio/vo_raw.mp3
 neuschnitt.log
 */audio/stimmen/*_fx.wav
+sprachen.log
+spinde/render.log
+*/__pycache__/

@@ -40,8 +40,30 @@ ROLLEN = {
 }
 
 
+# Rollenstimmen je Sprache (überschreiben ROLLEN; gleiche Effekte/Pegel, muttersprachliche Stimmen)
+ROLLEN_SPRACHE = {
+    "en": {"spind": "1BfrkuYXmEwp8AWqSLWk",   # Declan – Horror (alt, unheimlich)
+           "chef": "3YzGaTGef0x5PLEK9yGq",    # Atlas – tief, rau
+           "funk": "3YzGaTGef0x5PLEK9yGq",
+           "schrei": "3YzGaTGef0x5PLEK9yGq",
+           "jung": "nHHVbJ6p0mXRxkGrWZI2"},   # Jeff
+    "es": {"spind": "DWrVftdnFieVgzNH3uzf",   # Jesús – tief, cineastisch (+ Effekt)
+           "chef": "vT7H1Y5jYNGFl82cyN9E",    # Krade – tief, mexikanisch
+           "funk": "vT7H1Y5jYNGFl82cyN9E",
+           "schrei": "vT7H1Y5jYNGFl82cyN9E",
+           "jung": "MFczlrjgpEos5t8Rwlto"},   # Orozco – jung, kolumbianisch
+}
+
+
+def rolle(name, sprache):
+    r = dict(ROLLEN[name])
+    if sprache in ROLLEN_SPRACHE:
+        r["id"] = ROLLEN_SPRACHE[sprache][name]
+    return r
+
+
 def plain(t):
-    return re.sub(r"[*_„“\"]", "", t)
+    return re.sub(r"[*_„“”\"]", "", t)
 
 
 def lade_wav(p):
@@ -55,13 +77,14 @@ def schreibe_wav(y, p):
                     "-c:a", "pcm_s16le", str(p)], input=np.clip(y, -1, 1).astype(np.float32).tobytes(), check=True)
 
 
-def tts(text, rolle, cache):
-    r = ROLLEN[rolle]
+def tts(text, rolle_name, cache, sprache="de"):
+    rolle = rolle_name
+    r = globals()["rolle"](rolle_name, sprache)
     key = hashlib.md5(json.dumps([text, r["id"], r["einstellung"]], sort_keys=True).encode()).hexdigest()[:12]
     mp3, js = cache / f"{rolle}_{key}.mp3", cache / f"{rolle}_{key}.json"
     if not (mp3.exists() and js.exists()):
         body = json.dumps({"text": text, "model_id": MODELL, "voice_settings": r["einstellung"],
-                           "language_code": "de"}).encode()
+                           "language_code": sprache}).encode()
         req = urllib.request.Request(API.format(voice=r["id"]), data=body, method="POST",
                                      headers={"xi-api-key": "proxy-injected", "Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=300) as resp:
@@ -116,7 +139,7 @@ def anwenden(ep, folge):
         a = max(cursor, ws[0][2]["start"] - 0.04); b = ws[-1][2]["ende"] + 0.08
         text = " ".join(plain(w["w"]) for _, _, w in ws)
         text = re.sub(r"\s+", " ", text).strip()
-        clip, al = tts(text, bl["rolle"], cache)
+        clip, al = tts(text, bl["rolle"], cache, getattr(ep, "SPRACHE", "de"))
         chars, st, en = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
         joined = "".join(chars)
         spans = [(m.start(), m.end() - 1) for m in re.finditer(r"\S+", joined)]

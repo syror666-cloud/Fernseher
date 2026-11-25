@@ -1,0 +1,1915 @@
+{
+ "gesamt": 81.738367,
+ "shots": [
+  {
+   "i": 0,
+   "start": 0.0,
+   "sprech_ende": 1.115,
+   "words": [
+    {
+     "w": "Una",
+     "start": 0.0,
+     "ende": 0.197
+    },
+    {
+     "w": "de",
+     "start": 0.232,
+     "ende": 0.302
+    },
+    {
+     "w": "estas",
+     "start": 0.337,
+     "ende": 0.546
+    },
+    {
+     "w": "*unidades*",
+     "start": 0.662,
+     "ende": 1.115
+    }
+   ],
+   "schnitt": 0.0,
+   "ende": 1.1239999999999999
+  },
+  {
+   "i": 1,
+   "start": 1.184,
+   "sprech_ende": 2.334,
+   "words": [
+    {
+     "w": "viene",
+     "start": 1.184,
+     "ende": 1.37
+    },
+    {
+     "w": "por",
+     "start": 1.405,
+     "ende": 1.544
+    },
+    {
+     "w": "ti",
+     "start": 1.602,
+     "ende": 1.683
+    },
+    {
+     "w": "esta",
+     "start": 1.718,
+     "ende": 1.869
+    },
+    {
+     "w": "noche.",
+     "start": 1.904,
+     "ende": 2.334
+    }
+   ],
+   "schnitt": 1.1239999999999999,
+   "ende": 2.483
+  },
+  {
+   "i": 2,
+   "start": 2.543,
+   "sprech_ende": 2.879,
+   "words": [
+    {
+     "w": "Veamos",
+     "start": 2.543,
+     "ende": 2.879
+    }
+   ],
+   "schnitt": 2.483,
+   "ende": 2.879
+  },
+  {
+   "i": 3,
+   "start": 2.902,
+   "sprech_ende": 3.634,
+   "words": [
+    {
+     "w": "si",
+     "start": 2.902,
+     "ende": 2.972
+    },
+    {
+     "w": "*regresas*.",
+     "start": 3.042,
+     "ende": 3.634
+    }
+   ],
+   "schnitt": 2.879,
+   "ende": 3.634
+  },
+  {
+   "i": 4,
+   "start": 3.6839999999999997,
+   "words": [],
+   "sprech_ende": 3.6839999999999997,
+   "schnitt": 3.634,
+   "ende": 5.260000000000001
+  },
+  {
+   "i": 5,
+   "start": 5.32,
+   "sprech_ende": 6.121,
+   "words": [
+    {
+     "w": "_Río",
+     "start": 5.32,
+     "ende": 5.505
+    },
+    {
+     "w": "de",
+     "start": 5.54,
+     "ende": 5.598
+    },
+    {
+     "w": "Janeiro_.",
+     "start": 5.633,
+     "ende": 6.121
+    }
+   ],
+   "schnitt": 5.260000000000001,
+   "ende": 6.397
+  },
+  {
+   "i": 6,
+   "start": 6.457,
+   "sprech_ende": 7.398,
+   "words": [
+    {
+     "w": "Cuatro",
+     "start": 6.457,
+     "ende": 6.713
+    },
+    {
+     "w": "de",
+     "start": 6.748,
+     "ende": 6.794
+    },
+    {
+     "w": "la",
+     "start": 6.829,
+     "ende": 6.887
+    },
+    {
+     "w": "mañana.",
+     "start": 6.922,
+     "ende": 7.398
+    }
+   ],
+   "schnitt": 6.397,
+   "ende": 7.582000000000001
+  },
+  {
+   "i": 7,
+   "start": 7.642,
+   "sprech_ende": 9.174,
+   "words": [
+    {
+     "w": "Vas",
+     "start": 7.642,
+     "ende": 7.827
+    },
+    {
+     "w": "sentado",
+     "start": 7.851,
+     "ende": 8.222000000000001
+    },
+    {
+     "w": "en",
+     "start": 8.245000000000001,
+     "ende": 8.292
+    },
+    {
+     "w": "un",
+     "start": 8.35,
+     "ende": 8.396
+    },
+    {
+     "w": "blindado",
+     "start": 8.42,
+     "ende": 8.733
+    },
+    {
+     "w": "negro.",
+     "start": 8.791,
+     "ende": 9.174
+    }
+   ],
+   "schnitt": 7.582000000000001,
+   "ende": 9.299999999999999
+  },
+  {
+   "i": 8,
+   "start": 9.36,
+   "sprech_ende": 10.3,
+   "words": [
+    {
+     "w": "Lo",
+     "start": 9.36,
+     "ende": 9.458947368421052
+    },
+    {
+     "w": "llaman",
+     "start": 9.458947368421052,
+     "ende": 9.75578947368421
+    },
+    {
+     "w": "_Caveirão_.",
+     "start": 9.75578947368421,
+     "ende": 10.3
+    }
+   ],
+   "schnitt": 9.299999999999999,
+   "ende": 10.344999999999999
+  },
+  {
+   "i": 9,
+   "start": 10.405,
+   "sprech_ende": 11.229,
+   "words": [
+    {
+     "w": "La",
+     "start": 10.405,
+     "ende": 10.498
+    },
+    {
+     "w": "gran",
+     "start": 10.533,
+     "ende": 10.66
+    },
+    {
+     "w": "*calavera*.",
+     "start": 10.695,
+     "ende": 11.229
+    }
+   ],
+   "schnitt": 10.344999999999999,
+   "ende": 11.296999999999999
+  },
+  {
+   "i": 10,
+   "start": 11.357,
+   "sprech_ende": 13.075,
+   "words": [
+    {
+     "w": "A",
+     "start": 11.357,
+     "ende": 11.415
+    },
+    {
+     "w": "tu",
+     "start": 11.485,
+     "ende": 11.554
+    },
+    {
+     "w": "lado:",
+     "start": 11.612,
+     "ende": 11.937
+    },
+    {
+     "w": "tu",
+     "start": 12.088,
+     "ende": 12.204
+    },
+    {
+     "w": "jefe",
+     "start": 12.251,
+     "ende": 12.425
+    },
+    {
+     "w": "de",
+     "start": 12.46,
+     "ende": 12.506
+    },
+    {
+     "w": "equipo.",
+     "start": 12.529,
+     "ende": 13.075
+    }
+   ],
+   "schnitt": 11.296999999999999,
+   "ende": 13.293999999999999
+  },
+  {
+   "i": 11,
+   "start": 13.354,
+   "sprech_ende": 14.375,
+   "words": [
+    {
+     "w": "Veinte",
+     "start": 13.354,
+     "ende": 13.609
+    },
+    {
+     "w": "años",
+     "start": 13.644,
+     "ende": 13.853
+    },
+    {
+     "w": "en",
+     "start": 13.899,
+     "ende": 13.958
+    },
+    {
+     "w": "esto.",
+     "start": 14.004,
+     "ende": 14.375
+    }
+   ],
+   "schnitt": 13.293999999999999,
+   "ende": 14.757
+  },
+  {
+   "i": 12,
+   "start": 14.817,
+   "sprech_ende": 17.301000000000002,
+   "words": [
+    {
+     "w": "Frente",
+     "start": 14.817,
+     "ende": 15.049
+    },
+    {
+     "w": "a",
+     "start": 15.084,
+     "ende": 15.107
+    },
+    {
+     "w": "ustedes:",
+     "start": 15.142,
+     "ende": 15.629
+    },
+    {
+     "w": "un",
+     "start": 15.734,
+     "ende": 15.85
+    },
+    {
+     "w": "cerro.",
+     "start": 15.896,
+     "ende": 16.326
+    },
+    {
+     "w": "Miles",
+     "start": 16.512,
+     "ende": 16.756
+    },
+    {
+     "w": "de",
+     "start": 16.79,
+     "ende": 16.848
+    },
+    {
+     "w": "casas.",
+     "start": 16.883,
+     "ende": 17.301000000000002
+    }
+   ],
+   "schnitt": 14.757,
+   "ende": 17.311000000000003
+  },
+  {
+   "i": 13,
+   "start": 17.371000000000002,
+   "sprech_ende": 17.998,
+   "words": [
+    {
+     "w": "Una",
+     "start": 17.371000000000002,
+     "ende": 17.51
+    },
+    {
+     "w": "_favela_.",
+     "start": 17.545,
+     "ende": 17.998
+    }
+   ],
+   "schnitt": 17.311000000000003,
+   "ende": 18.147000000000002
+  },
+  {
+   "i": 14,
+   "start": 18.207,
+   "sprech_ende": 20.25,
+   "words": [
+    {
+     "w": "Su",
+     "start": 18.207,
+     "ende": 18.346
+    },
+    {
+     "w": "objetivo:",
+     "start": 18.381,
+     "ende": 18.857
+    },
+    {
+     "w": "un",
+     "start": 18.961,
+     "ende": 19.054
+    },
+    {
+     "w": "hombre",
+     "start": 19.101,
+     "ende": 19.275
+    },
+    {
+     "w": "al",
+     "start": 19.298,
+     "ende": 19.345
+    },
+    {
+     "w": "que",
+     "start": 19.391,
+     "ende": 19.472
+    },
+    {
+     "w": "todos",
+     "start": 19.542,
+     "ende": 19.693
+    },
+    {
+     "w": "aquí",
+     "start": 19.739,
+     "ende": 19.855
+    },
+    {
+     "w": "conocen.",
+     "start": 19.89,
+     "ende": 20.25
+    }
+   ],
+   "schnitt": 18.147000000000002,
+   "ende": 20.25
+  },
+  {
+   "i": 15,
+   "start": 20.285,
+   "sprech_ende": 20.993,
+   "words": [
+    {
+     "w": "Y",
+     "start": 20.285,
+     "ende": 20.32
+    },
+    {
+     "w": "*nadie*",
+     "start": 20.389,
+     "ende": 20.587
+    },
+    {
+     "w": "habla.",
+     "start": 20.622,
+     "ende": 20.993
+    }
+   ],
+   "schnitt": 20.25,
+   "ende": 21.212
+  },
+  {
+   "i": 16,
+   "start": 21.272,
+   "sprech_ende": 22.595,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 21.272,
+     "ende": 21.388
+    },
+    {
+     "w": "jefe",
+     "start": 21.423,
+     "ende": 21.585
+    },
+    {
+     "w": "de",
+     "start": 21.62,
+     "ende": 21.667
+    },
+    {
+     "w": "equipo",
+     "start": 21.701,
+     "ende": 22.015
+    },
+    {
+     "w": "solo",
+     "start": 22.05,
+     "ende": 22.201
+    },
+    {
+     "w": "dice:",
+     "start": 22.235,
+     "ende": 22.595
+    }
+   ],
+   "schnitt": 21.212,
+   "ende": 22.595
+  },
+  {
+   "i": 17,
+   "start": 22.63,
+   "sprech_ende": 24.035,
+   "words": [
+    {
+     "w": "“Si",
+     "start": 22.63,
+     "ende": 22.932
+    },
+    {
+     "w": "oyes",
+     "start": 22.978,
+     "ende": 23.106
+    },
+    {
+     "w": "*fuegos",
+     "start": 23.141,
+     "ende": 23.42
+    },
+    {
+     "w": "artificiales*,",
+     "start": 23.466,
+     "ende": 24.035
+    }
+   ],
+   "schnitt": 22.595,
+   "ende": 24.056
+  },
+  {
+   "i": 18,
+   "start": 24.116,
+   "sprech_ende": 24.999,
+   "words": [
+    {
+     "w": "saben",
+     "start": 24.116,
+     "ende": 24.348
+    },
+    {
+     "w": "que",
+     "start": 24.383,
+     "ende": 24.453
+    },
+    {
+     "w": "venimos.”",
+     "start": 24.488,
+     "ende": 24.999
+    }
+   ],
+   "schnitt": 24.056,
+   "ende": 25.542
+  },
+  {
+   "i": 19,
+   "start": 25.602,
+   "sprech_ende": 27.089,
+   "words": [
+    {
+     "w": "Callejones",
+     "start": 25.602,
+     "ende": 26.009
+    },
+    {
+     "w": "angostos",
+     "start": 26.055,
+     "ende": 26.369
+    },
+    {
+     "w": "como",
+     "start": 26.403,
+     "ende": 26.531
+    },
+    {
+     "w": "un",
+     "start": 26.554,
+     "ende": 26.601
+    },
+    {
+     "w": "pasillo.",
+     "start": 26.648,
+     "ende": 27.089
+    }
+   ],
+   "schnitt": 25.542,
+   "ende": 27.089
+  },
+  {
+   "i": 20,
+   "start": 27.124,
+   "sprech_ende": 28.145,
+   "words": [
+    {
+     "w": "Escaleras",
+     "start": 27.124,
+     "ende": 27.565
+    },
+    {
+     "w": "sin",
+     "start": 27.588,
+     "ende": 27.762
+    },
+    {
+     "w": "fin.",
+     "start": 27.82,
+     "ende": 28.145
+    }
+   ],
+   "schnitt": 27.089,
+   "ende": 28.468
+  },
+  {
+   "i": 21,
+   "start": 28.528,
+   "sprech_ende": 29.48,
+   "words": [
+    {
+     "w": "Cables",
+     "start": 28.528,
+     "ende": 28.807
+    },
+    {
+     "w": "como",
+     "start": 28.842,
+     "ende": 28.981
+    },
+    {
+     "w": "telarañas.",
+     "start": 29.016,
+     "ende": 29.48
+    }
+   ],
+   "schnitt": 28.468,
+   "ende": 29.48
+  },
+  {
+   "i": 22,
+   "start": 29.504,
+   "sprech_ende": 30.769,
+   "words": [
+    {
+     "w": "En",
+     "start": 29.504,
+     "ende": 29.573
+    },
+    {
+     "w": "una",
+     "start": 29.631,
+     "ende": 29.724
+    },
+    {
+     "w": "azotea:",
+     "start": 29.759,
+     "ende": 30.189
+    },
+    {
+     "w": "un",
+     "start": 30.247,
+     "ende": 30.363
+    },
+    {
+     "w": "*niño*.",
+     "start": 30.398,
+     "ende": 30.769
+    }
+   ],
+   "schnitt": 29.48,
+   "ende": 31.150000000000002
+  },
+  {
+   "i": 23,
+   "start": 31.21,
+   "sprech_ende": 31.663,
+   "words": [
+    {
+     "w": "Los",
+     "start": 31.21,
+     "ende": 31.338
+    },
+    {
+     "w": "mira.",
+     "start": 31.385,
+     "ende": 31.663
+    }
+   ],
+   "schnitt": 31.150000000000002,
+   "ende": 31.663
+  },
+  {
+   "i": 24,
+   "start": 31.71,
+   "sprech_ende": 32.464,
+   "words": [
+    {
+     "w": "Y",
+     "start": 31.71,
+     "ende": 31.768
+    },
+    {
+     "w": "desaparece.",
+     "start": 31.837,
+     "ende": 32.464
+    }
+   ],
+   "schnitt": 31.663,
+   "ende": 32.845
+  },
+  {
+   "i": 25,
+   "start": 32.905,
+   "sprech_ende": 34.217,
+   "words": [
+    {
+     "w": "Entonces:",
+     "start": 32.905,
+     "ende": 33.509
+    },
+    {
+     "w": "un",
+     "start": 33.614,
+     "ende": 33.695
+    },
+    {
+     "w": "silbido.",
+     "start": 33.73,
+     "ende": 34.217
+    }
+   ],
+   "schnitt": 32.845,
+   "ende": 34.400999999999996
+  },
+  {
+   "i": 26,
+   "start": 34.461,
+   "sprech_ende": 36.365,
+   "words": [
+    {
+     "w": "*Fuegos",
+     "start": 34.461,
+     "ende": 34.693
+    },
+    {
+     "w": "artificiales*.",
+     "start": 34.728,
+     "ende": 35.355
+    },
+    {
+     "w": "Sobre",
+     "start": 35.413,
+     "ende": 35.611
+    },
+    {
+     "w": "todo",
+     "start": 35.645,
+     "ende": 35.785
+    },
+    {
+     "w": "el",
+     "start": 35.808,
+     "ende": 35.854
+    },
+    {
+     "w": "cerro.",
+     "start": 35.889,
+     "ende": 36.365
+    }
+   ],
+   "schnitt": 34.400999999999996,
+   "ende": 36.827999999999996
+  },
+  {
+   "i": 27,
+   "start": 36.888,
+   "sprech_ende": 37.503,
+   "words": [
+    {
+     "w": "Ya",
+     "start": 36.888,
+     "ende": 37.004
+    },
+    {
+     "w": "lo",
+     "start": 37.039,
+     "ende": 37.108
+    },
+    {
+     "w": "*saben*.",
+     "start": 37.143,
+     "ende": 37.503
+    }
+   ],
+   "schnitt": 36.827999999999996,
+   "ende": 37.884
+  },
+  {
+   "i": 28,
+   "start": 37.944,
+   "sprech_ende": 38.501,
+   "words": [
+    {
+     "w": "Tus",
+     "start": 37.944,
+     "ende": 38.095
+    },
+    {
+     "w": "órdenes:",
+     "start": 38.142,
+     "ende": 38.501
+    }
+   ],
+   "schnitt": 37.884,
+   "ende": 38.501
+  },
+  {
+   "i": 29,
+   "start": 38.536,
+   "sprech_ende": 39.639,
+   "words": [
+    {
+     "w": "Quédate",
+     "start": 38.536,
+     "ende": 38.803
+    },
+    {
+     "w": "detrás",
+     "start": 38.838,
+     "ende": 39.082
+    },
+    {
+     "w": "del",
+     "start": 39.105,
+     "ende": 39.186
+    },
+    {
+     "w": "escudo.",
+     "start": 39.221,
+     "ende": 39.639
+    }
+   ],
+   "schnitt": 38.501,
+   "ende": 39.788
+  },
+  {
+   "i": 30,
+   "start": 39.848,
+   "sprech_ende": 40.777,
+   "words": [
+    {
+     "w": "Vigila",
+     "start": 39.848,
+     "ende": 40.138
+    },
+    {
+     "w": "cada",
+     "start": 40.173,
+     "ende": 40.324
+    },
+    {
+     "w": "ventana.",
+     "start": 40.347,
+     "ende": 40.777
+    }
+   ],
+   "schnitt": 39.788,
+   "ende": 40.777
+  },
+  {
+   "i": 31,
+   "start": 40.812,
+   "sprech_ende": 41.694,
+   "words": [
+    {
+     "w": "Aquí",
+     "start": 40.812,
+     "ende": 41.009
+    },
+    {
+     "w": "viven",
+     "start": 41.044,
+     "ende": 41.206
+    },
+    {
+     "w": "*familias*.",
+     "start": 41.241,
+     "ende": 41.694
+    }
+   ],
+   "schnitt": 40.777,
+   "ende": 41.738
+  },
+  {
+   "i": 32,
+   "start": 41.798,
+   "sprech_ende": 42.855,
+   "words": [
+    {
+     "w": "Y:",
+     "start": 41.798,
+     "ende": 42.019
+    },
+    {
+     "w": "*nadie*",
+     "start": 42.077,
+     "ende": 42.286
+    },
+    {
+     "w": "se",
+     "start": 42.321,
+     "ende": 42.391
+    },
+    {
+     "w": "queda",
+     "start": 42.425,
+     "ende": 42.576
+    },
+    {
+     "w": "atrás.",
+     "start": 42.6,
+     "ende": 42.855
+    }
+   ],
+   "schnitt": 41.738,
+   "ende": 42.855
+  },
+  {
+   "i": 33,
+   "start": 42.89,
+   "sprech_ende": 43.424,
+   "words": [
+    {
+     "w": "4:12.",
+     "start": 42.89,
+     "ende": 43.424
+    }
+   ],
+   "schnitt": 42.855,
+   "ende": 43.424
+  },
+  {
+   "i": 34,
+   "start": 43.459,
+   "sprech_ende": 44.202,
+   "words": [
+    {
+     "w": "Bajan",
+     "start": 43.459,
+     "ende": 43.668
+    },
+    {
+     "w": "del",
+     "start": 43.703,
+     "ende": 43.795
+    },
+    {
+     "w": "blindado.",
+     "start": 43.819,
+     "ende": 44.202
+    }
+   ],
+   "schnitt": 43.424,
+   "ende": 44.202
+  },
+  {
+   "i": 35,
+   "start": 44.237,
+   "sprech_ende": 44.829,
+   "words": [
+    {
+     "w": "Cien",
+     "start": 44.237,
+     "ende": 44.387
+    },
+    {
+     "w": "escalones.",
+     "start": 44.422,
+     "ende": 44.829
+    }
+   ],
+   "schnitt": 44.202,
+   "ende": 44.829
+  },
+  {
+   "i": 36,
+   "start": 44.864,
+   "sprech_ende": 45.351,
+   "words": [
+    {
+     "w": "Doscientos.",
+     "start": 44.864,
+     "ende": 45.351
+    }
+   ],
+   "schnitt": 44.829,
+   "ende": 45.351
+  },
+  {
+   "i": 37,
+   "start": 45.409,
+   "sprech_ende": 45.978,
+   "words": [
+    {
+     "w": "Un",
+     "start": 45.409,
+     "ende": 45.49
+    },
+    {
+     "w": "perro",
+     "start": 45.525,
+     "ende": 45.711
+    },
+    {
+     "w": "ladra.",
+     "start": 45.746,
+     "ende": 45.978
+    }
+   ],
+   "schnitt": 45.351,
+   "ende": 45.978
+  },
+  {
+   "i": 38,
+   "start": 46.013,
+   "sprech_ende": 46.64,
+   "words": [
+    {
+     "w": "Luego",
+     "start": 46.013,
+     "ende": 46.175
+    },
+    {
+     "w": "*ninguno*.",
+     "start": 46.21,
+     "ende": 46.64
+    }
+   ],
+   "schnitt": 45.978,
+   "ende": 46.963
+  },
+  {
+   "i": 39,
+   "start": 47.023,
+   "sprech_ende": 48.753,
+   "words": [
+    {
+     "w": "Una",
+     "start": 47.023,
+     "ende": 47.185
+    },
+    {
+     "w": "tele",
+     "start": 47.22,
+     "ende": 47.371
+    },
+    {
+     "w": "encendida.",
+     "start": 47.394,
+     "ende": 47.917
+    },
+    {
+     "w": "Nadie",
+     "start": 48.068,
+     "ende": 48.288
+    },
+    {
+     "w": "la",
+     "start": 48.323,
+     "ende": 48.381
+    },
+    {
+     "w": "mira.",
+     "start": 48.416,
+     "ende": 48.753
+    }
+   ],
+   "schnitt": 46.963,
+   "ende": 49.03
+  },
+  {
+   "i": 40,
+   "start": 49.09,
+   "sprech_ende": 49.647,
+   "words": [
+    {
+     "w": "La",
+     "start": 49.09,
+     "ende": 49.194
+    },
+    {
+     "w": "casa.",
+     "start": 49.229,
+     "ende": 49.647
+    }
+   ],
+   "schnitt": 49.03,
+   "ende": 49.796
+  },
+  {
+   "i": 41,
+   "start": 49.856,
+   "sprech_ende": 50.529,
+   "words": [
+    {
+     "w": "Puerta",
+     "start": 49.856,
+     "ende": 50.134
+    },
+    {
+     "w": "azul.",
+     "start": 50.158,
+     "ende": 50.529
+    }
+   ],
+   "schnitt": 49.796,
+   "ende": 50.806
+  },
+  {
+   "i": 42,
+   "start": 50.866,
+   "sprech_ende": 52.259,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 50.866,
+     "ende": 50.97
+    },
+    {
+     "w": "jefe",
+     "start": 51.005,
+     "ende": 51.168
+    },
+    {
+     "w": "de",
+     "start": 51.203,
+     "ende": 51.249
+    },
+    {
+     "w": "equipo",
+     "start": 51.272,
+     "ende": 51.505
+    },
+    {
+     "w": "cuenta",
+     "start": 51.54,
+     "ende": 51.725
+    },
+    {
+     "w": "con",
+     "start": 51.76,
+     "ende": 51.853
+    },
+    {
+     "w": "los",
+     "start": 51.876,
+     "ende": 51.969
+    },
+    {
+     "w": "dedos.",
+     "start": 52.004,
+     "ende": 52.259
+    }
+   ],
+   "schnitt": 50.806,
+   "ende": 52.259
+  },
+  {
+   "i": 43,
+   "start": 52.318,
+   "sprech_ende": 53.235,
+   "words": [
+    {
+     "w": "Tres.",
+     "start": 52.318,
+     "ende": 52.654
+    },
+    {
+     "w": "Dos.",
+     "start": 52.689,
+     "ende": 52.979
+    },
+    {
+     "w": "Uno.",
+     "start": 53.037,
+     "ende": 53.235
+    }
+   ],
+   "schnitt": 52.259,
+   "ende": 53.235
+  },
+  {
+   "i": 44,
+   "start": 53.258,
+   "sprech_ende": 54.198,
+   "words": [
+    {
+     "w": "La",
+     "start": 53.258,
+     "ende": 53.316
+    },
+    {
+     "w": "puerta",
+     "start": 53.351,
+     "ende": 53.56
+    },
+    {
+     "w": "se",
+     "start": 53.595,
+     "ende": 53.664
+    },
+    {
+     "w": "abre",
+     "start": 53.699,
+     "ende": 53.827
+    },
+    {
+     "w": "de",
+     "start": 53.862,
+     "ende": 53.92
+    },
+    {
+     "w": "golpe.",
+     "start": 53.955,
+     "ende": 54.198
+    }
+   ],
+   "schnitt": 53.235,
+   "ende": 54.198
+  },
+  {
+   "i": 45,
+   "start": 54.222,
+   "sprech_ende": 54.732,
+   "words": [
+    {
+     "w": "*Vacía*.",
+     "start": 54.222,
+     "ende": 54.732
+    }
+   ],
+   "schnitt": 54.198,
+   "ende": 54.8
+  },
+  {
+   "i": 46,
+   "start": 54.86,
+   "sprech_ende": 56.427,
+   "words": [
+    {
+     "w": "Sobre",
+     "start": 54.86,
+     "ende": 55.081
+    },
+    {
+     "w": "la",
+     "start": 55.116,
+     "ende": 55.174
+    },
+    {
+     "w": "mesa:",
+     "start": 55.208,
+     "ende": 55.51
+    },
+    {
+     "w": "una",
+     "start": 55.58,
+     "ende": 55.719
+    },
+    {
+     "w": "taza",
+     "start": 55.754,
+     "ende": 55.94
+    },
+    {
+     "w": "de",
+     "start": 55.963,
+     "ende": 56.009
+    },
+    {
+     "w": "café.",
+     "start": 56.044,
+     "ende": 56.427
+    }
+   ],
+   "schnitt": 54.8,
+   "ende": 56.553
+  },
+  {
+   "i": 47,
+   "start": 56.613,
+   "sprech_ende": 57.345,
+   "words": [
+    {
+     "w": "Todavía",
+     "start": 56.613,
+     "ende": 56.95
+    },
+    {
+     "w": "*caliente*.",
+     "start": 56.985,
+     "ende": 57.345
+    }
+   ],
+   "schnitt": 56.553,
+   "ende": 57.345
+  },
+  {
+   "i": 48,
+   "start": 57.379,
+   "sprech_ende": 57.693,
+   "words": [
+    {
+     "w": "Salen.",
+     "start": 57.379,
+     "ende": 57.693
+    }
+   ],
+   "schnitt": 57.345,
+   "ende": 57.693
+  },
+  {
+   "i": 49,
+   "start": 57.728,
+   "sprech_ende": 58.958,
+   "words": [
+    {
+     "w": "Sin",
+     "start": 57.728,
+     "ende": 57.867
+    },
+    {
+     "w": "un",
+     "start": 57.914,
+     "ende": 57.96
+    },
+    {
+     "w": "disparo.",
+     "start": 57.995,
+     "ende": 58.308
+    },
+    {
+     "w": "Ningún",
+     "start": 58.331,
+     "ende": 58.552
+    },
+    {
+     "w": "herido.",
+     "start": 58.575,
+     "ende": 58.958
+    }
+   ],
+   "schnitt": 57.693,
+   "ende": 59.141999999999996
+  },
+  {
+   "i": 50,
+   "start": 59.202,
+   "sprech_ende": 60.259,
+   "words": [
+    {
+     "w": "Sale",
+     "start": 59.202,
+     "ende": 59.434
+    },
+    {
+     "w": "el",
+     "start": 59.458,
+     "ende": 59.516
+    },
+    {
+     "w": "sol",
+     "start": 59.574,
+     "ende": 59.701
+    },
+    {
+     "w": "sobre",
+     "start": 59.736,
+     "ende": 59.922
+    },
+    {
+     "w": "_Río_.",
+     "start": 59.98,
+     "ende": 60.259
+    }
+   ],
+   "schnitt": 59.141999999999996,
+   "ende": 60.303
+  },
+  {
+   "i": 51,
+   "start": 60.363,
+   "sprech_ende": 60.897,
+   "words": [
+    {
+     "w": "Lo",
+     "start": 60.363,
+     "ende": 60.468
+    },
+    {
+     "w": "lograste.",
+     "start": 60.503,
+     "ende": 60.897
+    }
+   ],
+   "schnitt": 60.303,
+   "ende": 60.897
+  },
+  {
+   "i": 52,
+   "start": 60.932,
+   "sprech_ende": 61.826,
+   "words": [
+    {
+     "w": "Entonces",
+     "start": 60.932,
+     "ende": 61.234
+    },
+    {
+     "w": "vuelve",
+     "start": 61.269,
+     "ende": 61.455
+    },
+    {
+     "w": "a",
+     "start": 61.478,
+     "ende": 61.501
+    },
+    {
+     "w": "tronar.",
+     "start": 61.536,
+     "ende": 61.826
+    }
+   ],
+   "schnitt": 60.897,
+   "ende": 61.826
+  },
+  {
+   "i": 53,
+   "start": 61.849,
+   "sprech_ende": 63.393,
+   "words": [
+    {
+     "w": "*Fuegos",
+     "start": 61.849,
+     "ende": 62.116
+    },
+    {
+     "w": "artificiales*.",
+     "start": 62.151,
+     "ende": 62.766
+    },
+    {
+     "w": "Más",
+     "start": 62.824,
+     "ende": 62.987
+    },
+    {
+     "w": "que",
+     "start": 63.022,
+     "ende": 63.103
+    },
+    {
+     "w": "antes.",
+     "start": 63.138,
+     "ende": 63.393
+    }
+   ],
+   "schnitt": 61.826,
+   "ende": 63.393
+  },
+  {
+   "i": 54,
+   "start": 63.428,
+   "sprech_ende": 64.02000000000001,
+   "words": [
+    {
+     "w": "Muchos",
+     "start": 63.428,
+     "ende": 63.672
+    },
+    {
+     "w": "más.",
+     "start": 63.707,
+     "ende": 64.02000000000001
+    }
+   ],
+   "schnitt": 63.393,
+   "ende": 64.169
+  },
+  {
+   "i": 55,
+   "start": 64.229,
+   "sprech_ende": 64.87899999999999,
+   "words": [
+    {
+     "w": "Buscas",
+     "start": 64.229,
+     "ende": 64.49600000000001
+    },
+    {
+     "w": "tu",
+     "start": 64.531,
+     "ende": 64.612
+    },
+    {
+     "w": "arma.",
+     "start": 64.64699999999999,
+     "ende": 64.87899999999999
+    }
+   ],
+   "schnitt": 64.169,
+   "ende": 64.87899999999999
+  },
+  {
+   "i": 56,
+   "start": 64.90299999999999,
+   "sprech_ende": 66.424,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 64.90299999999999,
+     "ende": 64.98400000000001
+    },
+    {
+     "w": "jefe",
+     "start": 65.03,
+     "ende": 65.17
+    },
+    {
+     "w": "de",
+     "start": 65.205,
+     "ende": 65.251
+    },
+    {
+     "w": "equipo",
+     "start": 65.274,
+     "ende": 65.53
+    },
+    {
+     "w": "niega",
+     "start": 65.564,
+     "ende": 65.727
+    },
+    {
+     "w": "con",
+     "start": 65.762,
+     "ende": 65.855
+    },
+    {
+     "w": "la",
+     "start": 65.889,
+     "ende": 65.936
+    },
+    {
+     "w": "cabeza.",
+     "start": 65.971,
+     "ende": 66.424
+    }
+   ],
+   "schnitt": 64.87899999999999,
+   "ende": 66.7
+  },
+  {
+   "i": 57,
+   "start": 66.76,
+   "sprech_ende": 67.631,
+   "words": [
+    {
+     "w": "“No",
+     "start": 66.76,
+     "ende": 66.969
+    },
+    {
+     "w": "es",
+     "start": 67.004,
+     "ende": 67.05
+    },
+    {
+     "w": "una",
+     "start": 67.109,
+     "ende": 67.201
+    },
+    {
+     "w": "alarma.",
+     "start": 67.225,
+     "ende": 67.631
+    }
+   ],
+   "schnitt": 66.7,
+   "ende": 67.631
+  },
+  {
+   "i": 58,
+   "start": 67.666,
+   "sprech_ende": 68.455,
+   "words": [
+    {
+     "w": "Es",
+     "start": 67.666,
+     "ende": 67.735
+    },
+    {
+     "w": "una",
+     "start": 67.817,
+     "ende": 67.921
+    },
+    {
+     "w": "*fiesta*.”",
+     "start": 67.956,
+     "ende": 68.455
+    }
+   ],
+   "schnitt": 67.631,
+   "ende": 68.67399999999999
+  },
+  {
+   "i": 59,
+   "start": 68.734,
+   "sprech_ende": 70.011,
+   "words": [
+    {
+     "w": "*Celebran*.",
+     "start": 68.734,
+     "ende": 69.303
+    },
+    {
+     "w": "Que",
+     "start": 69.512,
+     "ende": 69.616
+    },
+    {
+     "w": "se",
+     "start": 69.651,
+     "ende": 69.721
+    },
+    {
+     "w": "van.",
+     "start": 69.756,
+     "ende": 70.011
+    }
+   ],
+   "schnitt": 68.67399999999999,
+   "ende": 70.334
+  },
+  {
+   "i": 60,
+   "start": 70.394,
+   "sprech_ende": 71.811,
+   "words": [
+    {
+     "w": "En",
+     "start": 70.394,
+     "ende": 70.499
+    },
+    {
+     "w": "la",
+     "start": 70.533,
+     "ende": 70.592
+    },
+    {
+     "w": "azotea",
+     "start": 70.626,
+     "ende": 70.917
+    },
+    {
+     "w": "está",
+     "start": 70.951,
+     "ende": 71.079
+    },
+    {
+     "w": "otra",
+     "start": 71.114,
+     "ende": 71.265
+    },
+    {
+     "w": "vez",
+     "start": 71.3,
+     "ende": 71.404
+    },
+    {
+     "w": "el",
+     "start": 71.462,
+     "ende": 71.509
+    },
+    {
+     "w": "niño.",
+     "start": 71.532,
+     "ende": 71.811
+    }
+   ],
+   "schnitt": 70.334,
+   "ende": 71.811
+  },
+  {
+   "i": 61,
+   "start": 71.857,
+   "sprech_ende": 72.356,
+   "words": [
+    {
+     "w": "*Saluda*.",
+     "start": 71.857,
+     "ende": 72.356
+    }
+   ],
+   "schnitt": 71.811,
+   "ende": 72.53999999999999
+  },
+  {
+   "i": 62,
+   "start": 72.6,
+   "sprech_ende": 73.738,
+   "words": [
+    {
+     "w": "Esta",
+     "start": 72.6,
+     "ende": 72.832
+    },
+    {
+     "w": "noche",
+     "start": 72.867,
+     "ende": 73.053
+    },
+    {
+     "w": "él",
+     "start": 73.099,
+     "ende": 73.157
+    },
+    {
+     "w": "los",
+     "start": 73.181,
+     "ende": 73.273
+    },
+    {
+     "w": "*anunció*.",
+     "start": 73.32,
+     "ende": 73.738
+    }
+   ],
+   "schnitt": 72.53999999999999,
+   "ende": 73.829
+  },
+  {
+   "i": 63,
+   "start": 73.889,
+   "sprech_ende": 74.666,
+   "words": [
+    {
+     "w": "Tiene",
+     "start": 73.889,
+     "ende": 74.109
+    },
+    {
+     "w": "_doce_",
+     "start": 74.144,
+     "ende": 74.318
+    },
+    {
+     "w": "años.",
+     "start": 74.353,
+     "ende": 74.666
+    }
+   ],
+   "schnitt": 73.829,
+   "ende": 74.666
+  },
+  {
+   "i": 64,
+   "start": 74.713,
+   "sprech_ende": 75.955,
+   "words": [
+    {
+     "w": "Ustedes",
+     "start": 74.713,
+     "ende": 75.05
+    },
+    {
+     "w": "encontraron",
+     "start": 75.084,
+     "ende": 75.444
+    },
+    {
+     "w": "la",
+     "start": 75.479,
+     "ende": 75.537
+    },
+    {
+     "w": "puerta.",
+     "start": 75.572,
+     "ende": 75.955
+    }
+   ],
+   "schnitt": 74.666,
+   "ende": 76.023
+  },
+  {
+   "i": 65,
+   "start": 76.083,
+   "sprech_ende": 77.279,
+   "words": [
+    {
+     "w": "Él",
+     "start": 76.083,
+     "ende": 76.211
+    },
+    {
+     "w": "los",
+     "start": 76.234,
+     "ende": 76.35
+    },
+    {
+     "w": "encontró",
+     "start": 76.385,
+     "ende": 76.663
+    },
+    {
+     "w": "a",
+     "start": 76.698,
+     "ende": 76.733
+    },
+    {
+     "w": "*ustedes*.",
+     "start": 76.768,
+     "ende": 77.279
+    }
+   ],
+   "schnitt": 76.023,
+   "ende": 77.497
+  },
+  {
+   "i": 66,
+   "start": 77.557,
+   "sprech_ende": 79.194,
+   "words": [
+    {
+     "w": "Mucho",
+     "start": 77.557,
+     "ende": 77.871
+    },
+    {
+     "w": "antes",
+     "start": 77.906,
+     "ende": 78.091
+    },
+    {
+     "w": "de",
+     "start": 78.115,
+     "ende": 78.161
+    },
+    {
+     "w": "que",
+     "start": 78.207,
+     "ende": 78.289
+    },
+    {
+     "w": "bajaran",
+     "start": 78.324,
+     "ende": 78.591
+    },
+    {
+     "w": "del",
+     "start": 78.625,
+     "ende": 78.707
+    },
+    {
+     "w": "blindado.",
+     "start": 78.73,
+     "ende": 79.194
+    }
+   ],
+   "schnitt": 77.497,
+   "ende": 79.204
+  },
+  {
+   "i": 67,
+   "start": 79.264,
+   "sprech_ende": 79.937,
+   "words": [
+    {
+     "w": "¿Y",
+     "start": 79.264,
+     "ende": 79.403
+    },
+    {
+     "w": "mañana?",
+     "start": 79.473,
+     "ende": 79.937
+    }
+   ],
+   "schnitt": 79.204,
+   "ende": 80.086
+  },
+  {
+   "i": 68,
+   "start": 80.146,
+   "sprech_ende": 80.913,
+   "words": [
+    {
+     "w": "Vendrá",
+     "start": 80.146,
+     "ende": 80.402
+    },
+    {
+     "w": "*otra*.",
+     "start": 80.471,
+     "ende": 80.913
+    }
+   ],
+   "schnitt": 80.086,
+   "ende": 81.738367
+  }
+ ]
+}

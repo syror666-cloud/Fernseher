@@ -1,0 +1,1970 @@
+{
+ "gesamt": 103.158776,
+ "shots": [
+  {
+   "i": 0,
+   "start": 0.0,
+   "sprech_ende": 0.697,
+   "words": [
+    {
+     "w": "One",
+     "start": 0.0,
+     "ende": 0.151
+    },
+    {
+     "w": "of",
+     "start": 0.174,
+     "ende": 0.221
+    },
+    {
+     "w": "these",
+     "start": 0.255,
+     "ende": 0.406
+    },
+    {
+     "w": "*units*",
+     "start": 0.476,
+     "ende": 0.697
+    }
+   ],
+   "schnitt": 0.0,
+   "ende": 0.697
+  },
+  {
+   "i": 1,
+   "start": 0.731,
+   "sprech_ende": 1.683,
+   "words": [
+    {
+     "w": "is",
+     "start": 0.731,
+     "ende": 0.789
+    },
+    {
+     "w": "coming",
+     "start": 0.836,
+     "ende": 1.033
+    },
+    {
+     "w": "for",
+     "start": 1.068,
+     "ende": 1.149
+    },
+    {
+     "w": "you",
+     "start": 1.184,
+     "ende": 1.254
+    },
+    {
+     "w": "tonight.",
+     "start": 1.3,
+     "ende": 1.683
+    }
+   ],
+   "schnitt": 0.697,
+   "ende": 2.065
+  },
+  {
+   "i": 2,
+   "start": 2.125,
+   "sprech_ende": 2.415,
+   "words": [
+    {
+     "w": "Let's",
+     "start": 2.125,
+     "ende": 2.287
+    },
+    {
+     "w": "see",
+     "start": 2.322,
+     "ende": 2.415
+    }
+   ],
+   "schnitt": 2.065,
+   "ende": 2.415
+  },
+  {
+   "i": 3,
+   "start": 2.45,
+   "sprech_ende": 3.204,
+   "words": [
+    {
+     "w": "if",
+     "start": 2.45,
+     "ende": 2.508
+    },
+    {
+     "w": "you",
+     "start": 2.543,
+     "ende": 2.624
+    },
+    {
+     "w": "*come",
+     "start": 2.682,
+     "ende": 2.821
+    },
+    {
+     "w": "back*.",
+     "start": 2.856,
+     "ende": 3.204
+    }
+   ],
+   "schnitt": 2.415,
+   "ende": 3.204
+  },
+  {
+   "i": 4,
+   "start": 3.254,
+   "words": [],
+   "sprech_ende": 3.254,
+   "schnitt": 3.204,
+   "ende": 5.167000000000001
+  },
+  {
+   "i": 5,
+   "start": 5.227,
+   "sprech_ende": 6.237,
+   "words": [
+    {
+     "w": "_Rio",
+     "start": 5.227,
+     "ende": 5.482
+    },
+    {
+     "w": "de",
+     "start": 5.54,
+     "ende": 5.61
+    },
+    {
+     "w": "Janeiro_.",
+     "start": 5.68,
+     "ende": 6.237
+    }
+   ],
+   "schnitt": 5.167000000000001,
+   "ende": 6.699000000000001
+  },
+  {
+   "i": 6,
+   "start": 6.759,
+   "sprech_ende": 7.491,
+   "words": [
+    {
+     "w": "Four",
+     "start": 6.759,
+     "ende": 6.933
+    },
+    {
+     "w": "in",
+     "start": 6.968,
+     "ende": 7.015
+    },
+    {
+     "w": "the",
+     "start": 7.05,
+     "ende": 7.119
+    },
+    {
+     "w": "morning.",
+     "start": 7.154,
+     "ende": 7.491
+    }
+   ],
+   "schnitt": 6.699000000000001,
+   "ende": 7.767
+  },
+  {
+   "i": 7,
+   "start": 7.827,
+   "sprech_ende": 9.440999999999999,
+   "words": [
+    {
+     "w": "You're",
+     "start": 7.827,
+     "ende": 8.036
+    },
+    {
+     "w": "sitting",
+     "start": 8.059999999999999,
+     "ende": 8.280000000000001
+    },
+    {
+     "w": "in",
+     "start": 8.315000000000001,
+     "ende": 8.361
+    },
+    {
+     "w": "a",
+     "start": 8.396,
+     "ende": 8.42
+    },
+    {
+     "w": "black",
+     "start": 8.466000000000001,
+     "ende": 8.663
+    },
+    {
+     "w": "armored",
+     "start": 8.721,
+     "ende": 9.012
+    },
+    {
+     "w": "truck.",
+     "start": 9.046,
+     "ende": 9.440999999999999
+    }
+   ],
+   "schnitt": 7.767,
+   "ende": 9.718
+  },
+  {
+   "i": 8,
+   "start": 9.778,
+   "sprech_ende": 11.438,
+   "words": [
+    {
+     "w": "They",
+     "start": 9.778,
+     "ende": 10.094190476190477
+    },
+    {
+     "w": "call",
+     "start": 10.094190476190477,
+     "ende": 10.410380952380953
+    },
+    {
+     "w": "it",
+     "start": 10.410380952380953,
+     "ende": 10.568476190476192
+    },
+    {
+     "w": "_Caveirão_.",
+     "start": 10.568476190476192,
+     "ende": 11.438
+    }
+   ],
+   "schnitt": 9.718,
+   "ende": 11.657
+  },
+  {
+   "i": 9,
+   "start": 11.717,
+   "sprech_ende": 12.727,
+   "words": [
+    {
+     "w": "The",
+     "start": 11.717,
+     "ende": 11.833
+    },
+    {
+     "w": "big",
+     "start": 11.914,
+     "ende": 12.112
+    },
+    {
+     "w": "*skull*.",
+     "start": 12.216,
+     "ende": 12.727
+    }
+   ],
+   "schnitt": 11.657,
+   "ende": 13.189
+  },
+  {
+   "i": 10,
+   "start": 13.249,
+   "sprech_ende": 14.921,
+   "words": [
+    {
+     "w": "Next",
+     "start": 13.249,
+     "ende": 13.47
+    },
+    {
+     "w": "to",
+     "start": 13.505,
+     "ende": 13.551
+    },
+    {
+     "w": "you:",
+     "start": 13.621,
+     "ende": 13.888
+    },
+    {
+     "w": "your",
+     "start": 14.166,
+     "ende": 14.306
+    },
+    {
+     "w": "team",
+     "start": 14.341,
+     "ende": 14.503
+    },
+    {
+     "w": "leader.",
+     "start": 14.561,
+     "ende": 14.921
+    }
+   ],
+   "schnitt": 13.189,
+   "ende": 15.244
+  },
+  {
+   "i": 11,
+   "start": 15.304,
+   "sprech_ende": 16.43,
+   "words": [
+    {
+     "w": "Twenty",
+     "start": 15.304,
+     "ende": 15.571
+    },
+    {
+     "w": "years",
+     "start": 15.618,
+     "ende": 15.803
+    },
+    {
+     "w": "on",
+     "start": 15.85,
+     "ende": 15.919
+    },
+    {
+     "w": "the",
+     "start": 15.954,
+     "ende": 16.024
+    },
+    {
+     "w": "job.",
+     "start": 16.058999999999997,
+     "ende": 16.43
+    }
+   ],
+   "schnitt": 15.244,
+   "ende": 16.707
+  },
+  {
+   "i": 12,
+   "start": 16.767,
+   "sprech_ende": 19.751,
+   "words": [
+    {
+     "w": "Ahead",
+     "start": 16.767,
+     "ende": 17.034
+    },
+    {
+     "w": "of",
+     "start": 17.069000000000003,
+     "ende": 17.127000000000002
+    },
+    {
+     "w": "you:",
+     "start": 17.173000000000002,
+     "ende": 17.451999999999998
+    },
+    {
+     "w": "a",
+     "start": 17.696,
+     "ende": 17.754
+    },
+    {
+     "w": "hill.",
+     "start": 17.823,
+     "ende": 18.207
+    },
+    {
+     "w": "Thousands",
+     "start": 18.648,
+     "ende": 19.089
+    },
+    {
+     "w": "of",
+     "start": 19.124,
+     "ende": 19.17
+    },
+    {
+     "w": "houses.",
+     "start": 19.217,
+     "ende": 19.751
+    }
+   ],
+   "schnitt": 16.707,
+   "ende": 19.969
+  },
+  {
+   "i": 13,
+   "start": 20.029,
+   "sprech_ende": 20.726,
+   "words": [
+    {
+     "w": "A",
+     "start": 20.029,
+     "ende": 20.099
+    },
+    {
+     "w": "_favela_.",
+     "start": 20.169,
+     "ende": 20.726
+    }
+   ],
+   "schnitt": 19.969,
+   "ende": 21.374000000000002
+  },
+  {
+   "i": 14,
+   "start": 21.434,
+   "sprech_ende": 24.035,
+   "words": [
+    {
+     "w": "Your",
+     "start": 21.434,
+     "ende": 21.597
+    },
+    {
+     "w": "target:",
+     "start": 21.643,
+     "ende": 22.096
+    },
+    {
+     "w": "a",
+     "start": 22.618,
+     "ende": 22.676
+    },
+    {
+     "w": "man",
+     "start": 22.746,
+     "ende": 22.99
+    },
+    {
+     "w": "everyone",
+     "start": 23.048,
+     "ende": 23.361
+    },
+    {
+     "w": "here",
+     "start": 23.396,
+     "ende": 23.524
+    },
+    {
+     "w": "knows.",
+     "start": 23.559,
+     "ende": 24.035
+    }
+   ],
+   "schnitt": 21.374000000000002,
+   "ende": 24.184
+  },
+  {
+   "i": 15,
+   "start": 24.244,
+   "sprech_ende": 25.265,
+   "words": [
+    {
+     "w": "And",
+     "start": 24.244,
+     "ende": 24.372
+    },
+    {
+     "w": "*nobody*",
+     "start": 24.43,
+     "ende": 24.673
+    },
+    {
+     "w": "talks.",
+     "start": 24.708,
+     "ende": 25.265
+    }
+   ],
+   "schnitt": 24.184,
+   "ende": 25.728
+  },
+  {
+   "i": 16,
+   "start": 25.788,
+   "sprech_ende": 26.972,
+   "words": [
+    {
+     "w": "Your",
+     "start": 25.788,
+     "ende": 25.939
+    },
+    {
+     "w": "team",
+     "start": 25.974,
+     "ende": 26.113
+    },
+    {
+     "w": "leader",
+     "start": 26.159,
+     "ende": 26.345
+    },
+    {
+     "w": "only",
+     "start": 26.392,
+     "ende": 26.543
+    },
+    {
+     "w": "says:",
+     "start": 26.577,
+     "ende": 26.972
+    }
+   ],
+   "schnitt": 25.728,
+   "ende": 26.972
+  },
+  {
+   "i": 17,
+   "start": 27.019,
+   "sprech_ende": 28.005,
+   "words": [
+    {
+     "w": "“When",
+     "start": 27.019,
+     "ende": 27.204
+    },
+    {
+     "w": "you",
+     "start": 27.239,
+     "ende": 27.309
+    },
+    {
+     "w": "hear",
+     "start": 27.355,
+     "ende": 27.483
+    },
+    {
+     "w": "*fireworks*,",
+     "start": 27.529,
+     "ende": 28.005
+    }
+   ],
+   "schnitt": 26.972,
+   "ende": 28.005
+  },
+  {
+   "i": 18,
+   "start": 28.029,
+   "sprech_ende": 28.934,
+   "words": [
+    {
+     "w": "they",
+     "start": 28.029,
+     "ende": 28.145
+    },
+    {
+     "w": "know",
+     "start": 28.18,
+     "ende": 28.296
+    },
+    {
+     "w": "we're",
+     "start": 28.331,
+     "ende": 28.47
+    },
+    {
+     "w": "coming.”",
+     "start": 28.505,
+     "ende": 28.934
+    }
+   ],
+   "schnitt": 28.005,
+   "ende": 29.582
+  },
+  {
+   "i": 19,
+   "start": 29.642,
+   "sprech_ende": 31.07,
+   "words": [
+    {
+     "w": "Alleys",
+     "start": 29.642,
+     "ende": 29.979
+    },
+    {
+     "w": "as",
+     "start": 30.026,
+     "ende": 30.095
+    },
+    {
+     "w": "narrow",
+     "start": 30.141,
+     "ende": 30.35
+    },
+    {
+     "w": "as",
+     "start": 30.397,
+     "ende": 30.455
+    },
+    {
+     "w": "a",
+     "start": 30.49,
+     "ende": 30.513
+    },
+    {
+     "w": "hallway.",
+     "start": 30.559,
+     "ende": 31.07
+    }
+   ],
+   "schnitt": 29.582,
+   "ende": 31.289
+  },
+  {
+   "i": 20,
+   "start": 31.349,
+   "sprech_ende": 32.312,
+   "words": [
+    {
+     "w": "Endless",
+     "start": 31.349,
+     "ende": 31.685
+    },
+    {
+     "w": "stairs.",
+     "start": 31.72,
+     "ende": 32.312
+    }
+   ],
+   "schnitt": 31.289,
+   "ende": 32.519
+  },
+  {
+   "i": 21,
+   "start": 32.579,
+   "sprech_ende": 34.089,
+   "words": [
+    {
+     "w": "Power",
+     "start": 32.579,
+     "ende": 32.812
+    },
+    {
+     "w": "lines",
+     "start": 32.846000000000004,
+     "ende": 33.067
+    },
+    {
+     "w": "like",
+     "start": 33.102000000000004,
+     "ende": 33.241
+    },
+    {
+     "w": "spider",
+     "start": 33.275999999999996,
+     "ende": 33.578
+    },
+    {
+     "w": "webs.",
+     "start": 33.613,
+     "ende": 34.089
+    }
+   ],
+   "schnitt": 32.519,
+   "ende": 34.272
+  },
+  {
+   "i": 22,
+   "start": 34.332,
+   "sprech_ende": 36.039,
+   "words": [
+    {
+     "w": "On",
+     "start": 34.332,
+     "ende": 34.472
+    },
+    {
+     "w": "a",
+     "start": 34.507,
+     "ende": 34.53
+    },
+    {
+     "w": "roof:",
+     "start": 34.588,
+     "ende": 35.052
+    },
+    {
+     "w": "a",
+     "start": 35.482,
+     "ende": 35.54
+    },
+    {
+     "w": "*boy*.",
+     "start": 35.61,
+     "ende": 36.039
+    }
+   ],
+   "schnitt": 34.272,
+   "ende": 36.675999999999995
+  },
+  {
+   "i": 23,
+   "start": 36.736,
+   "sprech_ende": 37.432,
+   "words": [
+    {
+     "w": "He",
+     "start": 36.736,
+     "ende": 36.829
+    },
+    {
+     "w": "looks",
+     "start": 36.863,
+     "ende": 37.038
+    },
+    {
+     "w": "at",
+     "start": 37.072,
+     "ende": 37.142
+    },
+    {
+     "w": "you.",
+     "start": 37.177,
+     "ende": 37.432
+    }
+   ],
+   "schnitt": 36.675999999999995,
+   "ende": 38.068999999999996
+  },
+  {
+   "i": 24,
+   "start": 38.129,
+   "sprech_ende": 39.035,
+   "words": [
+    {
+     "w": "And",
+     "start": 38.129,
+     "ende": 38.257
+    },
+    {
+     "w": "disappears.",
+     "start": 38.303,
+     "ende": 39.035
+    }
+   ],
+   "schnitt": 38.068999999999996,
+   "ende": 39.683
+  },
+  {
+   "i": 25,
+   "start": 39.743,
+   "sprech_ende": 41.496,
+   "words": [
+    {
+     "w": "Then:",
+     "start": 39.743,
+     "ende": 40.172
+    },
+    {
+     "w": "a",
+     "start": 40.683,
+     "ende": 40.741
+    },
+    {
+     "w": "hiss.",
+     "start": 40.846,
+     "ende": 41.496
+    }
+   ],
+   "schnitt": 39.683,
+   "ende": 41.864999999999995
+  },
+  {
+   "i": 26,
+   "start": 41.925,
+   "sprech_ende": 44.305,
+   "words": [
+    {
+     "w": "*Fireworks*.",
+     "start": 41.925,
+     "ende": 42.831
+    },
+    {
+     "w": "Over",
+     "start": 43.342,
+     "ende": 43.516
+    },
+    {
+     "w": "the",
+     "start": 43.551,
+     "ende": 43.62
+    },
+    {
+     "w": "whole",
+     "start": 43.667,
+     "ende": 43.841
+    },
+    {
+     "w": "hill.",
+     "start": 43.876,
+     "ende": 44.305
+    }
+   ],
+   "schnitt": 41.864999999999995,
+   "ende": 44.768
+  },
+  {
+   "i": 27,
+   "start": 44.828,
+   "sprech_ende": 45.408,
+   "words": [
+    {
+     "w": "They",
+     "start": 44.828,
+     "ende": 44.967
+    },
+    {
+     "w": "*know*.",
+     "start": 45.002,
+     "ende": 45.408
+    }
+   ],
+   "schnitt": 44.768,
+   "ende": 45.94
+  },
+  {
+   "i": 28,
+   "start": 46.0,
+   "sprech_ende": 46.651,
+   "words": [
+    {
+     "w": "Your",
+     "start": 46.0,
+     "ende": 46.163
+    },
+    {
+     "w": "orders:",
+     "start": 46.198,
+     "ende": 46.651
+    }
+   ],
+   "schnitt": 45.94,
+   "ende": 46.916
+  },
+  {
+   "i": 29,
+   "start": 46.976,
+   "sprech_ende": 47.986,
+   "words": [
+    {
+     "w": "Stay",
+     "start": 46.976,
+     "ende": 47.161
+    },
+    {
+     "w": "behind",
+     "start": 47.208,
+     "ende": 47.417
+    },
+    {
+     "w": "the",
+     "start": 47.452,
+     "ende": 47.521
+    },
+    {
+     "w": "shield.",
+     "start": 47.556,
+     "ende": 47.986
+    }
+   ],
+   "schnitt": 46.916,
+   "ende": 48.077
+  },
+  {
+   "i": 30,
+   "start": 48.137,
+   "sprech_ende": 49.03,
+   "words": [
+    {
+     "w": "Watch",
+     "start": 48.137,
+     "ende": 48.357
+    },
+    {
+     "w": "every",
+     "start": 48.392,
+     "ende": 48.566
+    },
+    {
+     "w": "window.",
+     "start": 48.601,
+     "ende": 49.03
+    }
+   ],
+   "schnitt": 48.077,
+   "ende": 49.098
+  },
+  {
+   "i": 31,
+   "start": 49.158,
+   "sprech_ende": 50.04,
+   "words": [
+    {
+     "w": "*Families*",
+     "start": 49.158,
+     "ende": 49.529
+    },
+    {
+     "w": "live",
+     "start": 49.564,
+     "ende": 49.704
+    },
+    {
+     "w": "here.",
+     "start": 49.738,
+     "ende": 50.04
+    }
+   ],
+   "schnitt": 49.098,
+   "ende": 50.062
+  },
+  {
+   "i": 32,
+   "start": 50.122,
+   "sprech_ende": 52.2,
+   "words": [
+    {
+     "w": "And:",
+     "start": 50.122,
+     "ende": 50.563
+    },
+    {
+     "w": "*nobody*",
+     "start": 51.166,
+     "ende": 51.399
+    },
+    {
+     "w": "gets",
+     "start": 51.433,
+     "ende": 51.561
+    },
+    {
+     "w": "left",
+     "start": 51.596,
+     "ende": 51.735
+    },
+    {
+     "w": "behind.",
+     "start": 51.77,
+     "ende": 52.2
+    }
+   ],
+   "schnitt": 50.062,
+   "ende": 52.522999999999996
+  },
+  {
+   "i": 33,
+   "start": 52.583,
+   "sprech_ende": 53.407,
+   "words": [
+    {
+     "w": "4:12",
+     "start": 52.583,
+     "ende": 52.995
+    },
+    {
+     "w": "a.m.",
+     "start": 52.995,
+     "ende": 53.407
+    }
+   ],
+   "schnitt": 52.522999999999996,
+   "ende": 53.626
+  },
+  {
+   "i": 34,
+   "start": 53.686,
+   "sprech_ende": 54.208,
+   "words": [
+    {
+     "w": "You",
+     "start": 53.686,
+     "ende": 53.79
+    },
+    {
+     "w": "get",
+     "start": 53.848,
+     "ende": 53.953
+    },
+    {
+     "w": "out.",
+     "start": 53.988,
+     "ende": 54.208
+    }
+   ],
+   "schnitt": 53.626,
+   "ende": 54.427
+  },
+  {
+   "i": 35,
+   "start": 54.487,
+   "sprech_ende": 55.392,
+   "words": [
+    {
+     "w": "A",
+     "start": 54.487,
+     "ende": 54.545
+    },
+    {
+     "w": "hundred",
+     "start": 54.603,
+     "ende": 54.812
+    },
+    {
+     "w": "steps.",
+     "start": 54.847,
+     "ende": 55.392
+    }
+   ],
+   "schnitt": 54.427,
+   "ende": 55.576
+  },
+  {
+   "i": 36,
+   "start": 55.636,
+   "sprech_ende": 56.205,
+   "words": [
+    {
+     "w": "Two",
+     "start": 55.636,
+     "ende": 55.799
+    },
+    {
+     "w": "hundred.",
+     "start": 55.857,
+     "ende": 56.205
+    }
+   ],
+   "schnitt": 55.576,
+   "ende": 56.388999999999996
+  },
+  {
+   "i": 37,
+   "start": 56.449,
+   "sprech_ende": 57.355,
+   "words": [
+    {
+     "w": "A",
+     "start": 56.449,
+     "ende": 56.53
+    },
+    {
+     "w": "dog",
+     "start": 56.6,
+     "ende": 56.786
+    },
+    {
+     "w": "barks.",
+     "start": 56.832,
+     "ende": 57.355
+    }
+   ],
+   "schnitt": 56.388999999999996,
+   "ende": 57.48
+  },
+  {
+   "i": 38,
+   "start": 57.54,
+   "sprech_ende": 58.399,
+   "words": [
+    {
+     "w": "Then",
+     "start": 57.54,
+     "ende": 57.714
+    },
+    {
+     "w": "*none*",
+     "start": 57.761,
+     "ende": 57.923
+    },
+    {
+     "w": "anymore.",
+     "start": 57.958,
+     "ende": 58.399
+    }
+   ],
+   "schnitt": 57.48,
+   "ende": 58.617999999999995
+  },
+  {
+   "i": 39,
+   "start": 58.678,
+   "sprech_ende": 60.721,
+   "words": [
+    {
+     "w": "A",
+     "start": 58.678,
+     "ende": 58.759
+    },
+    {
+     "w": "TV",
+     "start": 58.817,
+     "ende": 59.026
+    },
+    {
+     "w": "is",
+     "start": 59.143,
+     "ende": 59.235
+    },
+    {
+     "w": "on.",
+     "start": 59.305,
+     "ende": 59.595
+    },
+    {
+     "w": "Nobody's",
+     "start": 59.932,
+     "ende": 60.269
+    },
+    {
+     "w": "watching.",
+     "start": 60.304,
+     "ende": 60.721
+    }
+   ],
+   "schnitt": 58.617999999999995,
+   "ende": 61.044999999999995
+  },
+  {
+   "i": 40,
+   "start": 61.105,
+   "sprech_ende": 61.755,
+   "words": [
+    {
+     "w": "The",
+     "start": 61.105,
+     "ende": 61.209
+    },
+    {
+     "w": "house.",
+     "start": 61.256,
+     "ende": 61.755
+    }
+   ],
+   "schnitt": 61.044999999999995,
+   "ende": 61.973
+  },
+  {
+   "i": 41,
+   "start": 62.033,
+   "sprech_ende": 62.649,
+   "words": [
+    {
+     "w": "Blue",
+     "start": 62.033,
+     "ende": 62.231
+    },
+    {
+     "w": "door.",
+     "start": 62.254,
+     "ende": 62.649
+    }
+   ],
+   "schnitt": 61.973,
+   "ende": 62.867
+  },
+  {
+   "i": 42,
+   "start": 62.927,
+   "sprech_ende": 64.797,
+   "words": [
+    {
+     "w": "Your",
+     "start": 62.927,
+     "ende": 63.09
+    },
+    {
+     "w": "team",
+     "start": 63.125,
+     "ende": 63.264
+    },
+    {
+     "w": "leader",
+     "start": 63.311,
+     "ende": 63.496
+    },
+    {
+     "w": "counts",
+     "start": 63.543,
+     "ende": 63.752
+    },
+    {
+     "w": "down",
+     "start": 63.787,
+     "ende": 63.938
+    },
+    {
+     "w": "with",
+     "start": 63.972,
+     "ende": 64.1
+    },
+    {
+     "w": "his",
+     "start": 64.13499999999999,
+     "ende": 64.22800000000001
+    },
+    {
+     "w": "fingers.",
+     "start": 64.263,
+     "ende": 64.797
+    }
+   ],
+   "schnitt": 62.867,
+   "ende": 64.888
+  },
+  {
+   "i": 43,
+   "start": 64.94800000000001,
+   "sprech_ende": 66.689,
+   "words": [
+    {
+     "w": "Three.",
+     "start": 64.94800000000001,
+     "ende": 65.4
+    },
+    {
+     "w": "Two.",
+     "start": 65.679,
+     "ende": 66.085
+    },
+    {
+     "w": "One.",
+     "start": 66.364,
+     "ende": 66.689
+    }
+   ],
+   "schnitt": 64.888,
+   "ende": 67.07
+  },
+  {
+   "i": 44,
+   "start": 67.13,
+   "sprech_ende": 68.013,
+   "words": [
+    {
+     "w": "The",
+     "start": 67.13,
+     "ende": 67.223
+    },
+    {
+     "w": "door",
+     "start": 67.258,
+     "ende": 67.374
+    },
+    {
+     "w": "flies",
+     "start": 67.409,
+     "ende": 67.641
+    },
+    {
+     "w": "open.",
+     "start": 67.676,
+     "ende": 68.013
+    }
+   ],
+   "schnitt": 67.07,
+   "ende": 68.13799999999999
+  },
+  {
+   "i": 45,
+   "start": 68.198,
+   "sprech_ende": 68.628,
+   "words": [
+    {
+     "w": "*Empty*.",
+     "start": 68.198,
+     "ende": 68.628
+    }
+   ],
+   "schnitt": 68.13799999999999,
+   "ende": 69.276
+  },
+  {
+   "i": 46,
+   "start": 69.336,
+   "sprech_ende": 71.356,
+   "words": [
+    {
+     "w": "On",
+     "start": 69.336,
+     "ende": 69.487
+    },
+    {
+     "w": "the",
+     "start": 69.522,
+     "ende": 69.592
+    },
+    {
+     "w": "table:",
+     "start": 69.626,
+     "ende": 70.056
+    },
+    {
+     "w": "a",
+     "start": 70.578,
+     "ende": 70.625
+    },
+    {
+     "w": "cup",
+     "start": 70.671,
+     "ende": 70.799
+    },
+    {
+     "w": "of",
+     "start": 70.834,
+     "ende": 70.88
+    },
+    {
+     "w": "coffee.",
+     "start": 70.915,
+     "ende": 71.356
+    }
+   ],
+   "schnitt": 69.276,
+   "ende": 72.005
+  },
+  {
+   "i": 47,
+   "start": 72.065,
+   "sprech_ende": 72.633,
+   "words": [
+    {
+     "w": "Still",
+     "start": 72.065,
+     "ende": 72.274
+    },
+    {
+     "w": "*warm*.",
+     "start": 72.308,
+     "ende": 72.633
+    }
+   ],
+   "schnitt": 72.005,
+   "ende": 72.782
+  },
+  {
+   "i": 48,
+   "start": 72.842,
+   "sprech_ende": 73.574,
+   "words": [
+    {
+     "w": "You",
+     "start": 72.842,
+     "ende": 72.947
+    },
+    {
+     "w": "come",
+     "start": 73.005,
+     "ende": 73.144
+    },
+    {
+     "w": "back",
+     "start": 73.168,
+     "ende": 73.307
+    },
+    {
+     "w": "out.",
+     "start": 73.353,
+     "ende": 73.574
+    }
+   ],
+   "schnitt": 72.782,
+   "ende": 74.222
+  },
+  {
+   "i": 49,
+   "start": 74.282,
+   "sprech_ende": 75.664,
+   "words": [
+    {
+     "w": "Not",
+     "start": 74.282,
+     "ende": 74.433
+    },
+    {
+     "w": "a",
+     "start": 74.468,
+     "ende": 74.491
+    },
+    {
+     "w": "shot.",
+     "start": 74.526,
+     "ende": 74.886
+    },
+    {
+     "w": "Nobody",
+     "start": 75.072,
+     "ende": 75.339
+    },
+    {
+     "w": "hurt.",
+     "start": 75.385,
+     "ende": 75.664
+    }
+   ],
+   "schnitt": 74.222,
+   "ende": 76.312
+  },
+  {
+   "i": 50,
+   "start": 76.372,
+   "sprech_ende": 77.637,
+   "words": [
+    {
+     "w": "The",
+     "start": 76.372,
+     "ende": 76.476
+    },
+    {
+     "w": "sun",
+     "start": 76.511,
+     "ende": 76.651
+    },
+    {
+     "w": "rises",
+     "start": 76.697,
+     "ende": 76.999
+    },
+    {
+     "w": "over",
+     "start": 77.045,
+     "ende": 77.173
+    },
+    {
+     "w": "_Rio_.",
+     "start": 77.231,
+     "ende": 77.637
+    }
+   ],
+   "schnitt": 76.312,
+   "ende": 78.01899999999999
+  },
+  {
+   "i": 51,
+   "start": 78.079,
+   "sprech_ende": 78.613,
+   "words": [
+    {
+     "w": "You",
+     "start": 78.079,
+     "ende": 78.195
+    },
+    {
+     "w": "made",
+     "start": 78.241,
+     "ende": 78.38
+    },
+    {
+     "w": "it.",
+     "start": 78.415,
+     "ende": 78.613
+    }
+   ],
+   "schnitt": 78.01899999999999,
+   "ende": 79.261
+  },
+  {
+   "i": 52,
+   "start": 79.321,
+   "sprech_ende": 80.168,
+   "words": [
+    {
+     "w": "Then",
+     "start": 79.321,
+     "ende": 79.46
+    },
+    {
+     "w": "it",
+     "start": 79.495,
+     "ende": 79.553
+    },
+    {
+     "w": "bangs",
+     "start": 79.588,
+     "ende": 79.785
+    },
+    {
+     "w": "again.",
+     "start": 79.82,
+     "ende": 80.168
+    }
+   ],
+   "schnitt": 79.261,
+   "ende": 80.712
+  },
+  {
+   "i": 53,
+   "start": 80.772,
+   "sprech_ende": 82.873,
+   "words": [
+    {
+     "w": "*Fireworks*.",
+     "start": 80.772,
+     "ende": 81.422
+    },
+    {
+     "w": "More",
+     "start": 82.13,
+     "ende": 82.281
+    },
+    {
+     "w": "than",
+     "start": 82.316,
+     "ende": 82.421
+    },
+    {
+     "w": "before.",
+     "start": 82.455,
+     "ende": 82.873
+    }
+   ],
+   "schnitt": 80.712,
+   "ende": 83.057
+  },
+  {
+   "i": 54,
+   "start": 83.117,
+   "sprech_ende": 83.605,
+   "words": [
+    {
+     "w": "Way",
+     "start": 83.117,
+     "ende": 83.28
+    },
+    {
+     "w": "more.",
+     "start": 83.315,
+     "ende": 83.605
+    }
+   ],
+   "schnitt": 83.057,
+   "ende": 83.823
+  },
+  {
+   "i": 55,
+   "start": 83.883,
+   "sprech_ende": 84.824,
+   "words": [
+    {
+     "w": "You",
+     "start": 83.883,
+     "ende": 83.999
+    },
+    {
+     "w": "reach",
+     "start": 84.069,
+     "ende": 84.232
+    },
+    {
+     "w": "for",
+     "start": 84.267,
+     "ende": 84.348
+    },
+    {
+     "w": "your",
+     "start": 84.383,
+     "ende": 84.476
+    },
+    {
+     "w": "weapon.",
+     "start": 84.51,
+     "ende": 84.824
+    }
+   ],
+   "schnitt": 83.823,
+   "ende": 85.008
+  },
+  {
+   "i": 56,
+   "start": 85.068,
+   "sprech_ende": 86.298,
+   "words": [
+    {
+     "w": "Your",
+     "start": 85.068,
+     "ende": 85.219
+    },
+    {
+     "w": "team",
+     "start": 85.253,
+     "ende": 85.393
+    },
+    {
+     "w": "leader",
+     "start": 85.428,
+     "ende": 85.625
+    },
+    {
+     "w": "shakes",
+     "start": 85.66,
+     "ende": 85.869
+    },
+    {
+     "w": "his",
+     "start": 85.892,
+     "ende": 85.996
+    },
+    {
+     "w": "head.",
+     "start": 86.031,
+     "ende": 86.298
+    }
+   ],
+   "schnitt": 85.008,
+   "ende": 86.42399999999999
+  },
+  {
+   "i": 57,
+   "start": 86.484,
+   "sprech_ende": 87.471,
+   "words": [
+    {
+     "w": "“That's",
+     "start": 86.484,
+     "ende": 86.763
+    },
+    {
+     "w": "not",
+     "start": 86.797,
+     "ende": 86.925
+    },
+    {
+     "w": "an",
+     "start": 86.96,
+     "ende": 87.018
+    },
+    {
+     "w": "alarm.",
+     "start": 87.053,
+     "ende": 87.471
+    }
+   ],
+   "schnitt": 86.42399999999999,
+   "ende": 87.748
+  },
+  {
+   "i": 58,
+   "start": 87.808,
+   "sprech_ende": 88.493,
+   "words": [
+    {
+     "w": "That's",
+     "start": 87.808,
+     "ende": 88.017
+    },
+    {
+     "w": "a",
+     "start": 88.04,
+     "ende": 88.063
+    },
+    {
+     "w": "*party*.”",
+     "start": 88.098,
+     "ende": 88.493
+    }
+   ],
+   "schnitt": 87.748,
+   "ende": 89.14099999999999
+  },
+  {
+   "i": 59,
+   "start": 89.201,
+   "sprech_ende": 91.267,
+   "words": [
+    {
+     "w": "They're",
+     "start": 89.201,
+     "ende": 89.398
+    },
+    {
+     "w": "*celebrating*.",
+     "start": 89.433,
+     "ende": 90.002
+    },
+    {
+     "w": "That",
+     "start": 90.443,
+     "ende": 90.582
+    },
+    {
+     "w": "you're",
+     "start": 90.617,
+     "ende": 90.791
+    },
+    {
+     "w": "leaving.",
+     "start": 90.826,
+     "ende": 91.267
+    }
+   ],
+   "schnitt": 89.14099999999999,
+   "ende": 91.916
+  },
+  {
+   "i": 60,
+   "start": 91.976,
+   "sprech_ende": 93.264,
+   "words": [
+    {
+     "w": "The",
+     "start": 91.976,
+     "ende": 92.068
+    },
+    {
+     "w": "boy",
+     "start": 92.115,
+     "ende": 92.289
+    },
+    {
+     "w": "is",
+     "start": 92.335,
+     "ende": 92.405
+    },
+    {
+     "w": "back",
+     "start": 92.452,
+     "ende": 92.602
+    },
+    {
+     "w": "on",
+     "start": 92.661,
+     "ende": 92.73
+    },
+    {
+     "w": "the",
+     "start": 92.765,
+     "ende": 92.835
+    },
+    {
+     "w": "roof.",
+     "start": 92.87,
+     "ende": 93.264
+    }
+   ],
+   "schnitt": 91.916,
+   "ende": 93.39
+  },
+  {
+   "i": 61,
+   "start": 93.45,
+   "sprech_ende": 94.065,
+   "words": [
+    {
+     "w": "He",
+     "start": 93.45,
+     "ende": 93.543
+    },
+    {
+     "w": "*waves*.",
+     "start": 93.601,
+     "ende": 94.065
+    }
+   ],
+   "schnitt": 93.39,
+   "ende": 94.249
+  },
+  {
+   "i": 62,
+   "start": 94.309,
+   "sprech_ende": 95.226,
+   "words": [
+    {
+     "w": "He",
+     "start": 94.309,
+     "ende": 94.402
+    },
+    {
+     "w": "*announced*",
+     "start": 94.437,
+     "ende": 94.739
+    },
+    {
+     "w": "you",
+     "start": 94.774,
+     "ende": 94.855
+    },
+    {
+     "w": "tonight.",
+     "start": 94.89,
+     "ende": 95.226
+    }
+   ],
+   "schnitt": 94.249,
+   "ende": 95.445
+  },
+  {
+   "i": 63,
+   "start": 95.505,
+   "sprech_ende": 96.109,
+   "words": [
+    {
+     "w": "He's",
+     "start": 95.505,
+     "ende": 95.668
+    },
+    {
+     "w": "_twelve_.",
+     "start": 95.702,
+     "ende": 96.109
+    }
+   ],
+   "schnitt": 95.445,
+   "ende": 96.327
+  },
+  {
+   "i": 64,
+   "start": 96.387,
+   "sprech_ende": 97.142,
+   "words": [
+    {
+     "w": "You",
+     "start": 96.387,
+     "ende": 96.503
+    },
+    {
+     "w": "found",
+     "start": 96.573,
+     "ende": 96.747
+    },
+    {
+     "w": "the",
+     "start": 96.782,
+     "ende": 96.852
+    },
+    {
+     "w": "door.",
+     "start": 96.875,
+     "ende": 97.142
+    }
+   ],
+   "schnitt": 96.327,
+   "ende": 97.361
+  },
+  {
+   "i": 65,
+   "start": 97.421,
+   "sprech_ende": 98.082,
+   "words": [
+    {
+     "w": "He",
+     "start": 97.421,
+     "ende": 97.502
+    },
+    {
+     "w": "found",
+     "start": 97.572,
+     "ende": 97.734
+    },
+    {
+     "w": "*you*.",
+     "start": 97.792,
+     "ende": 98.082
+    }
+   ],
+   "schnitt": 97.361,
+   "ende": 98.464
+  },
+  {
+   "i": 66,
+   "start": 98.524,
+   "sprech_ende": 99.801,
+   "words": [
+    {
+     "w": "Long",
+     "start": 98.524,
+     "ende": 98.675
+    },
+    {
+     "w": "before",
+     "start": 98.709,
+     "ende": 98.907
+    },
+    {
+     "w": "you",
+     "start": 98.93,
+     "ende": 99.0
+    },
+    {
+     "w": "got",
+     "start": 99.058,
+     "ende": 99.174
+    },
+    {
+     "w": "out",
+     "start": 99.209,
+     "ende": 99.29
+    },
+    {
+     "w": "of",
+     "start": 99.313,
+     "ende": 99.359
+    },
+    {
+     "w": "the",
+     "start": 99.394,
+     "ende": 99.464
+    },
+    {
+     "w": "truck.",
+     "start": 99.487,
+     "ende": 99.801
+    }
+   ],
+   "schnitt": 98.464,
+   "ende": 100.124
+  },
+  {
+   "i": 67,
+   "start": 100.184,
+   "sprech_ende": 100.718,
+   "words": [
+    {
+     "w": "And",
+     "start": 100.184,
+     "ende": 100.3
+    },
+    {
+     "w": "tomorrow?",
+     "start": 100.335,
+     "ende": 100.718
+    }
+   ],
+   "schnitt": 100.124,
+   "ende": 101.099
+  },
+  {
+   "i": 68,
+   "start": 101.159,
+   "sprech_ende": 102.32,
+   "words": [
+    {
+     "w": "Another",
+     "start": 101.159,
+     "ende": 101.426
+    },
+    {
+     "w": "one",
+     "start": 101.461,
+     "ende": 101.554
+    },
+    {
+     "w": "comes",
+     "start": 101.589,
+     "ende": 101.751
+    },
+    {
+     "w": "for",
+     "start": 101.786,
+     "ende": 101.89
+    },
+    {
+     "w": "*you*.",
+     "start": 101.925,
+     "ende": 102.32
+    }
+   ],
+   "schnitt": 101.099,
+   "ende": 103.158776
+  }
+ ]
+}

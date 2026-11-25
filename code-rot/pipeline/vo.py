@@ -12,8 +12,8 @@ def plain(t: str) -> str:
     return re.sub(r"[*_]", "", t)
 
 
-def tts(text, voice, model, settings, out_mp3: pathlib.Path):
-    body = json.dumps({"text": text, "model_id": model, "voice_settings": settings, "language_code": "de"}).encode()
+def tts(text, voice, model, settings, out_mp3: pathlib.Path, sprache="de"):
+    body = json.dumps({"text": text, "model_id": model, "voice_settings": settings, "language_code": sprache}).encode()
     req = urllib.request.Request(API.format(voice=voice), data=body, method="POST",
                                  headers={"xi-api-key": "proxy-injected", "Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=300) as r:
@@ -34,7 +34,7 @@ def build(episode, outdir: pathlib.Path, force=False):
             teile.append(t); pos += len(t) + 1
     text = " ".join(teile)
     if force or not raw_mp3.exists():
-        align = tts(text, episode.STIMME, episode.MODELL, episode.STIMM_EINSTELLUNG, raw_mp3)
+        align = tts(text, episode.STIMME, episode.MODELL, episode.STIMM_EINSTELLUNG, raw_mp3, getattr(episode, "SPRACHE", "de"))
         align_f.write_text(json.dumps(align, ensure_ascii=False))
     align = json.loads(align_f.read_text())
     chars, st, en = align["characters"], align["character_start_times_seconds"], align["character_end_times_seconds"]

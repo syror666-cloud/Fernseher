@@ -135,7 +135,7 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
         z = hud["regeln"]["zeilen"]; neu = hud["regeln"].get("neu", False)
         zeilen = "".join(f'<div class="zeile {"r" if x.startswith("!") else ""} {"neu" if neu and i == len(z) - 1 else ""}">'
                          f'{_html.escape(x.lstrip("!"))}</div>' for i, x in enumerate(z))
-        teile.append(f'<div class="regeln"><div class="kopf">Deine Befehle</div><div class="body">{zeilen}</div></div>')
+        teile.append(f'<div class="regeln"><div class="kopf">{_html.escape(hud["regeln"].get("kopf", "Deine Befehle"))}</div><div class="body">{zeilen}</div></div>')
     if shot.get("hinweis") and not hud.get("titel"):
         teile.append(f'<div style="position:absolute;left:40px;bottom:60px;font-family:MXB;font-size:26px;letter-spacing:4px;'
                      f'color:rgba(255,255,255,.55);text-shadow:0 2px 6px #000">{_html.escape(shot["hinweis"])}</div>')

@@ -131,7 +131,7 @@ def main():
     wm = WhisperModel("small", device="cpu", compute_type="int8")
     import wave
     w = wave.open(str(w16)); a = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
-    segs, _ = wm.transcribe(a, language="de")
+    segs, _ = wm.transcribe(a, language=getattr(ep, "SPRACHE", "de"))
     gehoert = " ".join(x.text for x in segs)
     norm_ = lambda t: re.sub(r"[^a-zäöüß0-9 ]", " ", t.lower()).split()
     soll = " ".join(re.sub(r"[*_]", "", s.get("sprich") or s["text"]) for s in ep.SHOTS)

@@ -446,6 +446,8 @@ def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
     if s.get("regeln") is not None and s.get("regeln") is not False:
         nr = s["regeln"]; pr = (prev or {}).get("regeln")
         hud["regeln"] = {"zeilen": ep.BEFEHLE[:nr] or [], "neu": isinstance(pr, int) and nr > pr}
+        if getattr(ep, "BEFEHLE_KOPF", None):
+            hud["regeln"]["kopf"] = ep.BEFEHLE_KOPF
         hud["regeln_neu_box"] = not isinstance(pr, int)
     if AGGR:
         s.update(aggressiv_extras(k, s, t, dauer, prev))
