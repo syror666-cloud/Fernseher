@@ -48,3 +48,15 @@ Hilfeseiten, Marketing-Analysen und Creator-Leitfäden; einzelne Prozentzahlen a
   Danach direkt die Geschichte – Spind-Intro und Titelkarte entfallen vorne (Einheit + Teil als kleine Einblendung);
   das Spind-Outro bleibt als Serien-Erkennung am Ende und für den Loop.
 - Nächster Test: Hook-Varianten A/B (anderer erster Satz) und Vergleich der 3-Sekunden-Rate (Ziel > 60 %).
+
+## Analyse Referenz-Creator „Horror Roulette“ (Siren Head, 71 s, 401.000 Aufrufe, 27.100 Likes)
+- **0,0 s Stimme:** „Eines dieser Monster ist ausgebrochen. Mal sehen, wer es ist.“ – kein stummer Anfang.
+- **0–5,5 s Roulette:** hell ausgeleuchtete Zellen (Spot + farbiger Glow), bekannte Figuren sofort erkennbar,
+  lesbare Schilder, gelber Zeiger in der Mitte, Kopfzeile „Horror ROULETTE“; Rate-Spiel = Neugier.
+- **5,5 s Auflösung:** Name + Untertitel („SIREN HEAD – DIE DURCHSAGE“), dann ab 7 s Geschichte in Du-Form.
+- **Bild:** warme, satte Farben (Herbst/Sonnenuntergang), Figur oft nah mit großer Emotion, Karten, Notizbuch,
+  Regel-Boxen, Comic-Effekte („WÄÄH“), HUD oben „Tag 3 · 19:41 Uhr“.
+- **Schnitt:** ruhig, alle 2–4 s ein Schnitt, sanfte Kamerafahrten – **keine** Zoomsprünge.
+- **Ende:** Wendung in den letzten 5 s („Daneben steht Siren Head. Und die Lautsprecher zeigen genau auf dich.“).
+- **Konsequenz für CODE ROT:** Stimme ab Bild 1 (Hook 2.0 oder Roulette), Roulette deutlich heller, Farbgebung
+  heller/satter, Zoomsprünge stark reduziert. Test: Variante A (Hook 2.0) gegen B (helles Roulette).
