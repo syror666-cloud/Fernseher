@@ -347,24 +347,27 @@ FEUER_BG = {"boden_feuer", "nase_feuer"}
 
 AGGR = "--aggressiv" in sys.argv   # Schnitt für sehr kurze Aufmerksamkeitsspanne
 TEMPO = float(os.environ.get("TEMPO", "1.1"))  # Beschleunigung der Erzählung im aggressiven Modus
-PUNCH_STUFEN = [1.0, 1.17, 1.07, 1.26]
+PUNCH_STUFEN = [1.0, 1.12, 1.0, 1.18]  # dezenter (Nutzerwunsch: nicht zu oft rein und raus)
+PUNCH_ABSTAND = 1.6  # mindestens so viele Sekunden zwischen zwei Zoomsprüngen, höchstens einer je Einstellung
 
 
 def aggressiv_extras(k, s, t, dauer, prev_s):
-    """Punch-ins (harte Bildsprünge) etwa alle 0,6-0,9 s an Wortgrenzen, Stöße auf roten Wörtern,
+    """Punch-ins (harte Bildsprünge) höchstens jede zweite Einstellung an einer Wortgrenze, Stöße auf roten Wörtern,
     kurzer Blitz bei Ortswechsel."""
     ex = {}
     if s.get("titel") or s.get("stille"):
         return ex
     rel = [(w["start"] - t["schnitt"], w) for w in t["words"]]
-    punches, letzte, stufe = [], 0.0, 1 + (k % 2)
+    punches, letzte, stufe = [], 0.0, 1 + 2 * ((k // 2) % 2)  # 1.12 oder 1.18 im Wechsel
     kandidaten = [r for r, _ in rel[1:]] or ([dauer / 2] if dauer >= 1.2 else [])
     for c in kandidaten:
-        if c - letzte >= 0.6 and dauer - c >= 0.4:
+        if punches:
+            break
+        if c - letzte >= PUNCH_ABSTAND * 0.5 and dauer - c >= 0.5 and dauer >= 1.3 and k % 2 == 0:
             z = PUNCH_STUFEN[stufe % len(PUNCH_STUFEN)]; stufe += 1
             dx = ((k * 37 + stufe * 53) % 61 - 30) * (z - 1) * 4
             punches.append([round(c, 3), z, round(dx, 1), 0]); letzte = c
-    if dauer >= 1.0 and not punches:
+    if dauer >= 2.2 and not punches:
         punches.append([round(min(dauer * 0.5, dauer - 0.4), 3), PUNCH_STUFEN[stufe % 4], 0, 0])
     ex["punches"] = punches
     ex["stoesse"] = [[round(max(r, 0), 3), 0.28] for r, w in rel if "*" in w["w"]]
