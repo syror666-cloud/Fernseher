@@ -122,14 +122,64 @@ def _kopfbedeckung(f, cx, ky, kr):
     return ""
 
 
-def svg_ganz(f: Figur, expr: str = "neutral", width: int = 600, height: int = 1600) -> str:
+KURZ = 0.7  # Beinlänge im Comic-Look (große Köpfe, kurze Beine)
+
+
+def _beine_kurz(f):
+    return f'<g transform="translate(0,1000) scale(1,{KURZ}) translate(0,-1000)">{_beine(f)}</g>'
+
+
+def svg_ganz(f: Figur, expr: str = "neutral", width: int = 600, height: int = 1600, arm: str = "unten", kurz: bool = False) -> str:
     """Ganzkörper: Halbnah-Figur plus Gürtel, Beine, Stiefel (viewBox 600x1600)."""
-    oben = svg(f, expr).split(">", 1)[1].rsplit("</svg>", 1)[0]
+    oben = svg(f, expr, arm=arm).split(">", 1)[1].rsplit("</svg>", 1)[0]
     oben = oben.replace('Q150,820 168,690 Z" fill="' + f.jacke + '"/></g>', 'Q150,820 168,690 Z" fill="' + f.jacke + '"/><circle cx="132" cy="1000" r="34" fill="#141414"/></g>', 1)
     oben = oben.replace('Q450,820 432,690 Z" fill="' + f.jacke + '"/></g>', 'Q450,820 432,690 Z" fill="' + f.jacke + '"/><circle cx="468" cy="1000" r="34" fill="#141414"/></g>', 1)
     # Beine hinter den Oberkörper legen
+    if kurz:
+        hh = int(1000 + 600 * KURZ)
+        return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 {hh}" width="{width}" height="{int(width * hh / 600)}">'
+                f'<g class="rig-ganz">{_beine_kurz(f)}{oben}</g></svg>')
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1600" width="{width}" height="{height}">'
             f'<g class="rig-ganz">{_beine(f)}{oben}</g></svg>')
+
+
+def svg_ruecken(f: Figur, width: int = 600, height: int = 1600, waffe: bool = True) -> str:
+    """Rückansicht in ganzer Größe (Figur läuft vom Zuschauer weg, wie im Referenz-Stil). viewBox 600x1600."""
+    haut, haut_s = HAUT[f.haut]
+    cx, ky, kr = 300, 330, 160
+    hh = int(1000 + 600 * KURZ)
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 {hh}" width="{width}" height="{int(width * hh / 600)}">',
+         '<g class="rig-ganz">', _beine_kurz(f), '<g class="rig-figur"><g class="rig-koerper" data-o="300,1000">',
+         f'<path d="M110,1000 L118,640 Q124,560 210,540 L390,540 Q476,560 482,640 L490,1000 Z" fill="{f.jacke}"/>',
+         f'<path d="M420,1000 L428,620 Q470,600 482,640 L490,1000 Z" fill="{f.jacke_schatten}"/>']
+    if not f.zivil:  # Westen-Rückenplatte mit Rucksack/Funk
+        p.append(f'<path d="M150,1000 L156,640 Q170,590 236,580 L364,580 Q430,590 444,640 L450,1000 Z" fill="{f.weste}"/>')
+        p.append('<rect x="200" y="640" width="200" height="230" rx="26" fill="#22281E"/><rect x="200" y="640" width="200" height="60" rx="22" fill="#2C3326"/>'
+                 '<rect x="232" y="720" width="136" height="16" rx="6" fill="#1A1F17"/>')
+        if f.funk:
+            p.append('<rect x="372" y="600" width="44" height="110" rx="8" fill="#121416"/><rect x="398" y="470" width="8" height="140" rx="3" fill="#121416"/>')
+    if waffe:
+        p.append('<path d="M120,600 L470,960 L452,980 L104,622 Z" fill="#1B1D1F"/>')  # Gewehr am Riemen über dem Rücken
+    p.append('</g>')
+    p.append(f'<g class="rig-arm-l" data-o="140,650"><path d="M118,640 Q90,800 104,1000 L160,1000 Q150,820 168,690 Z" fill="{f.jacke}"/></g>')
+    p.append(f'<g class="rig-arm-r" data-o="460,650"><path d="M482,640 Q510,800 496,1000 L440,1000 Q450,820 432,690 Z" fill="{f.jacke_schatten}"/></g>')
+    p.append(f'<rect x="262" y="470" width="76" height="80" rx="20" fill="{haut_s}"/>')
+    p.append(f'<g class="rig-kopf" data-o="{cx},{ky+170}"><circle cx="{cx}" cy="{ky}" r="{kr}" fill="{haut}"/>')
+    for s_ in (-1, 1):
+        p.append(f'<ellipse cx="{cx + s_*150}" cy="{ky+20}" rx="22" ry="34" fill="{haut_s}"/>')
+    p.append(f'<path d="M{cx-160},{ky+20} Q{cx-172},{ky-172} {cx},{ky-168} Q{cx+172},{ky-172} {cx+160},{ky+20} '
+             f'Q{cx+150},{ky+120} {cx+90},{ky+140} Q{cx},{ky+120} {cx-90},{ky+140} Q{cx-150},{ky+120} {cx-160},{ky+20} Z" fill="{f.haar}"/>'
+             f'<path d="M{cx-100},{ky+60} Q{cx},{ky+90} {cx+100},{ky+60}" stroke="#000" stroke-opacity=".18" stroke-width="10" fill="none"/>')
+    if f.kopf == "kappe":
+        p.append(f'<path d="M{cx-162},{ky-30} Q{cx-164},{ky-196} {cx},{ky-196} Q{cx+164},{ky-196} {cx+162},{ky-30} Q{cx},{ky-60} {cx-162},{ky-30} Z" fill="{f.kopf_farbe}"/>'
+                 f'<rect x="{cx-40}" y="{ky-50}" width="80" height="22" rx="8" fill="#1A1C16"/>')
+    elif f.helm or f.kopf in ("nachtsicht", "visier"):
+        c = f.helm_farbe if f.helm else f.kopf_farbe
+        p.append(f'<path d="M{cx-172},{ky+10} Q{cx-176},{ky-206} {cx},{ky-210} Q{cx+176},{ky-206} {cx+172},{ky+10} Q{cx},{ky-20} {cx-172},{ky+10} Z" fill="{c}"/>')
+    elif f.kopf in ("sturmhaube", "gasmaske"):
+        p.append(f'<circle cx="{cx}" cy="{ky}" r="{kr+6}" fill="{f.kopf_farbe}"/>')
+    p.append('</g></g></g></svg>')
+    return "".join(p)
 
 
 def _beine(f):
@@ -183,6 +233,17 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
         p.append(ARM_L.replace("{hand_l}", ""))
         p.append(f'<g class="rig-arm-r" data-o="480,640"><path d="M470,620 L590,500 L612,540 L500,690 Z" fill="{f.jacke}"/>'
                  '<circle cx="600" cy="510" r="30" fill="#1B1D1F"/></g>')
+    elif arm == "waffe":  # Gewehr schräg vor der Brust, beide Hände dran
+        p.append(f'<g class="rig-arm-l" data-o="140,650"><path d="M118,640 Q80,760 150,860 L300,800 L280,760 L196,790 Q170,720 168,690 Z" fill="{f.jacke}"/></g>')
+        p.append('<g class="rig-waffe" data-o="300,800"><path d="M70,930 L520,640 L548,668 L120,960 Z" fill="#1B1D1F"/>'
+                 '<rect x="250" y="760" width="40" height="90" rx="8" fill="#141516" transform="rotate(-33 270 805)"/>'
+                 '<path d="M120,960 L60,1010 L40,980 L70,930 Z" fill="#3A2A1E"/></g>')
+        p.append('<circle cx="290" cy="790" r="30" fill="#1B1D1F"/>')
+        p.append(f'<g class="rig-arm-r" data-o="460,650"><path d="M482,640 Q520,720 470,720 L430,700 Q440,690 432,690 Z" fill="{f.jacke}"/>'
+                 '<circle cx="452" cy="706" r="28" fill="#1B1D1F"/></g>')
+    elif arm == "fernglas":  # Fernglas vor den Augen (nach dem Kopf gezeichnet, siehe unten)
+        p.append(f'<g class="rig-arm-l" data-o="140,650"><path d="M118,640 Q60,560 170,400 L220,430 Q150,560 168,690 Z" fill="{f.jacke}"/></g>')
+        p.append(f'<g class="rig-arm-r" data-o="460,650"><path d="M482,640 Q540,560 430,400 L380,430 Q450,560 432,690 Z" fill="{f.jacke}"/></g>')
     # --- Hals & Kopf ---
     p.append(f'<rect x="262" y="470" width="76" height="80" rx="20" fill="{haut_s}"/>')
     p.append(f'<g class="rig-kopf" data-o="{cx},{kopf_y+170}">')
@@ -224,6 +285,13 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
     p.append(_kopfbedeckung(f, cx, kopf_y, kopf_r))
     if expr in ("angst", "schock"):
         p.append(f'<g class="rig-schweiss"><path d="M{cx+128},{kopf_y-90} Q{cx+142},{kopf_y-60} {cx+128},{kopf_y-52} Q{cx+114},{kopf_y-60} {cx+128},{kopf_y-90} Z" fill="#9FD3F0"/></g>')
+    if arm == "fernglas":
+        p.append(f'<g class="rig-fernglas"><rect x="{cx-120}" y="{kopf_y-40}" width="100" height="80" rx="20" fill="#16181A"/>'
+                 f'<rect x="{cx+20}" y="{kopf_y-40}" width="100" height="80" rx="20" fill="#16181A"/>'
+                 f'<rect x="{cx-30}" y="{kopf_y-20}" width="60" height="34" fill="#16181A"/>'
+                 f'<circle cx="{cx-70}" cy="{kopf_y}" r="26" fill="#2E4A5E"/><circle cx="{cx+70}" cy="{kopf_y}" r="26" fill="#2E4A5E"/>'
+                 f'<circle cx="{cx-78}" cy="{kopf_y-8}" r="7" fill="#9CC4DC"/><circle cx="{cx+62}" cy="{kopf_y-8}" r="7" fill="#9CC4DC"/>'
+                 f'<circle cx="{cx-150}" cy="{kopf_y+20}" r="30" fill="#1B1D1F"/><circle cx="{cx+150}" cy="{kopf_y+20}" r="30" fill="#1B1D1F"/></g>')
     p.append("</g>")  # Ende Kopf
     p.append("</g>")  # Ende Figur
     p.append("</svg>")

@@ -91,12 +91,29 @@
     if (a === "fallen") { const p = easeOut((t - (F.ab || 0.5)) / 0.5); fr = -25 * p; fy = 380 * p; fx = -60 * p; }
     if (a === "gehen") { const ph = t * 5 + s; fy = -8 * Math.abs(Math.sin(ph)); fx = (F.richtung || -1) * t * 70; }
     if (a === "pop") { const p = easeOut(t / 0.35); fy = (1 - p) * 120; }
+    // Ganzkörper-Gehen im Bild (neuer Look): Beine/Arme schwingen, Körper wippt; *_weg = Rückansicht läuft ins Bild
+    let gsc = 1;
+    if (a === "laufen" || a === "laufen_weg" || a === "laufen_hin" || a === "rennen_hin") {
+      const schnell = a === "rennen_hin", ph = t * (schnell ? 11 : 6.5) + s;
+      const amp = schnell ? 26 : 16;
+      beinL = amp * Math.sin(ph); beinR = -amp * Math.sin(ph); armL = -amp * 0.8 * Math.sin(ph); armR = amp * 0.8 * Math.sin(ph);
+      fy = -(schnell ? 22 : 12) * Math.abs(Math.sin(ph)); fr = (schnell ? 2.5 : 1.2) * Math.sin(ph);
+      if (a === "laufen_weg") { gsc = 1 - 0.09 * t; fy -= 60 * t; }
+      if (a === "laufen_hin" || schnell) { gsc = 0.9 + (schnell ? 0.12 : 0.06) * t; }
+      fx = (F.richtung || 0) * t * (F.tempo || 60);
+    }
+    if (a === "umsehen") {  // Kopf dreht sich suchend, Pupillen folgen
+      kd = 7 * Math.sin(t * 1.7 + s); um(q("kopf"), kd, 1, 1, 14 * Math.sin(t * 1.7 + s), ky);
+      setzeT(q("pupillen"), `translate(${16 * Math.sin(t * 1.7 + s + 0.3)},2)`);
+    }
+    if (a === "zielen") { fy = 4 * noise1(t * 1.3, s); fr = 0.8 * noise1(t * 0.9, s + 1); um(q("waffe"), 1.5 * noise1(t * 2, s + 2), 1, 1, 0, 0); }
     if (ex === "schreien" || a === "zucken") { fx += 10 * noise1(t * 25, s); }
     um(q("arm-l"), armL, 1, 1, 0, 0); um(q("arm-r"), armR, 1, 1, 0, 0);
     um(q("bein-l"), beinL, 1, 1, 0, 0); um(q("bein-r"), beinR, 1, 1, 0, 0);
     // ganze Figur
     let sc = 1;
     if (a === "pop") sc = 0.85 + 0.15 * easeOut(t / 0.35);
+    sc *= gsc;
     F.wrap.style.transform = `translate(${fx}px,${fy}px) rotate(${fr}deg) scale(${sc})`;
     // Inserts
     if (a === "funk") {

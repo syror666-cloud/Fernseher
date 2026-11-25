@@ -30,7 +30,7 @@ args = ap.parse_args(argv)
 random.seed(19)
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scn = bpy.context.scene
-MORGEN = args.zeit == "morgen"; DAEMM = args.zeit == "daemmerung"; TAG = args.zeit == "tag"
+MORGEN = args.zeit == "morgen"; DAEMM = args.zeit == "daemmerung"; GOLD = args.zeit == "gold"; TAG = args.zeit == "tag" or GOLD
 NACHT = not (MORGEN or DAEMM or TAG)
 
 
@@ -80,6 +80,7 @@ if args.berge:
     import random as _r
     _r.seed(77)
     BERG = [Masse(f"berg{i}", mat(f"berg{i}", c, 0.95)) for i, c in enumerate(
+        [(0.62, 0.34, 0.40), (0.50, 0.30, 0.46), (0.70, 0.42, 0.42)] if GOLD else
         [(0.30, 0.36, 0.30), (0.26, 0.32, 0.30), (0.36, 0.38, 0.34)] if (TAG or MORGEN) else
         [(0.08, 0.09, 0.14), (0.06, 0.07, 0.12), (0.1, 0.1, 0.16)])]
     for i in range(46):  # zwei Ringe: nahe grüne Hügel, ferne höhere Berge
@@ -88,13 +89,18 @@ if args.berge:
         dist = _r.uniform(330, 420) if fern else _r.uniform(210, 260)
         r = _r.uniform(90, 150) if fern else _r.uniform(60, 95)
         hgt = _r.uniform(90, 170) if fern else _r.uniform(40, 75)
+        if GOLD:  # höhere, gestaffelte Kämme wie im Aburrá-Tal
+            hgt *= 1.5
         BERG[i % 3]._add(lambda b, r=r, hgt=hgt: __import__("bmesh").ops.create_cone(
             b, cap_ends=True, segments=_r.choice([5, 6, 7]), radius1=r, radius2=r * 0.08, depth=hgt),
             (math.cos(a) * dist, 40 + math.sin(a) * dist, hgt / 2 - 6), (0, 0, _r.uniform(0, 1)))
     for m_ in BERG:
         m_.fertig()
     # Bäume auf dem freien Gelände um die Stadt
-    BAUM = Masse("baeume", mat("baum", (0.16, 0.30, 0.14) if (TAG or MORGEN) else (0.03, 0.06, 0.04), 0.95))
+    BAUM_L = [Masse(f"baeume{i}", mat(f"baum{i}", c, 0.95)) for i, c in enumerate(
+        [(0.18, 0.42, 0.12), (0.30, 0.50, 0.10), (0.10, 0.32, 0.16), (0.85, 0.30, 0.45), (0.95, 0.55, 0.12)] if GOLD else
+        [(0.16, 0.30, 0.14)] if (TAG or MORGEN) else [(0.03, 0.06, 0.04)])]
+    _rf = random.Random(5)
     STAMM = Masse("staemme", mat("stamm", (0.22, 0.14, 0.08), 0.95))
     n = 0
     while n < 700:
@@ -104,11 +110,15 @@ if args.berge:
         z0 = H(yy) if yy < 120 else H(120) + (yy - 120) * 0.1
         h_ = _r.uniform(4, 9)
         STAMM.zylinder((x, yy, z0 + h_ * 0.2), 0.3, h_ * 0.4, verts=5)
-        BAUM.kugel((x, yy, z0 + h_ * 0.6), h_ * 0.35, scale=(1, 1, 1.3), sub=1)
+        # Low-Poly-Kronen in mehreren Farben (Bougainvillea/Tulpenbaum-Akzente bei GOLD)
+        BAUM_L[_rf.choices(range(len(BAUM_L)), weights=[5, 3, 4, 1, 1][:len(BAUM_L)])[0]].kugel(
+            (x, yy, z0 + h_ * 0.6), h_ * 0.35, scale=(1, 1, 1.3), sub=1)
         n += 1
-    BAUM.fertig(); STAMM.fertig()
+    for b_ in BAUM_L:
+        b_.fertig()
+    STAMM.fertig()
     bpy.ops.mesh.primitive_plane_add(size=2400, location=(0, 40, -0.6))  # Talboden bis zum Horizont
-    bpy.context.object.data.materials.append(mat("talboden", (0.22, 0.24, 0.15) if (TAG or MORGEN) else (0.04, 0.045, 0.04), 1.0))
+    bpy.context.object.data.materials.append(mat("talboden", (0.42, 0.30, 0.20) if GOLD else (0.22, 0.24, 0.15) if (TAG or MORGEN) else (0.04, 0.045, 0.04), 1.0))
 
 # ---------- Häuser ----------
 GASSEN = [(-1.2, 3.2), (-8.0, -4.2)]
@@ -335,6 +345,15 @@ if MORGEN:
     ramp.color_ramp.elements[1].position = 0.5; bg.inputs["Strength"].default_value = 1.1
     bpy.ops.object.light_add(type="SUN", rotation=(math.radians(78), 0, math.radians(-150))); s = bpy.context.object
     s.data.energy = 2.2; s.data.color = (1, 0.75, 0.55)
+elif GOLD:  # goldene Stunde: warmes Streiflicht, rosa-violetter Himmel (Referenz-Look)
+    wl.new(tc.outputs["Generated"], sep.inputs["Vector"])  # Blickrichtung -> echter Verlauf Horizont -> Zenit
+    ramp.color_ramp.elements.new(0.22).color = (0.92, 0.42, 0.50, 1)
+    ramp.color_ramp.elements[0].color = (1.0, 0.52, 0.32, 1); ramp.color_ramp.elements[1].color = (0.42, 0.24, 0.52, 1)
+    ramp.color_ramp.elements[0].position = 0.06; ramp.color_ramp.elements[-1].position = 0.6
+    ramp.color_ramp.elements[-1].color = (0.36, 0.2, 0.48, 1)
+    bg.inputs["Strength"].default_value = 0.9
+    bpy.ops.object.light_add(type="SUN", rotation=(math.radians(66), 0, math.radians(-145))); s = bpy.context.object
+    s.data.energy = 6.0; s.data.color = (1, 0.66, 0.38); s.data.angle = math.radians(3)
 elif TAG:  # heller Nachmittag (Medellín)
     ramp.color_ramp.elements[0].color = (0.5, 0.68, 0.92, 1); ramp.color_ramp.elements[1].color = (0.16, 0.36, 0.8, 1)
     ramp.color_ramp.elements[1].position = 0.5; bg.inputs["Strength"].default_value = 1.0
@@ -358,11 +377,15 @@ else:
         bpy.context.object.data.materials.append(M_STERN)
 bpy.ops.object.light_add(type="AREA", location=(0, 20, 60)); fill = bpy.context.object
 fill.data.energy = 6000 if NACHT else 2000; fill.data.size = 120; fill.data.color = (0.45, 0.5, 0.8) if NACHT else (1, 0.85, 0.75)
+if GOLD:
+    fill.data.energy = 700; fill.data.color = (0.75, 0.55, 0.95)  # violette Schatten
 
 # ---------- Kamera + Animation ----------
 bpy.ops.object.camera_add(); cam = bpy.context.object; scn.camera = cam; cam.data.clip_end = 2000
 w, h = map(int, args.res.split("x")); scn.render.resolution_x, scn.render.resolution_y = w, h
 anim_common.engine(scn, args.engine, args.samples)
+if GOLD:
+    anim_common.dunst(scn, (0.98, 0.60, 0.55), start=40, tiefe=500, staerke=0.45)
 n, off = anim_common.kamerapfad(scn, cam, args.pfad)
 N = n + off + 1
 if cav is not None:

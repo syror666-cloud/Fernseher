@@ -28,6 +28,14 @@ if __name__ == "__main__":
     for name, fig in F.EINHEITEN_FIGUREN.items():
         (out / f"einheit_{fig.name}.svg").write_text(F.svg_ganz(fig, "entschlossen"))
     (out / "einheit_bloque.svg").write_text(F.svg_ganz(BLOQUE, "entschlossen"))
+    # Neuer Look: Ganzkörper (kurze Beine) und Rückansicht für Aktionen im Bild
+    (out / "du_ruecken.svg").write_text(F.svg_ruecken(DU))
+    (out / "kollege_ruecken.svg").write_text(F.svg_ruecken(KOLLEGE))
+    (out / "du_entschlossen_waffe_ganz.svg").write_text(F.svg_ganz(DU, "entschlossen", arm="waffe", kurz=True))
+    (out / "du_neutral_fernglas_ganz.svg").write_text(F.svg_ganz(DU, "neutral", arm="fernglas", kurz=True))
+    (out / "du_erleichtert_ganz.svg").write_text(F.svg_ganz(DU, "erleichtert", kurz=True))
+    (out / "kollege_erleichtert_ganz.svg").write_text(F.svg_ganz(KOLLEGE, "erleichtert", kurz=True))
+    (out / "oberst_entschlossen_zeigen_ganz.svg").write_text(F.svg_ganz(OBERST, "entschlossen", arm="zeigen", kurz=True))
     for k, fn in I.ALLE.items():
         (out / f"{k}.svg").write_text(fn())
     (out / "tv_eilmeldung.svg").write_text(I.tv("EILMELDUNG", "MEDELLÍN · 2.12.1993", False))

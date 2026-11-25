@@ -16,7 +16,9 @@ MITTE = dict(x=150, y=560, w=780)
 LINKS = dict(x=-80, y=600, w=780)
 NAH = dict(x=40, y=380, w=1000)
 GANZ = dict(x=290, y=330, w=500)
-UNSCHARF = "blur(10px) brightness(.6)"
+UNSCHARF = "blur(4px) brightness(.9) saturate(1.1)"  # neuer Look: nur leichte Tiefenunschärfe
+VORNE = dict(x=300, y=640, w=480, boden=True)   # Ganzkörper im Bild (Füße ~1780 px)
+RUECK = dict(x=330, y=770, w=420, boden=True)   # Rückansicht, läuft ins Bild
 HINWEIS = "NACH WAHREN EREIGNISSEN · DRAMATISIERT"
 ERSATZ = "SEK=BLOQUE DE BÚSQUEDA|KOLUMBIEN|bloque"  # Kolumbien-Zelle im Spind-Intro (ersetzt SEK in dieser Folge)
 ZELLE = 9
@@ -46,7 +48,7 @@ SHOTS = [
     # ---------- SETUP ----------
     S("_Medellín_, Kolumbien.", "favela", anim="anflug", sfx="whoosh", blitz=True),
     S("Dezember 1993.", "favela", anim="anflug", sprich="Dezember neunzehnhundertdreiundneunzig."),
-    S("Du gehörst zum *Suchblock*.", "favela", [fig("du_entschlossen.svg", MITTE)], bgfilter=UNSCHARF, anim="loop_wagen"),
+    S("Du gehörst zum *Suchblock*.", "favela", [fig("du_entschlossen_waffe_ganz.svg", VORNE, aktion="zielen")], anim="huegel"),
     S("Euer Ziel: ein einziger Mann.", "favela", anim="huegel"),
     S("Der gefährlichste Drogenboss der Welt.", "svg:fenster1", move="zoom_in", sfx="drone_hit"),
     S("_Pablo Escobar_.", "svg:fenster1", move="zoom_schnell", bgfilter="brightness(.8)", sfx="impact"),
@@ -67,9 +69,10 @@ SHOTS = [
     # ---------- BEFEHLE ----------
     S("Deine Befehle:", "favela", [fig("oberst_entschlossen_zeigen.svg", LINKS)], bgfilter=UNSCHARF, anim="loop_wagen",
       regeln=0),
-    S("Bleib unsichtbar.", "favela", [fig("du_entschlossen.svg", MITTE)], bgfilter=UNSCHARF, anim="loop_wagen", regeln=1),
-    S("Warte auf das *Signal*.", "favela", anim="peil_nah", regeln=2),
-    S("Keine Zivilisten.", "favela", anim="gasse", regeln=3),
+    S("Bleib unsichtbar.", "favela", [fig("du_ruecken.svg", RUECK, aktion="laufen_weg")], anim="gasse", regeln=1),
+    S("Warte auf das *Signal*.", "favela", [fig("du_neutral_fernglas_ganz.svg", dict(x=-30, y=700, w=450, boden=True), aktion="umsehen")],
+      anim="peil_nah", regeln=2),
+    S("Keine Zivilisten.", "favela", [fig("du_ruecken.svg", RUECK, aktion="laufen_weg")], anim="gasse", regeln=3),
     S("Und: Er darf *nicht* entkommen.", "favela", [fig("oberst_entschlossen.svg", NAH)], bgfilter=UNSCHARF,
       anim="loop_wagen", move_2d="zoom_schnell", regeln=4, sfx="impact"),
     # ---------- ANNÄHERUNG ----------
@@ -92,17 +95,18 @@ SHOTS = [
       uhr="05:05"),
     S("„*Jetzt*.“", "favela", [fig("du_entschlossen.svg", NAH)], bgfilter=UNSCHARF, anim="loop_wagen", move_2d="zoom_schnell",
       sfx="impact"),
-    S("Ihr stürmt die Tür.", "favela", anim="tuer2", move_2d="shake_stark", blitz=True, sfx="tuer"),
+    S("Ihr stürmt die Tür.", "favela", [fig("kollege_ruecken.svg", dict(x=560, y=820, w=400, boden=True), aktion="rennen_hin"),
+                                        fig("du_ruecken.svg", dict(x=150, y=760, w=440, boden=True), aktion="rennen_hin")],
+      anim="tuer2", move_2d="shake_stark", blitz=True, sfx="tuer"),
     S("Er flieht. Über die *Dächer*.", "favela", anim="dach_flucht", move_2d="shake", sfx="whoosh"),
     S("Ziegel splittern.", "favela", anim="dach_flucht", move_2d="shake"),
     S("*Schüsse*.", "favela", anim="dach_weit", move_2d="shake_stark", blitz=True, sfx="schuesse"),
     S("Dann: Stille.", "favela", anim="dach_weit", move_2d="statisch", stille=True),
     # ---------- FALSCHE ERLÖSUNG ----------
-    S("Es ist vorbei.", "favela", [fig("kollege_erleichtert.svg", MITTE)], bgfilter=UNSCHARF, anim="loop_abend"),
+    S("Es ist vorbei.", "favela", [fig("kollege_erleichtert_ganz.svg", VORNE)], anim="loop_abend"),
     S("Nach anderthalb Jahren Jagd.", "favela", anim="abend"),
     S("Im ganzen Land: Eilmeldung.", "svg:tv_eilmeldung", move="zoom_in", sfx="static"),
-    S("Du hast es geschafft.", "favela", [fig("du_erleichtert.svg", MITTE)], bgfilter="blur(10px) brightness(.8)",
-      anim="loop_abend"),
+    S("Du hast es geschafft.", "favela", [fig("du_erleichtert_ganz.svg", VORNE)], anim="loop_abend"),
     # ---------- TWIST ----------
     S("Aber weißt du, wer ihn *gefunden* hat?", "favela", anim="dach_weit2", sfx="drone_hit"),
     S("Kein Spion. Kein Verräter.", "favela", anim="peil_nah2"),
@@ -122,6 +126,7 @@ SHOTS = [
 ]
 for _s in SHOTS:
     _s.setdefault("hinweis", HINWEIS)
+    _s["umriss"] = True  # Comic-Kontur um alle Figuren
 # Figurenstimmen (pipeline/stimmen.py): Spind-Stimme für Intro und Teaser, Oberst für den Zugriffsbefehl
 for _k in (len(SHOTS) - 2, len(SHOTS) - 1):  # Intro spricht der normale Erzähler (Nutzer-Feedback)
     SHOTS[_k]["stimme"] = "spind"
@@ -139,7 +144,7 @@ def _c(i):
 
 Z, ZZ = 2.0, 2.05
 SP = ["--ersatz", ERSATZ, "--fokus", "BLOQUE DE BÚSQUEDA"]
-T = ["--zeit", "tag"]
+T = ["--zeit", "gold"]  # neuer Look: goldene Stunde (warmes Streiflicht, Dunst, Berge)
 A = ["--zeit", "daemmerung"]
 ANIM = {
     "intro": dict(szene="spinde", args=SP, keys=[

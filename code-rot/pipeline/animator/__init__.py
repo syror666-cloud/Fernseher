@@ -37,6 +37,12 @@ html,body {{ margin:0; width:1080px; height:1920px; overflow:hidden; background:
 .titel .r {{ color:{ROT}; }}
 .untertitel {{ position:absolute; left:0; right:0; top:1420px; text-align:center; font-family:MXB; font-size:40px;
   color:#fff; letter-spacing:10px; text-shadow:0 3px 10px #000; }}
+.umriss svg {{ filter:url(#umrissf); }}
+.umriss .rig-arm-l>path:first-child, .umriss .rig-arm-r>path:first-child, .umriss .rig-kopf>circle:first-of-type,
+.umriss .rig-bein-l>path:first-child, .umriss .rig-bein-r>path:first-child, .umriss .rig-koerper>path:first-child {{
+  stroke:#1c130e; stroke-width:9; stroke-linejoin:round; }}
+.schatten {{ position:absolute; left:8%; right:8%; bottom:-1.5%; height:5%;
+  background:radial-gradient(ellipse at center, rgba(25,10,5,.6) 0%, rgba(25,10,5,.3) 45%, rgba(0,0,0,0) 72%); }}
 .ringe {{ position:absolute; left:540px; top:820px; transform:translate(-50%,-50%); }}
 """
 
@@ -97,10 +103,12 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
     for i, f in enumerate(shot.get("figuren", [])):
         e, a = _ausdruck_aktion(f["src"])
         style = f'left:{f["x"]}px;top:{f["y"]}px;width:{f["w"]}px;'
+        klasse = "figwrap umriss" if shot.get("umriss") else "figwrap"
+        schatten = '<div class="schatten"></div>' if f.get("boden") else ""
         if f.get("filter"):
             style += f'filter:{f["filter"]};'
         flip = ' style="transform:scaleX(-1)"' if f.get("flip") else ""
-        teile.append(f'<div class="tiefe" data-tiefe="{f.get("tiefe", 1.15)}"><div class="figwrap" style="{style}"><div{flip}>'
+        teile.append(f'<div class="tiefe" data-tiefe="{f.get("tiefe", 1.15)}"><div class="{klasse}" style="{style}">{schatten}<div{flip}>'
                      f'{_svg_inline(folge / "svg" / f["src"])}</div></div></div>')
         figdaten.append(dict(ausdruck=e, aktion=f.get("aktion", a), seed=k * 13 + i * 5 + 3,
                              richtung=f.get("richtung", 1), tempo=f.get("tempo", 260), ab=f.get("ab", 0.5)))
@@ -139,6 +147,11 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
     if shot.get("hinweis") and not hud.get("titel"):
         teile.append(f'<div style="position:absolute;left:40px;bottom:60px;font-family:MXB;font-size:26px;letter-spacing:4px;'
                      f'color:rgba(255,255,255,.55);text-shadow:0 2px 6px #000">{_html.escape(shot["hinweis"])}</div>')
+    if shot.get("umriss"):  # Umriss-Filter (dunkle Kontur wie im Comic-Look) + warme Lichtstimmung
+        teile.append('<svg width="0" height="0" style="position:absolute"><filter id="umrissf" x="-5%" y="-5%" width="110%" height="110%">'
+                     '<feMorphology in="SourceAlpha" operator="dilate" radius="7" result="d"/><feFlood flood-color="#1c130e"/>'
+                     '<feComposite in2="d" operator="in" result="o"/><feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/>'
+                     '</feMerge></filter></svg>')
     teile.append('<div id="blitz"></div><div id="schwarz"></div>')
     shotjs = dict(dauer=dauer, fps=FPS, move=shot.get("move_2d", "drift" if bg["typ"] == "seq" else shot["move"]),
                   bg=bg if bg["typ"] == "seq" else None, figuren=figdaten, fx=fx, hud=hud,

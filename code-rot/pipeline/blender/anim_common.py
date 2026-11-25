@@ -32,6 +32,25 @@ def engine(scn, name="eevee", samples=8, bloom=True):
         scn.cycles.use_denoising = True; scn.cycles.max_bounces = 4
 
 
+def dunst(scn, farbe, start=25, tiefe=300, staerke=0.5):
+    """Luftperspektive über den Mist-Pass: ferne Objekte verblassen in die Dunstfarbe (billiger als Volumen)."""
+    scn.view_layers[0].use_pass_mist = True; scn.view_layers[0].use_pass_z = True
+    ms = scn.world.mist_settings; ms.start = start; ms.depth = tiefe; ms.falloff = "QUADRATIC"
+    scn.use_nodes = True
+    nt = scn.node_tree; comp = nt.nodes["Composite"]; rl = nt.nodes["Render Layers"]
+    quelle = comp.inputs["Image"].links[0].from_socket if comp.inputs["Image"].links else rl.outputs["Image"]
+    mul = nt.nodes.new("CompositorNodeMath"); mul.operation = "MULTIPLY"; mul.inputs[1].default_value = staerke
+    nt.links.new(rl.outputs["Mist"], mul.inputs[0])
+    # Himmel ausnehmen (Tiefe ~ unendlich), sonst wird der Farbverlauf zur flachen Dunstfläche
+    boden = nt.nodes.new("CompositorNodeMath"); boden.operation = "LESS_THAN"; boden.inputs[1].default_value = 1500
+    nt.links.new(rl.outputs["Depth"], boden.inputs[0])
+    mul2 = nt.nodes.new("CompositorNodeMath"); mul2.operation = "MULTIPLY"
+    nt.links.new(mul.outputs[0], mul2.inputs[0]); nt.links.new(boden.outputs[0], mul2.inputs[1]); mul = mul2
+    mix = nt.nodes.new("CompositorNodeMixRGB"); mix.inputs[2].default_value = (*farbe, 1)
+    nt.links.new(mul.outputs[0], mix.inputs[0]); nt.links.new(quelle, mix.inputs[1])
+    nt.links.new(mix.outputs[0], comp.inputs["Image"])
+
+
 def kamerapfad(scn, cam, pfad_datei):
     """Keyframes für Kamera + Zielpunkt. Datei: {"frames": N, "offset": 0, "keys": [{"f","loc","ziel","lens","shake"}]}"""
     P = json.load(open(pfad_datei))
