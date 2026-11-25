@@ -1,0 +1,68 @@
+"""Folge 6 SAS – nur Sprechtext für vo.py/stimmen.py (Bildteil liegt auf dem PC in episode.py)."""
+STIMME = "JH302OKVzGGJc47f08ex"
+MODELL = "eleven_multilingual_v2"
+STIMM_EINSTELLUNG = {"stability": 0.42, "similarity_boost": 0.8, "style": 0.25, "use_speaker_boost": True, "speed": 1.15}
+
+
+def S(text, **extra):
+    return dict(text=text, **extra)
+
+
+SHOTS = [
+    S("Eine dieser *Einheiten*"),
+    S("holt dich heute Nacht."),
+    S("Mal sehen,"),
+    S("ob du *zurückkommst*."),
+    S("", titel="*SAS*", titel_sprich="Es. A. Es.", pause=1.5),
+    S("Du bist beim *SAS*.", sprich="Du bist beim S A S."),
+    S("Sechs Bewaffnete. *26* Geiseln.", sprich="Sechs Bewaffnete. Sechsundzwanzig Geiseln."),
+    S("Eine davon ist *Polizist*."),
+    S("Sechs Tage zieht er seinen Mantel *nicht* aus."),
+    S("Merk dir das."),
+    S("Sie halten die *iranische Botschaft* besetzt."),
+    S("Ihr wartet direkt nebenan."),
+    S("Vor der Tür: Kameras aus aller Welt."),
+    S("Flugzeuge fliegen extra *tief*."),
+    S("Damit niemand eure Bohrer hört."),
+    S("Tag sechs."),
+    S("Drei *Schüsse*."),
+    S("Dann liegt ein *Toter* vor der Tür."),
+    S("Dein Kommandeur sagt nur:"),
+    S("„Holt sie *alle* raus.“", stimme="chef"),
+    S("Deine Befehle:"),
+    S("Rein in *Sekunden*."),
+    S("Jeder Raum."),
+    S("Geisel oder *Feind*?"),
+    S("Und: Keiner bleibt *zurück*."),
+    S("*19:23*.", sprich="Neunzehn Uhr dreiundzwanzig."),
+    S("Ihr steht auf dem Dach."),
+    S("Ihr seilt euch ab."),
+    S("Einer bleibt *hängen*."),
+    S("Ein Stiefel trifft das Fenster."),
+    S("Jetzt *wissen* sie es."),
+    S("„*Go! Go! Go!*“", stimme="funk"),
+    S("Sprengladung am *Balkon*."),
+    S("Rauch. Feuer. Schreie."),
+    S("Die Vorhänge brennen."),
+    S("Dein Kamerad hängt *über den Flammen*."),
+    S("Er überlebt."),
+    S("Raum für Raum."),
+    S("Auf der Treppe reicht ihr die Geiseln weiter."),
+    S("Da siehst du ihn."),
+    S("Er ist *keine* Geisel."),
+    S("Er hat eine *Granate*."),
+    S("Ihr seid *schneller*."),
+    S("Siebzehn Minuten."),
+    S("Und alles live im *Fernsehen*."),
+    S("Du hast es geschafft."),
+    S("Aber erinnerst du dich an den *Mantel*?"),
+    S("Darunter steckte die ganze Zeit ein *Revolver*."),
+    S("Keiner hat ihn gefunden."),
+    S("Er hat sogar das Essen *verweigert*."),
+    S("Damit er nie zur Toilette musste."),
+    S("Und als ihr kommt,"),
+    S("wirft er sich auf den *Anführer*."),
+    S("Der Mann im *Mantel* hat den SAS beschützt.", sprich="Der Mann im Mantel hat den S A S beschützt."),
+    S("Und morgen?"),
+    S("Holt dich eine *andere*."),
+]
