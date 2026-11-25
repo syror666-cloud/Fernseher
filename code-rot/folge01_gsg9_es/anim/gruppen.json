@@ -1,0 +1,241 @@
+{
+ "intro_a": {
+  "frames": 108,
+  "start": {
+   "0": 0,
+   "1": 27,
+   "2": 72,
+   "3": 82
+  },
+  "loop": false
+ },
+ "outro": {
+  "frames": 83,
+  "start": {
+   "85": 0,
+   "86": 23
+  },
+  "loop": false
+ },
+ "drohne_anflug": {
+  "frames": 105,
+  "start": {
+   "5": 0,
+   "6": 36
+  },
+  "loop": false
+ },
+ "boden_push": {
+  "frames": 50,
+  "start": {
+   "7": 0
+  },
+  "loop": false
+ },
+ "boden_slide": {
+  "frames": 123,
+  "start": {
+   "8": 0,
+   "9": 37,
+   "10": 87
+  },
+  "loop": false
+ },
+ "boden_push2": {
+  "frames": 71,
+  "start": {
+   "11": 0
+  },
+  "loop": false
+ },
+ "fenster_fahrt": {
+  "frames": 35,
+  "start": {
+   "12": 0
+  },
+  "loop": false
+ },
+ "loop_boden": {
+  "frames": 120,
+  "start": {
+   "16": 0,
+   "17": 78,
+   "18": 2,
+   "21": 55,
+   "22": 112,
+   "24": 33,
+   "25": 95,
+   "26": 31,
+   "27": 98,
+   "29": 34,
+   "31": 92,
+   "32": 24,
+   "33": 85,
+   "34": 12,
+   "76": 80
+  },
+  "loop": true
+ },
+ "drohne2": {
+  "frames": 39,
+  "start": {
+   "30": 0
+  },
+  "loop": false
+ },
+ "leiter_kran": {
+  "frames": 151,
+  "start": {
+   "35": 0,
+   "36": 26,
+   "37": 86
+  },
+  "loop": false
+ },
+ "nase_feuer": {
+  "frames": 113,
+  "start": {
+   "39": 0,
+   "40": 37,
+   "41": 71
+  },
+  "loop": false
+ },
+ "drohne_feuer": {
+  "frames": 49,
+  "start": {
+   "42": 0
+  },
+  "loop": false
+ },
+ "boden_feuer": {
+  "frames": 83,
+  "start": {
+   "45": 0,
+   "46": 26,
+   "47": 62
+  },
+  "loop": false
+ },
+ "rutsche_a": {
+  "frames": 118,
+  "start": {
+   "62": 0,
+   "63": 39,
+   "64": 85
+  },
+  "loop": false
+ },
+ "loop_rutsche": {
+  "frames": 120,
+  "start": {
+   "66": 0,
+   "67": 42,
+   "68": 10,
+   "69": 69,
+   "73": 116,
+   "74": 52
+  },
+  "loop": true
+ },
+ "drohne_ende1": {
+  "frames": 33,
+  "start": {
+   "65": 0
+  },
+  "loop": false
+ },
+ "drohne_ende2": {
+  "frames": 46,
+  "start": {
+   "84": 0
+  },
+  "loop": false
+ },
+ "fenster_dolly": {
+  "frames": 53,
+  "start": {
+   "70": 0
+  },
+  "loop": false
+ },
+ "kab_dunkel1": {
+  "frames": 92,
+  "start": {
+   "14": 0,
+   "15": 57
+  },
+  "loop": false
+ },
+ "kab_dunkel2": {
+  "frames": 30,
+  "start": {
+   "28": 0
+  },
+  "loop": false
+ },
+ "kab_dunkel3": {
+  "frames": 50,
+  "start": {
+   "61": 0
+  },
+  "loop": false
+ },
+ "kab_hinten": {
+  "frames": 70,
+  "start": {
+   "71": 0,
+   "72": 40
+  },
+  "loop": false
+ },
+ "kab_ausstieg": {
+  "frames": 50,
+  "start": {
+   "48": 0
+  },
+  "loop": false
+ },
+ "kab_zugriff1": {
+  "frames": 52,
+  "start": {
+   "49": 0,
+   "50": 19
+  },
+  "loop": false
+ },
+ "kab_reihe1": {
+  "frames": 41,
+  "start": {
+   "51": 0
+  },
+  "loop": false
+ },
+ "kab_zugriff2": {
+  "frames": 131,
+  "start": {
+   "52": 0,
+   "53": 44,
+   "54": 82,
+   "55": 98
+  },
+  "loop": false
+ },
+ "kab_reihe2": {
+  "frames": 63,
+  "start": {
+   "56": 0,
+   "57": 42
+  },
+  "loop": false
+ },
+ "kab_zugriff3": {
+  "frames": 106,
+  "start": {
+   "58": 0,
+   "59": 30,
+   "60": 55
+  },
+  "loop": false
+ }
+}
