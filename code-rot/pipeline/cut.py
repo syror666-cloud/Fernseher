@@ -346,7 +346,9 @@ FEUER_BG = {"boden_feuer", "nase_feuer"}
 
 
 AGGR = "--aggressiv" in sys.argv   # Schnitt für sehr kurze Aufmerksamkeitsspanne
-TEMPO = float(os.environ.get("TEMPO", "1.1"))  # Beschleunigung der Erzählung im aggressiven Modus
+TEMPO = float(os.environ.get("TEMPO", "1.1"))
+HOOK_MODUS = os.environ.get("HOOK", "gesprochen")  # gesprochen (Hook 2.0) | roulette (helles Spind-Roulette ab Bild 1)
+FARBE = "eq=gamma=1.1:saturation=1.22:contrast=1.04"  # hellere, sattere Bildsprache (Referenz-Creator)  # Beschleunigung der Erzählung im aggressiven Modus
 PUNCH_STUFEN = [1.0, 1.12, 1.0, 1.18]  # dezenter (Nutzerwunsch: nicht zu oft rein und raus)
 PUNCH_ABSTAND = 1.6  # mindestens so viele Sekunden zwischen zwei Zoomsprüngen, höchstens einer je Einstellung
 
@@ -506,6 +508,9 @@ def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
     if AGGR:
         s.update(aggressiv_extras(k, s, t, dauer, prev))
         s["ende_schwarz"] = False  # Loop: letztes Bild geht direkt in den Kaltstart über
+        if HOOK_MODUS == "roulette" and (bgname == "intro" or bgname.startswith("intro_zelle")):
+            # Spind-Roulette hell und farbig wie beim Referenz-Creator (Figuren müssen sofort erkennbar sein)
+            s["bgfilter"] = (s.get("bgfilter", "") + " brightness(1.9) contrast(1.12) saturate(1.35)").strip()
     out = tmp / f"anim_{k:03d}.mp4"
     html = animator.baue(s, k, dauer, folge, bg, hud, fx)
     key = hashlib.md5((html + str(n)).encode()).hexdigest()[:12]
@@ -539,7 +544,7 @@ def main_animiert():
     ks = getattr(ep, "KALTSTART", None)
     voll = "--von" not in sys.argv and "--bis" not in sys.argv
     # Hook 2.0: gesprochener Hook ab Bild 1, kein Branding vorne -> Spind-Intro + Titelkarte entfallen
-    intro_weg = bool(AGGR and ks and ks.get("sprich") and voll)
+    intro_weg = bool(AGGR and ks and ks.get("sprich") and voll and HOOK_MODUS != "roulette")
     if intro_weg:
         von = next(i for i, s_ in enumerate(ep.SHOTS) if s_.get("titel")) + 1
     def mach(k):
@@ -553,7 +558,7 @@ def main_animiert():
     sh(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(liste), "-c", "copy", str(roh)])
     ass = ass_datei(ep, timing, tmp / "untertitel.ass")
     audio = mix(ep, timing, folge, tmp / "mix.wav", vo=vo)
-    name = folge.name + ("_aggressiv" if AGGR else "")
+    name = folge.name + ("_aggressiv" if AGGR else "") + ("_roulette" if AGGR and HOOK_MODUS == "roulette" else "")
     out = folge / "export" / (f"{name}.mp4" if voll or (von == 0 and bis == len(shots) - 1) else f"{name}_teil_{von}-{bis}.mp4")
     if AGGR:
         out_final, out = out, tmp / "haupt.mp4"
@@ -655,7 +660,7 @@ def kaltstart(ep, folge, timing, hook_clips, haupt, tmp, out, von, vo):
     ks = getattr(ep, "KALTSTART", None)
     fonts = ROOT / "assets/fonts"; shots = timing["shots"]
     teile = []
-    if ks and von == 0:
+    if ks and von == 0 and HOOK_MODUS != "roulette":
         t_ton = shots[ks["shot"]]["schnitt"] + ks.get("versatz", 0.0); d = ks.get("dauer", 1.5)
         (tmp / "hook_liste.txt").write_text("".join(f"file '{c}'\n" for c in hook_clips))
         roh = tmp / "hook_roh.mp4"
@@ -719,7 +724,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                                         str(x)], capture_output=True, text=True).stdout) for x in teile[:-1])
     ov = overlay_ass(ep, folge, tmp, vorlauf, gesamt)
     fc = fc.replace("concat=n=" + str(n) + ":v=1:a=1[cv][ca];", "concat=n=" + str(n) + ":v=1:a=1[cv0][ca];"
-                    + f"[cv0]ass={ov}:fontsdir={fonts}[cv];")
+                    + f"[cv0]{FARBE},ass={ov}:fontsdir={fonts}[cv];")
     fc += (f"color=c=0xFF2A2A:s=1080x12:r=30[bar];[cv][bar]overlay=x='-W+W*t/{gesamt:.3f}':y=0:eval=frame:shortest=1[vout];"
            "[ca]alimiter=limit=0.84:level=false[aout]")
     sh(["ffmpeg", "-y", "-loglevel", "error", *ein, "-filter_complex", fc, "-map", "[vout]", "-map", "[aout]",
