@@ -123,7 +123,7 @@ SHOTS = [
 for _s in SHOTS:
     _s.setdefault("hinweis", HINWEIS)
 # Figurenstimmen (pipeline/stimmen.py): Spind-Stimme für Intro und Teaser, Oberst für den Zugriffsbefehl
-for _k in (0, 1, 2, 3, len(SHOTS) - 2, len(SHOTS) - 1):
+for _k in (len(SHOTS) - 2, len(SHOTS) - 1):  # Intro spricht der normale Erzähler (Nutzer-Feedback)
     SHOTS[_k]["stimme"] = "spind"
 for _s in SHOTS:
     if _s["text"].startswith("„*Jetzt*"):

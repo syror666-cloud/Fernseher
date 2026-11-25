@@ -346,7 +346,7 @@ FEUER_BG = {"boden_feuer", "nase_feuer"}
 
 
 AGGR = "--aggressiv" in sys.argv   # Schnitt für sehr kurze Aufmerksamkeitsspanne
-TEMPO = float(os.environ.get("TEMPO", "1.1"))
+TEMPO = float(os.environ.get("TEMPO", "1.05"))  # mehr wirkt abgehackt (Nutzer-Feedback)
 HOOK_MODUS = os.environ.get("HOOK", "gesprochen")  # gesprochen (Hook 2.0) | roulette (helles Spind-Roulette ab Bild 1)
 FARBE = "eq=gamma=1.1:saturation=1.22:contrast=1.04"  # hellere, sattere Bildsprache (Referenz-Creator)  # Beschleunigung der Erzählung im aggressiven Modus
 PUNCH_STUFEN = [1.0, 1.12, 1.0, 1.18]  # dezenter (Nutzerwunsch: nicht zu oft rein und raus)
@@ -379,8 +379,8 @@ def aggressiv_extras(k, s, t, dauer, prev_s):
     return ex
 
 
-STILLE_MAX = 0.7    # stumme Einstellungen (z. B. Titelkarte) höchstens so lang
-LUECKE_MAX = 0.22   # Sprechpause zwischen zwei Einstellungen höchstens so lang
+STILLE_MAX = 0.9    # stumme Einstellungen (z. B. Titelkarte) höchstens so lang
+LUECKE_MAX = 0.45   # Sprechpause zwischen zwei Einstellungen höchstens so lang (natürliche Atempausen bleiben)
 ENDE_NACH = 0.3     # nach dem letzten Wort: sofort zurück zum Anfang (Loop)
 
 
@@ -393,7 +393,7 @@ def stille_kuerzen(timing, vo_in, vo_out):
             schnitte.append((sh_["schnitt"] + STILLE_MAX, sh_["ende"]))
         if k + 1 < len(shots) and sh_["words"] and shots[k + 1]["words"]:
             a, b = sh_["words"][-1]["ende"], shots[k + 1]["words"][0]["start"]
-            if b - a > LUECKE_MAX + 0.05:
+            if b - a > LUECKE_MAX + 0.3:  # nur wirklich lange Pausen kürzen
                 schnitte.append((a + LUECKE_MAX * 0.6, b - LUECKE_MAX * 0.4))
     letztes = max(w["ende"] for sh_ in shots for w in sh_["words"])
     if timing["gesamt"] - letztes > ENDE_NACH:
