@@ -123,7 +123,12 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
                      'background:linear-gradient(#000 0%,#000 62%,rgba(0,0,0,0) 100%)"></div>'
                      '<div class="logo">CODE ROT</div>')
     if hud.get("titel"):
-        teile.append(f'<div class="titel">{_cap(hud["titel"])}</div><div class="untertitel">{_html.escape(hud.get("untertitel", ""))}</div>')
+        # Schriftgröße nach dem längsten Wort (Montserrat Black, Großbuchstaben ~0,8 em breit); data-fit schaltet
+        # die Messung im Laufzeitskript ab
+        laengstes = max(len(w) for w in re.sub(r"[*_]", "", hud["titel"]).split())
+        fs = int(min(190, 1000 / (0.8 * laengstes)))
+        teile.append(f'<div class="titel" data-fit="1" style="font-size:{fs}px">{_cap(hud["titel"])}</div>'
+                     f'<div class="untertitel">{_html.escape(hud.get("untertitel", ""))}</div>')
     if hud.get("uhr") and not hud.get("regeln"):
         teile.append(f'<div id="uhr"><span class="dot"></span>{_html.escape(hud["uhr"])}</div>')
     if hud.get("regeln"):
