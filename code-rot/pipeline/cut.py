@@ -634,13 +634,19 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     sh(["ffmpeg", "-y", "-loglevel", "error", *ein, "-filter_complex", fc, "-map", "[vout]", "-map", "[aout]",
         "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
         "-movflags", "+faststart", str(out)])
+    if gesamt < 62:
+        print(f"WARNUNG: nur {gesamt:.0f} s – für das TikTok-Creator-Rewards-Programm muss ein Video über 60 s lang sein",
+              flush=True)
     posting(ep, folge, out, gesamt)
 
 
 SERIE_TEXT = {
-    "de": dict(teil="TEIL {n}", frage="Welche Einheit als Nächstes?", folgen="Folg für Teil {m}"),
-    "en": dict(teil="PART {n}", frage="Which unit should be next?", folgen="Follow for part {m}"),
-    "es": dict(teil="PARTE {n}", frage="¿Qué unidad sigue?", folgen="Sígueme para la parte {m}"),
+    "de": dict(teil="TEIL {n}", frage="Welche Einheit als Nächstes?", folgen="Folg für Teil {m}",
+               versprechen="Das Ende sieht keiner kommen."),
+    "en": dict(teil="PART {n}", frage="Which unit should be next?", folgen="Follow for part {m}",
+               versprechen="Nobody sees the ending coming."),
+    "es": dict(teil="PARTE {n}", frage="¿Qué unidad sigue?", folgen="Sígueme para la parte {m}",
+               versprechen="Nadie ve venir el final."),
 }
 
 
@@ -663,6 +669,7 @@ WrapStyle: 2
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Teil,Montserrat Black,54,&H00FFFFFF,&H00FFFFFF,&H002A2AFF,&H00000000,0,0,0,0,100,100,6,0,3,14,0,5,40,40,0,1
 Style: Frage,Montserrat Black,72,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,8,5,5,60,60,0,1
+Style: Versprechen,Montserrat ExtraBold,40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,0,0,0,0,100,100,1,0,1,5,3,5,40,40,0,1
 Style: Folgen,Montserrat Black,46,&H00FFFFFF,&H00FFFFFF,&H002A2AFF,&H00000000,0,0,0,0,100,100,4,0,3,12,0,5,40,40,0,1
 
 [Events]
@@ -673,6 +680,9 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         a = vorlauf + 0.15
         ev.append(f"Dialogue: 0,{ass_zeit(a)},{ass_zeit(a + 3.0)},Teil,,0,0,0,,{{\\an5\\pos(540,175)\\fad(120,200)}}"
                   + T["teil"].format(n=n, m=n + 1))
+    # offene Schleife: Versprechen einer Wende -> Zuschauer bleiben bis zum Ende (Abschlussrate)
+    ev.append(f"Dialogue: 0,{ass_zeit(vorlauf + 0.4)},{ass_zeit(vorlauf + 4.2)},Versprechen,,0,0,0,,"
+              f"{{\\an5\\pos(540,262)\\fad(150,250)}}" + T["versprechen"])
     b = max(vorlauf, gesamt - 3.0)
     ev.append(f"Dialogue: 0,{ass_zeit(b)},{ass_zeit(gesamt)},Frage,,0,0,0,,{{\\an5\\pos(540,640)\\fscx70\\fscy70"
               f"\\t(0,140,\\fscx104\\fscy104)\\t(140,240,\\fscx100\\fscy100)}}" + T["frage"])
