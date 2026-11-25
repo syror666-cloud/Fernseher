@@ -12,23 +12,22 @@
 | schuesse | echt | gunshots (97%), a deep cinematic impact boom (1%), footsteps (1%) | ✅ |
 | tick | echt | a ticking clock (97%), a heartbeat (2%), rain (1%) | ✅ |
 | whoosh | echt | a fast whoosh swoosh sound effect (100%), a deep cinematic impact boom (0%), a walkie talkie radio squelch beep (0%) | ✅ |
-| atmo_meer | echt | ocean waves at night (40%), white noise static hiss (38%), rain (16%) | ✅ |
+| atmo_meer | echt | ocean waves at night (40%), white noise static hiss (40%), rain (15%) | ✅ |
 
 ## C) Pegel je Einstellung (Stimme vs. Hintergrund)
 
-73 Einstellungen geprüft, 6 mit zu lautem Hintergrund (Ziel: Stimme ≥ 8 dB darüber).
+73 Einstellungen geprüft, 5 mit zu lautem Hintergrund (Ziel: Stimme ≥ 8 dB darüber).
 
 ## D) Sprachverständlichkeit (Whisper hört den fertigen Mix)
 
 Übereinstimmung Skript ↔ Gehörtes: **96%** (gut ab ~85 %).
 
 ## E) Lautheit
-Integriert: -14.5 LUFS (Ziel −14 … −16), True Peak: -0.5 dBFS
+Integriert: -14.6 LUFS (Ziel −14 … −16), True Peak: -0.3 dBFS
 
 ## Ergebnis
-- Einstellung 3 ('ob du *zurückkommst*.'): Stimme nur 6.4 dB über Hintergrund
-- Einstellung 27 ('*Schüsse*.'): Stimme nur 3.4 dB über Hintergrund, Geräuschspitze 13.2 dB über Stimme
+- Einstellung 27 ('*Schüsse*.'): Stimme nur 3.5 dB über Hintergrund, Geräuschspitze 13.3 dB über Stimme
 - Einstellung 33 ('Und: Es gibt *keinen* zweiten '): Stimme nur 4.4 dB über Hintergrund
-- Einstellung 48 ('*Jetzt*.'): Stimme nur 2.3 dB über Hintergrund
-- Einstellung 49 ('Drei Schüsse.'): Stimme nur 6.3 dB über Hintergrund
-- Einstellung 69 ('Drei Schüsse.'): Stimme nur 6.7 dB über Hintergrund
+- Einstellung 48 ('*Jetzt*.'): Stimme nur 2.1 dB über Hintergrund
+- Einstellung 49 ('Drei Schüsse.'): Stimme nur 6.1 dB über Hintergrund
+- Einstellung 69 ('Drei Schüsse.'): Stimme nur 6.8 dB über Hintergrund
