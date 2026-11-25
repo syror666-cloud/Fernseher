@@ -22,12 +22,13 @@ ap.add_argument("--zeit", default="nacht")
 ap.add_argument("--caveirao", default="")
 ap.add_argument("--junge", default="")
 ap.add_argument("--tuer", default="zu")
+ap.add_argument("--peilwagen", default="")  # steht|fahrt: weißer Lieferwagen mit Peilantennen
 args = ap.parse_args(argv)
 random.seed(19)
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scn = bpy.context.scene
-MORGEN = args.zeit == "morgen"; DAEMM = args.zeit == "daemmerung"
-NACHT = not (MORGEN or DAEMM)
+MORGEN = args.zeit == "morgen"; DAEMM = args.zeit == "daemmerung"; TAG = args.zeit == "tag"
+NACHT = not (MORGEN or DAEMM or TAG)
 
 
 def H(y):
@@ -53,7 +54,7 @@ WAND_FARBEN = [(0.55, 0.24, 0.12), (0.5, 0.22, 0.11), (0.6, 0.3, 0.16), (0.62, 0
 WAENDE = [Masse(f"waende{i}", mat(f"wand{i}", c)) for i, c in enumerate(WAND_FARBEN)]
 DACH = Masse("daecher", mat("dach", (0.3, 0.3, 0.31), 0.9))
 TANK = Masse("wassertanks", mat("tank", (0.08, 0.22, 0.55), 0.5))
-FENSTER_AN = Masse("fenster_an", mat("fenster_an", (0.1, 0.08, 0.05), 0.4, emit=(1.0, 0.7, 0.35), strength=4.0 if NACHT else 1.0))
+FENSTER_AN = Masse("fenster_an", mat("fenster_an", (0.1, 0.08, 0.05), 0.4, emit=(1.0, 0.7, 0.35), strength=4.0 if NACHT else (0.25 if TAG else 1.0)))
 FENSTER_AUS = Masse("fenster_aus", mat("fenster_aus", (0.02, 0.02, 0.025), 0.3))
 TREPPE = Masse("treppen", mat("beton", (0.42, 0.41, 0.4), 0.9))
 EISEN = Masse("eisen", mat("eisen", (0.12, 0.1, 0.09), 0.7))
@@ -152,17 +153,17 @@ for i in range(70):
     o = bpy.data.objects.new("kabel", cd); scn.collection.objects.link(o); o.data.materials.append(M_KABEL)
 
 # Straßenlaternen (Natriumdampf)
-M_BIRNE = mat("birne", (1, 0.6, 0.2), 0.3, emit=(1.0, 0.55, 0.15), strength=40)
+M_BIRNE = mat("birne", (1, 0.6, 0.2), 0.3, emit=(1.0, 0.55, 0.15), strength=0 if TAG else 40)
 for a, b in GASSEN:
     for yy in range(-2, 90, 9):
         cube(((a + b) / 2 + 1.6, yy, H(yy) + 4.2), (0.15, 0.15, 0.1), M_BIRNE)
         bpy.ops.object.light_add(type="POINT", location=((a + b) / 2 + 1.2, yy, H(yy) + 3.9))
-        l = bpy.context.object; l.data.energy = 260 if not MORGEN else 40; l.data.color = (1.0, 0.55, 0.2)
+        l = bpy.context.object; l.data.energy = 0 if TAG else (260 if not MORGEN else 40); l.data.color = (1.0, 0.55, 0.2)
 for xx in range(-60, 61, 15):
     cube((xx, -5.6, 5.5), (0.12, 0.12, 5.5), mat("mast", (0.1, 0.1, 0.1)))
     cube((xx, -6.6, 10.8), (0.3, 1.0, 0.12), M_BIRNE)
     bpy.ops.object.light_add(type="SPOT", location=(xx, -7.4, 10.6)); l = bpy.context.object
-    l.data.energy = 3000 if not MORGEN else 300; l.data.color = (1.0, 0.55, 0.2); l.data.spot_size = 1.3
+    l.data.energy = 0 if TAG else (3000 if not MORGEN else 300); l.data.color = (1.0, 0.55, 0.2); l.data.spot_size = 1.3
 
 # ---------- Haus mit blauer Tür (Front bei y=37) ----------
 g0 = H(39.5) - 1.2 + 0.0
@@ -233,6 +234,27 @@ if args.caveirao:
     bpy.ops.object.light_add(type="POINT", location=(2.5, -15, 5)); kl = bpy.context.object
     kl.data.energy = 900; kl.data.color = (1.0, 0.6, 0.3)
 
+# ---------- Peilwagen (weißer Lieferwagen mit Antennen, Funkpeilung) ----------
+pw = None
+if args.peilwagen:
+    M_PW = mat("peilwagen", (0.85, 0.86, 0.84), 0.5); M_RAD = mat("pw_rad", (0.03, 0.03, 0.03), 0.7)
+    M_GLAS = mat("pw_glas", (0.05, 0.07, 0.09), 0.1)
+    pw = bpy.data.objects.new("peilwagen", None); scn.collection.objects.link(pw)
+    for loc, sc, m in [((0, 0, 1.35), (2.4, 1.0, 0.95), M_PW), ((2.75, 0, 1.0), (0.55, 0.95, 0.6), M_PW),
+                       ((3.05, 0, 1.4), (0.3, 0.9, 0.3), M_GLAS)]:
+        o = cube(loc, sc, m); o.parent = pw
+    for dx in (2.3, -1.6):
+        for side in (-1, 1):
+            bpy.ops.mesh.primitive_cylinder_add(vertices=12, radius=0.42, depth=0.3, location=(dx, side * 0.95, 0.42),
+                                                rotation=(math.pi / 2, 0, 0))
+            o = bpy.context.object; o.data.materials.append(M_RAD); o.parent = pw
+    for ax, ay, hgt in [(-1.8, -0.6, 1.6), (-1.2, 0.6, 1.2), (-0.4, -0.5, 1.9), (0.6, 0.55, 1.4), (1.4, 0.0, 1.0)]:
+        bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=0.05, depth=hgt, location=(ax, ay, 2.3 + hgt / 2))
+        o = bpy.context.object; o.data.materials.append(M_RAD); o.parent = pw
+    bpy.ops.mesh.primitive_cylinder_add(vertices=24, radius=0.45, depth=0.06, location=(0.2, 0, 2.55), rotation=(0.5, 0, 0))
+    o = bpy.context.object; o.data.materials.append(M_PW); o.parent = pw
+    pw.location = (-4, -10, 0)
+
 # ---------- Himmel, Licht ----------
 world = bpy.data.worlds.new("w"); scn.world = world; world.use_nodes = True
 wn = world.node_tree.nodes; wl = world.node_tree.links; bg = wn["Background"]
@@ -243,6 +265,11 @@ if MORGEN:
     ramp.color_ramp.elements[1].position = 0.5; bg.inputs["Strength"].default_value = 1.1
     bpy.ops.object.light_add(type="SUN", rotation=(math.radians(78), 0, math.radians(-150))); s = bpy.context.object
     s.data.energy = 2.2; s.data.color = (1, 0.75, 0.55)
+elif TAG:  # heller Nachmittag (Medellín)
+    ramp.color_ramp.elements[0].color = (0.5, 0.68, 0.92, 1); ramp.color_ramp.elements[1].color = (0.16, 0.36, 0.8, 1)
+    ramp.color_ramp.elements[1].position = 0.5; bg.inputs["Strength"].default_value = 1.0
+    bpy.ops.object.light_add(type="SUN", rotation=(math.radians(40), 0, math.radians(-130))); s = bpy.context.object
+    s.data.energy = 3.5; s.data.color = (1, 0.95, 0.85)
 elif DAEMM:
     ramp.color_ramp.elements[0].color = (0.5, 0.35, 0.45, 1); ramp.color_ramp.elements[1].color = (0.06, 0.07, 0.18, 1)
     ramp.color_ramp.elements[1].position = 0.4; bg.inputs["Strength"].default_value = 1.0
@@ -278,6 +305,9 @@ if cav is not None:
         cav.rotation_euler = (0, 0, math.pi)
     for f in range(1, N + 1, 3):  # Motor-Vibration
         cav.rotation_euler.x = 0.004 * math.sin(f * 2.1); cav.keyframe_insert("rotation_euler", frame=f)
+if pw is not None and args.peilwagen == "fahrt":
+    pw.location = (-30, -10, 0); pw.keyframe_insert("location", frame=1)
+    pw.location = (-6, -10, 0); pw.keyframe_insert("location", frame=N)
 if args.junge == "winkt":
     for f in range(1, N + 1, 2):
         anim_arm.rotation_euler = (0, 0.3 + 0.5 * math.sin(f / 30 * 9), 0); anim_arm.keyframe_insert("rotation_euler", frame=f)

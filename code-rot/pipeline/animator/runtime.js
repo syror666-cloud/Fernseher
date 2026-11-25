@@ -193,7 +193,8 @@
     const kopf = document.querySelector(".regeln .kopf");
     if (kopf && S.hud && S.hud.regeln_neu_box) { const p = easeOut(t / 0.3); document.querySelector(".regeln").style.transform = `translateX(-50%) scale(${0.6 + 0.4 * p})`; }
     const titel = document.querySelector(".titel");
-    if (titel) { const p = easeOut((t - 0.05) / 0.35); titel.style.transform = `scale(${2.2 - 1.2 * p}) translateY(${8 * noise1(t * 20, 3) * (1 - p)}px)`; titel.style.opacity = p;
+    if (titel) { if (!titel.dataset.fit) { titel.dataset.fit = 1; let fs = 190; while (titel.scrollWidth > 1050 && fs > 90) { fs -= 10; titel.style.fontSize = fs + "px"; } }
+      const p = easeOut((t - 0.05) / 0.35); titel.style.transform = `scale(${2.2 - 1.2 * p}) translateY(${8 * noise1(t * 20, 3) * (1 - p)}px)`; titel.style.opacity = p;
       const ut = document.querySelector(".untertitel"); if (titel.offsetHeight > 250) titel.style.top = "1060px"; ut.style.top = (titel.offsetTop + titel.offsetHeight + 30) + "px"; ut.style.opacity = easeOut((t - 0.35) / 0.4); ut.style.letterSpacing = `${10 + 12 * (1 - easeOut((t - 0.35) / 0.6))}px`; }
     document.querySelectorAll(".ringe circle").forEach((c, i) => {
       const p = ((t * 0.9 + i * 0.25) % 1); c.setAttribute("r", String(150 + p * 420)); c.setAttribute("opacity", String((1 - p) * 0.9));

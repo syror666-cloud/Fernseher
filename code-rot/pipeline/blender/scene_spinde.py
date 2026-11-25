@@ -13,6 +13,7 @@ ap.add_argument("--out", default="/tmp/spinde.png")
 ap.add_argument("--hoehe", type=int, default=1920)
 ap.add_argument("--samples", type=int, default=32)
 ap.add_argument("--fokus", default="GSG 9")
+ap.add_argument("--ersatz", default="")  # z.B. "SEK=BLOQUE DE BÚSQUEDA|KOLUMBIEN|bloque" (Zelle für eine Folge austauschen)
 ap.add_argument("--font", default="")
 ap.add_argument("--figuren", default=".")
 ap.add_argument("--engine", default="cycles")
@@ -32,6 +33,11 @@ EINHEITEN = [
 KUERZEL = {"NAVY SEALS": "seals", "SAS": "sas", "GIGN": "gign", "BOPE": "bope", "KSK": "ksk", "SAYERET MATKAL": "matkal",
            "GSG 9": "gsg9", "DELTA FORCE": "delta", "GROM": "grom", "SEK": "sek", "PARARESCUE": "pj", "EKO COBRA": "cobra",
            "JTF2": "jtf2", "SAT": "sat"}
+
+if args.ersatz:
+    _alt, _neu = args.ersatz.split("=", 1); _name, _land, _kz = _neu.split("|")
+    EINHEITEN = [(_name, _land, "kappe") if e[0] == _alt else e for e in EINHEITEN]
+    KUERZEL[_name] = _kz
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scn = bpy.context.scene
@@ -130,7 +136,7 @@ for i, (name, land, kopf) in enumerate(EINHEITEN):
     kegel = bpy.context.object; kegel.data.materials.append(M_CONE)
     # Namensschild + Land
     cube((x, -0.9, 3.55), (W / 2 - 0.15, 0.02, 0.2), M_SIGN)
-    text(name, (x, -0.93, 3.6), 0.17, M_SIGNTXT)
+    text(name, (x, -0.93, 3.6), 0.17 if len(name) <= 12 else 0.17 * 12 / len(name), M_SIGNTXT)
     text(land, (x, -0.93, 3.43), 0.085, M_LAND)
     text(f"ZELLE {201 + i}", (x, 0.74, 2.6), 0.09, M_SCRATCH)
     # Figur: eigene 2D-Figur der Einheit als Bild-Ebene
