@@ -10,3 +10,4 @@ Wiederaufnahme nach Abbruch: `nohup setsid pipeline/nachtlauf.sh &` – fertige 
 ## Ergebnisse
 - Folge 1 GSG 9: fertig (02:44) -> folge01_gsg9/export/folge01_gsg9.mp4
 - Folge 2 NAVY SEALS: fertig (04:50) -> folge02_seals/export/folge02_seals.mp4
+- Folge 2 NAVY SEALS: neu geschnitten (05:05): Titel-Fix, Meer leiser, Limiter
