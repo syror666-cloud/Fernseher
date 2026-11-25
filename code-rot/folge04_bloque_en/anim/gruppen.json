@@ -1,0 +1,166 @@
+{
+ "intro": {
+  "frames": 85,
+  "start": {
+   "0": 0,
+   "1": 21,
+   "2": 51,
+   "3": 61
+  },
+  "loop": false
+ },
+ "outro": {
+  "frames": 152,
+  "start": {
+   "61": 0,
+   "62": 45
+  },
+  "loop": false
+ },
+ "anflug": {
+  "frames": 113,
+  "start": {
+   "5": 0,
+   "6": 49
+  },
+  "loop": false
+ },
+ "anflug2": {
+  "frames": 85,
+  "start": {
+   "27": 0,
+   "28": 35
+  },
+  "loop": false
+ },
+ "huegel": {
+  "frames": 117,
+  "start": {
+   "7": 0,
+   "8": 47
+  },
+  "loop": false
+ },
+ "huegel2": {
+  "frames": 75,
+  "start": {
+   "13": 0
+  },
+  "loop": false
+ },
+ "gasse": {
+  "frames": 116,
+  "start": {
+   "11": 0,
+   "23": 54,
+   "25": 85
+  },
+  "loop": false
+ },
+ "gasse_tief": {
+  "frames": 37,
+  "start": {
+   "15": 0
+  },
+  "loop": false
+ },
+ "loop_wagen": {
+  "frames": 120,
+  "start": {
+   "12": 0,
+   "14": 65,
+   "17": 10,
+   "18": 72,
+   "21": 107,
+   "22": 43,
+   "26": 87,
+   "30": 53,
+   "31": 108,
+   "35": 46,
+   "40": 111,
+   "41": 47
+  },
+  "loop": true
+ },
+ "peil_nah": {
+  "frames": 178,
+  "start": {
+   "19": 0,
+   "20": 56,
+   "24": 105,
+   "34": 142
+  },
+  "loop": false
+ },
+ "peil_nah2": {
+  "frames": 74,
+  "start": {
+   "52": 0
+  },
+  "loop": false
+ },
+ "peil_fahrt": {
+  "frames": 106,
+  "start": {
+   "32": 0,
+   "33": 39
+  },
+  "loop": false
+ },
+ "haus": {
+  "frames": 64,
+  "start": {
+   "37": 0
+  },
+  "loop": false
+ },
+ "tuer2": {
+  "frames": 39,
+  "start": {
+   "42": 0
+  },
+  "loop": false
+ },
+ "dach_flucht": {
+  "frames": 107,
+  "start": {
+   "43": 0,
+   "44": 68
+  },
+  "loop": false
+ },
+ "dach_weit": {
+  "frames": 83,
+  "start": {
+   "45": 0,
+   "46": 26
+  },
+  "loop": false
+ },
+ "dach_weit2": {
+  "frames": 118,
+  "start": {
+   "51": 0,
+   "59": 56
+  },
+  "loop": false
+ },
+ "abend": {
+  "frames": 55,
+  "start": {
+   "48": 0
+  },
+  "loop": false
+ },
+ "loop_abend": {
+  "frames": 120,
+  "start": {
+   "47": 0,
+   "50": 48,
+   "53": 104,
+   "54": 51,
+   "58": 116
+  },
+  "loop": true
+ }
+}
