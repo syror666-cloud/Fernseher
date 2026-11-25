@@ -27,25 +27,15 @@ if [ ! -s $F/bg/spinde_streifen.png ]; then
     --ersatz "SEK=BLOQUE DE BÚSQUEDA|KOLUMBIEN|bloque" --fokus "BLOQUE DE BÚSQUEDA" >> $F/anim/render.log 2>&1
 fi
 log "Folge 4: 3D-Animation"
+while pgrep -f "anim_render.py $F/" >/dev/null; do sleep 30; done
 python3 -I pipeline/anim_render.py $F/episode.py --samples 6 >> $F/anim/render.log 2>&1 || true
 if grep -q FEHLER $F/anim/render.log; then
   log "Folge 4: Renderfehler -> zweiter Versuch"
   python3 -I pipeline/anim_render.py $F/episode.py --samples 6 >> $F/anim/render.log 2>&1 || true
 fi
-log "Folge 4: Schnitt normal"
-if ANIM_JOBS=3 python3 -I pipeline/cut.py $F/episode.py >> "$LOG" 2>&1; then
-  nice python3 -I pipeline/hoerpruefung.py $F/episode.py --fix >> "$LOG" 2>&1; rc=$?
-  if [ $rc -eq 3 ]; then
-    ANIM_JOBS=3 python3 -I pipeline/cut.py $F/episode.py >> "$LOG" 2>&1
-    nice python3 -I pipeline/hoerpruefung.py $F/episode.py >> "$LOG" 2>&1
-  fi
-  log "Folge 4: NORMAL_FERTIG -> $F/export/$F.mp4"
-  push "CODE ROT Folge 4 BLOQUE DE BÚSQUEDA: fertige Folge"
-else
-  log "Folge 4: Schnitt fehlgeschlagen"
-fi
+log "Folge 4: Schnitt normal entfällt (nur aggressiv) – 3D-Renders fertig"
+nice python3 -I pipeline/hoerpruefung.py $F/episode.py >> "$LOG" 2>&1 || true
 log "Folge 4: Schnitt aggressiv"
-until grep -q AGGRESSIV_ENDE aggressiv.log; do sleep 60; done
 if ANIM_JOBS=3 python3 -I pipeline/cut.py $F/episode.py --aggressiv >> "$LOG" 2>&1; then
   log "Folge 4: AGGRESSIV_FERTIG -> $F/export/${F}_aggressiv.mp4"
   push "CODE ROT Folge 4 BLOQUE DE BÚSQUEDA: aggressiver Schnitt"
