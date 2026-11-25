@@ -1,0 +1,1482 @@
+{
+ "gesamt": 89.36612199999999,
+ "shots": [
+  {
+   "i": 0,
+   "start": 0.0,
+   "sprech_ende": 1.08,
+   "words": [
+    {
+     "w": "Una",
+     "start": 0.0,
+     "ende": 0.209
+    },
+    {
+     "w": "de",
+     "start": 0.255,
+     "ende": 0.325
+    },
+    {
+     "w": "estas",
+     "start": 0.372,
+     "ende": 0.58
+    },
+    {
+     "w": "*unidades*",
+     "start": 0.639,
+     "ende": 1.08
+    }
+   ],
+   "schnitt": 0.0,
+   "ende": 1.08
+  },
+  {
+   "i": 1,
+   "start": 1.138,
+   "sprech_ende": 2.485,
+   "words": [
+    {
+     "w": "viene",
+     "start": 1.138,
+     "ende": 1.37
+    },
+    {
+     "w": "por",
+     "start": 1.405,
+     "ende": 1.544
+    },
+    {
+     "w": "ti",
+     "start": 1.614,
+     "ende": 1.73
+    },
+    {
+     "w": "esta",
+     "start": 1.811,
+     "ende": 1.997
+    },
+    {
+     "w": "noche.",
+     "start": 2.032,
+     "ende": 2.485
+    }
+   ],
+   "schnitt": 1.08,
+   "ende": 2.61
+  },
+  {
+   "i": 2,
+   "start": 2.67,
+   "sprech_ende": 3.042,
+   "words": [
+    {
+     "w": "Veamos",
+     "start": 2.67,
+     "ende": 3.042
+    }
+   ],
+   "schnitt": 2.61,
+   "ende": 3.042
+  },
+  {
+   "i": 3,
+   "start": 3.065,
+   "sprech_ende": 3.843,
+   "words": [
+    {
+     "w": "si",
+     "start": 3.065,
+     "ende": 3.146
+    },
+    {
+     "w": "*regresas*.",
+     "start": 3.228,
+     "ende": 3.843
+    }
+   ],
+   "schnitt": 3.042,
+   "ende": 3.843
+  },
+  {
+   "i": 4,
+   "start": 3.893,
+   "words": [],
+   "sprech_ende": 3.893,
+   "schnitt": 3.843,
+   "ende": 5.434
+  },
+  {
+   "i": 5,
+   "start": 5.494,
+   "sprech_ende": 6.759,
+   "words": [
+    {
+     "w": "Eres",
+     "start": 5.494,
+     "ende": 5.761
+    },
+    {
+     "w": "comando",
+     "start": 5.807,
+     "ende": 6.167
+    },
+    {
+     "w": "en",
+     "start": 6.214,
+     "ende": 6.272
+    },
+    {
+     "w": "*Perú*.",
+     "start": 6.318,
+     "ende": 6.759
+    }
+   ],
+   "schnitt": 5.434,
+   "ende": 6.978000000000001
+  },
+  {
+   "i": 6,
+   "start": 7.038,
+   "sprech_ende": 9.929,
+   "words": [
+    {
+     "w": "*14*",
+     "start": 7.038,
+     "ende": 7.50056
+    },
+    {
+     "w": "rebeldes.",
+     "start": 7.50056,
+     "ende": 8.54132
+    },
+    {
+     "w": "*72*",
+     "start": 8.54132,
+     "ende": 9.00388
+    },
+    {
+     "w": "rehenes.",
+     "start": 9.00388,
+     "ende": 9.929
+    }
+   ],
+   "schnitt": 6.978000000000001,
+   "ende": 10.147
+  },
+  {
+   "i": 7,
+   "start": 10.207,
+   "sprech_ende": 12.39,
+   "words": [
+    {
+     "w": "Llevan",
+     "start": 10.207,
+     "ende": 10.567
+    },
+    {
+     "w": "cuatro",
+     "start": 10.614,
+     "ende": 10.939
+    },
+    {
+     "w": "meses",
+     "start": 10.985,
+     "ende": 11.299
+    },
+    {
+     "w": "en",
+     "start": 11.368,
+     "ende": 11.427
+    },
+    {
+     "w": "esta",
+     "start": 11.496,
+     "ende": 11.659
+    },
+    {
+     "w": "residencia.",
+     "start": 11.705,
+     "ende": 12.39
+    }
+   ],
+   "schnitt": 10.147,
+   "ende": 12.667
+  },
+  {
+   "i": 8,
+   "start": 12.727,
+   "sprech_ende": 14.782,
+   "words": [
+    {
+     "w": "Y",
+     "start": 12.727,
+     "ende": 12.831
+    },
+    {
+     "w": "cada",
+     "start": 12.936,
+     "ende": 13.133
+    },
+    {
+     "w": "tarde",
+     "start": 13.191,
+     "ende": 13.423
+    },
+    {
+     "w": "cometen",
+     "start": 13.481,
+     "ende": 13.899
+    },
+    {
+     "w": "*el",
+     "start": 13.946,
+     "ende": 14.004
+    },
+    {
+     "w": "mismo*",
+     "start": 14.05,
+     "ende": 14.329
+    },
+    {
+     "w": "error.",
+     "start": 14.364,
+     "ende": 14.782
+    }
+   ],
+   "schnitt": 12.667,
+   "ende": 15.0
+  },
+  {
+   "i": 9,
+   "start": 15.06,
+   "sprech_ende": 15.815,
+   "words": [
+    {
+     "w": "Recuérdalo.",
+     "start": 15.06,
+     "ende": 15.815
+    }
+   ],
+   "schnitt": 15.0,
+   "ende": 16.092000000000002
+  },
+  {
+   "i": 10,
+   "start": 16.152,
+   "sprech_ende": 17.638,
+   "words": [
+    {
+     "w": "Todo",
+     "start": 16.152,
+     "ende": 16.442
+    },
+    {
+     "w": "empezó",
+     "start": 16.488,
+     "ende": 16.802
+    },
+    {
+     "w": "en",
+     "start": 16.86,
+     "ende": 16.906
+    },
+    {
+     "w": "una",
+     "start": 16.964,
+     "ende": 17.08
+    },
+    {
+     "w": "*fiesta*.",
+     "start": 17.127000000000002,
+     "ende": 17.638
+    }
+   ],
+   "schnitt": 16.092000000000002,
+   "ende": 18.019000000000002
+  },
+  {
+   "i": 11,
+   "start": 18.079,
+   "sprech_ende": 19.762,
+   "words": [
+    {
+     "w": "En",
+     "start": 18.079,
+     "ende": 18.23
+    },
+    {
+     "w": "casa",
+     "start": 18.288,
+     "ende": 18.52
+    },
+    {
+     "w": "del",
+     "start": 18.555,
+     "ende": 18.659
+    },
+    {
+     "w": "embajador",
+     "start": 18.694,
+     "ende": 19.112
+    },
+    {
+     "w": "de",
+     "start": 19.159,
+     "ende": 19.217
+    },
+    {
+     "w": "Japón.",
+     "start": 19.263,
+     "ende": 19.762
+    }
+   ],
+   "schnitt": 18.019000000000002,
+   "ende": 19.981
+  },
+  {
+   "i": 12,
+   "start": 20.041,
+   "sprech_ende": 21.434,
+   "words": [
+    {
+     "w": "Llegaron",
+     "start": 20.041,
+     "ende": 20.459
+    },
+    {
+     "w": "en",
+     "start": 20.505,
+     "ende": 20.552
+    },
+    {
+     "w": "una",
+     "start": 20.61,
+     "ende": 20.738
+    },
+    {
+     "w": "*ambulancia*.",
+     "start": 20.761,
+     "ende": 21.434
+    }
+   ],
+   "schnitt": 19.981,
+   "ende": 21.560000000000002
+  },
+  {
+   "i": 13,
+   "start": 21.62,
+   "sprech_ende": 22.758,
+   "words": [
+    {
+     "w": "Y",
+     "start": 21.62,
+     "ende": 21.724
+    },
+    {
+     "w": "volaron",
+     "start": 21.806,
+     "ende": 22.189
+    },
+    {
+     "w": "el",
+     "start": 22.235,
+     "ende": 22.305
+    },
+    {
+     "w": "*muro*.",
+     "start": 22.351,
+     "ende": 22.758
+    }
+   ],
+   "schnitt": 21.560000000000002,
+   "ende": 23.220000000000002
+  },
+  {
+   "i": 14,
+   "start": 23.28,
+   "sprech_ende": 25.08,
+   "words": [
+    {
+     "w": "Ustedes",
+     "start": 23.28,
+     "ende": 23.686
+    },
+    {
+     "w": "no",
+     "start": 23.721,
+     "ende": 23.791
+    },
+    {
+     "w": "pueden",
+     "start": 23.826,
+     "ende": 24.035
+    },
+    {
+     "w": "entrar",
+     "start": 24.07,
+     "ende": 24.302
+    },
+    {
+     "w": "por",
+     "start": 24.36,
+     "ende": 24.476
+    },
+    {
+     "w": "la",
+     "start": 24.522,
+     "ende": 24.58
+    },
+    {
+     "w": "puerta.",
+     "start": 24.627,
+     "ende": 25.08
+    }
+   ],
+   "schnitt": 23.220000000000002,
+   "ende": 25.542
+  },
+  {
+   "i": 15,
+   "start": 25.602,
+   "sprech_ende": 26.856,
+   "words": [
+    {
+     "w": "Así",
+     "start": 25.602,
+     "ende": 25.823
+    },
+    {
+     "w": "que",
+     "start": 25.869,
+     "ende": 25.95
+    },
+    {
+     "w": "llaman",
+     "start": 25.974,
+     "ende": 26.252
+    },
+    {
+     "w": "a",
+     "start": 26.287,
+     "ende": 26.31
+    },
+    {
+     "w": "*mineros*.",
+     "start": 26.345,
+     "ende": 26.856
+    }
+   ],
+   "schnitt": 25.542,
+   "ende": 27.075000000000003
+  },
+  {
+   "i": 16,
+   "start": 27.135,
+   "sprech_ende": 29.108,
+   "words": [
+    {
+     "w": "Cavan",
+     "start": 27.135,
+     "ende": 27.436
+    },
+    {
+     "w": "*túneles*",
+     "start": 27.483,
+     "ende": 27.878
+    },
+    {
+     "w": "hasta",
+     "start": 27.924,
+     "ende": 28.098
+    },
+    {
+     "w": "debajo",
+     "start": 28.145,
+     "ende": 28.447
+    },
+    {
+     "w": "de",
+     "start": 28.481,
+     "ende": 28.539
+    },
+    {
+     "w": "la",
+     "start": 28.574,
+     "ende": 28.644
+    },
+    {
+     "w": "casa.",
+     "start": 28.69,
+     "ende": 29.108
+    }
+   ],
+   "schnitt": 27.075000000000003,
+   "ende": 29.652
+  },
+  {
+   "i": 17,
+   "start": 29.712,
+   "sprech_ende": 31.396,
+   "words": [
+    {
+     "w": "De",
+     "start": 29.712,
+     "ende": 29.817
+    },
+    {
+     "w": "día",
+     "start": 29.863,
+     "ende": 30.072
+    },
+    {
+     "w": "suenan",
+     "start": 30.13,
+     "ende": 30.385
+    },
+    {
+     "w": "*marchas",
+     "start": 30.432,
+     "ende": 30.722
+    },
+    {
+     "w": "militares*.",
+     "start": 30.769,
+     "ende": 31.396
+    }
+   ],
+   "schnitt": 29.652,
+   "ende": 31.858
+  },
+  {
+   "i": 18,
+   "start": 31.918,
+   "sprech_ende": 33.265,
+   "words": [
+    {
+     "w": "Para",
+     "start": 31.918,
+     "ende": 32.114999999999995
+    },
+    {
+     "w": "que",
+     "start": 32.162,
+     "ende": 32.232
+    },
+    {
+     "w": "nadie",
+     "start": 32.29,
+     "ende": 32.557
+    },
+    {
+     "w": "*sospeche*.",
+     "start": 32.591,
+     "ende": 33.265
+    }
+   ],
+   "schnitt": 31.858,
+   "ende": 33.588
+  },
+  {
+   "i": 19,
+   "start": 33.648,
+   "sprech_ende": 35.494,
+   "words": [
+    {
+     "w": "Construyen",
+     "start": 33.648,
+     "ende": 34.17
+    },
+    {
+     "w": "una",
+     "start": 34.217,
+     "ende": 34.333
+    },
+    {
+     "w": "*réplica*",
+     "start": 34.379,
+     "ende": 34.751
+    },
+    {
+     "w": "y",
+     "start": 34.855,
+     "ende": 34.879
+    },
+    {
+     "w": "ensayan.",
+     "start": 34.937,
+     "ende": 35.494
+    }
+   ],
+   "schnitt": 33.588,
+   "ende": 35.713
+  },
+  {
+   "i": 20,
+   "start": 35.773,
+   "sprech_ende": 37.735,
+   "words": [
+    {
+     "w": "*Micrófonos*",
+     "start": 35.773,
+     "ende": 36.249
+    },
+    {
+     "w": "ocultos",
+     "start": 36.295,
+     "ende": 36.713
+    },
+    {
+     "w": "escuchan",
+     "start": 36.783,
+     "ende": 37.235
+    },
+    {
+     "w": "todo.",
+     "start": 37.305,
+     "ende": 37.735
+    }
+   ],
+   "schnitt": 35.713,
+   "ende": 38.058
+  },
+  {
+   "i": 21,
+   "start": 38.118,
+   "sprech_ende": 39.476,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 38.118,
+     "ende": 38.222
+    },
+    {
+     "w": "comandante",
+     "start": 38.269,
+     "ende": 38.745
+    },
+    {
+     "w": "solo",
+     "start": 38.803,
+     "ende": 39.0
+    },
+    {
+     "w": "dice:",
+     "start": 39.047,
+     "ende": 39.476
+    }
+   ],
+   "schnitt": 38.058,
+   "ende": 39.602
+  },
+  {
+   "i": 22,
+   "start": 39.662,
+   "sprech_ende": 40.916,
+   "words": [
+    {
+     "w": "“Esperamos",
+     "start": 39.662,
+     "ende": 40.266
+    },
+    {
+     "w": "el",
+     "start": 40.324,
+     "ende": 40.37
+    },
+    {
+     "w": "*balón*.”",
+     "start": 40.405,
+     "ende": 40.916
+    }
+   ],
+   "schnitt": 39.602,
+   "ende": 41.297
+  },
+  {
+   "i": 23,
+   "start": 41.357,
+   "sprech_ende": 42.17,
+   "words": [
+    {
+     "w": "Tus",
+     "start": 41.357,
+     "ende": 41.554
+    },
+    {
+     "w": "órdenes:",
+     "start": 41.636,
+     "ende": 42.17
+    }
+   ],
+   "schnitt": 41.297,
+   "ende": 42.388
+  },
+  {
+   "i": 24,
+   "start": 42.448,
+   "sprech_ende": 43.284,
+   "words": [
+    {
+     "w": "Ni",
+     "start": 42.448,
+     "ende": 42.599
+    },
+    {
+     "w": "un",
+     "start": 42.68,
+     "ende": 42.762
+    },
+    {
+     "w": "*ruido*.",
+     "start": 42.808,
+     "ende": 43.284
+    }
+   ],
+   "schnitt": 42.388,
+   "ende": 43.561
+  },
+  {
+   "i": 25,
+   "start": 43.621,
+   "sprech_ende": 44.84,
+   "words": [
+    {
+     "w": "*72*",
+     "start": 43.621,
+     "ende": 44.1086
+    },
+    {
+     "w": "vidas.",
+     "start": 44.1086,
+     "ende": 44.84
+    }
+   ],
+   "schnitt": 43.561,
+   "ende": 44.989
+  },
+  {
+   "i": 26,
+   "start": 45.049,
+   "sprech_ende": 46.523,
+   "words": [
+    {
+     "w": "Todos",
+     "start": 45.049,
+     "ende": 45.397
+    },
+    {
+     "w": "los",
+     "start": 45.455,
+     "ende": 45.583
+    },
+    {
+     "w": "túneles",
+     "start": 45.618,
+     "ende": 45.955
+    },
+    {
+     "w": "*a",
+     "start": 46.013,
+     "ende": 46.036
+    },
+    {
+     "w": "la",
+     "start": 46.071,
+     "ende": 46.14
+    },
+    {
+     "w": "vez*.",
+     "start": 46.187,
+     "ende": 46.523
+    }
+   ],
+   "schnitt": 44.989,
+   "ende": 46.8
+  },
+  {
+   "i": 27,
+   "start": 46.86,
+   "sprech_ende": 48.497,
+   "words": [
+    {
+     "w": "Y:",
+     "start": 46.86,
+     "ende": 47.232
+    },
+    {
+     "w": "espera",
+     "start": 47.51,
+     "ende": 47.87
+    },
+    {
+     "w": "la",
+     "start": 47.905,
+     "ende": 47.975
+    },
+    {
+     "w": "*señal*.",
+     "start": 48.01,
+     "ende": 48.497
+    }
+   ],
+   "schnitt": 46.8,
+   "ende": 48.82
+  },
+  {
+   "i": 28,
+   "start": 48.88,
+   "sprech_ende": 50.157,
+   "words": [
+    {
+     "w": "Día",
+     "start": 48.88,
+     "ende": 49.30566666666667
+    },
+    {
+     "w": "*126*.",
+     "start": 49.30566666666667,
+     "ende": 50.157
+    }
+   ],
+   "schnitt": 48.82,
+   "ende": 50.480999999999995
+  },
+  {
+   "i": 29,
+   "start": 50.541,
+   "sprech_ende": 51.748,
+   "words": [
+    {
+     "w": "*15:23*.",
+     "start": 50.541,
+     "ende": 51.748
+    }
+   ],
+   "schnitt": 50.480999999999995,
+   "ende": 51.967
+  },
+  {
+   "i": 30,
+   "start": 52.027,
+   "sprech_ende": 53.095,
+   "words": [
+    {
+     "w": "Están",
+     "start": 52.027,
+     "ende": 52.375
+    },
+    {
+     "w": "en",
+     "start": 52.41,
+     "ende": 52.456
+    },
+    {
+     "w": "el",
+     "start": 52.514,
+     "ende": 52.584
+    },
+    {
+     "w": "*túnel*.",
+     "start": 52.619,
+     "ende": 53.095
+    }
+   ],
+   "schnitt": 51.967,
+   "ende": 53.370999999999995
+  },
+  {
+   "i": 31,
+   "start": 53.431,
+   "sprech_ende": 55.835,
+   "words": [
+    {
+     "w": "Arriba:",
+     "start": 53.431,
+     "ende": 54.035
+    },
+    {
+     "w": "*pasos*.",
+     "start": 54.244,
+     "ende": 54.883
+    },
+    {
+     "w": "Gritos.",
+     "start": 55.219,
+     "ende": 55.835
+    }
+   ],
+   "schnitt": 53.370999999999995,
+   "ende": 55.983999999999995
+  },
+  {
+   "i": 32,
+   "start": 56.044,
+   "sprech_ende": 56.856,
+   "words": [
+    {
+     "w": "“*¡Ahora!*”",
+     "start": 56.044,
+     "ende": 56.856
+    }
+   ],
+   "schnitt": 55.983999999999995,
+   "ende": 57.132999999999996
+  },
+  {
+   "i": 33,
+   "start": 57.193,
+   "sprech_ende": 58.273,
+   "words": [
+    {
+     "w": "El",
+     "start": 57.193,
+     "ende": 57.344
+    },
+    {
+     "w": "piso",
+     "start": 57.402,
+     "ende": 57.634
+    },
+    {
+     "w": "*explota*.",
+     "start": 57.681,
+     "ende": 58.273
+    }
+   ],
+   "schnitt": 57.132999999999996,
+   "ende": 58.549
+  },
+  {
+   "i": 34,
+   "start": 58.609,
+   "sprech_ende": 59.736,
+   "words": [
+    {
+     "w": "Suben",
+     "start": 58.609,
+     "ende": 58.958
+    },
+    {
+     "w": "desde",
+     "start": 58.993,
+     "ende": 59.167
+    },
+    {
+     "w": "*abajo*.",
+     "start": 59.202,
+     "ende": 59.736
+    }
+   ],
+   "schnitt": 58.549,
+   "ende": 59.954
+  },
+  {
+   "i": 35,
+   "start": 60.014,
+   "sprech_ende": 61.616,
+   "words": [
+    {
+     "w": "*148*",
+     "start": 60.014,
+     "ende": 60.58614285714286
+    },
+    {
+     "w": "soldados.",
+     "start": 60.58614285714286,
+     "ende": 61.616
+    }
+   ],
+   "schnitt": 59.954,
+   "ende": 61.8
+  },
+  {
+   "i": 36,
+   "start": 61.86,
+   "sprech_ende": 63.544,
+   "words": [
+    {
+     "w": "Humo.",
+     "start": 61.86,
+     "ende": 62.441
+    },
+    {
+     "w": "*Disparos*.",
+     "start": 62.824,
+     "ende": 63.544
+    }
+   ],
+   "schnitt": 61.8,
+   "ende": 63.867
+  },
+  {
+   "i": 37,
+   "start": 63.927,
+   "sprech_ende": 65.517,
+   "words": [
+    {
+     "w": "Los",
+     "start": 63.927,
+     "ende": 64.14699999999999
+    },
+    {
+     "w": "rehenes",
+     "start": 64.25200000000001,
+     "ende": 64.6
+    },
+    {
+     "w": "salen",
+     "start": 64.63499999999999,
+     "ende": 64.89
+    },
+    {
+     "w": "a",
+     "start": 64.937,
+     "ende": 64.96000000000001
+    },
+    {
+     "w": "rastras.",
+     "start": 65.007,
+     "ende": 65.517
+    }
+   ],
+   "schnitt": 63.867,
+   "ende": 65.538
+  },
+  {
+   "i": 38,
+   "start": 65.598,
+   "sprech_ende": 67.746,
+   "words": [
+    {
+     "w": "Un",
+     "start": 65.598,
+     "ende": 65.703
+    },
+    {
+     "w": "oficial",
+     "start": 65.738,
+     "ende": 66.074
+    },
+    {
+     "w": "cubre",
+     "start": 66.132,
+     "ende": 66.376
+    },
+    {
+     "w": "a",
+     "start": 66.411,
+     "ende": 66.434
+    },
+    {
+     "w": "un",
+     "start": 66.492,
+     "ende": 66.55
+    },
+    {
+     "w": "*ministro*",
+     "start": 66.585,
+     "ende": 66.945
+    },
+    {
+     "w": "con",
+     "start": 66.98,
+     "ende": 67.084
+    },
+    {
+     "w": "su",
+     "start": 67.119,
+     "ende": 67.177
+    },
+    {
+     "w": "cuerpo.",
+     "start": 67.224,
+     "ende": 67.746
+    }
+   ],
+   "schnitt": 65.538,
+   "ende": 68.023
+  },
+  {
+   "i": 39,
+   "start": 68.083,
+   "sprech_ende": 68.977,
+   "words": [
+    {
+     "w": "El",
+     "start": 68.083,
+     "ende": 68.199
+    },
+    {
+     "w": "oficial",
+     "start": 68.234,
+     "ende": 68.559
+    },
+    {
+     "w": "*muere*.",
+     "start": 68.594,
+     "ende": 68.977
+    }
+   ],
+   "schnitt": 68.023,
+   "ende": 69.045
+  },
+  {
+   "i": 40,
+   "start": 69.105,
+   "sprech_ende": 70.707,
+   "words": [
+    {
+     "w": "*71*",
+     "start": 69.105,
+     "ende": 69.39627272727273
+    },
+    {
+     "w": "rehenes",
+     "start": 69.39627272727273,
+     "ende": 69.906
+    },
+    {
+     "w": "sobreviven.",
+     "start": 69.906,
+     "ende": 70.707
+    }
+   ],
+   "schnitt": 69.045,
+   "ende": 71.471
+  },
+  {
+   "i": 41,
+   "start": 71.531,
+   "sprech_ende": 72.297,
+   "words": [
+    {
+     "w": "Lo",
+     "start": 71.531,
+     "ende": 71.647
+    },
+    {
+     "w": "lograste.",
+     "start": 71.682,
+     "ende": 72.297
+    }
+   ],
+   "schnitt": 71.471,
+   "ende": 72.342
+  },
+  {
+   "i": 42,
+   "start": 72.402,
+   "sprech_ende": 73.284,
+   "words": [
+    {
+     "w": "¿Y",
+     "start": 72.402,
+     "ende": 72.634
+    },
+    {
+     "w": "el",
+     "start": 72.739,
+     "ende": 72.808
+    },
+    {
+     "w": "*error*?",
+     "start": 72.855,
+     "ende": 73.284
+    }
+   ],
+   "schnitt": 72.342,
+   "ende": 73.66499999999999
+  },
+  {
+   "i": 43,
+   "start": 73.725,
+   "sprech_ende": 75.525,
+   "words": [
+    {
+     "w": "Cada",
+     "start": 73.725,
+     "ende": 73.958
+    },
+    {
+     "w": "tarde",
+     "start": 73.992,
+     "ende": 74.201
+    },
+    {
+     "w": "jugaban",
+     "start": 74.236,
+     "ende": 74.573
+    },
+    {
+     "w": "*fútbol*",
+     "start": 74.619,
+     "ende": 74.956
+    },
+    {
+     "w": "adentro.",
+     "start": 74.991,
+     "ende": 75.525
+    }
+   ],
+   "schnitt": 73.66499999999999,
+   "ende": 75.744
+  },
+  {
+   "i": 44,
+   "start": 75.804,
+   "sprech_ende": 77.255,
+   "words": [
+    {
+     "w": "Justo",
+     "start": 75.804,
+     "ende": 76.152
+    },
+    {
+     "w": "encima",
+     "start": 76.198,
+     "ende": 76.523
+    },
+    {
+     "w": "de",
+     "start": 76.558,
+     "ende": 76.628
+    },
+    {
+     "w": "su",
+     "start": 76.663,
+     "ende": 76.744
+    },
+    {
+     "w": "*túnel*.",
+     "start": 76.79,
+     "ende": 77.255
+    }
+   ],
+   "schnitt": 75.744,
+   "ende": 77.322
+  },
+  {
+   "i": 45,
+   "start": 77.382,
+   "sprech_ende": 79.136,
+   "words": [
+    {
+     "w": "Solo",
+     "start": 77.382,
+     "ende": 77.65
+    },
+    {
+     "w": "esperaban",
+     "start": 77.684,
+     "ende": 78.044
+    },
+    {
+     "w": "el",
+     "start": 78.079,
+     "ende": 78.126
+    },
+    {
+     "w": "*pitazo",
+     "start": 78.172,
+     "ende": 78.555
+    },
+    {
+     "w": "inicial*.",
+     "start": 78.59,
+     "ende": 79.136
+    }
+   ],
+   "schnitt": 77.322,
+   "ende": 79.354
+  },
+  {
+   "i": 46,
+   "start": 79.414,
+   "sprech_ende": 80.401,
+   "words": [
+    {
+     "w": "Hasta",
+     "start": 79.414,
+     "ende": 79.693
+    },
+    {
+     "w": "hoy",
+     "start": 79.739,
+     "ende": 79.879
+    },
+    {
+     "w": "se",
+     "start": 79.914,
+     "ende": 79.983
+    },
+    {
+     "w": "discute",
+     "start": 80.018,
+     "ende": 80.401
+    }
+   ],
+   "schnitt": 79.354,
+   "ende": 80.401
+  },
+  {
+   "i": 47,
+   "start": 80.448,
+   "sprech_ende": 82.212,
+   "words": [
+    {
+     "w": "si",
+     "start": 80.448,
+     "ende": 80.529
+    },
+    {
+     "w": "*algunos*",
+     "start": 80.575,
+     "ende": 80.935
+    },
+    {
+     "w": "ya",
+     "start": 80.982,
+     "ende": 81.098
+    },
+    {
+     "w": "se",
+     "start": 81.156,
+     "ende": 81.237
+    },
+    {
+     "w": "habían",
+     "start": 81.272,
+     "ende": 81.609
+    },
+    {
+     "w": "rendido.",
+     "start": 81.667,
+     "ende": 82.212
+    }
+   ],
+   "schnitt": 80.401,
+   "ende": 82.28
+  },
+  {
+   "i": 48,
+   "start": 82.34,
+   "sprech_ende": 85.103,
+   "words": [
+    {
+     "w": "El",
+     "start": 82.34,
+     "ende": 82.479
+    },
+    {
+     "w": "nombre",
+     "start": 82.526,
+     "ende": 82.735
+    },
+    {
+     "w": "de",
+     "start": 82.77,
+     "ende": 82.816
+    },
+    {
+     "w": "la",
+     "start": 82.851,
+     "ende": 82.897
+    },
+    {
+     "w": "operación:",
+     "start": 82.932,
+     "ende": 83.536
+    },
+    {
+     "w": "un",
+     "start": 83.64,
+     "ende": 83.757
+    },
+    {
+     "w": "templo",
+     "start": 83.826,
+     "ende": 84.14
+    },
+    {
+     "w": "lleno",
+     "start": 84.163,
+     "ende": 84.395
+    },
+    {
+     "w": "de",
+     "start": 84.442,
+     "ende": 84.511
+    },
+    {
+     "w": "*túneles*.",
+     "start": 84.558,
+     "ende": 85.103
+    }
+   ],
+   "schnitt": 82.28,
+   "ende": 85.229
+  },
+  {
+   "i": 49,
+   "start": 85.289,
+   "sprech_ende": 86.322,
+   "words": [
+    {
+     "w": "*Chavín",
+     "start": 85.289,
+     "ende": 85.69072222222222
+    },
+    {
+     "w": "de",
+     "start": 85.69072222222222,
+     "ende": 85.8055
+    },
+    {
+     "w": "Huántar*.",
+     "start": 85.8055,
+     "ende": 86.322
+    }
+   ],
+   "schnitt": 85.229,
+   "ende": 86.39
+  },
+  {
+   "i": 50,
+   "start": 86.45,
+   "sprech_ende": 87.216,
+   "words": [
+    {
+     "w": "¿Y",
+     "start": 86.45,
+     "ende": 86.636
+    },
+    {
+     "w": "mañana?",
+     "start": 86.705,
+     "ende": 87.216
+    }
+   ],
+   "schnitt": 86.39,
+   "ende": 87.493
+  },
+  {
+   "i": 51,
+   "start": 87.553,
+   "sprech_ende": 88.528,
+   "words": [
+    {
+     "w": "Vendrá",
+     "start": 87.553,
+     "ende": 87.878
+    },
+    {
+     "w": "*otra*.",
+     "start": 87.948,
+     "ende": 88.528
+    }
+   ],
+   "schnitt": 87.493,
+   "ende": 89.36612199999999
+  }
+ ]
+}
