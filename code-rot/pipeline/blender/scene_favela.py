@@ -23,6 +23,7 @@ ap.add_argument("--caveirao", default="")
 ap.add_argument("--junge", default="")
 ap.add_argument("--tuer", default="zu")
 ap.add_argument("--peilwagen", default="")
+ap.add_argument("--berge", action="store_true")  # Bergkette + Bäume bis zum Horizont (kein sichtbarer Weltrand)
 ap.add_argument("--bus", default="")   # fahrt|steht: Linienbus mit beleuchteten Fenstern
 ap.add_argument("--auto", default="")  # steht: dunkle Limousine am Straßenrand  # steht|fahrt: weißer Lieferwagen mit Peilantennen
 args = ap.parse_args(argv)
@@ -73,6 +74,41 @@ for v in hang.data.vertices:
     wy = v.co.y * 400
     v.co.z = H(wy) / 1.0 if wy < 120 else H(120) + (wy - 120) * 0.1
 cube((0, -11.5, 0.02), (200, 6.5, 0.02), M_STRASSE)
+
+# ---------- Landschaft bis zum Horizont (Tal mit Bergen, wie Medellín) ----------
+if args.berge:
+    import random as _r
+    _r.seed(77)
+    BERG = [Masse(f"berg{i}", mat(f"berg{i}", c, 0.95)) for i, c in enumerate(
+        [(0.30, 0.36, 0.30), (0.26, 0.32, 0.30), (0.36, 0.38, 0.34)] if (TAG or MORGEN) else
+        [(0.08, 0.09, 0.14), (0.06, 0.07, 0.12), (0.1, 0.1, 0.16)])]
+    for i in range(46):  # zwei Ringe: nahe grüne Hügel, ferne höhere Berge
+        a = i / 46 * math.tau + _r.uniform(-0.05, 0.05)
+        fern = i % 2 == 0
+        dist = _r.uniform(330, 420) if fern else _r.uniform(210, 260)
+        r = _r.uniform(90, 150) if fern else _r.uniform(60, 95)
+        hgt = _r.uniform(90, 170) if fern else _r.uniform(40, 75)
+        BERG[i % 3]._add(lambda b, r=r, hgt=hgt: __import__("bmesh").ops.create_cone(
+            b, cap_ends=True, segments=_r.choice([5, 6, 7]), radius1=r, radius2=r * 0.08, depth=hgt),
+            (math.cos(a) * dist, 40 + math.sin(a) * dist, hgt / 2 - 6), (0, 0, _r.uniform(0, 1)))
+    for m_ in BERG:
+        m_.fertig()
+    # Bäume auf dem freien Gelände um die Stadt
+    BAUM = Masse("baeume", mat("baum", (0.16, 0.30, 0.14) if (TAG or MORGEN) else (0.03, 0.06, 0.04), 0.95))
+    STAMM = Masse("staemme", mat("stamm", (0.22, 0.14, 0.08), 0.95))
+    n = 0
+    while n < 700:
+        x, yy = _r.uniform(-190, 190), _r.uniform(-80, 220)
+        if (-48 < x < 48 and -20 < yy < 100) or (-19 < yy < -4):
+            continue
+        z0 = H(yy) if yy < 120 else H(120) + (yy - 120) * 0.1
+        h_ = _r.uniform(4, 9)
+        STAMM.zylinder((x, yy, z0 + h_ * 0.2), 0.3, h_ * 0.4, verts=5)
+        BAUM.kugel((x, yy, z0 + h_ * 0.6), h_ * 0.35, scale=(1, 1, 1.3), sub=1)
+        n += 1
+    BAUM.fertig(); STAMM.fertig()
+    bpy.ops.mesh.primitive_plane_add(size=2400, location=(0, 40, -0.6))  # Talboden bis zum Horizont
+    bpy.context.object.data.materials.append(mat("talboden", (0.22, 0.24, 0.15) if (TAG or MORGEN) else (0.04, 0.045, 0.04), 1.0))
 
 # ---------- Häuser ----------
 GASSEN = [(-1.2, 3.2), (-8.0, -4.2)]

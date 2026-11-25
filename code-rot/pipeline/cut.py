@@ -384,6 +384,93 @@ LUECKE_MAX = 0.45   # Sprechpause zwischen zwei Einstellungen höchstens so lang
 ENDE_NACH = 0.3     # nach dem letzten Wort: sofort zurück zum Anfang (Loop)
 
 
+ZIEL_RATE = {"de": 20.5, "en": 17.5, "es": 20.0}  # Zeichen/s (gesprochene Zeichen) – zügig, aber zusammenhängend
+LUECKE_SATZ, LUECKE_WEITER = 0.16, 0.06  # Pause nach Satzende bzw. innerhalb eines Satzes (über einen Schnitt hinweg)
+_ZIEL = [None]
+
+
+def _gesprochen(ep, k):
+    s_ = ep.SHOTS[k]
+    t = s_.get("sprich") or (s_.get("titel_sprich") or re.sub(r"[*_]", "", s_.get("titel", ""))) if s_.get("titel") else (s_.get("sprich") or s_["text"])
+    return re.sub(r"[*_„“”\"]", "", t).strip()
+
+
+def _dehnen(y, f):
+    """Audioabschnitt (float32, stereo 44,1 kHz) um Faktor f beschleunigen (Tonhöhe bleibt)."""
+    import numpy as np
+    if abs(f - 1) < 0.02:
+        return y
+    r = subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "f32le", "-ar", "44100", "-ac", "2", "-i", "-",
+                        "-af", f"atempo={f:.4f}", "-f", "f32le", "-ar", "44100", "-ac", "2", "-"],
+                       input=y.astype(np.float32).tobytes(), capture_output=True, check=True)
+    return np.frombuffer(r.stdout, np.float32).reshape(-1, 2)
+
+
+def fluss_normalisieren(ep, timing, vo_in, vo_out):
+    """Gleichmäßiger Sprechfluss: jeder Satz wird einzeln auf eine einheitliche Zielgeschwindigkeit gebracht
+    (ElevenLabs spricht sonst mal hastig, mal sehr langsam), Pausen werden einheitlich kurz. Ersetzt Stille-Kürzen
+    und globale Beschleunigung."""
+    import numpy as np
+    r = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(vo_in), "-ac", "2", "-ar", "44100", "-f", "f32le", "-"],
+                       capture_output=True, check=True)
+    y = np.frombuffer(r.stdout, np.float32).reshape(-1, 2); SR_ = 44100
+    shots = timing["shots"]; sp = getattr(ep, "SPRACHE", "de")
+    ziel = ZIEL_RATE.get(sp, 19.0); _ZIEL[0] = ziel
+    teile, neu_shots, t = [], [], 0.0
+    raten = []
+    for k, sh_ in enumerate(shots):
+        w = sh_["words"]
+        if not w:  # stumme Einstellung: kurz halten
+            d = min(max(sh_["ende"] - sh_["schnitt"], 0.5), 0.8)
+            teile.append(np.zeros((int(d * SR_), 2), np.float32))
+            neu_shots.append(dict(sh_, schnitt=t, start=t, sprech_ende=t, ende=t + d, words=[])); t += d
+            continue
+        # Abschnitt robust bestimmen: bis kurz vor die nächste Sprache, dann Stille an den Rändern per Pegel abschneiden
+        # (die Zeitstempel von ElevenLabs liegen bei einzelnen Wörtern daneben)
+        vorher = shots[k - 1]["words"][-1]["ende"] if k > 0 and shots[k - 1]["words"] else 0.0
+        nachher = next((shots[j]["words"][0]["start"] for j in range(k + 1, len(shots)) if shots[j]["words"]), len(y) / SR_)
+        a = max(vorher + 0.01, w[0]["start"] - 0.15, 0.0); b = min(nachher - 0.01, w[-1]["ende"] + 0.6)
+        if b - a < 0.15:
+            a, b = max(0.0, w[0]["start"] - 0.03), w[-1]["ende"] + 0.06
+        roh = y[int(a * SR_):int(b * SR_)]
+        en_ = np.sqrt(np.convolve((roh ** 2).mean(axis=1), np.ones(441) / 441, mode="same"))
+        laut = np.where(en_ > 10 ** (-42 / 20))[0]
+        if len(laut):
+            i0, i1 = max(0, laut[0] - int(0.03 * SR_)), min(len(roh), laut[-1] + int(0.06 * SR_))
+            a, b = a + i0 / SR_, a + i1 / SR_
+        text = _gesprochen(ep, k); dauer = max(b - a - 0.09, 0.15)
+        rate = len(text) / dauer
+        kurz = len(text.split()) <= 2
+        f = ziel / rate
+        f = min(max(f, 0.95 if kurz else 0.85), 1.15 if kurz else 1.5)
+        seg = _dehnen(y[int(a * SR_):int(b * SR_)], f)
+        start = t
+        teile.append(seg); t += len(seg) / SR_
+        raten.append(len(text) / (dauer / f))
+        nw = [dict(x, start=start + (x["start"] - a) / f, ende=start + (x["ende"] - a) / f) for x in w]
+        neu_shots.append(dict(sh_, schnitt=start, start=nw[0]["start"], sprech_ende=nw[-1]["ende"], words=nw))
+        # Pause bis zur nächsten Einstellung
+        if k + 1 < len(shots):
+            satzende = text.rstrip().endswith((".", "!", "?", ":"))
+            g = LUECKE_SATZ if satzende else LUECKE_WEITER
+            if ep.SHOTS[k + 1].get("titel") or ep.SHOTS[k].get("titel"):
+                g = 0.18
+            teile.append(np.zeros((int(g * SR_), 2), np.float32)); t += g
+    t += 0.3; teile.append(np.zeros((int(0.3 * SR_), 2), np.float32))
+    for k, n in enumerate(neu_shots):
+        if k > 0 and n["words"]:
+            n["schnitt"] = max(neu_shots[k - 1]["sprech_ende"], n["start"] - 0.06)
+    for k, n in enumerate(neu_shots):
+        n["ende"] = neu_shots[k + 1]["schnitt"] if k + 1 < len(neu_shots) else t
+    z = np.concatenate(teile)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "f32le", "-ar", "44100", "-ac", "2", "-i", "-",
+                    "-c:a", "pcm_s16le", str(vo_out)], input=z.astype(np.float32).tobytes(), check=True)
+    import statistics as st_
+    print(f"Sprechfluss: Ziel {ziel} Z/s, danach Median {st_.median(raten):.1f}, Streuung {st_.pstdev(raten):.1f}, "
+          f"Dauer {timing['gesamt']:.1f} -> {t:.1f} s", flush=True)
+    return dict(timing, gesamt=t, shots=neu_shots)
+
+
 def stille_kuerzen(timing, vo_in, vo_out):
     """Tote Luft raus: lange stumme Einstellungen und Pausen zwischen Einstellungen kürzen, Ende direkt nach dem
     letzten Wort (nahtloser Loop). Schneidet die Stimme mit und verschiebt alle Zeiten."""
@@ -531,10 +618,8 @@ def main_animiert():
     tmp = folge / ("build_aggr" if AGGR else "build"); tmp.mkdir(exist_ok=True); (folge / "export").mkdir(exist_ok=True)
     vo = None
     if AGGR:  # tote Luft raus, Erzählung beschleunigen (Tonhöhe bleibt), Timing mitskalieren
-        timing = stille_kuerzen(timing, folge / "audio/vo.wav", tmp / "vo_kurz.wav")
-        timing = skaliere_timing(timing, TEMPO)
-        vo = tmp / "vo_schnell.wav"
-        sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(tmp / "vo_kurz.wav"), "-af", f"atempo={TEMPO}", str(vo)])
+        vo = tmp / "vo_fluss.wav"
+        timing = fluss_normalisieren(ep, timing, folge / "audio/vo.wav", vo)
     gruppen = gruppen_anpassen(ep, timing, folge, gruppen)
     sp = folge / "bg/spinde_streifen.png"
     streifen = Streifen(sp)
@@ -589,6 +674,13 @@ def hook_gesprochen(ep, folge, ks, roh, t0, bett, t_ton, tmp, out):
         al = vomod.tts(klar, ep.STIMME, ep.MODELL, ep.STIMM_EINSTELLUNG, mp3, sp)
         alj.write_text(json.dumps(al, ensure_ascii=False))
     al = json.loads(alj.read_text()); st, en = al["character_start_times_seconds"], al["character_end_times_seconds"]
+    ziel = _ZIEL[0] or ZIEL_RATE.get(sp, 19.0)
+    rate = len(klar) / max(en[-1] - st[0], 0.2)
+    f = min(max(ziel / rate, 0.9), 1.4)
+    if abs(f - 1) > 0.02:  # gleiche Geschwindigkeit wie der Rest der Folge
+        mp3_f = tmp / f"hook_vo_{key}_f.wav"
+        sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af", f"atempo={f:.4f}", str(mp3_f)])
+        mp3 = mp3_f; st = [x / f for x in st]; en = [x / f for x in en]
     spans = [(m.start(), m.end() - 1) for m in re.finditer(r"\S+", klar)]
     toks = text.split()
     woerter = [(tok, st[a], en[b]) for tok, (a, b) in zip(toks, spans)]
