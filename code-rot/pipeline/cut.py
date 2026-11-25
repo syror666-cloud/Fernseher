@@ -635,7 +635,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     ein = ["-ss", f"{t0:.3f}", "-i", str(roh), "-ss", f"{t_ton:.3f}", "-t", f"{d:.3f}", "-i", str(bett), "-i", str(mp3),
            "-i", str(impact)]
     fv = (f"[0:v]trim=0:{d:.3f},setpts=PTS-STARTPTS,tpad=stop_mode=clone:stop_duration={d:.3f},trim=0:{d:.3f},"
-          "eq=saturation=1.25:contrast=1.1:brightness=0.03[bg];")
+          "boxblur=7:1,eq=saturation=1.25:contrast=1.1:brightness=-0.02[bg];")  # unscharf: Gesicht + Text stehen vorne
     if gesicht.exists():
         ein += ["-framerate", str(FPS), "-loop", "1", "-t", f"{d:.3f}", "-i", str(gesicht)]
         # Figur groß im unteren Teil, leichtes Heranzoomen (Bewegung im ersten Bild)
