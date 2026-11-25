@@ -36,6 +36,13 @@ if __name__ == "__main__":
     (out / "du_erleichtert_ganz.svg").write_text(F.svg_ganz(DU, "erleichtert", kurz=True))
     (out / "kollege_erleichtert_ganz.svg").write_text(F.svg_ganz(KOLLEGE, "erleichtert", kurz=True))
     (out / "oberst_entschlossen_zeigen_ganz.svg").write_text(F.svg_ganz(OBERST, "entschlossen", arm="zeigen", kurz=True))
+    (out / "oberst_neutral_ganz.svg").write_text(F.svg_ganz(OBERST, "neutral", kurz=True))
+    (out / "sohn_neutral_ganz.svg").write_text(F.svg_ganz(SOHN, "neutral", kurz=True))
+    (out / "sohn_angst_funk_ganz.svg").write_text(F.svg_ganz(SOHN, "angst", arm="funk", kurz=True))
+    (out / "du_schreien_waffe_ganz.svg").write_text(F.svg_ganz(DU, "schreien", arm="waffe", kurz=True))
+    # Flüchtender nur als Silhouette (reale Person, kein Gesicht): schwarz eingefärbt im Schnitt
+    ESC = F.Figur("flucht", haut="mittel", haar="#111", frisur="kurz", bart="schnurrbart", jacke="#222", jacke_schatten="#1a1a1a", zivil=True, funk=False, hose="#222")
+    (out / "flucht_silhouette_ganz.svg").write_text(F.svg_ganz(ESC, "neutral", kurz=True))
     for k, fn in I.ALLE.items():
         (out / f"{k}.svg").write_text(fn())
     (out / "tv_eilmeldung.svg").write_text(I.tv("EILMELDUNG", "MEDELLÍN · 2.12.1993", False))

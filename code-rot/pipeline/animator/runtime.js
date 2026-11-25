@@ -79,6 +79,12 @@
     um(q("mund"), 0, 1, mundS, 0, 0);
     const sw = q("schweiss");
     if (sw) { const p = (t * 0.6 + rnd(s)) % 1; setzeT(sw, `translate(0,${p * 70})`); sw.setAttribute("opacity", String(1 - p)); }
+    if (F.spricht) {
+      const offen = Math.abs(Math.sin(t * 12.5 + s)) * (0.65 + 0.35 * noise1(t * 4, s + 11)) > 0.42 && (t % 1.6) < 1.35;
+      const mz = q("mund"), mo = q("mund-offen");
+      if (mz && mo) { mz.setAttribute("opacity", offen ? "0" : "1"); mo.setAttribute("opacity", offen ? "1" : "0"); }
+      kd += 1.5 * Math.sin(t * 5 + s);
+    }
     // Arme / Beine
     let armL = 1.5 * noise1(t * 0.8, s + 8), armR = 1.5 * noise1(t * 0.8, s + 9), beinL = 0, beinR = 0;
     let fx = 0, fy = 0, fr = 0;
@@ -106,6 +112,25 @@
       kd = 7 * Math.sin(t * 1.7 + s); um(q("kopf"), kd, 1, 1, 14 * Math.sin(t * 1.7 + s), ky);
       setzeT(q("pupillen"), `translate(${16 * Math.sin(t * 1.7 + s + 0.3)},2)`);
     }
+    // Ganzkörper ohne eigene Aktion: Gewicht verlagern, nie ganz still (wie im Vorbild)
+    if (F.ganz && !a) { fx = 7 * Math.sin(t * 1.1 + s); fr = 1.1 * Math.sin(t * 1.1 + s + 0.5); }
+    if (F.von) {  // Auftritt: läuft von der Seite ins Bild und bleibt stehen
+      const p = clamp(t / 0.75, 0, 1), e = easeOut(p);
+      fx += F.von * 620 * (1 - e);
+      if (p < 1) { const ph = t * 11; beinL = 22 * Math.sin(ph); beinR = -22 * Math.sin(ph); armL = -18 * Math.sin(ph); armR = 18 * Math.sin(ph); fy -= 14 * Math.abs(Math.sin(ph)); }
+    }
+    if (a === "zeigen_stoss") {  // Befehlsgeste: Arm schnellt nach vorn, Körper lehnt sich rein
+      const p = clamp((t - 0.1) / 0.28, 0, 1), b = Math.sin(p * Math.PI);
+      armR = -28 * (1 - easeOut(p)) + 6 * b; fr = -2.5 * b; fy = -10 * b;
+      if (t > 1.2) { const p2 = clamp((t - 1.2) / 0.28, 0, 1); armR += 10 * Math.sin(p2 * Math.PI); }
+    }
+    if (a === "schiessen") {  // Rückstoß in kurzen Salven, Mündungsfeuer
+      const takt = 0.32, ph = (t % takt) / takt, an = ph < 0.18 && (Math.floor(t / takt) % 4 !== 3);
+      const st = an ? 1 - ph / 0.18 : 0;
+      fx = -14 * st; fr = -2 * st; um(q("waffe"), -4 * st, 1, 1, -10 * st, 0);
+      const m = q("muendung"); if (m) { m.setAttribute("opacity", an ? "1" : "0"); m.setAttribute("transform", `rotate(${(t * 997) % 30 - 15} 574 640)`); }
+    }
+    if (a === "jubeln") { armL = 150 - 12 * Math.sin(t * 6); armR = -150 + 12 * Math.sin(t * 6 + 1); fy = -16 * Math.abs(Math.sin(t * 6)); }
     if (a === "zielen") { fy = 4 * noise1(t * 1.3, s); fr = 0.8 * noise1(t * 0.9, s + 1); um(q("waffe"), 1.5 * noise1(t * 2, s + 2), 1, 1, 0, 0); }
     if (ex === "schreien" || a === "zucken") { fx += 10 * noise1(t * 25, s); }
     um(q("arm-l"), armL, 1, 1, 0, 0); um(q("arm-r"), armR, 1, 1, 0, 0);

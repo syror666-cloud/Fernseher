@@ -237,7 +237,9 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
         p.append(f'<g class="rig-arm-l" data-o="140,650"><path d="M118,640 Q80,760 150,860 L300,800 L280,760 L196,790 Q170,720 168,690 Z" fill="{f.jacke}"/></g>')
         p.append('<g class="rig-waffe" data-o="300,800"><path d="M70,930 L520,640 L548,668 L120,960 Z" fill="#1B1D1F"/>'
                  '<rect x="250" y="760" width="40" height="90" rx="8" fill="#141516" transform="rotate(-33 270 805)"/>'
-                 '<path d="M120,960 L60,1010 L40,980 L70,930 Z" fill="#3A2A1E"/></g>')
+                 '<path d="M120,960 L60,1010 L40,980 L70,930 Z" fill="#3A2A1E"/>'
+                 '<g class="rig-muendung" opacity="0"><polygon points="560,628 640,560 600,630 690,620 604,654 650,720 572,664" fill="#FFD23A"/>'
+                 '<circle cx="574" cy="640" r="26" fill="#FFF4C0"/></g></g>')
         p.append('<circle cx="290" cy="790" r="30" fill="#1B1D1F"/>')
         p.append(f'<g class="rig-arm-r" data-o="460,650"><path d="M482,640 Q520,720 470,720 L430,700 Q440,690 432,690 Z" fill="{f.jacke}"/>'
                  '<circle cx="452" cy="706" r="28" fill="#1B1D1F"/></g>')
@@ -282,6 +284,9 @@ def svg(f: Figur, expr: str = "neutral", arm: str = "unten", width: int = 600, h
             y = kopf_y + (rnd.uniform(70, 125) if f.bart == "stoppeln" else rnd.uniform(25, 55))
             p.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="3.2" fill="{"#7A4A30" if f.bart=="stoppeln" else "#B5704A"}"/>')
     p.append(f'<g class="rig-mund" data-o="{cx},{kopf_y+92}">{_mund(expr, cx, kopf_y + 92)}</g>')
+    # offener Mund für Lippenbewegung beim Sprechen (Laufzeit blendet zwischen rig-mund und rig-mund-offen um)
+    p.append(f'<g class="rig-mund-offen" opacity="0"><ellipse cx="{cx}" cy="{kopf_y+96}" rx="24" ry="20" fill="#4A1612"/>'
+             f'<ellipse cx="{cx}" cy="{kopf_y+106}" rx="14" ry="8" fill="#C9605A"/></g>')
     p.append(_kopfbedeckung(f, cx, kopf_y, kopf_r))
     if expr in ("angst", "schock"):
         p.append(f'<g class="rig-schweiss"><path d="M{cx+128},{kopf_y-90} Q{cx+142},{kopf_y-60} {cx+128},{kopf_y-52} Q{cx+114},{kopf_y-60} {cx+128},{kopf_y-90} Z" fill="#9FD3F0"/></g>')

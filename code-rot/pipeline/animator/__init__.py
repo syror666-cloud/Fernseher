@@ -111,7 +111,8 @@ def baue(shot, k, dauer, folge, bg, hud, fx, vorher=None):
         teile.append(f'<div class="tiefe" data-tiefe="{f.get("tiefe", 1.15)}"><div class="{klasse}" style="{style}">{schatten}<div{flip}>'
                      f'{_svg_inline(folge / "svg" / f["src"])}</div></div></div>')
         figdaten.append(dict(ausdruck=e, aktion=f.get("aktion", a), seed=k * 13 + i * 5 + 3,
-                             richtung=f.get("richtung", 1), tempo=f.get("tempo", 260), ab=f.get("ab", 0.5)))
+                             richtung=f.get("richtung", 1), tempo=f.get("tempo", 260), ab=f.get("ab", 0.5),
+                             spricht=bool(f.get("spricht")), ganz=bool(f.get("boden")), von=f.get("von", 0)))
     teile.append('<div class="tiefe" data-tiefe="1.3"><canvas id="fx" width="1080" height="1920"></canvas></div>')
     if shot.get("tint"):
         teile.append(f'<div class="ebene" id="tint" style="background:{shot["tint"]};mix-blend-mode:multiply"></div>')
