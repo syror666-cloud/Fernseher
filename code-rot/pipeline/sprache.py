@@ -92,6 +92,11 @@ def anlegen(ep_path, sprache):
         if z.is_symlink():
             z.unlink()
         z.write_text(inserts.tv(oben, unten, name != "tv_eilmeldung"), encoding="utf-8")
+    # Hook 2.0 zeigt das Spind-Intro nicht -> nicht rendern (Outro bleibt)
+    if getattr(ep, "KALTSTART", {}).get("sprich"):
+        titel = next(i for i, s_ in enumerate(ep.SHOTS) if s_.get("titel"))
+        for name in {ep.ANIM_SHOTS[i] for i in range(titel) if i in ep.ANIM_SHOTS} & spinde:
+            (neu / "anim" / name).mkdir(parents=True, exist_ok=True); (neu / "anim" / name / "SKIP").touch()
     print(neu, "| Streifen:", streifen.name, "| Spind-Animationen:", sorted(spinde))
     return neu, streifen, getattr(ep, "ERSATZ", "")
 

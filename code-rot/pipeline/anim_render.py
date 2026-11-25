@@ -103,5 +103,7 @@ if __name__ == "__main__":
         g = G[name]
         if nur and name not in nur:
             continue
+        if (folge / "anim" / name / "SKIP").exists():  # z. B. Spind-Intro, das mit Hook 2.0 nicht gezeigt wird
+            print(name, "übersprungen (SKIP)", flush=True); continue
         print(name, g["frames"], "->", job(ep, folge, name, g, res, samples), flush=True)
     print("ALLE_ANIM_FERTIG", flush=True)
