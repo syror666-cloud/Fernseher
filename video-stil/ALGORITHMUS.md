@@ -37,3 +37,14 @@ Hilfeseiten, Marketing-Analysen und Creator-Leitfäden; einzelne Prozentzahlen a
 - dev.to „Hook Engineering“: https://dev.to/bulkdl/hook-engineering-the-science-of-the-first-3-seconds-in-short-form-video-2026-2jp9
 - TikTok Newsroom, Creator Rewards: https://newsroom.tiktok.com/introducing-the-new-creator-rewards-program
 - Buffer, Creator Rewards: https://buffer.com/resources/tiktok-creativity-program/
+
+## Erste echte Daten (Folge 2 + 3, 25.11.2026)
+- Folge 2 (1:36): 73 % nach 1 s, ~25 % nach 3 s. Folge 3 (1:24): ~50 % nach 2 s, ~10 % nach 10 s.
+- Diagnose: Abbruch in Sekunde 1–2 = Hook greift nicht. Ursachen: 1,5 s ohne Stimme, danach ~6 s Branding
+  (Spind-Intro + Titelkarte), kein Gesicht im ersten Bild, dunkle Szene.
+- **Hook 2.0 (ab Folge 4/5 + Sprachfassungen):** Erzähler spricht ab Bild 1 einen Satz mit Fallhöhe in Du-Form
+  („Er ist der gefährlichste Mann der Welt. Und ein Anruf verrät ihn.“), Wörter poppen synchron groß im oberen
+  Drittel auf, erschrockene Hauptfigur groß im Bild (Gesicht), Höhepunkt-Szene dahinter, Bass-Schlag auf Bild 1.
+  Danach direkt die Geschichte – Spind-Intro und Titelkarte entfallen vorne (Einheit + Teil als kleine Einblendung);
+  das Spind-Outro bleibt als Serien-Erkennung am Ende und für den Loop.
+- Nächster Test: Hook-Varianten A/B (anderer erster Satz) und Vergleich der 3-Sekunden-Rate (Ziel > 60 %).
