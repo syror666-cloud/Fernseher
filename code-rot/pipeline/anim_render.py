@@ -53,7 +53,7 @@ def job(ep, folge, name, g, res, samples):
     ziel = folge / "anim" / name; ziel.mkdir(parents=True, exist_ok=True)
     n = g["frames"]
     fertig = len(list(ziel.glob("f_*.png")))
-    if fertig >= n:
+    if fertig >= n - 2:  # Interpolation liefert teils 1 Bild weniger
         return "schon fertig"
     halb = cfg["szene"] != "spinde"  # halbe Bildrate + Bewegungsinterpolation
     nr = (n + 1) // 2 + 1 if halb else n
