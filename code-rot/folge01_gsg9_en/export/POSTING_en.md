@@ -1,6 +1,6 @@
 # Posting – folge01_gsg9_en (EN)
 
-**Datei:** folge01_gsg9_en_aggressiv.mp4 · 109 s · 1080×1920
+**Datei:** folge01_gsg9_en_aggressiv.mp4 · 108 s · 1080×1920
 
 **Beschreibung (kopieren):**
 Almost 90 hostages. One try. Would you make it back? 👀 Part 1 of CODE ROT. #gsg9 #coderot #specialforces #truestory #history #fyp #foryou
