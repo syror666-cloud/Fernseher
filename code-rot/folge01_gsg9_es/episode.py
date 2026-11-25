@@ -32,4 +32,4 @@ ANIM = _copy.deepcopy(_basis.ANIM)
 for _a in ANIM.values():
     if _a["szene"] == "spinde":
         _a["args"] = list(_a.get("args", [])) + ["--sprache", SPRACHE]
-ANIM_SHOTS = {i: s["anim"] for i, s in enumerate(SHOTS) if s.get("anim")}
+ANIM_SHOTS = dict(_basis.ANIM_SHOTS)  # gleiche Einstellungen wie im Original (Folge 1 ordnet ohne "anim"-Feld zu)
