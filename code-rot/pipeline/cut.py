@@ -228,6 +228,9 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 
 # ---------------------------------------------------------------- Audio
+ATMO_PEGEL = {"atmo_meer": -25, "atmo_stadt": -19, "atmo_nacht": -17}  # breitbandiges Meeresrauschen deckt Sprache stärker zu
+
+
 def mix(ep, timing, folge, out_wav, ohne_vo=False, norm=True):
     sfx_dir = ROOT / "assets/sfx"; real = ROOT / "assets/sfx_real"
     def sfx(name):  # echte Aufnahme bevorzugen, sonst synthetisch
@@ -236,7 +239,7 @@ def mix(ep, timing, folge, out_wav, ohne_vo=False, norm=True):
     atmo_name = getattr(ep, "ATMO", "atmo_nacht")
     atmo = real / f"{atmo_name}.wav" if (real / f"{atmo_name}.wav").exists() else sfx_dir / "atmo.wav"
     inputs = ["-i", str(folge / "audio/vo.wav"), "-stream_loop", "-1", "-i", str(atmo)]
-    filt = [f"[1:a]atrim=0:{total:.2f},volume={'-17dB' if atmo.parent == real else '-20dB'}"]
+    filt = [f"[1:a]atrim=0:{total:.2f},volume={ATMO_PEGEL.get(atmo_name, -17) if atmo.parent == real else -20}dB"]
     # Atmo-Loch bei "Stille"
     stille = [(sh_["schnitt"], sh_["ende"]) for sh_, sp in zip(shots, ep.SHOTS) if sp.get("stille")]
     vol_expr = "+".join(f"between(t,{a:.2f},{b:.2f})" for a, b in stille) or "0"
@@ -259,7 +262,7 @@ def mix(ep, timing, folge, out_wav, ohne_vo=False, norm=True):
     # Stimme als Schlüssel für Ducking: Hintergrund + Geräusche werden leiser, sobald gesprochen wird
     filt.insert(0, f"[0:a]apad=whole_dur={total:.2f},asplit=2[vo0][key]")
     filt.insert(1, f"[vo0]{'volume=0' if ohne_vo else 'anull'}[vo]")
-    ln = ",loudnorm=I=-14:TP=-1.5:LRA=11" if norm else ""
+    ln = ",loudnorm=I=-14:TP=-1.5:LRA=11,alimiter=limit=0.84:level=false" if norm else ""  # Limiter: keine Übersteuerung
     bett = labels[1:]
     # zwei Busse: Atmosphäre (sanft geduckt) und Effekte (stark geduckt, damit Akzente kein Wort verdecken)
     fx = bett[1:]
