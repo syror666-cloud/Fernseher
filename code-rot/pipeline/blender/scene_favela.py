@@ -22,7 +22,9 @@ ap.add_argument("--zeit", default="nacht")
 ap.add_argument("--caveirao", default="")
 ap.add_argument("--junge", default="")
 ap.add_argument("--tuer", default="zu")
-ap.add_argument("--peilwagen", default="")  # steht|fahrt: weißer Lieferwagen mit Peilantennen
+ap.add_argument("--peilwagen", default="")
+ap.add_argument("--bus", default="")   # fahrt|steht: Linienbus mit beleuchteten Fenstern
+ap.add_argument("--auto", default="")  # steht: dunkle Limousine am Straßenrand  # steht|fahrt: weißer Lieferwagen mit Peilantennen
 args = ap.parse_args(argv)
 random.seed(19)
 bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -255,6 +257,38 @@ if args.peilwagen:
     o = bpy.context.object; o.data.materials.append(M_PW); o.parent = pw
     pw.location = (-4, -10, 0)
 
+# ---------- Bus und Auto (Buenos Aires 1960) ----------
+bus = None
+if args.bus:
+    M_BUS = mat("bus", (0.55, 0.12, 0.08), 0.6); M_BF = mat("busfenster", (0.2, 0.18, 0.1), 0.3, emit=(1.0, 0.85, 0.55), strength=6)
+    M_R = mat("bus_rad", (0.03, 0.03, 0.03), 0.7)
+    bus = bpy.data.objects.new("bus", None); scn.collection.objects.link(bus)
+    o = cube((0, 0, 1.75), (5.0, 1.25, 1.35), M_BUS); o.parent = bus
+    for i in range(7):
+        for side in (-1, 1):
+            o = cube((-4.0 + i * 1.25, side * 1.26, 2.2), (0.5, 0.02, 0.45), M_BF); o.parent = bus
+    o = cube((5.02, 0, 2.1), (0.02, 1.1, 0.6), M_BF); o.parent = bus
+    for dx in (3.4, -3.4):
+        for side in (-1, 1):
+            bpy.ops.mesh.primitive_cylinder_add(vertices=12, radius=0.5, depth=0.3, location=(dx, side * 1.2, 0.5), rotation=(math.pi / 2, 0, 0))
+            o = bpy.context.object; o.data.materials.append(M_R); o.parent = bus
+    bpy.ops.object.light_add(type="POINT", location=(0, 0, 2.2)); l = bpy.context.object; l.data.energy = 800
+    l.data.color = (1, 0.85, 0.6); l.parent = bus
+    for side in (-0.8, 0.8):
+        bpy.ops.object.light_add(type="SPOT", location=(5.1, side, 1.0)); l = bpy.context.object
+        l.data.energy = 3000; l.data.spot_size = 0.8; l.rotation_euler = (0, math.radians(95), 0); l.parent = bus
+    bus.location = (-2, -10, 0)
+if args.auto:
+    M_AUTO = mat("auto", (0.04, 0.045, 0.05), 0.35); M_AG = mat("auto_glas", (0.02, 0.03, 0.04), 0.1)
+    au = bpy.data.objects.new("auto", None); scn.collection.objects.link(au)
+    for loc, sc, m in [((0, 0, 0.75), (2.4, 0.95, 0.4), M_AUTO), ((-0.2, 0, 1.35), (1.3, 0.85, 0.3), M_AG)]:
+        o = cube(loc, sc, m); o.parent = au
+    for dx in (1.6, -1.6):
+        for side in (-1, 1):
+            bpy.ops.mesh.primitive_cylinder_add(vertices=12, radius=0.38, depth=0.25, location=(dx, side * 0.9, 0.38), rotation=(math.pi / 2, 0, 0))
+            o = bpy.context.object; o.data.materials.append(mat("auto_rad", (0.02, 0.02, 0.02))); o.parent = au
+    au.location = (6, -7.6, 0)
+
 # ---------- Himmel, Licht ----------
 world = bpy.data.worlds.new("w"); scn.world = world; world.use_nodes = True
 wn = world.node_tree.nodes; wl = world.node_tree.links; bg = wn["Background"]
@@ -305,6 +339,9 @@ if cav is not None:
         cav.rotation_euler = (0, 0, math.pi)
     for f in range(1, N + 1, 3):  # Motor-Vibration
         cav.rotation_euler.x = 0.004 * math.sin(f * 2.1); cav.keyframe_insert("rotation_euler", frame=f)
+if bus is not None and args.bus == "fahrt":
+    bus.location = (-40, -10, 0); bus.keyframe_insert("location", frame=1)
+    bus.location = (-4, -10, 0); bus.keyframe_insert("location", frame=N)
 if pw is not None and args.peilwagen == "fahrt":
     pw.location = (-30, -10, 0); pw.keyframe_insert("location", frame=1)
     pw.location = (-6, -10, 0); pw.keyframe_insert("location", frame=N)
