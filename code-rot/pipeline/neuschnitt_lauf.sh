@@ -1,9 +1,9 @@
 #!/bin/bash
-# Folge 1 + 2 nach Einbau der Figurenstimmen neu schneiden (normal + Hörprüfung + aggressiv), dann pushen.
+# Folge 2 nach Einbau der Figurenstimmen neu schneiden (normal + Hörprüfung + aggressiv), dann pushen.
 set -u
 R=/home/user/Fernseher/code-rot; LOG=$R/neuschnitt.log; cd "$R"
 log() { echo "[$(date +%H:%M)] $*" | tee -a "$LOG"; }
-for f in folge01_gsg9 folge02_seals; do
+for f in folge02_seals; do
   if grep -q "$f: NEU_FERTIG" "$LOG" 2>/dev/null; then continue; fi
   log "$f: Neuschnitt normal"
   ANIM_JOBS=2 nice python3 -I pipeline/cut.py $f/episode.py >> "$LOG" 2>&1 && \
