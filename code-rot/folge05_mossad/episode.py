@@ -19,7 +19,9 @@ LINKS = dict(x=-80, y=600, w=780)
 NAH = dict(x=40, y=380, w=1000)
 GANZ = dict(x=290, y=330, w=500)
 SILH = dict(x=330, y=520, w=420)
-UNSCHARF = "blur(10px) brightness(.55)"
+UNSCHARF = "blur(4px) brightness(.8) saturate(1.1)"  # neuer Look: nur leichte Tiefenunschärfe
+VORNE = dict(x=300, y=640, w=480, boden=True)
+RUECK = dict(x=330, y=770, w=420, boden=True)
 SCHWARZ = "brightness(0) drop-shadow(0 0 18px rgba(255,190,120,.35))"
 HINWEIS = "NACH WAHREN EREIGNISSEN · DRAMATISIERT"
 ERSATZ = "SAT=MOSSAD|ISRAEL|mossad"  # Mossad-Zelle im Spind-Intro (ersetzt SAT in dieser Folge)
@@ -36,7 +38,7 @@ def S(text, bg, figuren=(), move="zoom_in", **extra):
 
 BEFEHLE = ["Kein Schuss", "!Er muss leben", "Keine Spuren", "!Kein zweiter Versuch"]
 KALTSTART = dict(shot=32, dauer=1.5, text="15 Jahre versteckt.|Dann: *ein* Bus.", sprich="Dieser Mann versteckt sich seit *15* Jahren. Heute Nacht holst du ihn.")
-MANN_SILH = fig("mann_ganz.svg", SILH, filter=SCHWARZ, aktion="gehen")
+MANN_SILH = fig("mann_kurz_ganz.svg", dict(x=380, y=760, w=360, boden=True), filter=SCHWARZ, aktion="laufen", richtung=-1, tempo=70)
 
 SHOTS = [
     # ---------- HOOK ----------
@@ -50,7 +52,7 @@ SHOTS = [
     # ---------- SETUP ----------
     S("_Buenos Aires_.", "strasse", anim="anflug", sfx="whoosh", blitz=True),
     S("Mai 1960.", "strasse", anim="anflug", sprich="Mai neunzehnhundertsechzig."),
-    S("Du bist Agent des *Mossad*.", "strasse", [fig("du_entschlossen.svg", MITTE)], bgfilter=UNSCHARF, anim="loop_auto"),
+    S("Du bist Agent des *Mossad*.", "strasse", [fig("du_entschlossen_ganz.svg", VORNE, von=1)], anim="loop_auto"),
     S("Seit Wochen beobachtet ihr einen Mann.", "strasse", anim="strasse"),
     S("Er arbeitet in einer Autofabrik.", "strasse", [MANN_SILH], bgfilter="brightness(.8)", anim="loop_strasse"),
     S("Er nennt sich _Ricardo Klement_.", "svg:fenster1", move="zoom_in"),
@@ -63,36 +65,38 @@ SHOTS = [
     S("Steigt an derselben Haltestelle aus.", "strasse", anim="bus_steht"),
     S("Läuft dieselbe dunkle Straße entlang.", "strasse", [MANN_SILH], bgfilter="brightness(.8)", anim="loop_strasse"),
     S("Bis zu seinem Haus.", "strasse", anim="haus"),
-    S("Dein Teamleiter sagt nur:", "strasse", [fig("teamleiter_entschlossen.svg", MITTE)], bgfilter=UNSCHARF,
+    S("Dein Teamleiter sagt nur:", "strasse", [fig("teamleiter_entschlossen.svg", MITTE, aktion="nicken")], bgfilter=UNSCHARF,
       anim="loop_auto"),
-    S("„Er muss *lebend* nach Israel.“", "strasse", [fig("teamleiter_entschlossen.svg", NAH)], bgfilter=UNSCHARF,
+    S("„Er muss *lebend* nach Israel.“", "strasse", [fig("teamleiter_entschlossen.svg", NAH, spricht=True)], bgfilter=UNSCHARF,
       anim="loop_auto", stimme="chef", sfx="heartbeat"),
     # ---------- BEFEHLE ----------
-    S("Deine Befehle:", "strasse", [fig("teamleiter_entschlossen_zeigen.svg", LINKS)], bgfilter=UNSCHARF,
+    S("Deine Befehle:", "strasse", [fig("teamleiter_entschlossen_zeigen.svg", LINKS, aktion="zeigen_stoss")], bgfilter=UNSCHARF,
       anim="loop_auto", regeln=0),
-    S("Kein Schuss.", "strasse", [fig("du_entschlossen.svg", MITTE)], bgfilter=UNSCHARF, anim="loop_auto", regeln=1),
+    S("Kein Schuss.", "strasse", [fig("du_entschlossen.svg", MITTE, aktion="nicken")], bgfilter=UNSCHARF, anim="loop_auto", regeln=1),
     S("Er muss *leben*.", "strasse", [fig("kollege_entschlossen.svg", MITTE)], bgfilter=UNSCHARF, anim="loop_auto", regeln=2),
-    S("Keine Spuren.", "strasse", anim="strasse", regeln=3),
-    S("Und: Es gibt *keinen* zweiten Versuch.", "strasse", [fig("teamleiter_entschlossen.svg", NAH)], bgfilter=UNSCHARF,
+    S("Keine Spuren.", "strasse", [fig("du_ruecken.svg", RUECK, aktion="laufen_weg")], anim="strasse", regeln=3),
+    S("Und: Es gibt *keinen* zweiten Versuch.", "strasse", [fig("teamleiter_entschlossen_zeigen.svg", NAH, aktion="zeigen_stoss")], bgfilter=UNSCHARF,
       anim="loop_auto", move_2d="zoom_schnell", regeln=4, sfx="impact"),
     # ---------- ANNÄHERUNG ----------
     S("Elfter Mai.", "strasse", anim="strasse2", uhr="19:40", sprich="Elfter Mai."),
-    S("Ihr wartet im Auto.", "strasse", [fig("du_angst.svg", NAH)], bgfilter=UNSCHARF, anim="loop_auto", uhr="19:40",
+    S("Ihr wartet im Auto.", "strasse", [fig("du_angst.svg", NAH, aktion="umsehen")], bgfilter=UNSCHARF, anim="loop_auto", uhr="19:40",
       sfx="tick"),
     S("Der Bus kommt.", "strasse", anim="bus_fahrt", uhr="19:41"),
     S("Er steigt *nicht* aus.", "strasse", anim="bus_steht", uhr="19:42", sfx="drone_hit"),
-    S("Ihr überlegt abzubrechen.", "strasse", [fig("kollege_seitenblick.svg", MITTE)], bgfilter=UNSCHARF,
+    S("Ihr überlegt abzubrechen.", "strasse", [fig("kollege_seitenblick.svg", MITTE, aktion="umsehen")], bgfilter=UNSCHARF,
       anim="loop_auto", uhr="19:58"),
     S("Dann: noch ein Bus.", "strasse", anim="bus_fahrt", uhr="20:05", sfx="whoosh"),
     S("Ein Mann steigt aus.", "strasse", [MANN_SILH], bgfilter="brightness(.8)", anim="loop_strasse", uhr="20:05",
       sfx="heartbeat"),
     S("Eine Hand in der Manteltasche.", "strasse", [MANN_SILH], bgfilter="brightness(.7)", anim="loop_strasse",
       move_2d="zoom_schnell", uhr="20:05"),
-    S("Dein Kollege geht auf ihn zu.", "strasse", [fig("kollege_entschlossen.svg", NAH)], bgfilter=UNSCHARF,
+    S("Dein Kollege geht auf ihn zu.", "strasse", [fig("mann_kurz_ganz.svg", dict(x=560, y=900, w=260, boden=True), filter=SCHWARZ),
+                                                  fig("kollege_ruecken.svg", dict(x=150, y=760, w=420, boden=True), aktion="laufen_weg")],
       anim="loop_strasse", uhr="20:05"),
-    S("„*Un momentito, señor*.“", "strasse", [fig("kollege_entschlossen.svg", NAH)], bgfilter=UNSCHARF,
+    S("„*Un momentito, señor*.“", "strasse", [fig("kollege_entschlossen.svg", NAH, spricht=True)], bgfilter=UNSCHARF,
       anim="loop_strasse", uhr="20:05", stimme="jung"),
-    S("Dann geht alles schnell.", "strasse", anim="zugriff", move_2d="shake_stark", blitz=True, uhr="20:05", sfx="impact"),
+    S("Dann geht alles schnell.", "strasse", [fig("kollege_ruecken.svg", dict(x=560, y=820, w=400, boden=True), aktion="rennen_hin"),
+                                             fig("du_ruecken.svg", dict(x=150, y=760, w=440, boden=True), aktion="rennen_hin")], anim="zugriff", move_2d="shake_stark", blitz=True, uhr="20:05", sfx="impact"),
     S("Ins Auto. Eine Decke drüber.", "strasse", anim="zugriff", move_2d="shake", uhr="20:06", sfx="tuer"),
     S("Kein Schuss.", "strasse", anim="auto_weg", uhr="20:06"),
     S("Niemand hat etwas gesehen.", "strasse", anim="auto_weg", move_2d="statisch", stille=True, uhr="20:06"),
@@ -101,12 +105,12 @@ SHOTS = [
     S("Ein Flugzeug der El Al.", "rollfeld", anim="flughafen"),
     S("An Bord: ein Mann in Crew-Uniform.", "rollfeld", anim="flugzeug_nah"),
     S("Er schläft. Betäubt.", "rollfeld", anim="flugzeug_nah"),
-    S("Du hast es geschafft.", "strasse", [fig("du_erleichtert.svg", MITTE)], bgfilter="blur(10px) brightness(.7)",
+    S("Du hast es geschafft.", "strasse", [fig("du_erleichtert_ganz.svg", VORNE)],
       anim="loop_auto"),
     S("Ein Jahr später: der Prozess in Jerusalem.", "svg:tv_prozess", move="zoom_in", sfx="static"),
     # ---------- TWIST ----------
     S("Aber weißt du, wer ihn *wirklich* gefunden hat?", "strasse", anim="huegel_nacht", sfx="drone_hit"),
-    S("Kein Agent.", "strasse", [fig("teamleiter_seitenblick.svg", MITTE)], bgfilter=UNSCHARF, anim="loop_auto"),
+    S("Kein Agent.", "strasse", [fig("teamleiter_seitenblick.svg", MITTE, aktion="umsehen")], bgfilter=UNSCHARF, anim="loop_auto"),
     S("Ein Mann, der fast *blind* war.", "svg:fenster1", move="zoom_in", bgfilter="blur(3px) brightness(.8)"),
     S("Seine Tochter ging mit einem jungen Mann aus.", "strasse", anim="strasse"),
     S("Der redete gern über seinen Vater.", "strasse", anim="strasse2"),
@@ -122,6 +126,7 @@ SHOTS = [
 ]
 for _s in SHOTS:
     _s.setdefault("hinweis", HINWEIS)
+    _s["umriss"] = True  # Comic-Kontur um alle Figuren
 
 
 # =====================================================================================
@@ -133,7 +138,8 @@ def _c(i):
 
 Z, ZZ = 2.0, 2.05
 SP = ["--ersatz", ERSATZ, "--fokus", "MOSSAD"]
-AU = ["--auto", "steht"]
+NA = ["--zeit", "mond", "--berge"]  # neuer Look: Nacht mit violettem Horizont, Dunst, kein Weltrand
+AU = ["--auto", "steht"] + NA
 ANIM = {
     "intro": dict(szene="spinde", args=SP, keys=[
         (0.00, (_c(3) + 0.8, -2.4, Z), (_c(3) + 0.8, 0.5, ZZ), 21),
@@ -151,7 +157,7 @@ ANIM = {
         (0.70, (_c(9), -2.4, Z), (_c(9), 0.5, ZZ), 21),
         (1.00, (_c(9), -1.4, 1.95), (_c(9), 0.5, 1.95), 21)]),
     "anflug": dict(szene="favela", args=AU, keys=[(0, (-45, -42, 20), (8, 12, 8), 28), (1, (-28, -30, 11), (8, 8, 6), 30)]),
-    "huegel_nacht": dict(szene="favela", keys=[(0, (0, -30, 4), (0, 30, 16), 24), (1, (0, -25, 4.6), (0, 30, 17), 26)]),
+    "huegel_nacht": dict(szene="favela", args=NA, keys=[(0, (0, -30, 4), (0, 30, 16), 24), (1, (0, -25, 4.6), (0, 30, 17), 26)]),
     "strasse": dict(szene="favela", args=AU, shake=0.08, keys=[(0, (-20, -13.5, 1.7), (10, -10, 1.6), 22),
                                                              (1, (-16, -13.5, 1.7), (14, -10, 1.6), 22)]),
     "strasse2": dict(szene="favela", args=AU, shake=0.06, keys=[(0, (14, -14, 2.2), (-10, -9, 1.8), 24),
@@ -164,10 +170,10 @@ ANIM = {
                                                                          (1, (2, -15.5, 1.6), (-6, -10, 1.8), 34)]),
     "bus_steht": dict(szene="favela", args=AU + ["--bus", "steht"], shake=0.05, keys=[(0, (8, -15, 1.7), (-2, -10, 1.8), 28),
                                                                                      (1, (7.5, -15, 1.7), (-2, -10, 1.8), 32)]),
-    "haus": dict(szene="favela", shake=0.08, keys=[(0, (6, 29, 15.8), (6, 37, 18.6), 22), (1, (6, 31, 16.4), (6, 37, 18.6), 24)]),
+    "haus": dict(szene="favela", args=NA, shake=0.08, keys=[(0, (6, 29, 15.8), (6, 37, 18.6), 22), (1, (6, 31, 16.4), (6, 37, 18.6), 24)]),
     "zugriff": dict(szene="favela", args=AU, shake=0.35, keys=[(0, (10, -12, 1.5), (6, -7.6, 1.0), 22),
                                                              (1, (8.5, -11, 1.4), (6, -7.6, 1.0), 20)]),
-    "auto_weg": dict(szene="favela", keys=[(0, (6, -14, 1.6), (-20, -9, 1.6), 26), (1, (6, -14, 1.6), (-24, -9, 1.6), 28)]),
+    "auto_weg": dict(szene="favela", args=NA, keys=[(0, (6, -14, 1.6), (-20, -9, 1.6), 26), (1, (6, -14, 1.6), (-24, -9, 1.6), 28)]),
     "flughafen": dict(szene="rollfeld", args=["--leer", "--fire", "0"], keys=[(0, (-70, -80, 70), (0, 0, 0), 28),
                                                                             (1, (-40, -52, 38), (4, 0, 2), 30)]),
     "flugzeug_nah": dict(szene="rollfeld", args=["--leer", "--fire", "0"], keys=[(0, (8, -8.5, 3.1), (0, -1.9, 3.5), 30),

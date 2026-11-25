@@ -23,6 +23,14 @@ if __name__ == "__main__":
             (out / f"{fig.name}_{e}.svg").write_text(F.svg(fig, e))
     (out / "teamleiter_entschlossen_zeigen.svg").write_text(F.svg(TEAMLEITER, "entschlossen", arm="zeigen"))
     (out / "mann_ganz.svg").write_text(F.svg_ganz(MANN, "neutral"))  # nur als schwarze Silhouette verwendet
+    # Neuer Look: Ganzkörper (kurze Beine) und Rückansicht für Handlung im Bild
+    (out / "mann_kurz_ganz.svg").write_text(F.svg_ganz(MANN, "neutral", kurz=True))
+    (out / "du_ruecken.svg").write_text(F.svg_ruecken(DU, waffe=False))
+    (out / "kollege_ruecken.svg").write_text(F.svg_ruecken(KOLLEGE, waffe=False))
+    (out / "du_entschlossen_ganz.svg").write_text(F.svg_ganz(DU, "entschlossen", kurz=True))
+    (out / "du_erleichtert_ganz.svg").write_text(F.svg_ganz(DU, "erleichtert", kurz=True))
+    (out / "kollege_entschlossen_ganz.svg").write_text(F.svg_ganz(KOLLEGE, "entschlossen", kurz=True))
+    (out / "teamleiter_entschlossen_zeigen_ganz.svg").write_text(F.svg_ganz(TEAMLEITER, "entschlossen", arm="zeigen", kurz=True))
     for name, fig in F.EINHEITEN_FIGUREN.items():
         (out / f"einheit_{fig.name}.svg").write_text(F.svg_ganz(fig, "entschlossen"))
     (out / "einheit_mossad.svg").write_text(F.svg_ganz(MOSSAD, "entschlossen"))

@@ -365,8 +365,15 @@ elif DAEMM:
     bpy.ops.object.light_add(type="SUN", rotation=(math.radians(84), 0, math.radians(-150))); s = bpy.context.object
     s.data.energy = 0.6; s.data.color = (0.9, 0.6, 0.7)
 else:
-    ramp.color_ramp.elements[0].color = (0.05, 0.06, 0.14, 1); ramp.color_ramp.elements[1].color = (0.005, 0.007, 0.025, 1)
+    if args.zeit == "mond":  # Nacht mit Restlicht: violett-roter Horizont, tiefblauer Zenit (Referenz: dunkle, aber farbige Szenen)
+        wl.new(tc.outputs["Generated"], sep.inputs["Vector"])
+        ramp.color_ramp.elements.new(0.16).color = (0.16, 0.08, 0.2, 1)
+    ramp.color_ramp.elements[0].color = (0.05, 0.06, 0.14, 1); ramp.color_ramp.elements[-1].color = (0.005, 0.007, 0.025, 1)
+    if args.zeit == "mond":
+        ramp.color_ramp.elements[0].color = (0.42, 0.16, 0.22, 1); ramp.color_ramp.elements[0].position = 0.0
     ramp.color_ramp.elements[1].position = 0.45; bg.inputs["Strength"].default_value = 1.1
+    if args.zeit == "mond":
+        e_ = ramp.color_ramp.elements; e_[1].position = 0.14; e_[-1].position = 0.5
     bpy.ops.object.light_add(type="SUN", rotation=(math.radians(55), 0, math.radians(160))); s = bpy.context.object
     s.data.energy = 0.25; s.data.color = (0.6, 0.7, 1.0)
     M_STERN = mat("stern", (1, 1, 1), 1, emit=(0.9, 0.95, 1), strength=20)
@@ -386,6 +393,8 @@ w, h = map(int, args.res.split("x")); scn.render.resolution_x, scn.render.resolu
 anim_common.engine(scn, args.engine, args.samples)
 if GOLD:
     anim_common.dunst(scn, (0.98, 0.60, 0.55), start=40, tiefe=500, staerke=0.45)
+elif args.zeit == "mond":
+    anim_common.dunst(scn, (0.13, 0.08, 0.18), start=30, tiefe=400, staerke=0.55)
 n, off = anim_common.kamerapfad(scn, cam, args.pfad)
 N = n + off + 1
 if cav is not None:
