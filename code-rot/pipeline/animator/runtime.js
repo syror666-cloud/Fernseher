@@ -36,7 +36,7 @@
   const bgImg = document.getElementById("bgimg");
   async function setzeBg(t) {
     if (!S.bg || S.bg.typ !== "seq") return;
-    let f = Math.round(t * S.fps) + S.bg.start;
+    let f = Math.round(t * S.fps * (S.bg.tempo || 1)) + S.bg.start;
     f = S.bg.loop ? ((f % S.bg.n) + S.bg.n) % S.bg.n : clamp(f, 0, S.bg.n - 1);
     const url = S.bg.muster.replace("####", String(f + 1).padStart(4, "0"));
     if (bgImg.getAttribute("src") !== url) { bgImg.src = url; try { await bgImg.decode(); } catch (e) {} }

@@ -32,7 +32,7 @@ def S(text, bg, figuren=(), move="zoom_in", **extra):
 
 BEFEHLE = ["Bleib unsichtbar", "!Warte auf das Signal", "Keine Zivilisten", "!Er darf nicht entkommen"]
 # Hook für den aggressiven Schnitt (cut.py --aggressiv): Höhepunkt vorweg
-KALTSTART = dict(shot=42, dauer=1.5, text="Ein Anruf.|Zu *lang*.")
+KALTSTART = dict(shot=43, dauer=1.5, text="Ein Anruf.|Zu *lang*.")
 
 SHOTS = [
     # ---------- HOOK ----------
@@ -82,13 +82,15 @@ SHOTS = [
     S("Der Wagen fährt los.", "favela", anim="peil_fahrt", uhr="00:31"),
     S("Langsam. Durch die Straßen.", "favela", anim="peil_fahrt", uhr="01:12"),
     S("Das Signal wird *stärker*.", "favela", anim="peil_nah", uhr="02:40", sfx="static"),
+    S("„Er ist ganz *nah*.“", "favela", [fig("sohn_angst.svg", NAH)], bgfilter=UNSCHARF, anim="loop_wagen", uhr="02:55",
+      stimme="jung"),
     S("Er redet. Und redet.", "svg:hand_funk", move="zoom_in", uhr="03:30", sfx="tick"),
     S("Ein Haus. Zwei Stockwerke.", "favela", anim="haus", uhr="04:15"),
     S("Am Fenster: ein Mann mit Bart.", "svg:fenster1", move="zoom_schnell", uhr="04:40", sfx="drone_hit"),
     S("Er telefoniert *immer noch*.", "svg:fenster1", move="zoom_in", uhr="05:02"),
     S("Dein Oberst nickt.", "favela", [fig("oberst_entschlossen.svg", NAH)], bgfilter=UNSCHARF, anim="loop_wagen",
       uhr="05:05"),
-    S("*Jetzt*.", "favela", [fig("du_entschlossen.svg", NAH)], bgfilter=UNSCHARF, anim="loop_wagen", move_2d="zoom_schnell",
+    S("„*Jetzt*.“", "favela", [fig("du_entschlossen.svg", NAH)], bgfilter=UNSCHARF, anim="loop_wagen", move_2d="zoom_schnell",
       sfx="impact"),
     S("Ihr stürmt die Tür.", "favela", anim="tuer2", move_2d="shake_stark", blitz=True, sfx="tuer"),
     S("Er flieht. Über die *Dächer*.", "favela", anim="dach_flucht", move_2d="shake", sfx="whoosh"),
@@ -120,6 +122,12 @@ SHOTS = [
 ]
 for _s in SHOTS:
     _s.setdefault("hinweis", HINWEIS)
+# Figurenstimmen (pipeline/stimmen.py): Spind-Stimme für Intro und Teaser, Oberst für den Zugriffsbefehl
+for _k in (0, 1, 2, 3, len(SHOTS) - 2, len(SHOTS) - 1):
+    SHOTS[_k]["stimme"] = "spind"
+for _s in SHOTS:
+    if _s["text"].startswith("„*Jetzt*"):
+        _s["stimme"] = "chef"
 
 
 # =====================================================================================

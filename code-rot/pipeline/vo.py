@@ -108,3 +108,7 @@ if __name__ == "__main__":
     spec.loader.exec_module(ep)
     t = build(ep, ep_path.parent / "audio", force="--neu" in sys.argv)
     print("Dauer", round(t["gesamt"], 2), "s,", len(t["shots"]), "Einstellungen")
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent)); import stimmen  # Figurenstimmen einsetzen (Einstellungen mit stimme="...")
+    n = stimmen.anwenden(ep, ep_path.parent.resolve())
+    if n:
+        print(n, "Zeilen mit Figurenstimmen, Dauer", round(json.loads((ep_path.parent / "audio/timing.json").read_text())["gesamt"], 2), "s")

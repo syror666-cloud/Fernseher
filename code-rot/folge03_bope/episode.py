@@ -135,6 +135,14 @@ SHOTS = [
 for _s in SHOTS:
     _s.setdefault("hinweis", HINWEIS)
 
+# Figurenstimmen (pipeline/stimmen.py): Einstellung -> Rolle
+FIGURENSTIMMEN = {0: 'spind', 1: 'spind', 2: 'spind', 3: 'spind', 67: 'spind', 68: 'spind', 17: 'chef', 18: 'chef', 57: 'chef', 58: 'chef'}
+STIMME_AB = {}
+for _k, _r in FIGURENSTIMMEN.items():
+    SHOTS[_k]["stimme"] = _r
+for _k, _w in STIMME_AB.items():
+    SHOTS[_k]["stimme_ab"] = _w
+
 
 # =====================================================================================
 # 3D-ANIMATION (Favela: Hang steigt nach +y an; Straße unten bei y≈-10; Haus mit blauer Tür bei (6, 38, 14))

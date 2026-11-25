@@ -137,6 +137,15 @@ SHOTS = [
 ]
 
 
+
+# Figurenstimmen (pipeline/stimmen.py): Einstellung -> Rolle
+FIGURENSTIMMEN = {0: 'spind', 1: 'spind', 2: 'spind', 3: 'spind', 71: 'spind', 72: 'spind', 41: 'funk'}
+STIMME_AB = {41: 'Bereit'}
+for _k, _r in FIGURENSTIMMEN.items():
+    SHOTS[_k]["stimme"] = _r
+for _k, _w in STIMME_AB.items():
+    SHOTS[_k]["stimme_ab"] = _w
+
 # =====================================================================================
 # 3D-ANIMATION
 # =====================================================================================

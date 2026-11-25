@@ -384,6 +384,23 @@ def skaliere_timing(timing, f):
     return neu
 
 
+def gruppen_anpassen(ep, timing, folge, gruppen_alt):
+    """Startbilder der 3D-Sequenzen aus der aktuellen Zeitachse neu bestimmen. Ist eine Gruppe jetzt länger als
+    gerendert (z. B. durch eine langsamere Figurenstimme), läuft sie entsprechend langsamer statt einzufrieren."""
+    spec = importlib.util.spec_from_file_location("anim_render", pathlib.Path(__file__).parent / "anim_render.py")
+    ar = importlib.util.module_from_spec(spec); spec.loader.exec_module(ar)
+    neu = ar.gruppen(ep, timing)
+    for name, g in neu.items():
+        d = folge / "anim" / name
+        nf = len(list(d.glob("f_*.png"))) if d.exists() else 0
+        if g["loop"] or nf == 0:
+            continue
+        s = min(1.0, (nf - 1) / max(g["frames"] - 2, 1))
+        g["tempo"] = s
+        g["start"] = {k: int(round(v * s)) for k, v in g["start"].items()}
+    return neu
+
+
 def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
     s = dict(ep.SHOTS[k]); t = shots[k]
     f0, f1 = round(t["schnitt"] * FPS), round(t["ende"] * FPS)
@@ -393,8 +410,9 @@ def animierter_clip(k, ep, folge, shots, gruppen, streifen, tmp, prev):
     if anim and (folge / "anim" / anim / "f_0001.png").exists():
         g = gruppen[anim]
         nf = len(list((folge / "anim" / anim).glob("f_*.png")))
-        bg = {"typ": "seq", "muster": f"file://{folge}/anim/{anim}/f_####.png", "start": g["start"][str(k)],
-              "n": nf, "loop": g["loop"]}
+        st = g["start"].get(k, g["start"].get(str(k)))
+        bg = {"typ": "seq", "muster": f"file://{folge}/anim/{anim}/f_####.png", "start": st,
+              "n": nf, "loop": g["loop"], "tempo": g.get("tempo", 1.0)}
         szene = ep.ANIM[anim]["szene"]
         bg["himmel"] = szene == "rollfeld"
     elif bgname.startswith("svg:"):
@@ -454,6 +472,7 @@ def main_animiert():
         timing = skaliere_timing(timing, TEMPO)
         vo = tmp / "vo_schnell.wav"
         sh(["ffmpeg", "-y", "-loglevel", "error", "-i", str(folge / "audio/vo.wav"), "-af", f"atempo={TEMPO}", str(vo)])
+    gruppen = gruppen_anpassen(ep, timing, folge, gruppen)
     sp = folge / "bg/spinde_streifen.png"
     streifen = Streifen(sp)
     shots = timing["shots"]

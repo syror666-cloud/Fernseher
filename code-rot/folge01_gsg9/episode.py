@@ -156,6 +156,15 @@ SHOTS = [
 ]
 
 
+
+# Figurenstimmen (pipeline/stimmen.py): Einstellung -> Rolle
+FIGURENSTIMMEN = {0: 'spind', 1: 'spind', 2: 'spind', 3: 'spind', 85: 'spind', 86: 'spind', 17: 'chef', 18: 'chef', 53: 'schrei', 68: 'funk'}
+STIMME_AB = {}
+for _k, _r in FIGURENSTIMMEN.items():
+    SHOTS[_k]["stimme"] = _r
+for _k, _w in STIMME_AB.items():
+    SHOTS[_k]["stimme_ab"] = _w
+
 # =====================================================================================
 # 3D-ANIMATION: Kamerapfade (Blender/EEVEE). Aufeinanderfolgende Einstellungen mit
 # demselben anim-Namen bilden EINE durchgehende Fahrt. loop=True: Schleife für Figuren-Shots.
