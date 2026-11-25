@@ -374,7 +374,7 @@ def aggressiv_extras(k, s, t, dauer, prev_s):
     ex["punches"] = punches
     ex["stoesse"] = [[round(max(r, 0), 3), 0.28] for r, w in rel if "*" in w["w"]]
     ort = (s.get("anim") or s["bg"]); ort_vorher = (prev_s.get("anim") or prev_s["bg"]) if prev_s else None
-    if ort != ort_vorher and not s.get("blitz"):
+    if ort != ort_vorher and not s.get("blitz") and prev_s is not None:  # kein Blitz im allerersten Bild (Cover)
         ex["blitz_kurz"] = True
     return ex
 
