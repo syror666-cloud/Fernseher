@@ -62,8 +62,9 @@ def main():
             print("ok", name, r["name"])
         except Exception as e:
             print("Fehler", name, e)
-    with open(OUT / "QUELLEN.md", "a") as f:
-        f.write("\n".join(quellen[1:]) + "\n")
+    if quellen[1:]:  # nur bei neuen Downloads anhängen
+        with open(OUT / "QUELLEN.md", "a") as f:
+            f.write("\n".join(quellen[1:]) + "\n")
 
 
 if __name__ == "__main__":
