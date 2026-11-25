@@ -1,0 +1,236 @@
+{
+ "intro": {
+  "frames": 115,
+  "start": {
+   "0": 0,
+   "1": 28,
+   "2": 66,
+   "3": 80
+  },
+  "loop": false
+ },
+ "outro": {
+  "frames": 90,
+  "start": {
+   "67": 0,
+   "68": 25
+  },
+  "loop": false
+ },
+ "anflug": {
+  "frames": 80,
+  "start": {
+   "5": 0,
+   "6": 42
+  },
+  "loop": false
+ },
+ "caveirao_fahrt": {
+  "frames": 65,
+  "start": {
+   "7": 0
+  },
+  "loop": false
+ },
+ "caveirao_nah": {
+  "frames": 115,
+  "start": {
+   "8": 0,
+   "9": 62
+  },
+  "loop": false
+ },
+ "loop_wagen": {
+  "frames": 120,
+  "start": {
+   "10": 0,
+   "11": 72,
+   "16": 17,
+   "17": 75,
+   "18": 11,
+   "27": 65
+  },
+  "loop": true
+ },
+ "huegel": {
+  "frames": 113,
+  "start": {
+   "12": 0,
+   "13": 86
+  },
+  "loop": false
+ },
+ "huegel2": {
+  "frames": 89,
+  "start": {
+   "25": 0,
+   "26": 37
+  },
+  "loop": false
+ },
+ "gasse_tief": {
+  "frames": 114,
+  "start": {
+   "14": 0,
+   "15": 79
+  },
+  "loop": false
+ },
+ "gasse": {
+  "frames": 94,
+  "start": {
+   "19": 0,
+   "31": 60
+  },
+  "loop": false
+ },
+ "gasse2": {
+  "frames": 54,
+  "start": {
+   "37": 0,
+   "38": 26
+  },
+  "loop": false
+ },
+ "loop_gasse": {
+  "frames": 120,
+  "start": {
+   "28": 0,
+   "29": 40,
+   "30": 93,
+   "32": 37,
+   "36": 110,
+   "42": 28,
+   "43": 95,
+   "47": 45
+  },
+  "loop": true
+ },
+ "treppe": {
+  "frames": 36,
+  "start": {
+   "20": 0
+  },
+  "loop": false
+ },
+ "treppe2": {
+  "frames": 33,
+  "start": {
+   "35": 0
+  },
+  "loop": false
+ },
+ "kabel": {
+  "frames": 53,
+  "start": {
+   "21": 0
+  },
+  "loop": false
+ },
+ "dach": {
+  "frames": 41,
+  "start": {
+   "22": 0
+  },
+  "loop": false
+ },
+ "dach_leer": {
+  "frames": 34,
+  "start": {
+   "24": 0
+  },
+  "loop": false
+ },
+ "loop_dach": {
+  "frames": 90,
+  "start": {
+   "23": 0
+  },
+  "loop": true
+ },
+ "aussteigen": {
+  "frames": 72,
+  "start": {
+   "33": 0,
+   "34": 35
+  },
+  "loop": false
+ },
+ "tuer": {
+  "frames": 47,
+  "start": {
+   "40": 0,
+   "41": 22
+  },
+  "loop": false
+ },
+ "tuer2": {
+  "frames": 35,
+  "start": {
+   "44": 0
+  },
+  "loop": false
+ },
+ "raum": {
+  "frames": 67,
+  "start": {
+   "45": 0,
+   "46": 14
+  },
+  "loop": false
+ },
+ "treppe_runter": {
+  "frames": 27,
+  "start": {
+   "48": 0
+  },
+  "loop": false
+ },
+ "morgen": {
+  "frames": 48,
+  "start": {
+   "50": 0
+  },
+  "loop": false
+ },
+ "morgen2": {
+  "frames": 172,
+  "start": {
+   "52": 0,
+   "53": 28,
+   "54": 71,
+   "58": 88,
+   "59": 121
+  },
+  "loop": false
+ },
+ "loop_morgen": {
+  "frames": 120,
+  "start": {
+   "49": 0,
+   "51": 65,
+   "55": 112,
+   "56": 43,
+   "57": 116,
+   "61": 4,
+   "63": 40
+  },
+  "loop": true
+ },
+ "dach_morgen": {
+  "frames": 97,
+  "start": {
+   "60": 0,
+   "62": 48
+  },
+  "loop": false
+ },
+ "abfahrt": {
+  "frames": 67,
+  "start": {
+   "64": 0,
+   "65": 33
+  },
+  "loop": false
+ }
+}
