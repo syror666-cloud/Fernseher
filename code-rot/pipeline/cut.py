@@ -447,7 +447,11 @@ def fluss_normalisieren(ep, timing, vo_in, vo_out):
         start = t
         teile.append(seg); t += len(seg) / SR_
         raten.append(len(text) / (dauer / f))
-        nw = [dict(x, start=start + (x["start"] - a) / f, ende=start + (x["ende"] - a) / f) for x in w]
+        # Wortzeiten auf den tatsächlich behaltenen Abschnitt begrenzen (ElevenLabs-Zeitstempel ragen teils weit über
+        # das hörbare Ende hinaus; sonst beginnt die nächste Einstellung im Bild zu spät, z. B. die Titelkarte nach dem Namen)
+        s_ende = start + len(seg) / SR_
+        nw = [dict(x, start=min(max(start, start + (x["start"] - a) / f), s_ende),
+                   ende=min(max(start, start + (x["ende"] - a) / f), s_ende)) for x in w]
         neu_shots.append(dict(sh_, schnitt=start, start=nw[0]["start"], sprech_ende=nw[-1]["ende"], words=nw))
         # Pause bis zur nächsten Einstellung
         if k + 1 < len(shots):
