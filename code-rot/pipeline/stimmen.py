@@ -165,6 +165,11 @@ def anwenden(ep, folge):
             chars, st, en = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
             spans = [(m.start(), m.end() - 1) for m in re.finditer(r"\S+", "".join(chars))]
             t0 = max(0.0, st[spans[0][0]] - 0.03); t1 = min(len(clip) / SR, en[spans[-1][1]] + 0.12)
+            # gerufene Namen (eleven_v3): die Zeichen-Zeitstempel sind teils viel zu kurz -> hörbaren Bereich mitnehmen
+            e_ = np.sqrt(np.convolve((clip ** 2).mean(axis=1), np.ones(441) / 441, mode="same"))
+            laut_ = np.where(e_ > 10 ** (-40 / 20))[0]
+            if len(laut_):
+                t0 = max(0.0, min(t0, laut_[0] / SR - 0.03)); t1 = min(len(clip) / SR, max(t1, laut_[-1] / SR + 0.12))
             c = clip[int(t0 * SR):int(t1 * SR)]
             ref = y[int(shots[k + 1]["words"][0]["start"] * SR):int(shots[k + 1]["words"][-1]["ende"] * SR)] \
                 if k + 1 < len(shots) and shots[k + 1]["words"] else c

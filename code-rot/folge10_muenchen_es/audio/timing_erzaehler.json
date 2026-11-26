@@ -1,0 +1,1702 @@
+{
+ "gesamt": 108.017551,
+ "shots": [
+  {
+   "i": 0,
+   "start": 0.0,
+   "sprech_ende": 0.96,
+   "words": [
+    {
+     "w": "Una",
+     "start": 0.0,
+     "ende": 0.16
+    },
+    {
+     "w": "de",
+     "start": 0.187,
+     "ende": 0.24
+    },
+    {
+     "w": "estas",
+     "start": 0.28,
+     "ende": 0.48
+    },
+    {
+     "w": "*unidades*",
+     "start": 0.533,
+     "ende": 0.96
+    }
+   ],
+   "schnitt": 0.0,
+   "ende": 0.96
+  },
+  {
+   "i": 1,
+   "start": 1.0,
+   "sprech_ende": 2.32,
+   "words": [
+    {
+     "w": "viene",
+     "start": 1.0,
+     "ende": 1.2
+    },
+    {
+     "w": "por",
+     "start": 1.24,
+     "ende": 1.36
+    },
+    {
+     "w": "ti",
+     "start": 1.387,
+     "ende": 1.44
+    },
+    {
+     "w": "esta",
+     "start": 1.488,
+     "ende": 1.68
+    },
+    {
+     "w": "noche.",
+     "start": 1.733,
+     "ende": 2.32
+    }
+   ],
+   "schnitt": 0.96,
+   "ende": 2.32
+  },
+  {
+   "i": 2,
+   "start": 2.373,
+   "sprech_ende": 2.64,
+   "words": [
+    {
+     "w": "Veamos",
+     "start": 2.373,
+     "ende": 2.64
+    }
+   ],
+   "schnitt": 2.32,
+   "ende": 2.64
+  },
+  {
+   "i": 3,
+   "start": 2.667,
+   "sprech_ende": 3.36,
+   "words": [
+    {
+     "w": "si",
+     "start": 2.667,
+     "ende": 2.72
+    },
+    {
+     "w": "*regresas*.",
+     "start": 2.78,
+     "ende": 3.36
+    }
+   ],
+   "schnitt": 2.64,
+   "ende": 3.36
+  },
+  {
+   "i": 4,
+   "start": 3.4099999999999997,
+   "words": [],
+   "sprech_ende": 3.4099999999999997,
+   "schnitt": 3.36,
+   "ende": 5.32
+  },
+  {
+   "i": 5,
+   "start": 5.38,
+   "sprech_ende": 7.02,
+   "words": [
+    {
+     "w": "Eres",
+     "start": 5.38,
+     "ende": 6.06
+    },
+    {
+     "w": "policía",
+     "start": 6.113,
+     "ende": 6.46
+    },
+    {
+     "w": "en",
+     "start": 6.487,
+     "ende": 6.54
+    },
+    {
+     "w": "*Múnich*.",
+     "start": 6.58,
+     "ende": 7.02
+    }
+   ],
+   "schnitt": 5.32,
+   "ende": 7.08
+  },
+  {
+   "i": 6,
+   "start": 7.14,
+   "sprech_ende": 9.98,
+   "words": [
+    {
+     "w": "Juegos",
+     "start": 7.14,
+     "ende": 7.880869565217392
+    },
+    {
+     "w": "Olímpicos,",
+     "start": 7.880869565217392,
+     "ende": 9.115652173913043
+    },
+    {
+     "w": "*1972*.",
+     "start": 9.115652173913043,
+     "ende": 9.98
+    }
+   ],
+   "schnitt": 7.08,
+   "ende": 9.98
+  },
+  {
+   "i": 7,
+   "start": 10.02,
+   "sprech_ende": 12.78,
+   "words": [
+    {
+     "w": "Ocho",
+     "start": 10.02,
+     "ende": 10.14
+    },
+    {
+     "w": "terroristas",
+     "start": 10.188,
+     "ende": 10.78
+    },
+    {
+     "w": "asaltan",
+     "start": 10.833,
+     "ende": 11.18
+    },
+    {
+     "w": "el",
+     "start": 11.207,
+     "ende": 11.26
+    },
+    {
+     "w": "edificio",
+     "start": 11.313,
+     "ende": 11.74
+    },
+    {
+     "w": "de",
+     "start": 11.793,
+     "ende": 11.9
+    },
+    {
+     "w": "los",
+     "start": 11.92,
+     "ende": 11.98
+    },
+    {
+     "w": "*israelíes*.",
+     "start": 12.033,
+     "ende": 12.78
+    }
+   ],
+   "schnitt": 9.98,
+   "ende": 13.802
+  },
+  {
+   "i": 8,
+   "start": 13.862,
+   "sprech_ende": 15.582,
+   "words": [
+    {
+     "w": "Dos",
+     "start": 13.862,
+     "ende": 13.902
+    },
+    {
+     "w": "miembros",
+     "start": 13.955,
+     "ende": 14.222
+    },
+    {
+     "w": "del",
+     "start": 14.262,
+     "ende": 14.382
+    },
+    {
+     "w": "equipo",
+     "start": 14.428,
+     "ende": 14.702
+    },
+    {
+     "w": "son",
+     "start": 14.742,
+     "ende": 14.862
+    },
+    {
+     "w": "*asesinados*.",
+     "start": 14.915,
+     "ende": 15.582
+    }
+   ],
+   "schnitt": 13.802,
+   "ende": 15.722
+  },
+  {
+   "i": 9,
+   "start": 15.782,
+   "sprech_ende": 17.502,
+   "words": [
+    {
+     "w": "*Nueve*",
+     "start": 15.782,
+     "ende": 16.142
+    },
+    {
+     "w": "son",
+     "start": 16.201999999999998,
+     "ende": 16.381999999999998
+    },
+    {
+     "w": "tomados",
+     "start": 16.422,
+     "ende": 16.782
+    },
+    {
+     "w": "como",
+     "start": 16.83,
+     "ende": 17.022
+    },
+    {
+     "w": "rehenes.",
+     "start": 17.075,
+     "ende": 17.502
+    }
+   ],
+   "schnitt": 15.722,
+   "ende": 17.602
+  },
+  {
+   "i": 10,
+   "start": 17.662,
+   "sprech_ende": 20.142,
+   "words": [
+    {
+     "w": "Y",
+     "start": 17.662,
+     "ende": 17.822
+    },
+    {
+     "w": "Alemania",
+     "start": 17.882,
+     "ende": 18.382
+    },
+    {
+     "w": "no",
+     "start": 18.409,
+     "ende": 18.462
+    },
+    {
+     "w": "tiene",
+     "start": 18.502,
+     "ende": 18.702
+    },
+    {
+     "w": "*ninguna*",
+     "start": 18.762,
+     "ende": 19.182
+    },
+    {
+     "w": "unidad",
+     "start": 19.239,
+     "ende": 19.582
+    },
+    {
+     "w": "especial.",
+     "start": 19.635,
+     "ende": 20.142
+    }
+   ],
+   "schnitt": 17.602,
+   "ende": 20.402
+  },
+  {
+   "i": 11,
+   "start": 20.462,
+   "sprech_ende": 23.102,
+   "words": [
+    {
+     "w": "¿Cómo",
+     "start": 20.462,
+     "ende": 20.942
+    },
+    {
+     "w": "salvas",
+     "start": 20.982,
+     "ende": 21.342
+    },
+    {
+     "w": "a",
+     "start": 21.382,
+     "ende": 21.422
+    },
+    {
+     "w": "nueve",
+     "start": 21.462,
+     "ende": 21.662
+    },
+    {
+     "w": "personas",
+     "start": 21.715,
+     "ende": 22.142
+    },
+    {
+     "w": "sin",
+     "start": 22.182,
+     "ende": 22.302
+    },
+    {
+     "w": "*entrenamiento*?",
+     "start": 22.348,
+     "ende": 23.102
+    }
+   ],
+   "schnitt": 20.402,
+   "ende": 23.909000000000002
+  },
+  {
+   "i": 12,
+   "start": 23.969,
+   "sprech_ende": 25.589,
+   "words": [
+    {
+     "w": "Recuerda",
+     "start": 23.969,
+     "ende": 24.389
+    },
+    {
+     "w": "la",
+     "start": 24.416,
+     "ende": 24.469
+    },
+    {
+     "w": "pregunta.",
+     "start": 24.522,
+     "ende": 25.589
+    }
+   ],
+   "schnitt": 23.909000000000002,
+   "ende": 25.689
+  },
+  {
+   "i": 13,
+   "start": 25.749,
+   "sprech_ende": 27.309,
+   "words": [
+    {
+     "w": "Suben",
+     "start": 25.749,
+     "ende": 26.309
+    },
+    {
+     "w": "a",
+     "start": 26.349,
+     "ende": 26.389
+    },
+    {
+     "w": "los",
+     "start": 26.429,
+     "ende": 26.549
+    },
+    {
+     "w": "*tejados*.",
+     "start": 26.589,
+     "ende": 27.309
+    }
+   ],
+   "schnitt": 25.689,
+   "ende": 27.309
+  },
+  {
+   "i": 14,
+   "start": 27.359,
+   "sprech_ende": 28.709,
+   "words": [
+    {
+     "w": "Disfrazados",
+     "start": 27.359,
+     "ende": 27.909
+    },
+    {
+     "w": "con",
+     "start": 27.949,
+     "ende": 28.069
+    },
+    {
+     "w": "*chándales*.",
+     "start": 28.122,
+     "ende": 28.709
+    }
+   ],
+   "schnitt": 27.309,
+   "ende": 28.745
+  },
+  {
+   "i": 15,
+   "start": 28.805,
+   "sprech_ende": 31.109,
+   "words": [
+    {
+     "w": "Pero",
+     "start": 28.805,
+     "ende": 29.189
+    },
+    {
+     "w": "la",
+     "start": 29.242,
+     "ende": 29.349
+    },
+    {
+     "w": "televisión",
+     "start": 29.389,
+     "ende": 29.829
+    },
+    {
+     "w": "lo",
+     "start": 29.882,
+     "ende": 29.989
+    },
+    {
+     "w": "transmite",
+     "start": 30.029,
+     "ende": 30.389
+    },
+    {
+     "w": "*en",
+     "start": 30.442,
+     "ende": 30.549
+    },
+    {
+     "w": "directo*.",
+     "start": 30.595,
+     "ende": 31.109
+    }
+   ],
+   "schnitt": 28.745,
+   "ende": 31.129
+  },
+  {
+   "i": 16,
+   "start": 31.189,
+   "sprech_ende": 32.789,
+   "words": [
+    {
+     "w": "Y",
+     "start": 31.189,
+     "ende": 31.269
+    },
+    {
+     "w": "los",
+     "start": 31.309,
+     "ende": 31.429
+    },
+    {
+     "w": "terroristas",
+     "start": 31.469,
+     "ende": 31.989
+    },
+    {
+     "w": "lo",
+     "start": 32.016,
+     "ende": 32.069
+    },
+    {
+     "w": "están",
+     "start": 32.109,
+     "ende": 32.309
+    },
+    {
+     "w": "*viendo*.",
+     "start": 32.361999999999995,
+     "ende": 32.789
+    }
+   ],
+   "schnitt": 31.129,
+   "ende": 32.916
+  },
+  {
+   "i": 17,
+   "start": 32.976,
+   "sprech_ende": 34.869,
+   "words": [
+    {
+     "w": "La",
+     "start": 32.976,
+     "ende": 33.349000000000004
+    },
+    {
+     "w": "operación",
+     "start": 33.397,
+     "ende": 33.829
+    },
+    {
+     "w": "se",
+     "start": 33.856,
+     "ende": 33.909
+    },
+    {
+     "w": "*suspende*.",
+     "start": 33.969,
+     "ende": 34.869
+    }
+   ],
+   "schnitt": 32.916,
+   "ende": 34.876
+  },
+  {
+   "i": 18,
+   "start": 34.936,
+   "sprech_ende": 36.789,
+   "words": [
+    {
+     "w": "Nuevo",
+     "start": 34.936,
+     "ende": 35.269
+    },
+    {
+     "w": "plan:",
+     "start": 35.333,
+     "ende": 35.989
+    },
+    {
+     "w": "un",
+     "start": 36.016,
+     "ende": 36.069
+    },
+    {
+     "w": "*aeródromo*.",
+     "start": 36.129,
+     "ende": 36.789
+    }
+   ],
+   "schnitt": 34.876,
+   "ende": 36.888999999999996
+  },
+  {
+   "i": 19,
+   "start": 36.949,
+   "sprech_ende": 39.989,
+   "words": [
+    {
+     "w": "Dos",
+     "start": 36.949,
+     "ende": 37.429
+    },
+    {
+     "w": "helicópteros",
+     "start": 37.469,
+     "ende": 38.069
+    },
+    {
+     "w": "los",
+     "start": 38.109,
+     "ende": 38.229
+    },
+    {
+     "w": "llevan",
+     "start": 38.261,
+     "ende": 38.469
+    },
+    {
+     "w": "a",
+     "start": 38.509,
+     "ende": 38.549
+    },
+    {
+     "w": "todos",
+     "start": 38.602,
+     "ende": 38.869
+    },
+    {
+     "w": "a",
+     "start": 38.909,
+     "ende": 38.949
+    },
+    {
+     "w": "*Fürstenfeldbruck*.",
+     "start": 39.029,
+     "ende": 39.989
+    }
+   ],
+   "schnitt": 36.888999999999996,
+   "ende": 40.028999999999996
+  },
+  {
+   "i": 20,
+   "start": 40.089,
+   "sprech_ende": 41.349,
+   "words": [
+    {
+     "w": "Allí",
+     "start": 40.089,
+     "ende": 40.469
+    },
+    {
+     "w": "espera",
+     "start": 40.526,
+     "ende": 40.869
+    },
+    {
+     "w": "un",
+     "start": 40.896,
+     "ende": 40.949
+    },
+    {
+     "w": "avión.",
+     "start": 41.002,
+     "ende": 41.349
+    }
+   ],
+   "schnitt": 40.028999999999996,
+   "ende": 41.400999999999996
+  },
+  {
+   "i": 21,
+   "start": 41.461,
+   "sprech_ende": 44.149,
+   "words": [
+    {
+     "w": "Dentro:",
+     "start": 41.461,
+     "ende": 42.309
+    },
+    {
+     "w": "policías",
+     "start": 42.362,
+     "ende": 42.709
+    },
+    {
+     "w": "disfrazados",
+     "start": 42.749,
+     "ende": 43.349
+    },
+    {
+     "w": "de",
+     "start": 43.376,
+     "ende": 43.429
+    },
+    {
+     "w": "*tripulación*.",
+     "start": 43.477,
+     "ende": 44.149
+    }
+   ],
+   "schnitt": 41.400999999999996,
+   "ende": 44.248999999999995
+  },
+  {
+   "i": 22,
+   "start": 44.309,
+   "sprech_ende": 45.509,
+   "words": [
+    {
+     "w": "Tu",
+     "start": 44.309,
+     "ende": 44.629
+    },
+    {
+     "w": "jefe",
+     "start": 44.669,
+     "ende": 44.869
+    },
+    {
+     "w": "dice:",
+     "start": 44.949,
+     "ende": 45.509
+    }
+   ],
+   "schnitt": 44.248999999999995,
+   "ende": 45.568999999999996
+  },
+  {
+   "i": 23,
+   "start": 45.629,
+   "sprech_ende": 47.749,
+   "words": [
+    {
+     "w": "“En",
+     "start": 45.629,
+     "ende": 45.829
+    },
+    {
+     "w": "cuanto",
+     "start": 45.863,
+     "ende": 46.069
+    },
+    {
+     "w": "suban",
+     "start": 46.129,
+     "ende": 46.389
+    },
+    {
+     "w": "al",
+     "start": 46.442,
+     "ende": 46.549
+    },
+    {
+     "w": "avión,",
+     "start": 46.576,
+     "ende": 46.949
+    },
+    {
+     "w": "*atacamos*.”",
+     "start": 47.002,
+     "ende": 47.749
+    }
+   ],
+   "schnitt": 45.568999999999996,
+   "ende": 47.829
+  },
+  {
+   "i": 24,
+   "start": 47.889,
+   "sprech_ende": 49.189,
+   "words": [
+    {
+     "w": "Tus",
+     "start": 47.889,
+     "ende": 48.309
+    },
+    {
+     "w": "órdenes:",
+     "start": 48.389,
+     "ende": 49.189
+    }
+   ],
+   "schnitt": 47.829,
+   "ende": 49.189
+  },
+  {
+   "i": 25,
+   "start": 49.242,
+   "sprech_ende": 50.389,
+   "words": [
+    {
+     "w": "Espera",
+     "start": 49.242,
+     "ende": 49.589
+    },
+    {
+     "w": "la",
+     "start": 49.616,
+     "ende": 49.669
+    },
+    {
+     "w": "*señal*.",
+     "start": 49.729,
+     "ende": 50.389
+    }
+   ],
+   "schnitt": 49.189,
+   "ende": 50.409
+  },
+  {
+   "i": 26,
+   "start": 50.469,
+   "sprech_ende": 52.229,
+   "words": [
+    {
+     "w": "Dispara",
+     "start": 50.469,
+     "ende": 50.869
+    },
+    {
+     "w": "solo",
+     "start": 50.917,
+     "ende": 51.109
+    },
+    {
+     "w": "a",
+     "start": 51.149,
+     "ende": 51.189
+    },
+    {
+     "w": "los",
+     "start": 51.229,
+     "ende": 51.349
+    },
+    {
+     "w": "*terroristas*.",
+     "start": 51.397,
+     "ende": 52.229
+    }
+   ],
+   "schnitt": 50.409,
+   "ende": 52.229
+  },
+  {
+   "i": 27,
+   "start": 52.282,
+   "sprech_ende": 53.909,
+   "words": [
+    {
+     "w": "No",
+     "start": 52.282,
+     "ende": 52.389
+    },
+    {
+     "w": "hieras",
+     "start": 52.437,
+     "ende": 52.709
+    },
+    {
+     "w": "a",
+     "start": 52.749,
+     "ende": 52.789
+    },
+    {
+     "w": "ningún",
+     "start": 52.846,
+     "ende": 53.189
+    },
+    {
+     "w": "*rehén*.",
+     "start": 53.229,
+     "ende": 53.909
+    }
+   ],
+   "schnitt": 52.229,
+   "ende": 53.969
+  },
+  {
+   "i": 28,
+   "start": 54.029,
+   "sprech_ende": 56.229,
+   "words": [
+    {
+     "w": "Y:",
+     "start": 54.029,
+     "ende": 54.469
+    },
+    {
+     "w": "los",
+     "start": 54.509,
+     "ende": 54.629
+    },
+    {
+     "w": "*nueve*",
+     "start": 54.689,
+     "ende": 54.949
+    },
+    {
+     "w": "con",
+     "start": 55.009,
+     "ende": 55.189
+    },
+    {
+     "w": "vida.",
+     "start": 55.237,
+     "ende": 56.229
+    }
+   ],
+   "schnitt": 53.969,
+   "ende": 56.229
+  },
+  {
+   "i": 29,
+   "start": 56.261,
+   "sprech_ende": 58.389,
+   "words": [
+    {
+     "w": "Pero",
+     "start": 56.261,
+     "ende": 56.389
+    },
+    {
+     "w": "en",
+     "start": 56.442,
+     "ende": 56.549
+    },
+    {
+     "w": "el",
+     "start": 56.576,
+     "ende": 56.629
+    },
+    {
+     "w": "avión,",
+     "start": 56.682,
+     "ende": 57.109
+    },
+    {
+     "w": "los",
+     "start": 57.149,
+     "ende": 57.269
+    },
+    {
+     "w": "policías",
+     "start": 57.322,
+     "ende": 57.669
+    },
+    {
+     "w": "*votan*.",
+     "start": 57.729,
+     "ende": 58.389
+    }
+   ],
+   "schnitt": 56.229,
+   "ende": 58.389
+  },
+  {
+   "i": 30,
+   "start": 58.442,
+   "sprech_ende": 60.069,
+   "words": [
+    {
+     "w": "Se",
+     "start": 58.442,
+     "ende": 58.549
+    },
+    {
+     "w": "*van*.",
+     "start": 58.609,
+     "ende": 59.189
+    },
+    {
+     "w": "Sin",
+     "start": 59.229,
+     "ende": 59.349
+    },
+    {
+     "w": "más.",
+     "start": 59.429,
+     "ende": 60.069
+    }
+   ],
+   "schnitt": 58.389,
+   "ende": 60.069
+  },
+  {
+   "i": 31,
+   "start": 60.122,
+   "sprech_ende": 61.429,
+   "words": [
+    {
+     "w": "El",
+     "start": 60.122,
+     "ende": 60.229
+    },
+    {
+     "w": "avión",
+     "start": 60.282,
+     "ende": 60.469
+    },
+    {
+     "w": "está",
+     "start": 60.517,
+     "ende": 60.709
+    },
+    {
+     "w": "*vacío*.",
+     "start": 60.749,
+     "ende": 61.429
+    }
+   ],
+   "schnitt": 60.069,
+   "ende": 61.429
+  },
+  {
+   "i": 32,
+   "start": 61.482,
+   "sprech_ende": 64.229,
+   "words": [
+    {
+     "w": "Ahora",
+     "start": 61.482,
+     "ende": 61.749
+    },
+    {
+     "w": "solo",
+     "start": 61.781,
+     "ende": 61.909
+    },
+    {
+     "w": "quedan",
+     "start": 61.957,
+     "ende": 62.229
+    },
+    {
+     "w": "ustedes.",
+     "start": 62.296,
+     "ende": 63.029
+    },
+    {
+     "w": "*Cinco*",
+     "start": 63.109,
+     "ende": 63.509
+    },
+    {
+     "w": "tiradores.",
+     "start": 63.549,
+     "ende": 64.229
+    }
+   ],
+   "schnitt": 61.429,
+   "ende": 64.309
+  },
+  {
+   "i": 33,
+   "start": 64.369,
+   "sprech_ende": 67.189,
+   "words": [
+    {
+     "w": "Sin",
+     "start": 64.369,
+     "ende": 64.789
+    },
+    {
+     "w": "mira",
+     "start": 64.82900000000001,
+     "ende": 65.029
+    },
+    {
+     "w": "telescópica.",
+     "start": 65.086,
+     "ende": 66.069
+    },
+    {
+     "w": "Sin",
+     "start": 66.109,
+     "ende": 66.229
+    },
+    {
+     "w": "*visión",
+     "start": 66.269,
+     "ende": 66.549
+    },
+    {
+     "w": "nocturna*.",
+     "start": 66.597,
+     "ende": 67.189
+    }
+   ],
+   "schnitt": 64.309,
+   "ende": 67.40899999999999
+  },
+  {
+   "i": 34,
+   "start": 67.469,
+   "sprech_ende": 70.229,
+   "words": [
+    {
+     "w": "Creen",
+     "start": 67.469,
+     "ende": 67.909
+    },
+    {
+     "w": "que",
+     "start": 67.929,
+     "ende": 67.989
+    },
+    {
+     "w": "son",
+     "start": 68.029,
+     "ende": 68.149
+    },
+    {
+     "w": "cinco",
+     "start": 68.202,
+     "ende": 68.469
+    },
+    {
+     "w": "terroristas.",
+     "start": 68.517,
+     "ende": 69.189
+    },
+    {
+     "w": "Son",
+     "start": 69.349,
+     "ende": 69.829
+    },
+    {
+     "w": "*ocho*.",
+     "start": 69.909,
+     "ende": 70.229
+    }
+   ],
+   "schnitt": 67.40899999999999,
+   "ende": 71.119
+  },
+  {
+   "i": 35,
+   "start": 71.179,
+   "sprech_ende": 72.589,
+   "words": [
+    {
+     "w": "Aterrizan",
+     "start": 71.179,
+     "ende": 71.589
+    },
+    {
+     "w": "los",
+     "start": 71.609,
+     "ende": 71.669
+    },
+    {
+     "w": "helicópteros.",
+     "start": 71.709,
+     "ende": 72.589
+    }
+   ],
+   "schnitt": 71.119,
+   "ende": 72.589
+  },
+  {
+   "i": 36,
+   "start": 72.639,
+   "sprech_ende": 74.509,
+   "words": [
+    {
+     "w": "Dos",
+     "start": 72.639,
+     "ende": 72.789
+    },
+    {
+     "w": "terroristas",
+     "start": 72.837,
+     "ende": 73.349
+    },
+    {
+     "w": "revisan",
+     "start": 73.402,
+     "ende": 73.829
+    },
+    {
+     "w": "el",
+     "start": 73.856,
+     "ende": 73.909
+    },
+    {
+     "w": "avión.",
+     "start": 73.962,
+     "ende": 74.509
+    }
+   ],
+   "schnitt": 72.589,
+   "ende": 74.51899999999999
+  },
+  {
+   "i": 37,
+   "start": 74.579,
+   "sprech_ende": 76.229,
+   "words": [
+    {
+     "w": "*Vacío*.",
+     "start": 74.579,
+     "ende": 75.269
+    },
+    {
+     "w": "Corren",
+     "start": 75.329,
+     "ende": 75.669
+    },
+    {
+     "w": "de",
+     "start": 75.696,
+     "ende": 75.749
+    },
+    {
+     "w": "vuelta.",
+     "start": 75.781,
+     "ende": 76.229
+    }
+   ],
+   "schnitt": 74.51899999999999,
+   "ende": 76.633
+  },
+  {
+   "i": 38,
+   "start": 76.693,
+   "sprech_ende": 78.553,
+   "words": [
+    {
+     "w": "Entonces",
+     "start": 76.693,
+     "ende": 77.033
+    },
+    {
+     "w": "suenan",
+     "start": 77.086,
+     "ende": 77.353
+    },
+    {
+     "w": "los",
+     "start": 77.373,
+     "ende": 77.433
+    },
+    {
+     "w": "primeros",
+     "start": 77.49,
+     "ende": 77.913
+    },
+    {
+     "w": "*disparos*.",
+     "start": 77.959,
+     "ende": 78.553
+    }
+   ],
+   "schnitt": 76.633,
+   "ende": 78.693
+  },
+  {
+   "i": 39,
+   "start": 78.753,
+   "sprech_ende": 81.353,
+   "words": [
+    {
+     "w": "¿Los",
+     "start": 78.753,
+     "ende": 79.113
+    },
+    {
+     "w": "blindados?",
+     "start": 79.153,
+     "ende": 79.953
+    },
+    {
+     "w": "Atascados",
+     "start": 80.046,
+     "ende": 80.633
+    },
+    {
+     "w": "en",
+     "start": 80.66,
+     "ende": 80.713
+    },
+    {
+     "w": "el",
+     "start": 80.74,
+     "ende": 80.793
+    },
+    {
+     "w": "*tráfico*.",
+     "start": 80.846,
+     "ende": 81.353
+    }
+   ],
+   "schnitt": 78.693,
+   "ende": 81.573
+  },
+  {
+   "i": 40,
+   "start": 81.633,
+   "sprech_ende": 85.033,
+   "words": [
+    {
+     "w": "Poco",
+     "start": 81.633,
+     "ende": 82.073
+    },
+    {
+     "w": "antes",
+     "start": 82.126,
+     "ende": 82.393
+    },
+    {
+     "w": "de",
+     "start": 82.42,
+     "ende": 82.473
+    },
+    {
+     "w": "medianoche,",
+     "start": 82.513,
+     "ende": 83.193
+    },
+    {
+     "w": "el",
+     "start": 83.22,
+     "ende": 83.273
+    },
+    {
+     "w": "gobierno",
+     "start": 83.326,
+     "ende": 83.753
+    },
+    {
+     "w": "anuncia:",
+     "start": 83.806,
+     "ende": 84.313
+    },
+    {
+     "w": "*éxito*.",
+     "start": 84.42,
+     "ende": 85.033
+    }
+   ],
+   "schnitt": 81.573,
+   "ende": 85.517
+  },
+  {
+   "i": 41,
+   "start": 85.577,
+   "sprech_ende": 87.033,
+   "words": [
+    {
+     "w": "Pero",
+     "start": 85.577,
+     "ende": 85.593
+    },
+    {
+     "w": "*ningún*",
+     "start": 85.65,
+     "ende": 85.993
+    },
+    {
+     "w": "rehén",
+     "start": 86.053,
+     "ende": 86.393
+    },
+    {
+     "w": "sobrevive.",
+     "start": 86.433,
+     "ende": 87.033
+    }
+   ],
+   "schnitt": 85.517,
+   "ende": 87.133
+  },
+  {
+   "i": 42,
+   "start": 87.193,
+   "sprech_ende": 88.153,
+   "words": [
+    {
+     "w": "Y",
+     "start": 87.193,
+     "ende": 87.353
+    },
+    {
+     "w": "aún",
+     "start": 87.413,
+     "ende": 87.593
+    },
+    {
+     "w": "hay",
+     "start": 87.633,
+     "ende": 87.753
+    },
+    {
+     "w": "más.",
+     "start": 87.813,
+     "ende": 88.153
+    }
+   ],
+   "schnitt": 87.133,
+   "ende": 88.29299999999999
+  },
+  {
+   "i": 43,
+   "start": 88.353,
+   "sprech_ende": 89.913,
+   "words": [
+    {
+     "w": "Tres",
+     "start": 88.353,
+     "ende": 88.633
+    },
+    {
+     "w": "terroristas",
+     "start": 88.689,
+     "ende": 89.273
+    },
+    {
+     "w": "sobreviven.",
+     "start": 89.313,
+     "ende": 89.913
+    }
+   ],
+   "schnitt": 88.29299999999999,
+   "ende": 90.01299999999999
+  },
+  {
+   "i": 44,
+   "start": 90.073,
+   "sprech_ende": 93.033,
+   "words": [
+    {
+     "w": "Menos",
+     "start": 90.073,
+     "ende": 90.633
+    },
+    {
+     "w": "de",
+     "start": 90.686,
+     "ende": 90.793
+    },
+    {
+     "w": "dos",
+     "start": 90.833,
+     "ende": 90.953
+    },
+    {
+     "w": "meses",
+     "start": 91.006,
+     "ende": 91.273
+    },
+    {
+     "w": "después,",
+     "start": 91.323,
+     "ende": 91.913
+    },
+    {
+     "w": "secuestran",
+     "start": 91.973,
+     "ende": 92.473
+    },
+    {
+     "w": "un",
+     "start": 92.526,
+     "ende": 92.633
+    },
+    {
+     "w": "*avión*.",
+     "start": 92.686,
+     "ende": 93.033
+    }
+   ],
+   "schnitt": 90.01299999999999,
+   "ende": 93.133
+  },
+  {
+   "i": 45,
+   "start": 93.193,
+   "sprech_ende": 95.553,
+   "words": [
+    {
+     "w": "La",
+     "start": 93.193,
+     "ende": 93.513
+    },
+    {
+     "w": "exigencia:",
+     "start": 93.577,
+     "ende": 94.393
+    },
+    {
+     "w": "liberar",
+     "start": 94.446,
+     "ende": 94.793
+    },
+    {
+     "w": "a",
+     "start": 94.833,
+     "ende": 94.873
+    },
+    {
+     "w": "los",
+     "start": 94.913,
+     "ende": 95.033
+    },
+    {
+     "w": "*tres*.",
+     "start": 95.097,
+     "ende": 95.553
+    }
+   ],
+   "schnitt": 93.133,
+   "ende": 95.593
+  },
+  {
+   "i": 46,
+   "start": 95.653,
+   "sprech_ende": 96.873,
+   "words": [
+    {
+     "w": "Y",
+     "start": 95.653,
+     "ende": 95.753
+    },
+    {
+     "w": "Alemania",
+     "start": 95.793,
+     "ende": 96.233
+    },
+    {
+     "w": "los",
+     "start": 96.273,
+     "ende": 96.393
+    },
+    {
+     "w": "deja",
+     "start": 96.441,
+     "ende": 96.633
+    },
+    {
+     "w": "*ir*.",
+     "start": 96.686,
+     "ende": 96.873
+    }
+   ],
+   "schnitt": 95.593,
+   "ende": 96.973
+  },
+  {
+   "i": 47,
+   "start": 97.033,
+   "sprech_ende": 100.553,
+   "words": [
+    {
+     "w": "Después,",
+     "start": 97.033,
+     "ende": 98.00403448275863
+    },
+    {
+     "w": "Alemania",
+     "start": 98.00403448275863,
+     "ende": 98.97506896551724
+    },
+    {
+     "w": "crea",
+     "start": 98.97506896551724,
+     "ende": 99.46058620689655
+    },
+    {
+     "w": "el",
+     "start": 99.46058620689655,
+     "ende": 99.7033448275862
+    },
+    {
+     "w": "*GSG",
+     "start": 99.7033448275862,
+     "ende": 100.18886206896552
+    },
+    {
+     "w": "9*.",
+     "start": 100.18886206896552,
+     "ende": 100.553
+    }
+   ],
+   "schnitt": 96.973,
+   "ende": 100.553
+  },
+  {
+   "i": 48,
+   "start": 100.609,
+   "sprech_ende": 101.753,
+   "words": [
+    {
+     "w": "¿Pero",
+     "start": 100.609,
+     "ende": 100.713
+    },
+    {
+     "w": "se",
+     "start": 100.766,
+     "ende": 100.873
+    },
+    {
+     "w": "pudo",
+     "start": 100.921,
+     "ende": 101.113
+    },
+    {
+     "w": "*evitar*?",
+     "start": 101.182,
+     "ende": 101.753
+    }
+   ],
+   "schnitt": 100.553,
+   "ende": 101.893
+  },
+  {
+   "i": 49,
+   "start": 101.953,
+   "sprech_ende": 105.113,
+   "words": [
+    {
+     "w": "¿Fracaso",
+     "start": 101.953,
+     "ende": 102.553
+    },
+    {
+     "w": "o",
+     "start": 102.633,
+     "ende": 102.713
+    },
+    {
+     "w": "mala",
+     "start": 102.753,
+     "ende": 102.953
+    },
+    {
+     "w": "suerte?",
+     "start": 103.006,
+     "ende": 103.753
+    },
+    {
+     "w": "Escríbelo",
+     "start": 103.793,
+     "ende": 104.233
+    },
+    {
+     "w": "en",
+     "start": 104.26,
+     "ende": 104.313
+    },
+    {
+     "w": "los",
+     "start": 104.353,
+     "ende": 104.473
+    },
+    {
+     "w": "*comentarios*.",
+     "start": 104.52,
+     "ende": 105.113
+    }
+   ],
+   "schnitt": 101.893,
+   "ende": 105.213
+  },
+  {
+   "i": 50,
+   "start": 105.273,
+   "sprech_ende": 106.273,
+   "words": [
+    {
+     "w": "¿Y",
+     "start": 105.273,
+     "ende": 105.513
+    },
+    {
+     "w": "mañana?",
+     "start": 105.582,
+     "ende": 106.273
+    }
+   ],
+   "schnitt": 105.213,
+   "ende": 106.273
+  },
+  {
+   "i": 51,
+   "start": 106.329,
+   "sprech_ende": 107.193,
+   "words": [
+    {
+     "w": "Vendrá",
+     "start": 106.329,
+     "ende": 106.713
+    },
+    {
+     "w": "*otra*.",
+     "start": 106.761,
+     "ende": 107.193
+    }
+   ],
+   "schnitt": 106.273,
+   "ende": 108.017551
+  }
+ ]
+}
