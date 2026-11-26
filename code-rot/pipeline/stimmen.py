@@ -169,6 +169,8 @@ def anwenden(ep, folge):
             ref = y[int(shots[k + 1]["words"][0]["start"] * SR):int(shots[k + 1]["words"][-1]["ende"] * SR)] \
                 if k + 1 < len(shots) and shots[k + 1]["words"] else c
             c = c * (rms(ref) / rms(c)) * 10 ** (getattr(ep, "TITEL_PEGEL", 0.0) / 20)  # lauter gerufener Name
+            if np.abs(c).max() > 0.9:
+                c = 0.9 * np.tanh(c / 0.9)
             a = max(cursor, shots[k]["schnitt"] + 0.05); b = max(a, shots[k]["ende"] - 0.05)
             teile.append(y[int(cursor * SR):int(a * SR)]); teile.append(c)
             neu_a = a + kum
@@ -194,6 +196,8 @@ def anwenden(ep, folge):
         # Lautstärke an den Erzähler angleichen
         ref = y[int(ws[0][2]["start"] * SR):int(ws[-1][2]["ende"] * SR)]
         c = c * (rms(ref) / rms(c)) * 10 ** (ROLLEN[bl["rolle"]]["pegel"] / 20)
+        if np.abs(c).max() > 0.9:  # weich begrenzen statt hart zu clippen (laute Rufe)
+            c = 0.9 * np.tanh(c / 0.9)
         teile.append(y[int(cursor * SR):int(a * SR)]); teile.append(c)
         neu_a = a + kum
         for (k, i, w), (sa, sb) in zip(ws, spans):
