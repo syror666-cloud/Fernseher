@@ -1,1512 +1,1512 @@
 {
- "gesamt": 79.570204,
+ "gesamt": 149.134286,
  "shots": [
   {
    "i": 0,
    "start": 0.0,
-   "sprech_ende": 0.894,
+   "sprech_ende": 1.36,
    "words": [
     {
      "w": "Eine",
      "start": 0.0,
-     "ende": 0.221
+     "ende": 0.24
     },
     {
      "w": "dieser",
-     "start": 0.255,
-     "ende": 0.441
+     "start": 0.286,
+     "ende": 0.56
     },
     {
      "w": "*Einheiten*",
-     "start": 0.476,
-     "ende": 0.894
+     "start": 0.66,
+     "ende": 1.36
     }
    ],
    "schnitt": 0.0,
-   "ende": 0.894
+   "ende": 1.46
   },
   {
    "i": 1,
-   "start": 0.952,
-   "sprech_ende": 1.985,
+   "start": 1.52,
+   "sprech_ende": 2.88,
    "words": [
     {
      "w": "holt",
-     "start": 0.952,
-     "ende": 1.161
+     "start": 1.52,
+     "ende": 1.84
     },
     {
      "w": "dich",
-     "start": 1.207,
-     "ende": 1.335
+     "start": 1.872,
+     "ende": 2.0
     },
     {
      "w": "heute",
-     "start": 1.382,
-     "ende": 1.579
+     "start": 2.053,
+     "ende": 2.32
     },
     {
      "w": "Nacht.",
-     "start": 1.625,
-     "ende": 1.985
+     "start": 2.387,
+     "ende": 2.88
     }
    ],
-   "schnitt": 0.894,
-   "ende": 2.308
+   "schnitt": 1.46,
+   "ende": 3.04
   },
   {
    "i": 2,
-   "start": 2.368,
-   "sprech_ende": 2.844,
+   "start": 3.1,
+   "sprech_ende": 4.56,
    "words": [
     {
      "w": "Mal",
-     "start": 2.368,
-     "ende": 2.519
+     "start": 3.1,
+     "ende": 3.76
     },
     {
      "w": "sehen,",
-     "start": 2.554,
-     "ende": 2.844
+     "start": 3.827,
+     "ende": 4.56
     }
    ],
-   "schnitt": 2.308,
-   "ende": 2.844
+   "schnitt": 3.04,
+   "ende": 4.56
   },
   {
    "i": 3,
-   "start": 2.879,
-   "sprech_ende": 3.936,
+   "start": 4.613,
+   "sprech_ende": 5.84,
    "words": [
     {
      "w": "ob",
-     "start": 2.879,
-     "ende": 2.961
+     "start": 4.613,
+     "ende": 4.72
     },
     {
      "w": "du",
-     "start": 3.019,
-     "ende": 3.088
+     "start": 4.773,
+     "ende": 4.88
     },
     {
      "w": "*zurückkommst*.",
-     "start": 3.158,
-     "ende": 3.936
+     "start": 4.937,
+     "ende": 5.84
     }
    ],
-   "schnitt": 2.844,
-   "ende": 3.936
+   "schnitt": 4.56,
+   "ende": 5.84
   },
   {
    "i": 4,
-   "start": 3.9859999999999998,
+   "start": 5.89,
    "words": [],
-   "sprech_ende": 3.9859999999999998,
-   "schnitt": 3.936,
-   "ende": 5.445
+   "sprech_ende": 5.89,
+   "schnitt": 5.84,
+   "ende": 8.513
   },
   {
    "i": 5,
-   "start": 5.505,
-   "sprech_ende": 7.34,
+   "start": 8.573,
+   "sprech_ende": 11.146,
    "words": [
     {
      "w": "Du",
-     "start": 5.505,
-     "ende": 5.633
+     "start": 8.573,
+     "ende": 8.626000000000001
     },
     {
      "w": "bist",
-     "start": 5.68,
-     "ende": 5.889
+     "start": 8.690000000000001,
+     "ende": 8.946
     },
     {
      "w": "Kommandosoldat",
-     "start": 5.947,
-     "ende": 6.69
+     "start": 9.006,
+     "ende": 9.986
     },
     {
      "w": "in",
-     "start": 6.759,
-     "ende": 6.806
+     "start": 10.039,
+     "ende": 10.146
     },
     {
      "w": "*Peru*.",
-     "start": 6.864,
-     "ende": 7.34
+     "start": 10.258,
+     "ende": 11.146
     }
    ],
-   "schnitt": 5.445,
-   "ende": 7.408
+   "schnitt": 8.513,
+   "ende": 11.306
   },
   {
    "i": 6,
-   "start": 7.468,
-   "sprech_ende": 10.161,
+   "start": 11.366,
+   "sprech_ende": 15.106,
    "words": [
     {
      "w": "*14*",
-     "start": 7.468,
-     "ende": 7.89888
+     "start": 11.366,
+     "ende": 11.9644
     },
     {
      "w": "Rebellen.",
-     "start": 7.89888,
-     "ende": 8.86836
+     "start": 11.9644,
+     "ende": 13.3108
     },
     {
      "w": "*72*",
-     "start": 8.86836,
-     "ende": 9.29924
+     "start": 13.3108,
+     "ende": 13.9092
     },
     {
      "w": "Geiseln.",
-     "start": 9.29924,
-     "ende": 10.161
+     "start": 13.9092,
+     "ende": 15.106
     }
    ],
-   "schnitt": 7.408,
-   "ende": 10.309999999999999
+   "schnitt": 11.306,
+   "ende": 15.286
   },
   {
    "i": 7,
-   "start": 10.37,
-   "sprech_ende": 12.425,
+   "start": 15.346,
+   "sprech_ende": 18.866,
    "words": [
     {
      "w": "Seit",
-     "start": 10.37,
-     "ende": 10.556
+     "start": 15.346,
+     "ende": 16.305999999999997
     },
     {
      "w": "vier",
-     "start": 10.614,
-     "ende": 10.869
+     "start": 16.386,
+     "ende": 16.706
     },
     {
      "w": "Monaten",
-     "start": 10.904,
-     "ende": 11.322
+     "start": 16.766,
+     "ende": 17.346
     },
     {
      "w": "halten",
-     "start": 11.38,
-     "ende": 11.659
+     "start": 17.415,
+     "ende": 17.826
     },
     {
      "w": "sie",
-     "start": 11.694,
-     "ende": 11.775
+     "start": 17.886,
+     "ende": 18.066
     },
     {
      "w": "diese",
-     "start": 11.81,
-     "ende": 11.995
+     "start": 18.119,
+     "ende": 18.386
     },
     {
      "w": "Villa.",
-     "start": 12.042,
-     "ende": 12.425
+     "start": 18.453,
+     "ende": 18.866
     }
    ],
-   "schnitt": 10.309999999999999,
-   "ende": 12.425
+   "schnitt": 15.286,
+   "ende": 19.046000000000003
   },
   {
    "i": 8,
-   "start": 12.471,
-   "sprech_ende": 14.851,
+   "start": 19.106,
+   "sprech_ende": 23.346,
    "words": [
     {
      "w": "Und",
-     "start": 12.471,
-     "ende": 12.599
+     "start": 19.106,
+     "ende": 19.826
     },
     {
      "w": "jeden",
-     "start": 12.704,
-     "ende": 12.889
+     "start": 19.906,
+     "ende": 20.306
     },
     {
      "w": "Nachmittag",
-     "start": 12.913,
-     "ende": 13.458
+     "start": 20.354,
+     "ende": 21.026
     },
     {
      "w": "machen",
-     "start": 13.644,
-     "ende": 13.876
+     "start": 21.14,
+     "ende": 21.826
     },
     {
      "w": "sie",
-     "start": 13.911,
-     "ende": 13.992
+     "start": 21.866,
+     "ende": 21.986
     },
     {
      "w": "*denselben*",
-     "start": 14.027,
-     "ende": 14.422
+     "start": 22.05,
+     "ende": 22.626
     },
     {
      "w": "Fehler.",
-     "start": 14.468,
-     "ende": 14.851
+     "start": 22.717,
+     "ende": 23.346
     }
    ],
-   "schnitt": 12.425,
-   "ende": 14.918999999999999
+   "schnitt": 19.046000000000003,
+   "ende": 24.598000000000003
   },
   {
    "i": 9,
-   "start": 14.979,
-   "sprech_ende": 15.733,
+   "start": 24.658,
+   "sprech_ende": 25.426,
    "words": [
     {
      "w": "Merk",
-     "start": 14.979,
-     "ende": 15.153
+     "start": 24.658,
+     "ende": 24.706
     },
     {
      "w": "dir",
-     "start": 15.211,
-     "ende": 15.339
+     "start": 24.766,
+     "ende": 24.946
     },
     {
      "w": "das.",
-     "start": 15.362,
-     "ende": 15.733
+     "start": 25.046,
+     "ende": 25.426
     }
    ],
-   "schnitt": 14.918999999999999,
-   "ende": 15.859
+   "schnitt": 24.598000000000003,
+   "ende": 25.953000000000003
   },
   {
    "i": 10,
-   "start": 15.919,
-   "sprech_ende": 17.311999999999998,
+   "start": 26.013,
+   "sprech_ende": 29.066,
    "words": [
     {
      "w": "Es",
-     "start": 15.919,
-     "ende": 16.058999999999997
+     "start": 26.013,
+     "ende": 27.186
     },
     {
      "w": "begann",
-     "start": 16.093,
-     "ende": 16.337
+     "start": 27.246,
+     "ende": 27.666
     },
     {
      "w": "auf",
-     "start": 16.372,
-     "ende": 16.453
+     "start": 27.706,
+     "ende": 27.826
     },
     {
      "w": "einer",
-     "start": 16.5,
-     "ende": 16.651
+     "start": 27.866,
+     "ende": 28.066
     },
     {
      "w": "*Party*.",
-     "start": 16.709,
-     "ende": 17.311999999999998
+     "start": 28.159,
+     "ende": 29.066
     }
    ],
-   "schnitt": 15.859,
-   "ende": 17.496000000000002
+   "schnitt": 25.953000000000003,
+   "ende": 29.153000000000002
   },
   {
    "i": 11,
-   "start": 17.556,
-   "sprech_ende": 18.996,
+   "start": 29.213,
+   "sprech_ende": 31.107,
    "words": [
     {
      "w": "Beim",
-     "start": 17.556,
-     "ende": 17.719
+     "start": 29.213,
+     "ende": 29.666
     },
     {
      "w": "japanischen",
-     "start": 17.777,
-     "ende": 18.241
+     "start": 29.733,
+     "ende": 30.386
     },
     {
      "w": "Botschafter.",
-     "start": 18.288,
-     "ende": 18.996
+     "start": 30.426,
+     "ende": 31.107
     }
    ],
-   "schnitt": 17.496000000000002,
-   "ende": 19.273
+   "schnitt": 29.153000000000002,
+   "ende": 31.326
   },
   {
    "i": 12,
-   "start": 19.333,
-   "sprech_ende": 20.958,
+   "start": 31.386,
+   "sprech_ende": 34.546,
    "words": [
     {
      "w": "Sie",
-     "start": 19.333,
-     "ende": 19.495
+     "start": 31.386,
+     "ende": 32.226
     },
     {
      "w": "kamen",
-     "start": 19.542,
-     "ende": 19.855
+     "start": 32.266,
+     "ende": 32.626000000000005
     },
     {
      "w": "in",
-     "start": 19.89,
-     "ende": 19.936
+     "start": 32.679,
+     "ende": 32.786
     },
     {
      "w": "einem",
-     "start": 19.971,
-     "ende": 20.134
+     "start": 32.826,
+     "ende": 33.025999999999996
     },
     {
      "w": "*Krankenwagen*.",
-     "start": 20.18,
-     "ende": 20.958
+     "start": 33.079,
+     "ende": 34.546
     }
    ],
-   "schnitt": 19.273,
-   "ende": 21.177
+   "schnitt": 31.326,
+   "ende": 34.546
   },
   {
    "i": 13,
-   "start": 21.237,
-   "sprech_ende": 22.85,
+   "start": 34.606,
+   "sprech_ende": 36.546,
    "words": [
     {
      "w": "Und",
-     "start": 21.237,
-     "ende": 21.399
+     "start": 34.606,
+     "ende": 34.786
     },
     {
      "w": "sprengten",
-     "start": 21.434,
-     "ende": 21.898
+     "start": 34.85,
+     "ende": 35.426
     },
     {
      "w": "sich",
-     "start": 21.945,
-     "ende": 22.107
+     "start": 35.49,
+     "ende": 35.746
     },
     {
      "w": "durch",
-     "start": 22.154,
-     "ende": 22.305
+     "start": 35.786,
+     "ende": 35.986
     },
     {
      "w": "die",
-     "start": 22.328,
-     "ende": 22.409
+     "start": 36.006,
+     "ende": 36.066
     },
     {
      "w": "*Mauer*.",
-     "start": 22.456,
-     "ende": 22.85
+     "start": 36.106,
+     "ende": 36.546
     }
    ],
-   "schnitt": 21.177,
-   "ende": 23.069000000000003
+   "schnitt": 34.546,
+   "ende": 36.846
   },
   {
    "i": 14,
-   "start": 23.129,
-   "sprech_ende": 24.592,
+   "start": 36.906,
+   "sprech_ende": 39.826,
    "words": [
     {
      "w": "Ihr",
-     "start": 23.129,
-     "ende": 23.268
+     "start": 36.906,
+     "ende": 37.986
     },
     {
      "w": "könnt",
-     "start": 23.303,
-     "ende": 23.535
+     "start": 38.026,
+     "ende": 38.226
     },
     {
      "w": "nicht",
-     "start": 23.617,
-     "ende": 23.791
+     "start": 38.266,
+     "ende": 38.466
     },
     {
      "w": "durch",
-     "start": 23.814,
-     "ende": 23.965
+     "start": 38.493,
+     "ende": 38.626
     },
     {
      "w": "die",
-     "start": 24.0,
-     "ende": 24.104
+     "start": 38.666,
+     "ende": 38.786
     },
     {
      "w": "Tür.",
-     "start": 24.151,
-     "ende": 24.592
+     "start": 38.906,
+     "ende": 39.826
     }
    ],
-   "schnitt": 23.069000000000003,
-   "ende": 24.869
+   "schnitt": 36.846,
+   "ende": 39.878
   },
   {
    "i": 15,
-   "start": 24.929,
-   "sprech_ende": 26.182,
+   "start": 39.938,
+   "sprech_ende": 41.826,
    "words": [
     {
      "w": "Also",
-     "start": 24.929,
-     "ende": 25.172
+     "start": 39.938,
+     "ende": 40.386
     },
     {
      "w": "holt",
-     "start": 25.219,
-     "ende": 25.381
+     "start": 40.466,
+     "ende": 40.706
     },
     {
      "w": "ihr",
-     "start": 25.416,
-     "ende": 25.486
+     "start": 40.766,
+     "ende": 40.946
     },
     {
      "w": "*Bergleute*.",
-     "start": 25.521,
-     "ende": 26.182
+     "start": 41.01,
+     "ende": 41.826
     }
    ],
-   "schnitt": 24.869,
-   "ende": 26.366
+   "schnitt": 39.878,
+   "ende": 42.006
   },
   {
    "i": 16,
-   "start": 26.426,
-   "sprech_ende": 28.365,
+   "start": 42.066,
+   "sprech_ende": 45.346,
    "words": [
     {
      "w": "Sie",
-     "start": 26.426,
-     "ende": 26.566
+     "start": 42.066,
+     "ende": 42.786
     },
     {
      "w": "graben",
-     "start": 26.6,
-     "ende": 26.879
+     "start": 42.85,
+     "ende": 43.266
     },
     {
      "w": "*Tunnel*",
-     "start": 26.914,
-     "ende": 27.204
+     "start": 43.323,
+     "ende": 43.666
     },
     {
      "w": "bis",
-     "start": 27.274,
-     "ende": 27.448
+     "start": 43.786,
+     "ende": 44.146
     },
     {
      "w": "unter",
-     "start": 27.564,
-     "ende": 27.773
+     "start": 44.213,
+     "ende": 44.546
     },
     {
      "w": "das",
-     "start": 27.796,
-     "ende": 27.901
+     "start": 44.586,
+     "ende": 44.706
     },
     {
      "w": "Haus.",
-     "start": 27.947,
-     "ende": 28.365
+     "start": 44.818,
+     "ende": 45.346
     }
    ],
-   "schnitt": 26.366,
-   "ende": 28.746000000000002
+   "schnitt": 42.006,
+   "ende": 45.686
   },
   {
    "i": 17,
-   "start": 28.806,
-   "sprech_ende": 30.374,
+   "start": 45.746,
+   "sprech_ende": 48.546,
    "words": [
     {
      "w": "Am",
-     "start": 28.806,
-     "ende": 28.946
+     "start": 45.746,
+     "ende": 46.546
     },
     {
      "w": "Morgen",
-     "start": 28.969,
-     "ende": 29.259
+     "start": 46.586,
+     "ende": 47.026
     },
     {
      "w": "dröhnt",
-     "start": 29.282,
-     "ende": 29.515
+     "start": 47.106,
+     "ende": 47.506
     },
     {
      "w": "*Marschmusik*.",
-     "start": 29.584,
-     "ende": 30.374
+     "start": 47.57,
+     "ende": 48.546
     }
    ],
-   "schnitt": 28.746000000000002,
-   "ende": 30.592000000000002
+   "schnitt": 45.686,
+   "ende": 48.666
   },
   {
    "i": 18,
-   "start": 30.652,
-   "sprech_ende": 31.837,
+   "start": 48.726,
+   "sprech_ende": 51.306,
    "words": [
     {
      "w": "Damit",
-     "start": 30.652,
-     "ende": 30.873
+     "start": 48.726,
+     "ende": 49.346
     },
     {
      "w": "keiner",
-     "start": 30.943,
-     "ende": 31.175
+     "start": 49.426,
+     "ende": 49.826
     },
     {
      "w": "etwas",
-     "start": 31.198,
-     "ende": 31.384
+     "start": 49.893,
+     "ende": 50.226
     },
     {
      "w": "*merkt*.",
-     "start": 31.465,
-     "ende": 31.837
+     "start": 50.286,
+     "ende": 51.306
     }
    ],
-   "schnitt": 30.592000000000002,
-   "ende": 32.019999999999996
+   "schnitt": 48.666,
+   "ende": 51.396
   },
   {
    "i": 19,
-   "start": 32.08,
-   "sprech_ende": 33.845,
+   "start": 51.456,
+   "sprech_ende": 54.226,
    "words": [
     {
      "w": "Ihr",
-     "start": 32.08,
-     "ende": 32.185
+     "start": 51.456,
+     "ende": 51.906
     },
     {
      "w": "baut",
-     "start": 32.22,
-     "ende": 32.348
+     "start": 51.946,
+     "ende": 52.226
     },
     {
      "w": "das",
-     "start": 32.417,
-     "ende": 32.545
-    },
-    {
-     "w": "Haus",
-     "start": 32.591,
-     "ende": 32.754000000000005
-    },
-    {
-     "w": "*nach*",
-     "start": 32.835,
-     "ende": 33.091
-    },
-    {
-     "w": "und",
-     "start": 33.195,
-     "ende": 33.3
-    },
-    {
-     "w": "probt.",
-     "start": 33.369,
-     "ende": 33.845
-    }
-   ],
-   "schnitt": 32.019999999999996,
-   "ende": 34.122
-  },
-  {
-   "i": 20,
-   "start": 34.182,
-   "sprech_ende": 35.784,
-   "words": [
-    {
-     "w": "Versteckte",
-     "start": 34.182,
-     "ende": 34.635
-    },
-    {
-     "w": "*Mikrofone*",
-     "start": 34.67,
-     "ende": 35.204
-    },
-    {
-     "w": "hören",
-     "start": 35.238,
-     "ende": 35.424
-    },
-    {
-     "w": "mit.",
-     "start": 35.471,
-     "ende": 35.784
-    }
-   ],
-   "schnitt": 34.122,
-   "ende": 35.933
-  },
-  {
-   "i": 21,
-   "start": 35.993,
-   "sprech_ende": 37.34,
-   "words": [
-    {
-     "w": "Dein",
-     "start": 35.993,
-     "ende": 36.156
-    },
-    {
-     "w": "Kommandant",
-     "start": 36.202,
-     "ende": 36.643
-    },
-    {
-     "w": "sagt",
-     "start": 36.678,
-     "ende": 36.922
-    },
-    {
-     "w": "nur:",
-     "start": 37.003,
-     "ende": 37.34
-    }
-   ],
-   "schnitt": 35.933,
-   "ende": 37.489
-  },
-  {
-   "i": 22,
-   "start": 37.549,
-   "sprech_ende": 38.652,
-   "words": [
-    {
-     "w": "„Wir",
-     "start": 37.549,
-     "ende": 37.735
-    },
-    {
-     "w": "warten",
-     "start": 37.769,
-     "ende": 38.013
-    },
-    {
-     "w": "auf",
-     "start": 38.06,
-     "ende": 38.141
-    },
-    {
-     "w": "den",
-     "start": 38.187,
-     "ende": 38.292
-    },
-    {
-     "w": "*Ball*.“",
-     "start": 38.35,
-     "ende": 38.652
-    }
-   ],
-   "schnitt": 37.489,
-   "ende": 38.708
-  },
-  {
-   "i": 23,
-   "start": 38.768,
-   "sprech_ende": 39.476,
-   "words": [
-    {
-     "w": "Deine",
-     "start": 38.768,
-     "ende": 38.965
-    },
-    {
-     "w": "Befehle:",
-     "start": 39.0,
-     "ende": 39.476
-    }
-   ],
-   "schnitt": 38.708,
-   "ende": 39.544
-  },
-  {
-   "i": 24,
-   "start": 39.604,
-   "sprech_ende": 40.463,
-   "words": [
-    {
-     "w": "Kein",
-     "start": 39.604,
-     "ende": 39.859
-    },
-    {
-     "w": "*Geräusch*.",
-     "start": 39.917,
-     "ende": 40.463
-    }
-   ],
-   "schnitt": 39.544,
-   "ende": 40.611999999999995
-  },
-  {
-   "i": 25,
-   "start": 40.672,
-   "sprech_ende": 41.879,
-   "words": [
-    {
-     "w": "*72*",
-     "start": 40.672,
-     "ende": 41.154799999999994
-    },
-    {
-     "w": "Leben.",
-     "start": 41.154799999999994,
-     "ende": 41.879
-    }
-   ],
-   "schnitt": 40.611999999999995,
-   "ende": 42.004999999999995
-  },
-  {
-   "i": 26,
-   "start": 42.065,
-   "sprech_ende": 43.203,
-   "words": [
-    {
-     "w": "Alle",
-     "start": 42.065,
-     "ende": 42.297
-    },
-    {
-     "w": "Tunnel",
-     "start": 42.355,
-     "ende": 42.611
-    },
-    {
-     "w": "*zugleich*.",
-     "start": 42.68,
-     "ende": 43.203
-    }
-   ],
-   "schnitt": 42.004999999999995,
-   "ende": 43.211999999999996
-  },
-  {
-   "i": 27,
-   "start": 43.272,
-   "sprech_ende": 44.654,
-   "words": [
-    {
-     "w": "Und:",
-     "start": 43.272,
-     "ende": 43.563
-    },
-    {
-     "w": "Warte",
-     "start": 43.667,
-     "ende": 43.934
-    },
-    {
-     "w": "auf",
-     "start": 43.981,
-     "ende": 44.062
-    },
-    {
-     "w": "das",
-     "start": 44.108,
-     "ende": 44.213
-    },
-    {
-     "w": "*Signal*.",
-     "start": 44.236,
-     "ende": 44.654
-    }
-   ],
-   "schnitt": 43.211999999999996,
-   "ende": 44.654
-  },
-  {
-   "i": 28,
-   "start": 44.7,
-   "sprech_ende": 46.372,
-   "words": [
-    {
-     "w": "Tag",
-     "start": 44.7,
-     "ende": 45.257333333333335
-    },
-    {
-     "w": "*126*.",
-     "start": 45.257333333333335,
-     "ende": 46.372
-    }
-   ],
-   "schnitt": 44.654,
-   "ende": 46.44
-  },
-  {
-   "i": 29,
-   "start": 46.5,
-   "sprech_ende": 47.963,
-   "words": [
-    {
-     "w": "*15:23*.",
-     "start": 46.5,
-     "ende": 47.963
-    }
-   ],
-   "schnitt": 46.44,
-   "ende": 48.007
-  },
-  {
-   "i": 30,
-   "start": 48.067,
-   "sprech_ende": 48.88,
-   "words": [
-    {
-     "w": "Ihr",
-     "start": 48.067,
-     "ende": 48.183
-    },
-    {
-     "w": "liegt",
-     "start": 48.218,
-     "ende": 48.427
-    },
-    {
-     "w": "im",
-     "start": 48.462,
-     "ende": 48.52
-    },
-    {
-     "w": "*Tunnel*.",
-     "start": 48.578,
-     "ende": 48.88
-    }
-   ],
-   "schnitt": 48.007,
-   "ende": 48.900999999999996
-  },
-  {
-   "i": 31,
-   "start": 48.961,
-   "sprech_ende": 50.598,
-   "words": [
-    {
-     "w": "Über",
-     "start": 48.961,
-     "ende": 49.182
-    },
-    {
-     "w": "euch:",
-     "start": 49.228,
-     "ende": 49.518
-    },
-    {
-     "w": "*Schritte*.",
-     "start": 49.577,
-     "ende": 50.041
-    },
-    {
-     "w": "Rufe.",
-     "start": 50.145,
-     "ende": 50.598
-    }
-   ],
-   "schnitt": 48.900999999999996,
-   "ende": 50.608
-  },
-  {
-   "i": 32,
-   "start": 50.668,
-   "sprech_ende": 51.156,
-   "words": [
-    {
-     "w": "„*Jetzt!*“",
-     "start": 50.668,
-     "ende": 51.156
-    }
-   ],
-   "schnitt": 50.608,
-   "ende": 51.156
-  },
-  {
-   "i": 33,
-   "start": 51.179,
-   "sprech_ende": 52.212,
-   "words": [
-    {
-     "w": "Der",
-     "start": 51.179,
-     "ende": 51.295
-    },
-    {
-     "w": "Boden",
-     "start": 51.33,
-     "ende": 51.573
-    },
-    {
-     "w": "*explodiert*.",
-     "start": 51.62,
-     "ende": 52.212
-    }
-   ],
-   "schnitt": 51.156,
-   "ende": 52.221999999999994
-  },
-  {
-   "i": 34,
-   "start": 52.282,
-   "sprech_ende": 53.176,
-   "words": [
-    {
-     "w": "Ihr",
-     "start": 52.282,
+     "start": 52.266,
      "ende": 52.386
     },
     {
-     "w": "kommt",
-     "start": 52.421,
-     "ende": 52.641
+     "w": "Haus",
+     "start": 52.466,
+     "ende": 52.786
     },
     {
-     "w": "von",
-     "start": 52.676,
-     "ende": 52.792
+     "w": "*nach*",
+     "start": 52.866,
+     "ende": 53.186
     },
     {
-     "w": "*unten*.",
-     "start": 52.85,
-     "ende": 53.176
+     "w": "und",
+     "start": 53.266,
+     "ende": 53.506
+    },
+    {
+     "w": "probt.",
+     "start": 53.586,
+     "ende": 54.226
     }
    ],
-   "schnitt": 52.221999999999994,
-   "ende": 53.196999999999996
+   "schnitt": 51.396,
+   "ende": 54.425999999999995
   },
   {
-   "i": 35,
-   "start": 53.257,
-   "sprech_ende": 55.114,
+   "i": 20,
+   "start": 54.486,
+   "sprech_ende": 57.346,
    "words": [
     {
-     "w": "*148*",
-     "start": 53.257,
-     "ende": 53.92021428571428
+     "w": "Versteckte",
+     "start": 54.486,
+     "ende": 55.666
     },
     {
-     "w": "Soldaten.",
-     "start": 53.92021428571428,
-     "ende": 55.114
+     "w": "*Mikrofone*",
+     "start": 55.726,
+     "ende": 56.466
+    },
+    {
+     "w": "hören",
+     "start": 56.546,
+     "ende": 56.866
+    },
+    {
+     "w": "mit.",
+     "start": 56.946,
+     "ende": 57.346
     }
    ],
-   "schnitt": 53.196999999999996,
-   "ende": 55.239999999999995
+   "schnitt": 54.425999999999995,
+   "ende": 57.659
   },
   {
-   "i": 36,
-   "start": 55.3,
-   "sprech_ende": 56.519,
+   "i": 21,
+   "start": 57.719,
+   "sprech_ende": 59.826,
    "words": [
     {
-     "w": "Rauch.",
-     "start": 55.3,
-     "ende": 55.834
+     "w": "Dein",
+     "start": 57.719,
+     "ende": 58.546
     },
     {
-     "w": "*Schüsse*.",
-     "start": 56.02,
-     "ende": 56.519
+     "w": "Kommandant",
+     "start": 58.586,
+     "ende": 59.106
+    },
+    {
+     "w": "sagt",
+     "start": 59.17,
+     "ende": 59.426
+    },
+    {
+     "w": "nur:",
+     "start": 59.506,
+     "ende": 59.826
     }
    ],
-   "schnitt": 55.239999999999995,
-   "ende": 56.519
+   "schnitt": 57.659,
+   "ende": 60.166
   },
   {
-   "i": 37,
-   "start": 56.577,
-   "sprech_ende": 58.272,
+   "i": 22,
+   "start": 60.226,
+   "sprech_ende": 62.226,
    "words": [
     {
-     "w": "Die",
-     "start": 56.577,
-     "ende": 56.705
+     "w": "„Wir",
+     "start": 60.226,
+     "ende": 60.706
     },
     {
-     "w": "Geiseln",
-     "start": 56.74,
-     "ende": 57.135
-    },
-    {
-     "w": "kriechen",
-     "start": 57.181,
-     "ende": 57.529
-    },
-    {
-     "w": "ins",
-     "start": 57.576,
-     "ende": 57.68
-    },
-    {
-     "w": "Freie.",
-     "start": 57.738,
-     "ende": 58.272
-    }
-   ],
-   "schnitt": 56.519,
-   "ende": 58.317
-  },
-  {
-   "i": 38,
-   "start": 58.377,
-   "sprech_ende": 60.142,
-   "words": [
-    {
-     "w": "Ein",
-     "start": 58.377,
-     "ende": 58.47
-    },
-    {
-     "w": "Offizier",
-     "start": 58.516,
-     "ende": 58.969
-    },
-    {
-     "w": "wirft",
-     "start": 59.004,
-     "ende": 59.178
-    },
-    {
-     "w": "sich",
-     "start": 59.201,
-     "ende": 59.317
-    },
-    {
-     "w": "vor",
-     "start": 59.352,
-     "ende": 59.457
-    },
-    {
-     "w": "einen",
-     "start": 59.491,
-     "ende": 59.654
-    },
-    {
-     "w": "*Minister*.",
-     "start": 59.7,
-     "ende": 60.142
-    }
-   ],
-   "schnitt": 58.317,
-   "ende": 60.142
-  },
-  {
-   "i": 39,
-   "start": 60.176,
-   "sprech_ende": 61.291,
-   "words": [
-    {
-     "w": "Der",
-     "start": 60.176,
-     "ende": 60.269
-    },
-    {
-     "w": "Offizier",
-     "start": 60.304,
-     "ende": 60.722
-    },
-    {
-     "w": "*stirbt*.",
-     "start": 60.757,
-     "ende": 61.291
-    }
-   ],
-   "schnitt": 60.142,
-   "ende": 61.358999999999995
-  },
-  {
-   "i": 40,
-   "start": 61.419,
-   "sprech_ende": 63.299,
-   "words": [
-    {
-     "w": "*71*",
-     "start": 61.419,
-     "ende": 61.777095238095235
-    },
-    {
-     "w": "Geiseln",
-     "start": 61.777095238095235,
-     "ende": 62.4037619047619
-    },
-    {
-     "w": "überleben.",
-     "start": 62.4037619047619,
-     "ende": 63.299
-    }
-   ],
-   "schnitt": 61.358999999999995,
-   "ende": 63.309
-  },
-  {
-   "i": 41,
-   "start": 63.369,
-   "sprech_ende": 64.251,
-   "words": [
-    {
-     "w": "Du",
-     "start": 63.369,
-     "ende": 63.45
-    },
-    {
-     "w": "hast",
-     "start": 63.485,
-     "ende": 63.625
-    },
-    {
-     "w": "es",
-     "start": 63.671,
-     "ende": 63.741
-    },
-    {
-     "w": "geschafft.",
-     "start": 63.787,
-     "ende": 64.251
-    }
-   ],
-   "schnitt": 63.309,
-   "ende": 64.251
-  },
-  {
-   "i": 42,
-   "start": 64.286,
-   "sprech_ende": 64.94800000000001,
-   "words": [
-    {
-     "w": "Und",
-     "start": 64.286,
-     "ende": 64.402
-    },
-    {
-     "w": "der",
-     "start": 64.48400000000001,
-     "ende": 64.576
-    },
-    {
-     "w": "*Fehler*?",
-     "start": 64.62299999999999,
-     "ende": 64.94800000000001
-    }
-   ],
-   "schnitt": 64.251,
-   "ende": 64.957
-  },
-  {
-   "i": 43,
-   "start": 65.017,
-   "sprech_ende": 67.235,
-   "words": [
-    {
-     "w": "Jeden",
-     "start": 65.017,
-     "ende": 65.319
-    },
-    {
-     "w": "Nachmittag",
-     "start": 65.354,
-     "ende": 65.853
-    },
-    {
-     "w": "spielten",
-     "start": 65.888,
-     "ende": 66.225
-    },
-    {
-     "w": "sie",
-     "start": 66.26,
-     "ende": 66.353
-    },
-    {
-     "w": "drinnen",
-     "start": 66.387,
-     "ende": 66.654
-    },
-    {
-     "w": "*Fußball*.",
-     "start": 66.701,
-     "ende": 67.235
-    }
-   ],
-   "schnitt": 64.957,
-   "ende": 67.235
-  },
-  {
-   "i": 44,
-   "start": 67.27,
-   "sprech_ende": 68.338,
-   "words": [
-    {
-     "w": "Genau",
-     "start": 67.27,
-     "ende": 67.572
-    },
-    {
-     "w": "über",
-     "start": 67.618,
-     "ende": 67.792
-    },
-    {
-     "w": "eurem",
-     "start": 67.815,
-     "ende": 68.001
-    },
-    {
-     "w": "*Tunnel*.",
-     "start": 68.059,
-     "ende": 68.338
-    }
-   ],
-   "schnitt": 67.235,
-   "ende": 68.338
-  },
-  {
-   "i": 45,
-   "start": 68.384,
-   "sprech_ende": 70.137,
-   "words": [
-    {
-     "w": "Ihr",
-     "start": 68.384,
-     "ende": 68.5
-    },
-    {
-     "w": "habt",
-     "start": 68.524,
-     "ende": 68.686
-    },
-    {
-     "w": "nur",
-     "start": 68.733,
-     "ende": 68.837
+     "w": "warten",
+     "start": 60.746,
+     "ende": 61.186
     },
     {
      "w": "auf",
-     "start": 68.86,
-     "ende": 68.942
+     "start": 61.266,
+     "ende": 61.506
     },
     {
      "w": "den",
-     "start": 68.988,
-     "ende": 69.081
+     "start": 61.546,
+     "ende": 61.666
     },
     {
-     "w": "*Anpfiff*",
-     "start": 69.127,
-     "ende": 69.51
-    },
-    {
-     "w": "gewartet.",
-     "start": 69.569,
-     "ende": 70.137
+     "w": "*Ball*.“",
+     "start": 61.746,
+     "ende": 62.226
     }
    ],
-   "schnitt": 68.338,
-   "ende": 70.137
+   "schnitt": 60.166,
+   "ende": 62.538999999999994
   },
   {
-   "i": 46,
-   "start": 70.172,
-   "sprech_ende": 71.356,
+   "i": 23,
+   "start": 62.599,
+   "sprech_ende": 64.226,
    "words": [
     {
-     "w": "Bis",
-     "start": 70.172,
-     "ende": 70.312
+     "w": "Deine",
+     "start": 62.599,
+     "ende": 63.506
     },
     {
-     "w": "heute",
-     "start": 70.358,
-     "ende": 70.59
-    },
-    {
-     "w": "wird",
-     "start": 70.625,
-     "ende": 70.753
-    },
-    {
-     "w": "gestritten,",
-     "start": 70.811,
-     "ende": 71.356
+     "w": "Befehle:",
+     "start": 63.586,
+     "ende": 64.226
     }
    ],
-   "schnitt": 70.137,
-   "ende": 71.356
+   "schnitt": 62.538999999999994,
+   "ende": 64.48599999999999
   },
   {
-   "i": 47,
-   "start": 71.403,
-   "sprech_ende": 72.761,
+   "i": 24,
+   "start": 64.54599999999999,
+   "sprech_ende": 66.146,
    "words": [
     {
-     "w": "ob",
-     "start": 71.403,
-     "ende": 71.496
+     "w": "Kein",
+     "start": 64.54599999999999,
+     "ende": 65.346
     },
     {
-     "w": "sich",
-     "start": 71.542,
-     "ende": 71.658
-    },
-    {
-     "w": "*einige*",
-     "start": 71.728,
-     "ende": 71.972
-    },
-    {
-     "w": "schon",
-     "start": 71.995,
-     "ende": 72.158
-    },
-    {
-     "w": "ergeben",
-     "start": 72.192,
-     "ende": 72.483
-    },
-    {
-     "w": "hatten.",
-     "start": 72.506,
-     "ende": 72.761
+     "w": "*Geräusch*.",
+     "start": 65.426,
+     "ende": 66.146
     }
    ],
-   "schnitt": 71.356,
-   "ende": 72.761
+   "schnitt": 64.48599999999999,
+   "ende": 66.726
   },
   {
-   "i": 48,
-   "start": 72.784,
-   "sprech_ende": 75.327,
+   "i": 25,
+   "start": 66.786,
+   "sprech_ende": 69.346,
+   "words": [
+    {
+     "w": "*72*",
+     "start": 66.786,
+     "ende": 67.81
+    },
+    {
+     "w": "Leben.",
+     "start": 67.81,
+     "ende": 69.346
+    }
+   ],
+   "schnitt": 66.726,
+   "ende": 69.398
+  },
+  {
+   "i": 26,
+   "start": 69.458,
+   "sprech_ende": 71.426,
+   "words": [
+    {
+     "w": "Alle",
+     "start": 69.458,
+     "ende": 69.906
+    },
+    {
+     "w": "Tunnel",
+     "start": 69.986,
+     "ende": 70.466
+    },
+    {
+     "w": "*zugleich*.",
+     "start": 70.566,
+     "ende": 71.426
+    }
+   ],
+   "schnitt": 69.398,
+   "ende": 71.646
+  },
+  {
+   "i": 27,
+   "start": 71.706,
+   "sprech_ende": 75.266,
+   "words": [
+    {
+     "w": "Und:",
+     "start": 71.706,
+     "ende": 72.626
+    },
+    {
+     "w": "Warte",
+     "start": 73.146,
+     "ende": 74.066
+    },
+    {
+     "w": "auf",
+     "start": 74.166,
+     "ende": 74.466
+    },
+    {
+     "w": "das",
+     "start": 74.486,
+     "ende": 74.546
+    },
+    {
+     "w": "*Signal*.",
+     "start": 74.637,
+     "ende": 75.266
+    }
+   ],
+   "schnitt": 71.646,
+   "ende": 75.706
+  },
+  {
+   "i": 28,
+   "start": 75.766,
+   "sprech_ende": 79.186,
+   "words": [
+    {
+     "w": "Tag",
+     "start": 75.766,
+     "ende": 76.906
+    },
+    {
+     "w": "*126*.",
+     "start": 76.906,
+     "ende": 79.186
+    }
+   ],
+   "schnitt": 75.706,
+   "ende": 79.486
+  },
+  {
+   "i": 29,
+   "start": 79.546,
+   "sprech_ende": 81.986,
+   "words": [
+    {
+     "w": "*15:23*.",
+     "start": 79.546,
+     "ende": 81.986
+    }
+   ],
+   "schnitt": 79.486,
+   "ende": 83.03099999999999
+  },
+  {
+   "i": 30,
+   "start": 83.091,
+   "sprech_ende": 84.786,
+   "words": [
+    {
+     "w": "Ihr",
+     "start": 83.091,
+     "ende": 83.106
+    },
+    {
+     "w": "liegt",
+     "start": 83.159,
+     "ende": 83.426
+    },
+    {
+     "w": "im",
+     "start": 83.479,
+     "ende": 83.586
+    },
+    {
+     "w": "*Tunnel*.",
+     "start": 83.677,
+     "ende": 84.786
+    }
+   ],
+   "schnitt": 83.03099999999999,
+   "ende": 85.478
+  },
+  {
+   "i": 31,
+   "start": 85.538,
+   "sprech_ende": 88.946,
+   "words": [
+    {
+     "w": "Über",
+     "start": 85.538,
+     "ende": 85.586
+    },
+    {
+     "w": "euch:",
+     "start": 85.682,
+     "ende": 86.466
+    },
+    {
+     "w": "*Schritte*.",
+     "start": 86.566,
+     "ende": 87.866
+    },
+    {
+     "w": "Rufe.",
+     "start": 88.166,
+     "ende": 88.946
+    }
+   ],
+   "schnitt": 85.478,
+   "ende": 89.486
+  },
+  {
+   "i": 32,
+   "start": 89.546,
+   "sprech_ende": 90.946,
+   "words": [
+    {
+     "w": "„*Jetzt!*“",
+     "start": 89.546,
+     "ende": 90.946
+    }
+   ],
+   "schnitt": 89.486,
+   "ende": 91.751
+  },
+  {
+   "i": 33,
+   "start": 91.811,
+   "sprech_ende": 93.506,
    "words": [
     {
      "w": "Der",
-     "start": 72.784,
-     "ende": 72.877
+     "start": 91.811,
+     "ende": 91.826
     },
     {
-     "w": "Name",
-     "start": 72.912,
-     "ende": 73.133
+     "w": "Boden",
+     "start": 91.926,
+     "ende": 92.386
     },
     {
-     "w": "des",
-     "start": 73.168,
-     "ende": 73.26
-    },
-    {
-     "w": "Einsatzes:",
-     "start": 73.342,
-     "ende": 74.004
-    },
-    {
-     "w": "ein",
-     "start": 74.073,
-     "ende": 74.201
-    },
-    {
-     "w": "Tempel",
-     "start": 74.259,
-     "ende": 74.654
-    },
-    {
-     "w": "voller",
-     "start": 74.735,
-     "ende": 74.967
-    },
-    {
-     "w": "*Gänge*.",
-     "start": 75.014,
-     "ende": 75.327
+     "w": "*explodiert*.",
+     "start": 92.498,
+     "ende": 93.506
     }
    ],
-   "schnitt": 72.761,
-   "ende": 75.327
+   "schnitt": 91.751,
+   "ende": 93.706
   },
   {
-   "i": 49,
-   "start": 75.385,
-   "sprech_ende": 76.709,
+   "i": 34,
+   "start": 93.766,
+   "sprech_ende": 96.466,
    "words": [
     {
-     "w": "*Chavín",
-     "start": 75.385,
-     "ende": 75.8998888888889
+     "w": "Ihr",
+     "start": 93.766,
+     "ende": 94.546
     },
     {
-     "w": "de",
-     "start": 75.8998888888889,
-     "ende": 76.047
+     "w": "kommt",
+     "start": 94.613,
+     "ende": 94.946
     },
     {
-     "w": "Huántar*.",
-     "start": 76.047,
-     "ende": 76.709
+     "w": "von",
+     "start": 95.006,
+     "ende": 95.186
+    },
+    {
+     "w": "*unten*.",
+     "start": 95.279,
+     "ende": 96.466
     }
    ],
-   "schnitt": 75.327,
-   "ende": 76.709
+   "schnitt": 93.706,
+   "ende": 96.586
   },
   {
-   "i": 50,
-   "start": 76.743,
-   "sprech_ende": 77.498,
+   "i": 35,
+   "start": 96.646,
+   "sprech_ende": 99.266,
+   "words": [
+    {
+     "w": "*148*",
+     "start": 96.646,
+     "ende": 97.58171428571428
+    },
+    {
+     "w": "Soldaten.",
+     "start": 97.58171428571428,
+     "ende": 99.266
+    }
+   ],
+   "schnitt": 96.586,
+   "ende": 99.526
+  },
+  {
+   "i": 36,
+   "start": 99.586,
+   "sprech_ende": 102.066,
+   "words": [
+    {
+     "w": "Rauch.",
+     "start": 99.586,
+     "ende": 100.627
+    },
+    {
+     "w": "*Schüsse*.",
+     "start": 100.866,
+     "ende": 102.066
+    }
+   ],
+   "schnitt": 99.526,
+   "ende": 102.246
+  },
+  {
+   "i": 37,
+   "start": 102.306,
+   "sprech_ende": 104.946,
+   "words": [
+    {
+     "w": "Die",
+     "start": 102.306,
+     "ende": 103.026
+    },
+    {
+     "w": "Geiseln",
+     "start": 103.106,
+     "ende": 103.666
+    },
+    {
+     "w": "kriechen",
+     "start": 103.746,
+     "ende": 104.146
+    },
+    {
+     "w": "ins",
+     "start": 104.206,
+     "ende": 104.386
+    },
+    {
+     "w": "Freie.",
+     "start": 104.446,
+     "ende": 104.946
+    }
+   ],
+   "schnitt": 102.246,
+   "ende": 105.146
+  },
+  {
+   "i": 38,
+   "start": 105.206,
+   "sprech_ende": 108.866,
+   "words": [
+    {
+     "w": "Ein",
+     "start": 105.206,
+     "ende": 105.986
+    },
+    {
+     "w": "Offizier",
+     "start": 106.026,
+     "ende": 106.706
+    },
+    {
+     "w": "wirft",
+     "start": 106.866,
+     "ende": 107.506
+    },
+    {
+     "w": "sich",
+     "start": 107.538,
+     "ende": 107.666
+    },
+    {
+     "w": "vor",
+     "start": 107.726,
+     "ende": 107.906
+    },
+    {
+     "w": "einen",
+     "start": 107.946,
+     "ende": 108.146
+    },
+    {
+     "w": "*Minister*.",
+     "start": 108.217,
+     "ende": 108.866
+    }
+   ],
+   "schnitt": 105.146,
+   "ende": 109.026
+  },
+  {
+   "i": 39,
+   "start": 109.086,
+   "sprech_ende": 111.586,
+   "words": [
+    {
+     "w": "Der",
+     "start": 109.086,
+     "ende": 109.746
+    },
+    {
+     "w": "Offizier",
+     "start": 109.806,
+     "ende": 110.706
+    },
+    {
+     "w": "*stirbt*.",
+     "start": 110.818,
+     "ende": 111.586
+    }
+   ],
+   "schnitt": 109.026,
+   "ende": 111.826
+  },
+  {
+   "i": 40,
+   "start": 111.886,
+   "sprech_ende": 115.026,
+   "words": [
+    {
+     "w": "*71*",
+     "start": 111.886,
+     "ende": 112.48409523809524
+    },
+    {
+     "w": "Geiseln",
+     "start": 112.48409523809524,
+     "ende": 113.5307619047619
+    },
+    {
+     "w": "überleben.",
+     "start": 113.5307619047619,
+     "ende": 115.026
+    }
+   ],
+   "schnitt": 111.826,
+   "ende": 116.309
+  },
+  {
+   "i": 41,
+   "start": 116.369,
+   "sprech_ende": 117.827,
+   "words": [
+    {
+     "w": "Du",
+     "start": 116.369,
+     "ende": 116.387
+    },
+    {
+     "w": "hast",
+     "start": 116.467,
+     "ende": 116.787
+    },
+    {
+     "w": "es",
+     "start": 116.867,
+     "ende": 117.027
+    },
+    {
+     "w": "geschafft.",
+     "start": 117.08,
+     "ende": 117.827
+    }
+   ],
+   "schnitt": 116.309,
+   "ende": 118.943
+  },
+  {
+   "i": 42,
+   "start": 119.003,
+   "sprech_ende": 119.833,
    "words": [
     {
      "w": "Und",
-     "start": 76.743,
-     "ende": 76.918
+     "start": 119.003,
+     "ende": 119.033
+    },
+    {
+     "w": "der",
+     "start": 119.073,
+     "ende": 119.193
+    },
+    {
+     "w": "*Fehler*?",
+     "start": 119.273,
+     "ende": 119.833
+    }
+   ],
+   "schnitt": 118.943,
+   "ende": 120.493
+  },
+  {
+   "i": 43,
+   "start": 120.553,
+   "sprech_ende": 124.553,
+   "words": [
+    {
+     "w": "Jeden",
+     "start": 120.553,
+     "ende": 121.433
+    },
+    {
+     "w": "Nachmittag",
+     "start": 121.497,
+     "ende": 122.153
+    },
+    {
+     "w": "spielten",
+     "start": 122.22,
+     "ende": 122.713
+    },
+    {
+     "w": "sie",
+     "start": 122.753,
+     "ende": 122.873
+    },
+    {
+     "w": "drinnen",
+     "start": 122.926,
+     "ende": 123.273
+    },
+    {
+     "w": "*Fußball*.",
+     "start": 123.393,
+     "ende": 124.553
+    }
+   ],
+   "schnitt": 120.493,
+   "ende": 124.633
+  },
+  {
+   "i": 44,
+   "start": 124.693,
+   "sprech_ende": 127.113,
+   "words": [
+    {
+     "w": "Genau",
+     "start": 124.693,
+     "ende": 125.273
+    },
+    {
+     "w": "über",
+     "start": 125.353,
+     "ende": 125.673
+    },
+    {
+     "w": "eurem",
+     "start": 125.753,
+     "ende": 125.994
+    },
+    {
+     "w": "*Tunnel*.",
+     "start": 126.073,
+     "ende": 127.113
+    }
+   ],
+   "schnitt": 124.633,
+   "ende": 127.193
+  },
+  {
+   "i": 45,
+   "start": 127.253,
+   "sprech_ende": 130.233,
+   "words": [
+    {
+     "w": "Ihr",
+     "start": 127.253,
+     "ende": 127.673
+    },
+    {
+     "w": "habt",
+     "start": 127.733,
+     "ende": 127.993
+    },
+    {
+     "w": "nur",
+     "start": 128.07299999999998,
+     "ende": 128.313
+    },
+    {
+     "w": "auf",
+     "start": 128.373,
+     "ende": 128.553
+    },
+    {
+     "w": "den",
+     "start": 128.613,
+     "ende": 128.793
+    },
+    {
+     "w": "*Anpfiff*",
+     "start": 128.9,
+     "ende": 129.433
+    },
+    {
+     "w": "gewartet.",
+     "start": 129.493,
+     "ende": 130.233
+    }
+   ],
+   "schnitt": 127.193,
+   "ende": 130.513
+  },
+  {
+   "i": 46,
+   "start": 130.573,
+   "sprech_ende": 133.353,
+   "words": [
+    {
+     "w": "Bis",
+     "start": 130.573,
+     "ende": 131.593
+    },
+    {
+     "w": "heute",
+     "start": 131.66,
+     "ende": 131.993
+    },
+    {
+     "w": "wird",
+     "start": 132.041,
+     "ende": 132.233
+    },
+    {
+     "w": "gestritten,",
+     "start": 132.297,
+     "ende": 133.353
+    }
+   ],
+   "schnitt": 130.513,
+   "ende": 133.353
+  },
+  {
+   "i": 47,
+   "start": 133.406,
+   "sprech_ende": 135.593,
+   "words": [
+    {
+     "w": "ob",
+     "start": 133.406,
+     "ende": 133.513
+    },
+    {
+     "w": "sich",
+     "start": 133.561,
+     "ende": 133.753
+    },
+    {
+     "w": "*einige*",
+     "start": 133.822,
+     "ende": 134.233
+    },
+    {
+     "w": "schon",
+     "start": 134.286,
+     "ende": 134.553
+    },
+    {
+     "w": "ergeben",
+     "start": 134.633,
+     "ende": 135.113
+    },
+    {
+     "w": "hatten.",
+     "start": 135.17,
+     "ende": 135.593
+    }
+   ],
+   "schnitt": 133.353,
+   "ende": 135.813
+  },
+  {
+   "i": 48,
+   "start": 135.873,
+   "sprech_ende": 140.873,
+   "words": [
+    {
+     "w": "Der",
+     "start": 135.873,
+     "ende": 136.713
+    },
+    {
+     "w": "Name",
+     "start": 136.777,
+     "ende": 137.033
+    },
+    {
+     "w": "des",
+     "start": 137.073,
+     "ende": 137.193
+    },
+    {
+     "w": "Einsatzes:",
+     "start": 137.283,
+     "ende": 138.153
+    },
+    {
+     "w": "ein",
+     "start": 138.413,
+     "ende": 139.193
+    },
+    {
+     "w": "Tempel",
+     "start": 139.273,
+     "ende": 139.753
+    },
+    {
+     "w": "voller",
+     "start": 139.833,
+     "ende": 140.233
+    },
+    {
+     "w": "*Gänge*.",
+     "start": 140.313,
+     "ende": 140.873
+    }
+   ],
+   "schnitt": 135.813,
+   "ende": 141.333
+  },
+  {
+   "i": 49,
+   "start": 141.393,
+   "sprech_ende": 143.513,
+   "words": [
+    {
+     "w": "*Chavín",
+     "start": 141.393,
+     "ende": 142.21744444444445
+    },
+    {
+     "w": "de",
+     "start": 142.21744444444445,
+     "ende": 142.453
+    },
+    {
+     "w": "Huántar*.",
+     "start": 142.453,
+     "ende": 143.513
+    }
+   ],
+   "schnitt": 141.333,
+   "ende": 143.813
+  },
+  {
+   "i": 50,
+   "start": 143.873,
+   "sprech_ende": 146.313,
+   "words": [
+    {
+     "w": "Und",
+     "start": 143.873,
+     "ende": 144.953
     },
     {
      "w": "morgen?",
-     "start": 77.022,
-     "ende": 77.498
+     "start": 145.033,
+     "ende": 146.313
     }
    ],
-   "schnitt": 76.709,
-   "ende": 77.498
+   "schnitt": 143.813,
+   "ende": 146.397
   },
   {
    "i": 51,
-   "start": 77.533,
-   "sprech_ende": 78.729,
+   "start": 146.457,
+   "sprech_ende": 148.313,
    "words": [
     {
      "w": "Holt",
-     "start": 77.533,
-     "ende": 77.742
+     "start": 146.457,
+     "ende": 147.033
     },
     {
      "w": "dich",
-     "start": 77.823,
-     "ende": 77.974
+     "start": 147.097,
+     "ende": 147.353
     },
     {
      "w": "eine",
-     "start": 78.032,
-     "ende": 78.183
+     "start": 147.417,
+     "ende": 147.673
     },
     {
      "w": "*andere*.",
-     "start": 78.23,
-     "ende": 78.729
+     "start": 147.753,
+     "ende": 148.313
     }
    ],
-   "schnitt": 77.498,
-   "ende": 79.570204
+   "schnitt": 146.397,
+   "ende": 149.134286
   }
  ]
 }

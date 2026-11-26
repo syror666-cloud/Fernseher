@@ -12,6 +12,33 @@ def plain(t: str) -> str:
     return re.sub(r"[*_]", "", t)
 
 
+def ohne_tags(al):
+    """eleven_v3-Regieanweisungen ([whispers], [shouting] …) samt folgendem Leerzeichen aus der Ausrichtung entfernen,
+    damit sie nie als Wörter im Timing/Untertitel landen."""
+    ch, st, en = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
+    keep, i = [], 0
+    while i < len(ch):
+        if ch[i] == "[":
+            j = i
+            while j < len(ch) and ch[j] != "]":
+                j += 1
+            i = j + 1
+            while i < len(ch) and ch[i] == " ":
+                i += 1
+            continue
+        keep.append(i); i += 1
+    # führende/doppelte Leerzeichen, die durch das Entfernen entstehen, bereinigen
+    out = []
+    for k in keep:
+        if ch[k] == " " and (not out or ch[out[-1]] == " "):
+            continue
+        out.append(k)
+    while out and ch[out[-1]] == " ":
+        out.pop()
+    return {"characters": [ch[k] for k in out], "character_start_times_seconds": [st[k] for k in out],
+            "character_end_times_seconds": [en[k] for k in out]}
+
+
 def tts(text, voice, model, settings, out_mp3: pathlib.Path, sprache="de"):
     body = json.dumps({"text": text, "model_id": model, "voice_settings": settings, "language_code": sprache}).encode()
     req = urllib.request.Request(API.format(voice=voice), data=body, method="POST",
@@ -19,7 +46,7 @@ def tts(text, voice, model, settings, out_mp3: pathlib.Path, sprache="de"):
     with urllib.request.urlopen(req, timeout=300) as r:
         d = json.loads(r.read())
     out_mp3.write_bytes(base64.b64decode(d["audio_base64"]))
-    return d["alignment"]
+    return ohne_tags(d["alignment"]) if "[" in text else d["alignment"]
 
 
 def build(episode, outdir: pathlib.Path, force=False):
@@ -33,8 +60,11 @@ def build(episode, outdir: pathlib.Path, force=False):
         if t:
             teile.append(t); pos += len(t) + 1
     text = " ".join(teile)
+    # eleven_v3: optionale Regieanweisung je Einstellung (regie="[whispers]"), nur für die Sprachausgabe, nicht im Timing
+    text_tts = " ".join(((s.get("regie", "") + " ") if s.get("regie") else "") + (s.get("sprich") or plain(s["text"])).strip()
+                        for s in episode.SHOTS if (s.get("sprich") or plain(s["text"])).strip())
     if force or not raw_mp3.exists():
-        align = tts(text, episode.STIMME, episode.MODELL, episode.STIMM_EINSTELLUNG, raw_mp3, getattr(episode, "SPRACHE", "de"))
+        align = tts(text_tts, episode.STIMME, episode.MODELL, episode.STIMM_EINSTELLUNG, raw_mp3, getattr(episode, "SPRACHE", "de"))
         align_f.write_text(json.dumps(align, ensure_ascii=False))
     align = json.loads(align_f.read_text())
     chars, st, en = align["characters"], align["character_start_times_seconds"], align["character_end_times_seconds"]

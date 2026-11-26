@@ -1,7 +1,11 @@
 """Folge 8 Lima (Chavín de Huántar) – nur Sprechtext für vo.py/stimmen.py (Bildteil liegt auf dem PC in episode.py)."""
 STIMME = "JH302OKVzGGJc47f08ex"
-MODELL = "eleven_multilingual_v2"
-STIMM_EINSTELLUNG = {"stability": 0.42, "similarity_boost": 0.8, "style": 0.25, "use_speaker_boost": True, "speed": 1.15}
+MODELL = "eleven_v3"  # lebendiger, mit Regieanweisungen (regie="[whispers]" …), Tags nicht im Timing
+STIMM_EINSTELLUNG = {"stability": 0.5, "similarity_boost": 0.8, "style": 0.45, "use_speaker_boost": True, "speed": 1.2}  # v3 spricht Deutsch sonst sehr langsam
+# Titelkarte: Einheitenname laut, fast gerufen (eigene Aufnahme)
+TITEL_MODELL = "eleven_v3"
+TITEL_EINSTELLUNG = {"stability": 0.0, "similarity_boost": 0.8, "style": 0.8, "use_speaker_boost": True, "speed": 1.0}
+TITEL_PEGEL = 3.0  # dB über der normalen Erzählerlautstärke
 
 
 def S(text, **extra):
@@ -13,12 +17,12 @@ SHOTS = [
     S("holt dich heute Nacht."),
     S("Mal sehen,"),
     S("ob du *zurückkommst*."),
-    S("", titel="*CHAVÍN*", titel_sprich="Tschawín.", pause=1.5),
-    S("Du bist Kommandosoldat in *Peru*."),
+    S("", titel="*CHAVÍN*", titel_sprich="[shouting] Tschawín!", pause=1.5),
+    S("Du bist Kommandosoldat in *Peru*.", regie="[excited]"),
     S("*14* Rebellen. *72* Geiseln.", sprich="Vierzehn Rebellen. Zweiundsiebzig Geiseln."),
     S("Seit vier Monaten halten sie diese Villa."),
     S("Und jeden Nachmittag machen sie *denselben* Fehler."),
-    S("Merk dir das."),
+    S("Merk dir das.", regie="[whispers]"),
     S("Es begann auf einer *Party*."),
     S("Beim japanischen Botschafter."),
     S("Sie kamen in einem *Krankenwagen*."),
@@ -39,10 +43,10 @@ SHOTS = [
     S("Und: Warte auf das *Signal*."),
     S("Tag *126*.", sprich="Tag einhundertsechsundzwanzig."),
     S("*15:23*.", sprich="Fünfzehn Uhr dreiundzwanzig."),
-    S("Ihr liegt im *Tunnel*."),
-    S("Über euch: *Schritte*. Rufe."),
+    S("Ihr liegt im *Tunnel*.", regie="[whispers]"),
+    S("Über euch: *Schritte*. Rufe.", regie="[whispers]"),
     S("„*Jetzt!*“", stimme="funk"),
-    S("Der Boden *explodiert*."),
+    S("Der Boden *explodiert*.", regie="[excited]"),
     S("Ihr kommt von *unten*."),
     S("*148* Soldaten.", sprich="Einhundertachtundvierzig Soldaten."),
     S("Rauch. *Schüsse*."),
@@ -50,8 +54,8 @@ SHOTS = [
     S("Ein Offizier wirft sich vor einen *Minister*."),
     S("Der Offizier *stirbt*."),
     S("*71* Geiseln überleben.", sprich="Einundsiebzig Geiseln überleben."),
-    S("Du hast es geschafft."),
-    S("Und der *Fehler*?"),
+    S("Du hast es geschafft.", regie="[relieved]"),
+    S("Und der *Fehler*?", regie="[whispers]"),
     S("Jeden Nachmittag spielten sie drinnen *Fußball*."),
     S("Genau über eurem *Tunnel*."),
     S("Ihr habt nur auf den *Anpfiff* gewartet."),

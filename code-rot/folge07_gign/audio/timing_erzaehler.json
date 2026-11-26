@@ -1,1446 +1,1446 @@
 {
- "gesamt": 76.46163299999999,
+ "gesamt": 130.012653,
  "shots": [
   {
    "i": 0,
    "start": 0.0,
-   "sprech_ende": 0.848,
+   "sprech_ende": 1.28,
    "words": [
     {
      "w": "Eine",
      "start": 0.0,
-     "ende": 0.221
+     "ende": 0.24
     },
     {
      "w": "dieser",
-     "start": 0.255,
-     "ende": 0.453
+     "start": 0.286,
+     "ende": 0.56
     },
     {
      "w": "*Einheiten*",
-     "start": 0.488,
-     "ende": 0.848
+     "start": 0.64,
+     "ende": 1.28
     }
    ],
    "schnitt": 0.0,
-   "ende": 0.848
+   "ende": 1.38
   },
   {
    "i": 1,
-   "start": 0.894,
-   "sprech_ende": 1.927,
+   "start": 1.44,
+   "sprech_ende": 2.8,
    "words": [
     {
      "w": "holt",
-     "start": 0.894,
-     "ende": 1.057
+     "start": 1.44,
+     "ende": 1.76
     },
     {
      "w": "dich",
-     "start": 1.103,
-     "ende": 1.254
+     "start": 1.792,
+     "ende": 1.92
     },
     {
      "w": "heute",
-     "start": 1.289,
-     "ende": 1.451
+     "start": 1.973,
+     "ende": 2.24
     },
     {
      "w": "Nacht.",
-     "start": 1.498,
-     "ende": 1.927
+     "start": 2.307,
+     "ende": 2.8
     }
    ],
-   "schnitt": 0.848,
-   "ende": 2.053
+   "schnitt": 1.38,
+   "ende": 2.96
   },
   {
    "i": 2,
-   "start": 2.113,
-   "sprech_ende": 2.531,
+   "start": 3.02,
+   "sprech_ende": 4.56,
    "words": [
     {
      "w": "Mal",
-     "start": 2.113,
-     "ende": 2.264
+     "start": 3.02,
+     "ende": 3.68
     },
     {
      "w": "sehen,",
-     "start": 2.299,
-     "ende": 2.531
+     "start": 3.747,
+     "ende": 4.56
     }
    ],
-   "schnitt": 2.053,
-   "ende": 2.531
+   "schnitt": 2.96,
+   "ende": 4.56
   },
   {
    "i": 3,
-   "start": 2.554,
-   "sprech_ende": 3.68,
+   "start": 4.613,
+   "sprech_ende": 5.84,
    "words": [
     {
      "w": "ob",
-     "start": 2.554,
-     "ende": 2.624
+     "start": 4.613,
+     "ende": 4.72
     },
     {
      "w": "du",
-     "start": 2.682,
-     "ende": 2.74
+     "start": 4.773,
+     "ende": 4.88
     },
     {
      "w": "*zurückkommst*.",
-     "start": 2.798,
-     "ende": 3.68
+     "start": 4.926,
+     "ende": 5.84
     }
    ],
-   "schnitt": 2.531,
-   "ende": 3.68
+   "schnitt": 4.56,
+   "ende": 5.84
   },
   {
    "i": 4,
-   "start": 3.73,
+   "start": 5.89,
    "words": [],
-   "sprech_ende": 3.73,
-   "schnitt": 3.68,
-   "ende": 5.364
+   "sprech_ende": 5.89,
+   "schnitt": 5.84,
+   "ende": 8.459
   },
   {
    "i": 5,
-   "start": 5.4239999999999995,
-   "sprech_ende": 7.526,
+   "start": 8.519,
+   "sprech_ende": 10.786,
    "words": [
     {
      "w": "Du",
-     "start": 5.4239999999999995,
-     "ende": 5.645263157894736
+     "start": 8.519,
+     "ende": 8.757631578947368
     },
     {
      "w": "bist",
-     "start": 5.645263157894736,
-     "ende": 6.08778947368421
+     "start": 8.757631578947368,
+     "ende": 9.234894736842104
     },
     {
      "w": "bei",
-     "start": 6.08778947368421,
-     "ende": 6.419684210526316
+     "start": 9.234894736842104,
+     "ende": 9.592842105263157
     },
     {
      "w": "der",
-     "start": 6.419684210526316,
-     "ende": 6.7515789473684205
+     "start": 9.592842105263157,
+     "ende": 9.95078947368421
     },
     {
      "w": "*GIGN*.",
-     "start": 6.7515789473684205,
-     "ende": 7.526
+     "start": 9.95078947368421,
+     "ende": 10.786
     }
    ],
-   "schnitt": 5.364,
-   "ende": 7.7090000000000005
+   "schnitt": 8.459,
+   "ende": 11.166
   },
   {
    "i": 6,
-   "start": 7.769,
-   "sprech_ende": 10.614,
+   "start": 11.226,
+   "sprech_ende": 14.866,
    "words": [
     {
      "w": "Vier",
-     "start": 7.769,
-     "ende": 8.048
+     "start": 11.226,
+     "ende": 11.826
     },
     {
      "w": "Entführer.",
-     "start": 8.083,
-     "ende": 8.791
+     "start": 11.886,
+     "ende": 12.626
     },
     {
      "w": "Ein",
-     "start": 9.128,
-     "ende": 9.29
+     "start": 12.786,
+     "ende": 13.266
     },
     {
      "w": "*Airbus*",
-     "start": 9.395,
-     "ende": 9.778
+     "start": 13.346,
+     "ende": 13.826
     },
     {
      "w": "voller",
-     "start": 9.859,
-     "ende": 10.08
+     "start": 13.906,
+     "ende": 14.306
     },
     {
      "w": "Menschen.",
-     "start": 10.126,
-     "ende": 10.614
+     "start": 14.359,
+     "ende": 14.866
     }
    ],
-   "schnitt": 7.7090000000000005,
-   "ende": 10.831999999999999
+   "schnitt": 11.166,
+   "ende": 15.006
   },
   {
    "i": 7,
-   "start": 10.892,
-   "sprech_ende": 12.181,
+   "start": 15.066,
+   "sprech_ende": 16.786,
    "words": [
     {
      "w": "Sie",
-     "start": 10.892,
-     "ende": 11.067
+     "start": 15.066,
+     "ende": 15.666
     },
     {
      "w": "wollen",
-     "start": 11.101,
-     "ende": 11.322
+     "start": 15.712,
+     "ende": 15.986
     },
     {
      "w": "nach",
-     "start": 11.357,
-     "ende": 11.508
+     "start": 16.018,
+     "ende": 16.146
     },
     {
      "w": "*Paris*.",
-     "start": 11.554,
-     "ende": 12.181
+     "start": 16.239,
+     "ende": 16.786
     }
    ],
-   "schnitt": 10.831999999999999,
-   "ende": 12.365
+   "schnitt": 15.006,
+   "ende": 16.926000000000002
   },
   {
    "i": 8,
-   "start": 12.425,
-   "sprech_ende": 14.91,
+   "start": 16.986,
+   "sprech_ende": 20.786,
    "words": [
     {
      "w": "Und",
-     "start": 12.425,
-     "ende": 12.665483870967742
+     "start": 16.986,
+     "ende": 17.35374193548387
     },
     {
      "w": "fordern",
-     "start": 12.665483870967742,
-     "ende": 13.226612903225806
+     "start": 17.35374193548387,
+     "ende": 18.211806451612905
     },
     {
      "w": "*27",
-     "start": 13.226612903225806,
-     "ende": 13.467096774193548
+     "start": 18.211806451612905,
+     "ende": 18.579548387096775
     },
     {
      "w": "Tonnen*",
-     "start": 13.467096774193548,
-     "ende": 14.028225806451614
+     "start": 18.579548387096775,
+     "ende": 19.43761290322581
     },
     {
      "w": "Treibstoff.",
-     "start": 14.028225806451614,
-     "ende": 14.91
+     "start": 19.43761290322581,
+     "ende": 20.786
     }
    ],
-   "schnitt": 12.365,
-   "ende": 15.128
+   "schnitt": 16.926000000000002,
+   "ende": 21.974
   },
   {
    "i": 9,
-   "start": 15.188,
-   "sprech_ende": 16.244999999999997,
+   "start": 22.034,
+   "sprech_ende": 22.946,
    "words": [
     {
      "w": "Merk",
-     "start": 15.188,
-     "ende": 15.409
+     "start": 22.034,
+     "ende": 22.066
     },
     {
      "w": "dir",
-     "start": 15.49,
-     "ende": 15.606
+     "start": 22.126,
+     "ende": 22.306
     },
     {
      "w": "die",
-     "start": 15.641,
-     "ende": 15.734
+     "start": 22.326,
+     "ende": 22.386
     },
     {
      "w": "Zahl.",
-     "start": 15.804,
-     "ende": 16.244999999999997
+     "start": 22.482,
+     "ende": 22.946
     }
    ],
-   "schnitt": 15.128,
-   "ende": 16.522000000000002
+   "schnitt": 21.974,
+   "ende": 23.366
   },
   {
    "i": 10,
-   "start": 16.582,
-   "sprech_ende": 19.298,
+   "start": 23.426,
+   "sprech_ende": 27.426,
    "words": [
     {
      "w": "An",
-     "start": 16.582,
-     "ende": 16.709
+     "start": 23.426,
+     "ende": 24.386
     },
     {
      "w": "Heiligabend",
-     "start": 16.756,
-     "ende": 17.451999999999998
+     "start": 24.413,
+     "ende": 25.266
     },
     {
      "w": "kapern",
-     "start": 17.638,
-     "ende": 18.01
+     "start": 25.366,
+     "ende": 25.826
     },
     {
      "w": "sie",
-     "start": 18.044,
-     "ende": 18.126
+     "start": 25.846,
+     "ende": 25.906
     },
     {
      "w": "die",
-     "start": 18.16,
-     "ende": 18.242
+     "start": 25.946,
+     "ende": 26.066
     },
     {
      "w": "Maschine",
-     "start": 18.277,
-     "ende": 18.648
+     "start": 26.126,
+     "ende": 26.546
     },
     {
      "w": "in",
-     "start": 18.683,
-     "ende": 18.753
+     "start": 26.626,
+     "ende": 26.786
     },
     {
      "w": "*Algier*.",
-     "start": 18.857,
-     "ende": 19.298
+     "start": 26.866,
+     "ende": 27.426
     }
    ],
-   "schnitt": 16.522000000000002,
-   "ende": 19.366
+   "schnitt": 23.366,
+   "ende": 27.546000000000003
   },
   {
    "i": 11,
-   "start": 19.426,
-   "sprech_ende": 20.935,
+   "start": 27.606,
+   "sprech_ende": 29.666,
    "words": [
     {
      "w": "Verkleidet",
-     "start": 19.426,
-     "ende": 19.948
+     "start": 27.606,
+     "ende": 28.546
     },
     {
      "w": "als",
-     "start": 20.053,
-     "ende": 20.157
+     "start": 28.606,
+     "ende": 28.786
     },
     {
      "w": "*Polizisten*.",
-     "start": 20.215,
-     "ende": 20.935
+     "start": 28.826,
+     "ende": 29.666
     }
    ],
-   "schnitt": 19.366,
-   "ende": 21.003
+   "schnitt": 27.546000000000003,
+   "ende": 30.006
   },
   {
    "i": 12,
-   "start": 21.063,
-   "sprech_ende": 22.63,
+   "start": 30.066,
+   "sprech_ende": 32.466,
    "words": [
     {
      "w": "*Drei*",
-     "start": 21.063,
-     "ende": 21.342
+     "start": 30.066,
+     "ende": 30.626
     },
     {
      "w": "Geiseln",
-     "start": 21.4,
-     "ende": 21.771
+     "start": 30.706,
+     "ende": 31.266
     },
     {
      "w": "sind",
-     "start": 21.806,
-     "ende": 21.934
+     "start": 31.346,
+     "ende": 31.666
     },
     {
      "w": "schon",
-     "start": 21.957,
-     "ende": 22.131
+     "start": 31.693,
+     "ende": 31.826
     },
     {
      "w": "tot.",
-     "start": 22.201,
-     "ende": 22.63
+     "start": 31.946,
+     "ende": 32.466
     }
    ],
-   "schnitt": 21.003,
-   "ende": 22.756
+   "schnitt": 30.006,
+   "ende": 32.592999999999996
   },
   {
    "i": 13,
-   "start": 22.816,
-   "sprech_ende": 24.058,
+   "start": 32.653,
+   "sprech_ende": 34.786,
    "words": [
     {
      "w": "An",
-     "start": 22.816,
-     "ende": 22.932
+     "start": 32.653,
+     "ende": 33.025999999999996
     },
     {
      "w": "Bord:",
-     "start": 22.979,
-     "ende": 23.385
+     "start": 33.122,
+     "ende": 33.586
     },
     {
      "w": "*Dynamit*.",
-     "start": 23.513,
-     "ende": 24.058
+     "start": 33.719,
+     "ende": 34.786
     }
    ],
-   "schnitt": 22.756,
-   "ende": 24.126
+   "schnitt": 32.592999999999996,
+   "ende": 34.966
   },
   {
    "i": 14,
-   "start": 24.186,
-   "sprech_ende": 26.02,
+   "start": 35.026,
+   "sprech_ende": 38.346,
    "words": [
     {
      "w": "Ihr",
-     "start": 24.186,
-     "ende": 24.325
+     "start": 35.026,
+     "ende": 35.746
     },
     {
      "w": "übt",
-     "start": 24.383,
-     "ende": 24.604
+     "start": 35.826,
+     "ende": 36.146
     },
     {
      "w": "an",
-     "start": 24.65,
-     "ende": 24.72
+     "start": 36.199,
+     "ende": 36.306
     },
     {
      "w": "einer",
-     "start": 24.755,
-     "ende": 24.906
+     "start": 36.346,
+     "ende": 36.546
     },
     {
      "w": "*baugleichen*",
-     "start": 24.941,
-     "ende": 25.452
+     "start": 36.599,
+     "ende": 37.266
     },
     {
      "w": "Maschine.",
-     "start": 25.498,
-     "ende": 26.02
+     "start": 37.306,
+     "ende": 38.346
     }
    ],
-   "schnitt": 24.126,
-   "ende": 26.065
+   "schnitt": 34.966,
+   "ende": 38.39
   },
   {
    "i": 15,
-   "start": 26.125,
-   "sprech_ende": 27.46,
+   "start": 38.45,
+   "sprech_ende": 40.226,
    "words": [
     {
      "w": "Dann",
-     "start": 26.125,
-     "ende": 26.345
+     "start": 38.45,
+     "ende": 38.866
     },
     {
      "w": "landet",
-     "start": 26.404,
-     "ende": 26.647
+     "start": 38.946,
+     "ende": 39.346
     },
     {
      "w": "sie",
-     "start": 26.671,
-     "ende": 26.752
+     "start": 39.386,
+     "ende": 39.506
     },
     {
      "w": "in",
-     "start": 26.775,
-     "ende": 26.833
+     "start": 39.559,
+     "ende": 39.666
     },
     {
      "w": "*Marseille*.",
-     "start": 26.868,
-     "ende": 27.46
+     "start": 39.722,
+     "ende": 40.226
     }
    ],
-   "schnitt": 26.065,
-   "ende": 27.505000000000003
+   "schnitt": 38.39,
+   "ende": 40.346
   },
   {
    "i": 16,
-   "start": 27.565,
-   "sprech_ende": 28.691,
+   "start": 40.406,
+   "sprech_ende": 43.306,
    "words": [
     {
      "w": "Der",
-     "start": 27.565,
-     "ende": 27.681
+     "start": 40.406,
+     "ende": 40.946
     },
     {
      "w": "Tank",
-     "start": 27.715,
-     "ende": 27.983
+     "start": 41.074,
+     "ende": 41.586
     },
     {
      "w": "ist",
-     "start": 28.041,
-     "ende": 28.145
+     "start": 41.686,
+     "ende": 41.986
     },
     {
      "w": "fast",
-     "start": 28.18,
-     "ende": 28.366
+     "start": 42.066,
+     "ende": 42.386
     },
     {
      "w": "leer.",
-     "start": 28.424,
-     "ende": 28.691
+     "start": 42.466,
+     "ende": 43.306
     }
    ],
-   "schnitt": 27.505000000000003,
-   "ende": 28.701
+   "schnitt": 40.346,
+   "ende": 43.376
   },
   {
    "i": 17,
-   "start": 28.761,
-   "sprech_ende": 30.27,
+   "start": 43.436,
+   "sprech_ende": 45.906,
    "words": [
     {
      "w": "Und",
-     "start": 28.761,
-     "ende": 28.923
+     "start": 43.436,
+     "ende": 43.826
     },
     {
      "w": "*niemand*",
-     "start": 29.074,
-     "ende": 29.353
+     "start": 43.879,
+     "ende": 44.386
     },
     {
      "w": "bringt",
-     "start": 29.422,
-     "ende": 29.631
+     "start": 44.466,
+     "ende": 44.946
     },
     {
      "w": "ihnen",
-     "start": 29.666,
-     "ende": 29.829
+     "start": 44.999,
+     "ende": 45.266
     },
     {
      "w": "Sprit.",
-     "start": 29.864,
-     "ende": 30.27
+     "start": 45.326,
+     "ende": 45.906
     }
    ],
-   "schnitt": 28.701,
-   "ende": 30.314
+   "schnitt": 43.376,
+   "ende": 46.219
   },
   {
    "i": 18,
-   "start": 30.374,
-   "sprech_ende": 31.489,
+   "start": 46.279,
+   "sprech_ende": 48.466,
    "words": [
     {
      "w": "Dein",
-     "start": 30.374,
-     "ende": 30.514
+     "start": 46.279,
+     "ende": 47.106
     },
     {
      "w": "Kommandant",
-     "start": 30.56,
-     "ende": 30.967
+     "start": 47.146,
+     "ende": 47.666
     },
     {
      "w": "sagt",
-     "start": 31.001,
-     "ende": 31.222
+     "start": 47.746,
+     "ende": 48.066
     },
     {
      "w": "nur:",
-     "start": 31.28,
-     "ende": 31.489
+     "start": 48.146,
+     "ende": 48.466
     }
    ],
-   "schnitt": 30.314,
-   "ende": 31.499000000000002
+   "schnitt": 46.219,
+   "ende": 48.726
   },
   {
    "i": 19,
-   "start": 31.559,
-   "sprech_ende": 33.254000000000005,
+   "start": 48.786,
+   "sprech_ende": 51.106,
    "words": [
     {
      "w": "„Diese",
-     "start": 31.559,
-     "ende": 31.919
+     "start": 48.786,
+     "ende": 49.266
     },
     {
      "w": "Maschine",
-     "start": 31.965,
-     "ende": 32.302
+     "start": 49.326,
+     "ende": 49.826
     },
     {
      "w": "startet",
-     "start": 32.337,
-     "ende": 32.708
+     "start": 49.906,
+     "ende": 50.466
     },
     {
      "w": "*nicht*",
-     "start": 32.778,
-     "ende": 32.952
+     "start": 50.506,
+     "ende": 50.706
     },
     {
      "w": "mehr.“",
-     "start": 33.010000000000005,
-     "ende": 33.254000000000005
+     "start": 50.754,
+     "ende": 51.106
     }
    ],
-   "schnitt": 31.499000000000002,
-   "ende": 33.254000000000005
+   "schnitt": 48.726,
+   "ende": 51.393
   },
   {
    "i": 20,
-   "start": 33.312,
-   "sprech_ende": 33.962,
+   "start": 51.453,
+   "sprech_ende": 52.866,
    "words": [
     {
      "w": "Deine",
-     "start": 33.312,
-     "ende": 33.486000000000004
+     "start": 51.453,
+     "ende": 52.226
     },
     {
      "w": "Befehle:",
-     "start": 33.521,
-     "ende": 33.962
+     "start": 52.306,
+     "ende": 52.866
     }
    ],
-   "schnitt": 33.254000000000005,
-   "ende": 34.006
+   "schnitt": 51.393,
+   "ende": 53.166
   },
   {
    "i": 21,
-   "start": 34.066,
-   "sprech_ende": 34.833,
+   "start": 53.226,
+   "sprech_ende": 54.386,
    "words": [
     {
      "w": "*Drei*",
-     "start": 34.066,
-     "ende": 34.322
+     "start": 53.226,
+     "ende": 53.826
     },
     {
      "w": "Treppen.",
-     "start": 34.38,
-     "ende": 34.833
+     "start": 53.886,
+     "ende": 54.386
     }
    ],
-   "schnitt": 34.006,
-   "ende": 34.9
+   "schnitt": 53.166,
+   "ende": 54.605999999999995
   },
   {
    "i": 22,
-   "start": 34.96,
-   "sprech_ende": 36.11,
+   "start": 54.666,
+   "sprech_ende": 56.826,
    "words": [
     {
      "w": "Drei",
-     "start": 34.96,
-     "ende": 35.216
+     "start": 54.666,
+     "ende": 55.106
     },
     {
      "w": "Türen",
-     "start": 35.262,
-     "ende": 35.587
+     "start": 55.226,
+     "ende": 55.666
     },
     {
      "w": "*zugleich*.",
-     "start": 35.634,
-     "ende": 36.11
+     "start": 55.746,
+     "ende": 56.826
     }
    ],
-   "schnitt": 34.9,
-   "ende": 36.153999999999996
+   "schnitt": 54.605999999999995,
+   "ende": 56.986
   },
   {
    "i": 23,
-   "start": 36.214,
-   "sprech_ende": 37.526,
+   "start": 57.046,
+   "sprech_ende": 58.946,
    "words": [
     {
      "w": "Vorsicht,",
-     "start": 36.214,
-     "ende": 36.864
+     "start": 57.046,
+     "ende": 58.146
     },
     {
      "w": "*Dynamit*.",
-     "start": 36.934,
-     "ende": 37.526
+     "start": 58.199,
+     "ende": 58.946
     }
    ],
-   "schnitt": 36.153999999999996,
-   "ende": 37.594
+   "schnitt": 56.986,
+   "ende": 59.146
   },
   {
    "i": 24,
-   "start": 37.654,
-   "sprech_ende": 39.256,
+   "start": 59.206,
+   "sprech_ende": 62.946,
    "words": [
     {
      "w": "Und:",
-     "start": 37.654,
-     "ende": 38.072
+     "start": 59.206,
+     "ende": 60.426
     },
     {
      "w": "*Passagiere*",
-     "start": 38.176,
-     "ende": 38.78
+     "start": 60.514,
+     "ende": 61.426
     },
     {
      "w": "raus.",
-     "start": 38.827,
-     "ende": 39.256
+     "start": 61.666,
+     "ende": 62.946
     }
    ],
-   "schnitt": 37.594,
-   "ende": 39.346999999999994
+   "schnitt": 59.146,
+   "ende": 63.57
   },
   {
    "i": 25,
-   "start": 39.407,
-   "sprech_ende": 40.51,
+   "start": 63.63,
+   "sprech_ende": 64.78999999999999,
    "words": [
     {
      "w": "*17:12*.",
-     "start": 39.407,
-     "ende": 40.51
+     "start": 63.63,
+     "ende": 64.78999999999999
     }
    ],
-   "schnitt": 39.346999999999994,
-   "ende": 40.577999999999996
+   "schnitt": 63.57,
+   "ende": 64.85
   },
   {
    "i": 26,
-   "start": 40.638,
-   "sprech_ende": 41.798,
+   "start": 64.91,
+   "sprech_ende": 66.95,
    "words": [
     {
      "w": "Die",
-     "start": 40.638,
-     "ende": 40.754
+     "start": 64.91,
+     "ende": 65.27000000000001
     },
     {
      "w": "Treppen",
-     "start": 40.789,
-     "ende": 41.102
+     "start": 65.33,
+     "ende": 65.83
     },
     {
      "w": "rollen",
-     "start": 41.172,
-     "ende": 41.392
+     "start": 65.926,
+     "ende": 66.39
     },
     {
      "w": "los.",
-     "start": 41.438,
-     "ende": 41.798
+     "start": 66.51,
+     "ende": 66.95
     }
    ],
-   "schnitt": 40.577999999999996,
-   "ende": 41.808
+   "schnitt": 64.85,
+   "ende": 67.18299999999999
   },
   {
    "i": 27,
-   "start": 41.868,
-   "sprech_ende": 42.971,
+   "start": 67.243,
+   "sprech_ende": 69.55,
    "words": [
     {
      "w": "Deine",
-     "start": 41.868,
-     "ende": 42.135
+     "start": 67.243,
+     "ende": 68.07
     },
     {
      "w": "steht",
-     "start": 42.17,
-     "ende": 42.402
+     "start": 68.15,
+     "ende": 68.55
     },
     {
      "w": "zu",
-     "start": 42.507,
-     "ende": 42.599
+     "start": 68.603,
+     "ende": 68.71
     },
     {
      "w": "*hoch*.",
-     "start": 42.646,
-     "ende": 42.971
+     "start": 68.806,
+     "ende": 69.55
     }
    ],
-   "schnitt": 41.808,
-   "ende": 43.015
+   "schnitt": 67.18299999999999,
+   "ende": 69.58
   },
   {
    "i": 28,
-   "start": 43.075,
-   "sprech_ende": 44.271,
+   "start": 69.64,
+   "sprech_ende": 72.39,
    "words": [
     {
      "w": "Die",
-     "start": 43.075,
-     "ende": 43.203
+     "start": 69.64,
+     "ende": 69.91
     },
     {
      "w": "Tür",
-     "start": 43.25,
-     "ende": 43.482
+     "start": 70.01,
+     "ende": 70.31
     },
     {
      "w": "geht",
-     "start": 43.517,
-     "ende": 43.679
+     "start": 70.454,
+     "ende": 71.03
     },
     {
      "w": "*nicht*",
-     "start": 43.737,
-     "ende": 43.911
+     "start": 71.07,
+     "ende": 71.27
     },
     {
      "w": "auf.",
-     "start": 43.981,
-     "ende": 44.271
+     "start": 71.39,
+     "ende": 72.39
     }
    ],
-   "schnitt": 43.015,
-   "ende": 44.271
+   "schnitt": 69.58,
+   "ende": 72.49
   },
   {
    "i": 29,
-   "start": 44.306,
-   "sprech_ende": 45.641,
+   "start": 72.55,
+   "sprech_ende": 75.03,
    "words": [
     {
      "w": "Zurück.",
-     "start": 44.306,
-     "ende": 44.794
+     "start": 72.55,
+     "ende": 73.75
     },
     {
      "w": "Und",
-     "start": 44.829,
-     "ende": 44.979
+     "start": 73.85,
+     "ende": 74.15
     },
     {
      "w": "noch",
-     "start": 45.049,
-     "ende": 45.177
+     "start": 74.198,
+     "ende": 74.39
     },
     {
      "w": "mal",
-     "start": 45.235,
-     "ende": 45.339
+     "start": 74.45,
+     "ende": 74.63
     },
     {
      "w": "ran.",
-     "start": 45.386,
-     "ende": 45.641
+     "start": 74.71,
+     "ende": 75.03
     }
    ],
-   "schnitt": 44.271,
-   "ende": 45.641
+   "schnitt": 72.49,
+   "ende": 75.194
   },
   {
    "i": 30,
-   "start": 45.676,
-   "sprech_ende": 46.396,
+   "start": 75.254,
+   "sprech_ende": 77.43,
    "words": [
     {
      "w": "Dann",
-     "start": 45.676,
-     "ende": 45.839
+     "start": 75.254,
+     "ende": 76.15
     },
     {
      "w": "seid",
-     "start": 45.873,
-     "ende": 46.001
+     "start": 76.337,
+     "ende": 76.79
     },
     {
      "w": "ihr",
-     "start": 46.036,
-     "ende": 46.117
+     "start": 76.83,
+     "ende": 76.95
     },
     {
      "w": "*drin*.",
-     "start": 46.14,
-     "ende": 46.396
+     "start": 77.03,
+     "ende": 77.43
     }
    ],
-   "schnitt": 45.641,
-   "ende": 46.396
+   "schnitt": 75.194,
+   "ende": 78.676
   },
   {
    "i": 31,
-   "start": 46.431,
-   "sprech_ende": 47.545,
+   "start": 78.736,
+   "sprech_ende": 80.396,
    "words": [
     {
      "w": "Schüsse",
-     "start": 46.431,
-     "ende": 46.767
+     "start": 78.736,
+     "ende": 79.196
     },
     {
      "w": "aus",
-     "start": 46.802,
-     "ende": 46.895
+     "start": 79.256,
+     "ende": 79.436
     },
     {
      "w": "dem",
-     "start": 46.93,
-     "ende": 47.034
+     "start": 79.476,
+     "ende": 79.596
     },
     {
      "w": "*Cockpit*.",
-     "start": 47.081,
-     "ende": 47.545
+     "start": 79.676,
+     "ende": 80.396
     }
    ],
-   "schnitt": 46.396,
-   "ende": 47.555
+   "schnitt": 78.676,
+   "ende": 80.496
   },
   {
    "i": 32,
-   "start": 47.615,
-   "sprech_ende": 48.567,
+   "start": 80.556,
+   "sprech_ende": 82.796,
    "words": [
     {
      "w": "Über",
-     "start": 47.615,
-     "ende": 47.801
+     "start": 80.556,
+     "ende": 81.196
     },
     {
      "w": "*tausend*",
-     "start": 47.847,
-     "ende": 48.161
+     "start": 81.303,
+     "ende": 81.756
     },
     {
      "w": "Schuss.",
-     "start": 48.195,
-     "ende": 48.567
+     "start": 81.816,
+     "ende": 82.796
     }
    ],
-   "schnitt": 47.555,
-   "ende": 48.567
+   "schnitt": 80.496,
+   "ende": 82.832
   },
   {
    "i": 33,
-   "start": 48.602,
-   "sprech_ende": 49.623,
+   "start": 82.892,
+   "sprech_ende": 84.396,
    "words": [
     {
      "w": "Eine",
-     "start": 48.602,
-     "ende": 48.753
+     "start": 82.892,
+     "ende": 83.276
     },
     {
      "w": "*Granate*",
-     "start": 48.788,
-     "ende": 49.182
+     "start": 83.324,
+     "ende": 83.836
     },
     {
      "w": "fliegt.",
-     "start": 49.24,
-     "ende": 49.623
+     "start": 83.889,
+     "ende": 84.396
     }
    ],
-   "schnitt": 48.567,
-   "ende": 49.623
+   "schnitt": 82.832,
+   "ende": 84.496
   },
   {
    "i": 34,
-   "start": 49.658,
-   "sprech_ende": 51.446,
+   "start": 84.556,
+   "sprech_ende": 87.436,
    "words": [
     {
      "w": "Der",
-     "start": 49.658,
-     "ende": 49.763
+     "start": 84.556,
+     "ende": 85.036
     },
     {
      "w": "Copilot",
-     "start": 49.798,
-     "ende": 50.367
+     "start": 85.136,
+     "ende": 85.836
     },
     {
      "w": "springt",
-     "start": 50.401,
-     "ende": 50.715
+     "start": 85.905,
+     "ende": 86.396
     },
     {
      "w": "aus",
-     "start": 50.761,
-     "ende": 50.831
+     "start": 86.456,
+     "ende": 86.636
     },
     {
      "w": "dem",
-     "start": 50.877,
-     "ende": 50.982
+     "start": 86.656,
+     "ende": 86.716
     },
     {
      "w": "*Fenster*.",
-     "start": 51.028,
-     "ende": 51.446
+     "start": 86.796,
+     "ende": 87.436
     }
    ],
-   "schnitt": 49.623,
-   "ende": 51.446
+   "schnitt": 84.496,
+   "ende": 87.6
   },
   {
    "i": 35,
-   "start": 51.504,
-   "sprech_ende": 53.42,
+   "start": 87.66,
+   "sprech_ende": 90.716,
    "words": [
     {
      "w": "Hinten",
-     "start": 51.504,
-     "ende": 51.911
+     "start": 87.66,
+     "ende": 88.716
     },
     {
      "w": "rutschen",
-     "start": 52.038,
-     "ende": 52.329
+     "start": 88.876,
+     "ende": 89.356
     },
     {
      "w": "die",
-     "start": 52.363,
-     "ende": 52.433
+     "start": 89.376,
+     "ende": 89.436
     },
     {
      "w": "Geiseln",
-     "start": 52.468,
-     "ende": 52.828
+     "start": 89.516,
+     "ende": 89.996
     },
     {
      "w": "ins",
-     "start": 52.863,
-     "ende": 52.968
+     "start": 90.056,
+     "ende": 90.236
     },
     {
      "w": "Freie.",
-     "start": 53.037,
-     "ende": 53.42
+     "start": 90.296,
+     "ende": 90.716
     }
    ],
-   "schnitt": 51.446,
-   "ende": 53.42
+   "schnitt": 87.6,
+   "ende": 90.896
   },
   {
    "i": 36,
-   "start": 53.467,
-   "sprech_ende": 54.802,
+   "start": 90.956,
+   "sprech_ende": 93.436,
    "words": [
     {
      "w": "Der",
-     "start": 53.467,
-     "ende": 53.583
+     "start": 90.956,
+     "ende": 91.676
     },
     {
      "w": "letzte",
-     "start": 53.618,
-     "ende": 53.873
+     "start": 91.724,
+     "ende": 92.076
     },
     {
      "w": "Entführer",
-     "start": 53.908,
-     "ende": 54.303
+     "start": 92.136,
+     "ende": 92.716
     },
     {
      "w": "fällt.",
-     "start": 54.361,
-     "ende": 54.802
+     "start": 92.876,
+     "ende": 93.436
     }
    ],
-   "schnitt": 53.42,
-   "ende": 54.893
+   "schnitt": 90.896,
+   "ende": 93.723
   },
   {
    "i": 37,
-   "start": 54.953,
-   "sprech_ende": 56.706,
+   "start": 93.783,
+   "sprech_ende": 96.876,
    "words": [
     {
      "w": "*Kein*",
-     "start": 54.953,
-     "ende": 55.197
+     "start": 93.783,
+     "ende": 94.556
     },
     {
      "w": "Passagier",
-     "start": 55.266,
-     "ende": 55.719
+     "start": 94.62,
+     "ende": 95.356
     },
     {
      "w": "stirbt",
-     "start": 55.766,
-     "ende": 56.067
+     "start": 95.452,
+     "ende": 96.076
     },
     {
      "w": "beim",
-     "start": 56.114,
-     "ende": 56.242
+     "start": 96.124,
+     "ende": 96.316
     },
     {
      "w": "Sturm.",
-     "start": 56.3,
-     "ende": 56.706
+     "start": 96.396,
+     "ende": 96.876
     }
    ],
-   "schnitt": 54.893,
-   "ende": 56.89
+   "schnitt": 93.723,
+   "ende": 98.229
   },
   {
    "i": 38,
-   "start": 56.95,
-   "sprech_ende": 57.971,
+   "start": 98.289,
+   "sprech_ende": 99.436,
    "words": [
     {
      "w": "Du",
-     "start": 56.95,
-     "ende": 57.054
+     "start": 98.289,
+     "ende": 98.316
     },
     {
      "w": "hast",
-     "start": 57.089,
-     "ende": 57.252
+     "start": 98.364,
+     "ende": 98.556
     },
     {
      "w": "es",
-     "start": 57.298,
-     "ende": 57.368
+     "start": 98.609,
+     "ende": 98.716
     },
     {
      "w": "geschafft.",
-     "start": 57.414,
-     "ende": 57.971
+     "start": 98.756,
+     "ende": 99.436
     }
    ],
-   "schnitt": 56.89,
-   "ende": 58.096999999999994
+   "schnitt": 98.229,
+   "ende": 100.736
   },
   {
    "i": 39,
-   "start": 58.157,
-   "sprech_ende": 60.502,
+   "start": 100.796,
+   "sprech_ende": 104.156,
    "words": [
     {
      "w": "Aber",
-     "start": 58.157,
-     "ende": 58.425
+     "start": 100.796,
+     "ende": 101.18
     },
     {
      "w": "erinnerst",
-     "start": 58.425,
-     "ende": 59.028
+     "start": 101.18,
+     "ende": 102.04400000000001
     },
     {
      "w": "du",
-     "start": 59.028,
-     "ende": 59.162
+     "start": 102.04400000000001,
+     "ende": 102.236
     },
     {
      "w": "dich",
-     "start": 59.162,
-     "ende": 59.43
+     "start": 102.236,
+     "ende": 102.62
     },
     {
      "w": "an",
-     "start": 59.43,
-     "ende": 59.564
+     "start": 102.62,
+     "ende": 102.81200000000001
     },
     {
      "w": "die",
-     "start": 59.564,
-     "ende": 59.765
+     "start": 102.81200000000001,
+     "ende": 103.10000000000001
     },
     {
      "w": "*27",
-     "start": 59.765,
-     "ende": 59.966
+     "start": 103.10000000000001,
+     "ende": 103.388
     },
     {
      "w": "Tonnen*?",
-     "start": 59.966,
-     "ende": 60.502
+     "start": 103.388,
+     "ende": 104.156
     }
    ],
-   "schnitt": 58.096999999999994,
-   "ende": 60.650999999999996
+   "schnitt": 100.736,
+   "ende": 104.456
   },
   {
    "i": 40,
-   "start": 60.711,
-   "sprech_ende": 62.79,
+   "start": 104.516,
+   "sprech_ende": 107.916,
    "words": [
     {
      "w": "Bis",
-     "start": 60.711,
-     "ende": 60.862
+     "start": 104.516,
+     "ende": 105.596
     },
     {
      "w": "Paris",
-     "start": 60.909,
-     "ende": 61.28
+     "start": 105.676,
+     "ende": 106.076
     },
     {
      "w": "hätten",
-     "start": 61.327,
-     "ende": 61.536
+     "start": 106.136,
+     "ende": 106.396
     },
     {
      "w": "rund",
-     "start": 61.605,
-     "ende": 61.768
+     "start": 106.46,
+     "ende": 106.716
     },
     {
      "w": "*acht*",
-     "start": 61.872,
-     "ende": 62.081
+     "start": 106.836,
+     "ende": 107.116
     },
     {
      "w": "gereicht.",
-     "start": 62.151,
-     "ende": 62.79
+     "start": 107.196,
+     "ende": 107.916
     }
    ],
-   "schnitt": 60.650999999999996,
-   "ende": 63.065999999999995
+   "schnitt": 104.456,
+   "ende": 108.256
   },
   {
    "i": 41,
-   "start": 63.126,
-   "sprech_ende": 63.974,
+   "start": 108.316,
+   "sprech_ende": 110.316,
    "words": [
     {
      "w": "Wozu",
-     "start": 63.126,
-     "ende": 63.37
+     "start": 108.316,
+     "ende": 109.036
     },
     {
      "w": "der",
-     "start": 63.417,
-     "ende": 63.498
+     "start": 109.076,
+     "ende": 109.196
     },
     {
      "w": "*Rest*?",
-     "start": 63.533,
-     "ende": 63.974
+     "start": 109.292,
+     "ende": 110.316
     }
    ],
-   "schnitt": 63.065999999999995,
-   "ende": 64.12299999999999
+   "schnitt": 108.256,
+   "ende": 110.416
   },
   {
    "i": 42,
-   "start": 64.18299999999999,
-   "sprech_ende": 65.704,
+   "start": 110.476,
+   "sprech_ende": 112.876,
    "words": [
     {
      "w": "Die",
-     "start": 64.18299999999999,
-     "ende": 64.299
+     "start": 110.476,
+     "ende": 110.956
     },
     {
      "w": "Ermittler",
-     "start": 64.334,
-     "ende": 64.67
+     "start": 110.996,
+     "ende": 111.436
     },
     {
      "w": "hatten",
-     "start": 64.694,
-     "ende": 64.89099999999999
+     "start": 111.482,
+     "ende": 111.756
     },
     {
      "w": "einen",
-     "start": 64.926,
-     "ende": 65.077
+     "start": 111.796,
+     "ende": 111.996
     },
     {
      "w": "*Verdacht*.",
-     "start": 65.12299999999999,
-     "ende": 65.704
+     "start": 112.06,
+     "ende": 112.876
     }
    ],
-   "schnitt": 64.12299999999999,
-   "ende": 65.853
+   "schnitt": 110.416,
+   "ende": 113.666
   },
   {
    "i": 43,
-   "start": 65.913,
-   "sprech_ende": 68.154,
+   "start": 113.726,
+   "sprech_ende": 117.396,
    "words": [
     {
      "w": "Das",
-     "start": 65.913,
-     "ende": 66.087
+     "start": 113.726,
+     "ende": 113.756
     },
     {
      "w": "Flugzeug",
-     "start": 66.145,
-     "ende": 66.644
+     "start": 113.809,
+     "ende": 114.476
     },
     {
      "w": "sollte",
-     "start": 66.749,
-     "ende": 67.051
+     "start": 114.602,
+     "ende": 115.356
     },
     {
      "w": "selbst",
-     "start": 67.097,
-     "ende": 67.387
+     "start": 115.425,
+     "ende": 115.836
     },
     {
      "w": "die",
-     "start": 67.411,
-     "ende": 67.492
+     "start": 115.896,
+     "ende": 116.076
     },
     {
      "w": "*Bombe*",
-     "start": 67.527,
-     "ende": 67.724
+     "start": 116.136,
+     "ende": 116.396
     },
     {
      "w": "sein.",
-     "start": 67.759,
-     "ende": 68.154
+     "start": 116.492,
+     "ende": 117.396
     }
    ],
-   "schnitt": 65.853,
-   "ende": 68.42999999999999
+   "schnitt": 113.666,
+   "ende": 117.44
   },
   {
    "i": 44,
-   "start": 68.49,
-   "sprech_ende": 70.859,
+   "start": 117.5,
+   "sprech_ende": 121.436,
    "words": [
     {
      "w": "Über",
-     "start": 68.49,
-     "ende": 68.699
+     "start": 117.5,
+     "ende": 117.916
     },
     {
      "w": "Paris.",
-     "start": 68.734,
-     "ende": 69.384
+     "start": 118.023,
+     "ende": 118.636
     },
     {
      "w": "Vielleicht",
-     "start": 69.767,
-     "ende": 70.104
+     "start": 118.903,
+     "ende": 119.916
     },
     {
      "w": "am",
-     "start": 70.151,
-     "ende": 70.22
+     "start": 119.969,
+     "ende": 120.076
     },
     {
      "w": "*Eiffelturm*.",
-     "start": 70.278,
-     "ende": 70.859
+     "start": 120.156,
+     "ende": 121.436
     }
    ],
-   "schnitt": 68.42999999999999,
-   "ende": 71.182
+   "schnitt": 117.44,
+   "ende": 121.488
   },
   {
    "i": 45,
-   "start": 71.242,
-   "sprech_ende": 73.227,
+   "start": 121.548,
+   "sprech_ende": 124.716,
    "words": [
     {
      "w": "Fast",
-     "start": 71.242,
-     "ende": 71.46255555555555
+     "start": 121.548,
+     "ende": 121.9
     },
     {
      "w": "*sieben*",
-     "start": 71.46255555555555,
-     "ende": 71.90366666666667
+     "start": 121.9,
+     "ende": 122.604
     },
     {
      "w": "Jahre",
-     "start": 71.90366666666667,
-     "ende": 72.17936111111112
+     "start": 122.604,
+     "ende": 123.044
     },
     {
      "w": "vor",
-     "start": 72.17936111111112,
-     "ende": 72.34477777777778
+     "start": 123.044,
+     "ende": 123.30799999999999
     },
     {
      "w": "dem",
-     "start": 72.34477777777778,
-     "ende": 72.51019444444445
+     "start": 123.30799999999999,
+     "ende": 123.572
     },
     {
      "w": "11.",
-     "start": 72.51019444444445,
-     "ende": 72.67561111111111
+     "start": 123.572,
+     "ende": 123.836
     },
     {
      "w": "September.",
-     "start": 72.67561111111111,
-     "ende": 73.227
+     "start": 123.836,
+     "ende": 124.716
     }
    ],
-   "schnitt": 71.182,
-   "ende": 73.353
+   "schnitt": 121.488,
+   "ende": 124.996
   },
   {
    "i": 46,
-   "start": 73.413,
-   "sprech_ende": 74.028,
+   "start": 125.056,
+   "sprech_ende": 127.276,
    "words": [
     {
      "w": "Und",
-     "start": 73.413,
-     "ende": 73.541
+     "start": 125.056,
+     "ende": 126.076
     },
     {
      "w": "morgen?",
-     "start": 73.61,
-     "ende": 74.028
+     "start": 126.156,
+     "ende": 127.276
     }
    ],
-   "schnitt": 73.353,
-   "ende": 74.247
+   "schnitt": 124.996,
+   "ende": 127.344
   },
   {
    "i": 47,
-   "start": 74.307,
-   "sprech_ende": 75.619,
+   "start": 127.404,
+   "sprech_ende": 129.196,
    "words": [
     {
      "w": "Holt",
-     "start": 74.307,
-     "ende": 74.528
+     "start": 127.404,
+     "ende": 127.916
     },
     {
      "w": "dich",
-     "start": 74.597,
-     "ende": 74.737
+     "start": 127.98,
+     "ende": 128.236
     },
     {
      "w": "eine",
-     "start": 74.795,
-     "ende": 74.934
+     "start": 128.316,
+     "ende": 128.636
     },
     {
      "w": "*andere*.",
-     "start": 74.98,
-     "ende": 75.619
+     "start": 128.70499999999998,
+     "ende": 129.196
     }
    ],
-   "schnitt": 74.247,
-   "ende": 76.46163299999999
+   "schnitt": 127.344,
+   "ende": 130.012653
   }
  ]
 }

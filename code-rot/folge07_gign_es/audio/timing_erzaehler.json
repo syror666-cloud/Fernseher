@@ -1,1421 +1,1421 @@
 {
- "gesamt": 85.421633,
+ "gesamt": 85.865714,
  "shots": [
   {
    "i": 0,
    "start": 0.0,
-   "sprech_ende": 1.091,
+   "sprech_ende": 0.96,
    "words": [
     {
      "w": "Una",
      "start": 0.0,
-     "ende": 0.221
+     "ende": 0.16
     },
     {
      "w": "de",
-     "start": 0.267,
-     "ende": 0.337
+     "start": 0.187,
+     "ende": 0.24
     },
     {
      "w": "estas",
-     "start": 0.395,
-     "ende": 0.615
+     "start": 0.28,
+     "ende": 0.48
     },
     {
      "w": "*unidades*",
-     "start": 0.673,
-     "ende": 1.091
+     "start": 0.533,
+     "ende": 0.96
     }
    ],
    "schnitt": 0.0,
-   "ende": 1.091
+   "ende": 0.96
   },
   {
    "i": 1,
-   "start": 1.138,
-   "sprech_ende": 2.461,
+   "start": 1.0,
+   "sprech_ende": 2.0,
    "words": [
     {
      "w": "viene",
-     "start": 1.138,
-     "ende": 1.358
+     "start": 1.0,
+     "ende": 1.2
     },
     {
      "w": "por",
-     "start": 1.405,
-     "ende": 1.544
+     "start": 1.24,
+     "ende": 1.36
     },
     {
      "w": "ti",
-     "start": 1.614,
-     "ende": 1.73
+     "start": 1.413,
+     "ende": 1.52
     },
     {
      "w": "esta",
-     "start": 1.8,
-     "ende": 1.974
+     "start": 1.552,
+     "ende": 1.68
     },
     {
      "w": "noche.",
-     "start": 2.02,
-     "ende": 2.461
+     "start": 1.72,
+     "ende": 2.0
     }
    ],
-   "schnitt": 1.091,
-   "ende": 2.552
+   "schnitt": 0.96,
+   "ende": 2.047
   },
   {
    "i": 2,
-   "start": 2.612,
-   "sprech_ende": 2.961,
+   "start": 2.107,
+   "sprech_ende": 2.56,
    "words": [
     {
      "w": "Veamos",
-     "start": 2.612,
-     "ende": 2.961
+     "start": 2.107,
+     "ende": 2.56
     }
    ],
-   "schnitt": 2.552,
-   "ende": 2.961
+   "schnitt": 2.047,
+   "ende": 2.56
   },
   {
    "i": 3,
-   "start": 2.984,
-   "sprech_ende": 3.692,
+   "start": 2.587,
+   "sprech_ende": 3.52,
    "words": [
     {
      "w": "si",
-     "start": 2.984,
-     "ende": 3.053
+     "start": 2.587,
+     "ende": 2.64
     },
     {
      "w": "*regresas*.",
-     "start": 3.135,
-     "ende": 3.692
+     "start": 2.7,
+     "ende": 3.52
     }
    ],
-   "schnitt": 2.961,
-   "ende": 3.692
+   "schnitt": 2.56,
+   "ende": 3.52
   },
   {
    "i": 4,
-   "start": 3.742,
+   "start": 3.57,
    "words": [],
-   "sprech_ende": 3.742,
-   "schnitt": 3.692,
-   "ende": 5.283
+   "sprech_ende": 3.57,
+   "schnitt": 3.52,
+   "ende": 5.3500000000000005
   },
   {
    "i": 5,
-   "start": 5.343,
-   "sprech_ende": 6.957,
+   "start": 5.41,
+   "sprech_ende": 6.62,
    "words": [
     {
      "w": "Eres",
-     "start": 5.343,
-     "ende": 5.804142857142857
+     "start": 5.41,
+     "ende": 5.755714285714286
     },
     {
      "w": "del",
-     "start": 5.804142857142857,
-     "ende": 6.1499999999999995
+     "start": 5.755714285714286,
+     "ende": 6.015
     },
     {
      "w": "*GIGN*.",
-     "start": 6.1499999999999995,
-     "ende": 6.957
+     "start": 6.015,
+     "ende": 6.62
     }
    ],
-   "schnitt": 5.283,
-   "ende": 7.024
+   "schnitt": 5.3500000000000005,
+   "ende": 6.720000000000001
   },
   {
    "i": 6,
-   "start": 7.084,
-   "sprech_ende": 10.266,
+   "start": 6.78,
+   "sprech_ende": 9.66,
    "words": [
     {
      "w": "Cuatro",
-     "start": 7.084,
-     "ende": 7.456
+     "start": 6.78,
+     "ende": 7.26
     },
     {
      "w": "secuestradores.",
-     "start": 7.491,
-     "ende": 8.338000000000001
+     "start": 7.32,
+     "ende": 8.34
     },
     {
      "w": "Un",
-     "start": 8.675,
-     "ende": 8.861
+     "start": 8.407,
+     "ende": 8.54
     },
     {
      "w": "*Airbus*",
-     "start": 8.896,
-     "ende": 9.279
+     "start": 8.586,
+     "ende": 8.86
     },
     {
      "w": "lleno",
-     "start": 9.314,
-     "ende": 9.627
+     "start": 8.908000000000001,
+     "ende": 9.18
     },
     {
      "w": "de",
-     "start": 9.673,
-     "ende": 9.743
+     "start": 9.207,
+     "ende": 9.26
     },
     {
      "w": "gente.",
-     "start": 9.778,
-     "ende": 10.266
+     "start": 9.312999999999999,
+     "ende": 9.66
     }
    ],
-   "schnitt": 7.024,
-   "ende": 10.647
+   "schnitt": 6.720000000000001,
+   "ende": 9.732999999999999
   },
   {
    "i": 7,
-   "start": 10.707,
-   "sprech_ende": 11.682,
+   "start": 9.793,
+   "sprech_ende": 11.1,
    "words": [
     {
      "w": "Quieren",
-     "start": 10.707,
-     "ende": 11.009
+     "start": 9.793,
+     "ende": 10.3
     },
     {
      "w": "ir",
-     "start": 11.067,
-     "ende": 11.136
+     "start": 10.327,
+     "ende": 10.38
     },
     {
      "w": "a",
-     "start": 11.171,
-     "ende": 11.194
+     "start": 10.42,
+     "ende": 10.46
     },
     {
      "w": "*París*.",
-     "start": 11.241,
-     "ende": 11.682
+     "start": 10.5,
+     "ende": 11.1
     }
    ],
-   "schnitt": 10.647,
-   "ende": 12.004999999999999
+   "schnitt": 9.732999999999999,
+   "ende": 11.1
   },
   {
    "i": 8,
-   "start": 12.065,
-   "sprech_ende": 14.48,
+   "start": 11.14,
+   "sprech_ende": 13.58,
    "words": [
     {
      "w": "Y",
-     "start": 12.065,
-     "ende": 12.136029411764705
+     "start": 11.14,
+     "ende": 11.211764705882354
     },
     {
      "w": "exigen",
-     "start": 12.136029411764705,
-     "ende": 12.562205882352941
+     "start": 11.211764705882354,
+     "ende": 11.64235294117647
     },
     {
      "w": "*27",
-     "start": 12.562205882352941,
-     "ende": 12.775294117647059
+     "start": 11.64235294117647,
+     "ende": 11.85764705882353
     },
     {
      "w": "toneladas*",
-     "start": 12.775294117647059,
-     "ende": 13.485588235294118
+     "start": 11.85764705882353,
+     "ende": 12.57529411764706
     },
     {
      "w": "de",
-     "start": 13.485588235294118,
-     "ende": 13.62764705882353
+     "start": 12.57529411764706,
+     "ende": 12.718823529411765
     },
     {
      "w": "combustible.",
-     "start": 13.62764705882353,
-     "ende": 14.48
+     "start": 12.718823529411765,
+     "ende": 13.58
     }
    ],
-   "schnitt": 12.004999999999999,
-   "ende": 14.942
+   "schnitt": 11.1,
+   "ende": 14.354999999999999
   },
   {
    "i": 9,
-   "start": 15.002,
-   "sprech_ende": 16.094,
+   "start": 14.415,
+   "sprech_ende": 15.7,
    "words": [
     {
      "w": "Recuerda",
-     "start": 15.002,
-     "ende": 15.397
+     "start": 14.415,
+     "ende": 14.7
     },
     {
      "w": "ese",
-     "start": 15.467,
-     "ende": 15.606
+     "start": 14.74,
+     "ende": 14.86
     },
     {
      "w": "número.",
-     "start": 15.653,
-     "ende": 16.094
+     "start": 14.917,
+     "ende": 15.7
     }
    ],
-   "schnitt": 14.942,
-   "ende": 16.138
+   "schnitt": 14.354999999999999,
+   "ende": 15.786999999999999
   },
   {
    "i": 10,
-   "start": 16.198,
-   "sprech_ende": 18.091,
+   "start": 15.847,
+   "sprech_ende": 17.82,
    "words": [
     {
      "w": "La",
-     "start": 16.198,
-     "ende": 16.303
+     "start": 15.847,
+     "ende": 16.14
     },
     {
      "w": "toman",
-     "start": 16.361,
-     "ende": 16.581
+     "start": 16.192999999999998,
+     "ende": 16.46
     },
     {
      "w": "en",
-     "start": 16.628,
-     "ende": 16.674
+     "start": 16.487000000000002,
+     "ende": 16.54
     },
     {
      "w": "*Argel*,",
-     "start": 16.721,
-     "ende": 17.208
+     "start": 16.6,
+     "ende": 17.02
     },
     {
      "w": "en",
-     "start": 17.313000000000002,
-     "ende": 17.406
+     "start": 17.073,
+     "ende": 17.18
     },
     {
      "w": "Nochebuena.",
-     "start": 17.441000000000003,
-     "ende": 18.091
+     "start": 17.233,
+     "ende": 17.82
     }
    ],
-   "schnitt": 16.138,
-   "ende": 18.158
+   "schnitt": 15.786999999999999,
+   "ende": 17.880000000000003
   },
   {
    "i": 11,
-   "start": 18.218,
-   "sprech_ende": 19.739,
+   "start": 17.94,
+   "sprech_ende": 19.42,
    "words": [
     {
      "w": "Disfrazados",
-     "start": 18.218,
-     "ende": 18.915
+     "start": 17.94,
+     "ende": 18.7
     },
     {
      "w": "de",
-     "start": 18.938,
-     "ende": 18.996
+     "start": 18.727,
+     "ende": 18.78
     },
     {
      "w": "*policías*.",
-     "start": 19.031,
-     "ende": 19.739
+     "start": 18.847,
+     "ende": 19.42
     }
    ],
-   "schnitt": 18.158,
-   "ende": 19.865000000000002
+   "schnitt": 17.880000000000003,
+   "ende": 19.547
   },
   {
    "i": 12,
-   "start": 19.925,
-   "sprech_ende": 21.458,
+   "start": 19.607,
+   "sprech_ende": 21.18,
    "words": [
     {
      "w": "Ya",
-     "start": 19.925,
-     "ende": 20.041
+     "start": 19.607,
+     "ende": 19.98
     },
     {
      "w": "mataron",
-     "start": 20.076,
-     "ende": 20.39
+     "start": 20.02,
+     "ende": 20.3
     },
     {
      "w": "a",
-     "start": 20.436,
-     "ende": 20.459
+     "start": 20.34,
+     "ende": 20.38
     },
     {
      "w": "*tres*",
-     "start": 20.506,
-     "ende": 20.773
+     "start": 20.428,
+     "ende": 20.62
     },
     {
      "w": "rehenes.",
-     "start": 20.889,
-     "ende": 21.458
+     "start": 20.673,
+     "ende": 21.18
     }
    ],
-   "schnitt": 19.865000000000002,
-   "ende": 21.583000000000002
+   "schnitt": 19.547,
+   "ende": 21.360000000000003
   },
   {
    "i": 13,
-   "start": 21.643,
-   "sprech_ende": 22.955,
+   "start": 21.42,
+   "sprech_ende": 22.86,
    "words": [
     {
      "w": "A",
-     "start": 21.643,
-     "ende": 21.713
+     "start": 21.42,
+     "ende": 21.66
     },
     {
      "w": "bordo:",
-     "start": 21.783,
-     "ende": 22.201
+     "start": 21.708,
+     "ende": 22.06
     },
     {
      "w": "*dinamita*.",
-     "start": 22.27,
-     "ende": 22.955
+     "start": 22.16,
+     "ende": 22.86
     }
    ],
-   "schnitt": 21.583000000000002,
-   "ende": 23.081
+   "schnitt": 21.360000000000003,
+   "ende": 23.16
   },
   {
    "i": 14,
-   "start": 23.141,
-   "sprech_ende": 25.068,
+   "start": 23.22,
+   "sprech_ende": 25.34,
    "words": [
     {
      "w": "Ustedes",
-     "start": 23.141,
-     "ende": 23.547
+     "start": 23.22,
+     "ende": 23.82
     },
     {
      "w": "entrenan",
-     "start": 23.606,
-     "ende": 23.989
+     "start": 23.877,
+     "ende": 24.38
     },
     {
      "w": "en",
-     "start": 24.047,
-     "ende": 24.128
+     "start": 24.407,
+     "ende": 24.46
     },
     {
      "w": "un",
-     "start": 24.198,
-     "ende": 24.256
+     "start": 24.513,
+     "ende": 24.62
     },
     {
      "w": "avión",
-     "start": 24.302,
-     "ende": 24.511
+     "start": 24.647,
+     "ende": 24.86
     },
     {
      "w": "*gemelo*.",
-     "start": 24.546,
-     "ende": 25.068
+     "start": 24.9,
+     "ende": 25.34
     }
    ],
-   "schnitt": 23.081,
-   "ende": 25.345000000000002
+   "schnitt": 23.16,
+   "ende": 25.48
   },
   {
    "i": 15,
-   "start": 25.405,
-   "sprech_ende": 27.042,
+   "start": 25.54,
+   "sprech_ende": 27.02,
    "words": [
     {
      "w": "Luego",
-     "start": 25.405,
-     "ende": 25.753
+     "start": 25.54,
+     "ende": 25.98
     },
     {
      "w": "aterriza",
-     "start": 25.835,
-     "ende": 26.334
+     "start": 26.02,
+     "ende": 26.38
     },
     {
      "w": "en",
-     "start": 26.38,
-     "ende": 26.438
+     "start": 26.407,
+     "ende": 26.46
     },
     {
      "w": "*Marsella*.",
-     "start": 26.485,
-     "ende": 27.042
+     "start": 26.508,
+     "ende": 27.02
     }
    ],
-   "schnitt": 25.345000000000002,
-   "ende": 27.110000000000003
+   "schnitt": 25.48,
+   "ende": 27.12
   },
   {
    "i": 16,
-   "start": 27.17,
-   "sprech_ende": 28.737,
+   "start": 27.18,
+   "sprech_ende": 28.86,
    "words": [
     {
      "w": "El",
-     "start": 27.17,
-     "ende": 27.286
+     "start": 27.18,
+     "ende": 27.5
     },
     {
      "w": "tanque",
-     "start": 27.344,
-     "ende": 27.588
+     "start": 27.56,
+     "ende": 27.82
     },
     {
      "w": "está",
-     "start": 27.623,
-     "ende": 27.773
+     "start": 27.852,
+     "ende": 27.98
     },
     {
      "w": "casi",
-     "start": 27.832,
-     "ende": 28.11
+     "start": 28.044,
+     "ende": 28.3
     },
     {
      "w": "vacío.",
-     "start": 28.168,
-     "ende": 28.737
+     "start": 28.36,
+     "ende": 28.86
     }
    ],
-   "schnitt": 27.110000000000003,
-   "ende": 28.956
+   "schnitt": 27.12,
+   "ende": 29.0
   },
   {
    "i": 17,
-   "start": 29.016,
-   "sprech_ende": 30.548,
+   "start": 29.06,
+   "sprech_ende": 30.98,
    "words": [
     {
      "w": "Y",
-     "start": 29.016,
-     "ende": 29.097
+     "start": 29.06,
+     "ende": 29.26
     },
     {
      "w": "*nadie*",
-     "start": 29.202,
-     "ende": 29.457
+     "start": 29.34,
+     "ende": 29.66
     },
     {
      "w": "les",
-     "start": 29.492,
-     "ende": 29.608
+     "start": 29.7,
+     "ende": 29.82
     },
     {
      "w": "trae",
-     "start": 29.643,
-     "ende": 29.828
+     "start": 29.847,
+     "ende": 30.06
     },
     {
      "w": "combustible.",
-     "start": 29.863,
-     "ende": 30.548
+     "start": 30.1,
+     "ende": 30.98
     }
    ],
-   "schnitt": 28.956,
-   "ende": 30.593
+   "schnitt": 29.0,
+   "ende": 31.013
   },
   {
    "i": 18,
-   "start": 30.653,
-   "sprech_ende": 31.941,
+   "start": 31.073,
+   "sprech_ende": 32.379999999999995,
    "words": [
     {
      "w": "Tu",
-     "start": 30.653,
-     "ende": 30.757
+     "start": 31.073,
+     "ende": 31.26
     },
     {
      "w": "comandante",
-     "start": 30.803,
-     "ende": 31.256
+     "start": 31.3,
+     "ende": 31.74
     },
     {
      "w": "solo",
-     "start": 31.303,
-     "ende": 31.5
+     "start": 31.788,
+     "ende": 31.98
     },
     {
      "w": "dice:",
-     "start": 31.535,
-     "ende": 31.941
+     "start": 32.044,
+     "ende": 32.379999999999995
     }
    ],
-   "schnitt": 30.593,
-   "ende": 31.986
+   "schnitt": 31.013,
+   "ende": 32.44
   },
   {
    "i": 19,
-   "start": 32.046,
-   "sprech_ende": 33.671,
+   "start": 32.5,
+   "sprech_ende": 34.14,
    "words": [
     {
      "w": "“Ese",
-     "start": 32.046,
-     "ende": 32.359
+     "start": 32.5,
+     "ende": 32.78
     },
     {
      "w": "avión",
-     "start": 32.417,
-     "ende": 32.661
+     "start": 32.807,
+     "ende": 33.019999999999996
     },
     {
      "w": "*no*",
-     "start": 32.696,
-     "ende": 32.766
+     "start": 33.1,
+     "ende": 33.260000000000005
     },
     {
      "w": "vuelve",
-     "start": 32.812,
-     "ende": 33.021
+     "start": 33.3,
+     "ende": 33.5
     },
     {
      "w": "a",
-     "start": 33.044,
-     "ende": 33.067
+     "start": 33.54,
+     "ende": 33.58
     },
     {
      "w": "despegar.”",
-     "start": 33.102000000000004,
-     "ende": 33.671
+     "start": 33.62,
+     "ende": 34.14
     }
    ],
-   "schnitt": 31.986,
-   "ende": 33.948
+   "schnitt": 32.44,
+   "ende": 34.26
   },
   {
    "i": 20,
-   "start": 34.008,
-   "sprech_ende": 34.774,
+   "start": 34.32,
+   "sprech_ende": 35.82,
    "words": [
     {
      "w": "Tus",
-     "start": 34.008,
-     "ende": 34.194
+     "start": 34.32,
+     "ende": 34.86
     },
     {
      "w": "órdenes:",
-     "start": 34.252,
-     "ende": 34.774
+     "start": 34.94,
+     "ende": 35.82
     }
    ],
-   "schnitt": 33.948,
-   "ende": 35.155
+   "schnitt": 34.26,
+   "ende": 35.82
   },
   {
    "i": 21,
-   "start": 35.215,
-   "sprech_ende": 36.132,
+   "start": 35.86,
+   "sprech_ende": 36.7,
    "words": [
     {
      "w": "*Tres*",
-     "start": 35.215,
-     "ende": 35.459
+     "start": 35.86,
+     "ende": 36.06
     },
     {
      "w": "escaleras.",
-     "start": 35.505,
-     "ende": 36.132
+     "start": 36.113,
+     "ende": 36.7
     }
    ],
-   "schnitt": 35.155,
-   "ende": 36.455999999999996
+   "schnitt": 35.82,
+   "ende": 36.839999999999996
   },
   {
    "i": 22,
-   "start": 36.516,
-   "sprech_ende": 37.665,
+   "start": 36.9,
+   "sprech_ende": 38.14,
    "words": [
     {
      "w": "Tres",
-     "start": 36.516,
-     "ende": 36.736
+     "start": 36.9,
+     "ende": 37.26
     },
     {
      "w": "puertas",
-     "start": 36.794,
-     "ende": 37.108
+     "start": 37.313,
+     "ende": 37.66
     },
     {
      "w": "*a",
-     "start": 37.154,
-     "ende": 37.177
+     "start": 37.7,
+     "ende": 37.74
     },
     {
      "w": "la",
-     "start": 37.212,
-     "ende": 37.282
+     "start": 37.767,
+     "ende": 37.82
     },
     {
      "w": "vez*.",
-     "start": 37.317,
-     "ende": 37.665
+     "start": 37.88,
+     "ende": 38.14
     }
    ],
-   "schnitt": 36.455999999999996,
-   "ende": 37.884
+   "schnitt": 36.839999999999996,
+   "ende": 38.239999999999995
   },
   {
    "i": 23,
-   "start": 37.944,
-   "sprech_ende": 39.093,
+   "start": 38.3,
+   "sprech_ende": 39.82,
    "words": [
     {
      "w": "Cuidado,",
-     "start": 37.944,
-     "ende": 38.431
+     "start": 38.3,
+     "ende": 38.94
     },
     {
      "w": "*dinamita*.",
-     "start": 38.454,
-     "ende": 39.093
+     "start": 39.04,
+     "ende": 39.82
     }
    ],
-   "schnitt": 37.884,
-   "ende": 39.555
+   "schnitt": 38.239999999999995,
+   "ende": 40.16
   },
   {
    "i": 24,
-   "start": 39.615,
-   "sprech_ende": 40.8,
+   "start": 40.22,
+   "sprech_ende": 41.98,
    "words": [
     {
      "w": "Y:",
-     "start": 39.615,
-     "ende": 39.824
+     "start": 40.22,
+     "ende": 40.78
     },
     {
      "w": "*pasajeros*",
-     "start": 39.848,
-     "ende": 40.3
+     "start": 40.88,
+     "ende": 41.5
     },
     {
      "w": "afuera.",
-     "start": 40.347,
-     "ende": 40.8
+     "start": 41.553,
+     "ende": 41.98
     }
    ],
-   "schnitt": 39.555,
-   "ende": 41.262
+   "schnitt": 40.16,
+   "ende": 42.849999999999994
   },
   {
    "i": 25,
-   "start": 41.322,
-   "sprech_ende": 42.425,
+   "start": 42.91,
+   "sprech_ende": 43.98,
    "words": [
     {
      "w": "*17:12*.",
-     "start": 41.322,
-     "ende": 42.425
+     "start": 42.91,
+     "ende": 43.98
     }
    ],
-   "schnitt": 41.262,
-   "ende": 42.608999999999995
+   "schnitt": 42.849999999999994,
+   "ende": 44.019999999999996
   },
   {
    "i": 26,
-   "start": 42.669,
-   "sprech_ende": 43.818,
+   "start": 44.08,
+   "sprech_ende": 45.42,
    "words": [
     {
      "w": "Las",
-     "start": 42.669,
-     "ende": 42.82
+     "start": 44.08,
+     "ende": 44.38
     },
     {
      "w": "escaleras",
-     "start": 42.878,
-     "ende": 43.261
+     "start": 44.433,
+     "ende": 44.86
     },
     {
      "w": "arrancan.",
-     "start": 43.319,
-     "ende": 43.818
+     "start": 44.9,
+     "ende": 45.42
     }
    ],
-   "schnitt": 42.608999999999995,
-   "ende": 43.885999999999996
+   "schnitt": 44.019999999999996,
+   "ende": 45.467
   },
   {
    "i": 27,
-   "start": 43.946,
-   "sprech_ende": 45.165,
+   "start": 45.527,
+   "sprech_ende": 46.94,
    "words": [
     {
      "w": "La",
-     "start": 43.946,
-     "ende": 44.027
+     "start": 45.527,
+     "ende": 45.74
     },
     {
      "w": "tuya",
-     "start": 44.062,
-     "ende": 44.294
+     "start": 45.78,
+     "ende": 46.06
     },
     {
      "w": "queda",
-     "start": 44.341,
-     "ende": 44.55
+     "start": 46.1,
+     "ende": 46.3
     },
     {
      "w": "*muy",
-     "start": 44.584,
-     "ende": 44.759
+     "start": 46.36,
+     "ende": 46.54
     },
     {
      "w": "alta*.",
-     "start": 44.805,
-     "ende": 45.165
+     "start": 46.604,
+     "ende": 46.94
     }
    ],
-   "schnitt": 43.885999999999996,
-   "ende": 45.384
+   "schnitt": 45.467,
+   "ende": 47.013
   },
   {
    "i": 28,
-   "start": 45.444,
-   "sprech_ende": 46.407,
+   "start": 47.073,
+   "sprech_ende": 48.3,
    "words": [
     {
      "w": "La",
-     "start": 45.444,
-     "ende": 45.537
+     "start": 47.073,
+     "ende": 47.34
     },
     {
      "w": "puerta",
-     "start": 45.583,
-     "ende": 45.862
+     "start": 47.367,
+     "ende": 47.66
     },
     {
      "w": "*no*",
-     "start": 45.897,
-     "ende": 45.978
+     "start": 47.687,
+     "ende": 47.74
     },
     {
      "w": "abre.",
-     "start": 46.024,
-     "ende": 46.407
+     "start": 47.804,
+     "ende": 48.3
     }
    ],
-   "schnitt": 45.384,
-   "ende": 46.730999999999995
+   "schnitt": 47.013,
+   "ende": 48.36
   },
   {
    "i": 29,
-   "start": 46.791,
-   "sprech_ende": 48.474,
+   "start": 48.42,
+   "sprech_ende": 49.98,
    "words": [
     {
      "w": "Atrás.",
-     "start": 46.791,
-     "ende": 47.36
+     "start": 48.42,
+     "ende": 48.86
     },
     {
      "w": "Y",
-     "start": 47.638,
-     "ende": 47.766
+     "start": 49.06,
+     "ende": 49.26
     },
     {
      "w": "otra",
-     "start": 47.87,
-     "ende": 48.056
+     "start": 49.308,
+     "ende": 49.5
     },
     {
      "w": "vez.",
-     "start": 48.091,
-     "ende": 48.474
+     "start": 49.58,
+     "ende": 49.98
     }
    ],
-   "schnitt": 46.730999999999995,
-   "ende": 48.693
+   "schnitt": 48.36,
+   "ende": 50.019999999999996
   },
   {
    "i": 30,
-   "start": 48.753,
-   "sprech_ende": 50.332,
+   "start": 50.08,
+   "sprech_ende": 51.5,
    "words": [
     {
      "w": "Por",
-     "start": 48.753,
-     "ende": 48.938
+     "start": 50.08,
+     "ende": 50.38
     },
     {
      "w": "fin,",
-     "start": 48.985,
-     "ende": 49.391
+     "start": 50.44,
+     "ende": 50.7
     },
     {
      "w": "*adentro*.",
-     "start": 49.728,
-     "ende": 50.332
+     "start": 50.833,
+     "ende": 51.5
     }
    ],
-   "schnitt": 48.693,
-   "ende": 50.55
+   "schnitt": 50.019999999999996,
+   "ende": 52.195
   },
   {
    "i": 31,
-   "start": 50.61,
-   "sprech_ende": 52.305,
+   "start": 52.255,
+   "sprech_ende": 53.66,
    "words": [
     {
      "w": "Disparos",
-     "start": 50.61,
-     "ende": 51.051
+     "start": 52.255,
+     "ende": 52.54
     },
     {
      "w": "desde",
-     "start": 51.098,
-     "ende": 51.272
+     "start": 52.567,
+     "ende": 52.7
     },
     {
      "w": "la",
-     "start": 51.307,
-     "ende": 51.365
+     "start": 52.727,
+     "ende": 52.78
     },
     {
      "w": "*cabina",
-     "start": 51.4,
-     "ende": 51.713
+     "start": 52.84,
+     "ende": 53.1
     },
     {
      "w": "de",
-     "start": 51.76,
-     "ende": 51.829
+     "start": 53.153,
+     "ende": 53.26
     },
     {
      "w": "mando*.",
-     "start": 51.876,
-     "ende": 52.305
+     "start": 53.3,
+     "ende": 53.66
     }
    ],
-   "schnitt": 50.55,
-   "ende": 52.582
+   "schnitt": 52.195,
+   "ende": 53.72
   },
   {
    "i": 32,
-   "start": 52.642,
-   "sprech_ende": 53.861,
+   "start": 53.78,
+   "sprech_ende": 55.18,
    "words": [
     {
      "w": "Más",
-     "start": 52.642,
-     "ende": 52.874
+     "start": 53.78,
+     "ende": 54.14
     },
     {
      "w": "de",
-     "start": 52.921,
-     "ende": 52.979
+     "start": 54.167,
+     "ende": 54.22
     },
     {
      "w": "*mil*",
-     "start": 53.037,
-     "ende": 53.199
+     "start": 54.3,
+     "ende": 54.54
     },
     {
      "w": "disparos.",
-     "start": 53.246,
-     "ende": 53.861
+     "start": 54.597,
+     "ende": 55.18
     }
    ],
-   "schnitt": 52.582,
-   "ende": 54.138
+   "schnitt": 53.72,
+   "ende": 55.4
   },
   {
    "i": 33,
-   "start": 54.198,
-   "sprech_ende": 55.347,
+   "start": 55.46,
+   "sprech_ende": 56.62,
    "words": [
     {
      "w": "Vuela",
-     "start": 54.198,
-     "ende": 54.534
+     "start": 55.46,
+     "ende": 55.9
     },
     {
      "w": "una",
-     "start": 54.593,
-     "ende": 54.743
+     "start": 55.94,
+     "ende": 56.06
     },
     {
      "w": "*granada*.",
-     "start": 54.802,
-     "ende": 55.347
+     "start": 56.124,
+     "ende": 56.62
     }
    ],
-   "schnitt": 54.138,
-   "ende": 55.623999999999995
+   "schnitt": 55.4,
+   "ende": 56.666999999999994
   },
   {
    "i": 34,
-   "start": 55.684,
-   "sprech_ende": 57.356,
+   "start": 56.727,
+   "sprech_ende": 58.54,
    "words": [
     {
      "w": "El",
-     "start": 55.684,
-     "ende": 55.8
+     "start": 56.727,
+     "ende": 56.94
     },
     {
      "w": "copiloto",
-     "start": 55.846,
-     "ende": 56.241
+     "start": 56.98,
+     "ende": 57.42
     },
     {
      "w": "salta",
-     "start": 56.299,
-     "ende": 56.555
+     "start": 57.48,
+     "ende": 57.74
     },
     {
      "w": "por",
-     "start": 56.589,
-     "ende": 56.706
+     "start": 57.78,
+     "ende": 57.9
     },
     {
      "w": "la",
-     "start": 56.74,
-     "ende": 56.798
+     "start": 57.927,
+     "ende": 57.98
     },
     {
      "w": "*ventana*.",
-     "start": 56.833,
-     "ende": 57.356
+     "start": 58.03,
+     "ende": 58.54
     }
    ],
-   "schnitt": 55.623999999999995,
-   "ende": 57.736999999999995
+   "schnitt": 56.666999999999994,
+   "ende": 58.68
   },
   {
    "i": 35,
-   "start": 57.797,
-   "sprech_ende": 60.688,
+   "start": 58.74,
+   "sprech_ende": 61.18,
    "words": [
     {
      "w": "Atrás,",
-     "start": 57.797,
-     "ende": 58.354
+     "start": 58.74,
+     "ende": 59.34
     },
     {
      "w": "los",
-     "start": 58.691,
-     "ende": 58.888
+     "start": 59.4,
+     "ende": 59.58
     },
     {
      "w": "rehenes",
-     "start": 58.993,
-     "ende": 59.329
-    },
-    {
-     "w": "bajan",
-     "start": 59.376,
-     "ende": 59.631
-    },
-    {
-     "w": "por",
-     "start": 59.689,
-     "ende": 59.829
-    },
-    {
-     "w": "los",
-     "start": 59.875,
+     "start": 59.633,
      "ende": 59.98
     },
     {
+     "w": "bajan",
+     "start": 60.02,
+     "ende": 60.3
+    },
+    {
+     "w": "por",
+     "start": 60.32,
+     "ende": 60.38
+    },
+    {
+     "w": "los",
+     "start": 60.42,
+     "ende": 60.54
+    },
+    {
      "w": "toboganes.",
-     "start": 60.014,
-     "ende": 60.688
+     "start": 60.58,
+     "ende": 61.18
     }
    ],
-   "schnitt": 57.736999999999995,
-   "ende": 60.964
+   "schnitt": 58.68,
+   "ende": 61.4
   },
   {
    "i": 36,
-   "start": 61.024,
-   "sprech_ende": 62.452,
+   "start": 61.46,
+   "sprech_ende": 63.1,
    "words": [
     {
      "w": "Cae",
-     "start": 61.024,
-     "ende": 61.268
+     "start": 61.46,
+     "ende": 61.9
     },
     {
      "w": "el",
-     "start": 61.315,
-     "ende": 61.419
+     "start": 61.927,
+     "ende": 61.98
     },
     {
      "w": "último",
-     "start": 61.5,
-     "ende": 61.744
+     "start": 62.026,
+     "ende": 62.3
     },
     {
      "w": "secuestrador.",
-     "start": 61.779,
-     "ende": 62.452
+     "start": 62.36,
+     "ende": 63.1
     }
    ],
-   "schnitt": 60.964,
-   "ende": 62.775999999999996
+   "schnitt": 61.4,
+   "ende": 63.168
   },
   {
    "i": 37,
-   "start": 62.836,
-   "sprech_ende": 64.542,
+   "start": 63.228,
+   "sprech_ende": 65.34,
    "words": [
     {
      "w": "*Ningún*",
-     "start": 62.836,
-     "ende": 63.103
+     "start": 63.228,
+     "ende": 63.82
     },
     {
      "w": "pasajero",
-     "start": 63.137,
-     "ende": 63.521
+     "start": 63.88,
+     "ende": 64.3
     },
     {
      "w": "muere",
-     "start": 63.567,
-     "ende": 63.788
+     "start": 64.35300000000001,
+     "ende": 64.62
     },
     {
      "w": "en",
-     "start": 63.822,
-     "ende": 63.881
+     "start": 64.64699999999999,
+     "ende": 64.7
     },
     {
      "w": "el",
-     "start": 63.939,
-     "ende": 64.00800000000001
+     "start": 64.727,
+     "ende": 64.78
     },
     {
      "w": "asalto.",
-     "start": 64.066,
-     "ende": 64.542
+     "start": 64.833,
+     "ende": 65.34
     }
    ],
-   "schnitt": 62.775999999999996,
-   "ende": 64.542
+   "schnitt": 63.168,
+   "ende": 65.907
   },
   {
    "i": 38,
-   "start": 64.589,
-   "sprech_ende": 65.297,
+   "start": 65.967,
+   "sprech_ende": 66.86,
    "words": [
     {
      "w": "Lo",
-     "start": 64.589,
-     "ende": 64.693
+     "start": 65.967,
+     "ende": 65.98
     },
     {
      "w": "lograste.",
-     "start": 64.72800000000001,
-     "ende": 65.297
+     "start": 66.02,
+     "ende": 66.86
     }
    ],
-   "schnitt": 64.542,
-   "ende": 65.446
+   "schnitt": 65.907,
+   "ende": 67.176
   },
   {
    "i": 39,
-   "start": 65.506,
-   "sprech_ende": 67.572,
+   "start": 67.236,
+   "sprech_ende": 69.58,
    "words": [
     {
      "w": "¿Pero",
-     "start": 65.506,
-     "ende": 65.83922580645161
+     "start": 67.236,
+     "ende": 67.61406451612903
     },
     {
      "w": "recuerdas",
-     "start": 65.83922580645161,
-     "ende": 66.43903225806451
+     "start": 67.61406451612903,
+     "ende": 68.29458064516129
     },
     {
      "w": "las",
-     "start": 66.43903225806451,
-     "ende": 66.63896774193549
+     "start": 68.29458064516129,
+     "ende": 68.52141935483871
     },
     {
      "w": "*27",
-     "start": 66.63896774193549,
-     "ende": 66.83890322580645
+     "start": 68.52141935483871,
+     "ende": 68.74825806451614
     },
     {
      "w": "toneladas*?",
-     "start": 66.83890322580645,
-     "ende": 67.572
+     "start": 68.74825806451614,
+     "ende": 69.58
     }
    ],
-   "schnitt": 65.446,
-   "ende": 67.756
+   "schnitt": 67.176,
+   "ende": 69.88
   },
   {
    "i": 40,
-   "start": 67.816,
-   "sprech_ende": 69.523,
+   "start": 69.94,
+   "sprech_ende": 71.82,
    "words": [
     {
      "w": "Hasta",
-     "start": 67.816,
-     "ende": 68.083
+     "start": 69.94,
+     "ende": 70.46
     },
     {
      "w": "París",
-     "start": 68.118,
-     "ende": 68.35
+     "start": 70.5,
+     "ende": 70.7
     },
     {
      "w": "bastaban",
-     "start": 68.397,
-     "ende": 68.826
+     "start": 70.748,
+     "ende": 71.18
     },
     {
      "w": "unas",
-     "start": 68.884,
-     "ende": 69.047
+     "start": 71.228,
+     "ende": 71.42
     },
     {
      "w": "*ocho*.",
-     "start": 69.128,
-     "ende": 69.523
+     "start": 71.5,
+     "ende": 71.82
     }
    ],
-   "schnitt": 67.756,
-   "ende": 69.985
+   "schnitt": 69.88,
+   "ende": 71.92
   },
   {
    "i": 41,
-   "start": 70.045,
-   "sprech_ende": 71.183,
+   "start": 71.98,
+   "sprech_ende": 73.02,
    "words": [
     {
      "w": "¿Para",
-     "start": 70.045,
-     "ende": 70.347
+     "start": 71.98,
+     "ende": 72.22
     },
     {
      "w": "qué",
-     "start": 70.405,
-     "ende": 70.521
+     "start": 72.26,
+     "ende": 72.38
     },
     {
      "w": "el",
-     "start": 70.568,
-     "ende": 70.638
+     "start": 72.433,
+     "ende": 72.54
     },
     {
      "w": "*resto*?",
-     "start": 70.707,
-     "ende": 71.183
+     "start": 72.593,
+     "ende": 73.02
     }
    ],
-   "schnitt": 69.985,
-   "ende": 71.402
+   "schnitt": 71.92,
+   "ende": 73.14
   },
   {
    "i": 42,
-   "start": 71.462,
-   "sprech_ende": 73.192,
+   "start": 73.2,
+   "sprech_ende": 75.34,
    "words": [
     {
      "w": "Los",
-     "start": 71.462,
-     "ende": 71.613
+     "start": 73.2,
+     "ende": 73.74
     },
     {
      "w": "investigadores",
-     "start": 71.682,
-     "ende": 72.24
+     "start": 73.784,
+     "ende": 74.46
     },
     {
      "w": "*sospechaban*",
-     "start": 72.263,
-     "ende": 72.785
+     "start": 74.5,
+     "ende": 74.94
     },
     {
      "w": "algo.",
-     "start": 72.832,
-     "ende": 73.192
+     "start": 75.004,
+     "ende": 75.34
     }
    ],
-   "schnitt": 71.402,
-   "ende": 73.654
+   "schnitt": 73.14,
+   "ende": 75.827
   },
   {
    "i": 43,
-   "start": 73.714,
-   "sprech_ende": 75.386,
+   "start": 75.887,
+   "sprech_ende": 77.5,
    "words": [
     {
      "w": "El",
-     "start": 73.714,
-     "ende": 73.842
+     "start": 75.887,
+     "ende": 75.9
     },
     {
      "w": "avión",
-     "start": 73.888,
-     "ende": 74.121
+     "start": 75.953,
+     "ende": 76.22
     },
     {
      "w": "mismo",
-     "start": 74.155,
-     "ende": 74.411
+     "start": 76.3,
+     "ende": 76.7
     },
     {
      "w": "sería",
-     "start": 74.457,
-     "ende": 74.713
+     "start": 76.74,
+     "ende": 76.94
     },
     {
      "w": "la",
-     "start": 74.771,
-     "ende": 74.84
+     "start": 76.967,
+     "ende": 77.02
     },
     {
      "w": "*bomba*.",
-     "start": 74.887,
-     "ende": 75.386
+     "start": 77.068,
+     "ende": 77.5
     }
    ],
-   "schnitt": 73.654,
-   "ende": 76.03399999999999
+   "schnitt": 75.827,
+   "ende": 77.6
   },
   {
    "i": 44,
-   "start": 76.094,
-   "sprech_ende": 79.228,
+   "start": 77.66,
+   "sprech_ende": 79.9,
    "words": [
     {
      "w": "Sobre",
-     "start": 76.094,
-     "ende": 76.431
+     "start": 77.66,
+     "ende": 77.98
     },
     {
      "w": "París.",
-     "start": 76.477,
-     "ende": 76.93
+     "start": 78.02,
+     "ende": 78.46
     },
     {
      "w": "Quizá",
-     "start": 77.638,
-     "ende": 77.928
+     "start": 78.556,
+     "ende": 79.02
     },
     {
      "w": "en",
-     "start": 77.986,
-     "ende": 78.044
+     "start": 79.047,
+     "ende": 79.1
     },
     {
      "w": "la",
-     "start": 78.102,
-     "ende": 78.172
+     "start": 79.127,
+     "ende": 79.18
     },
     {
      "w": "*Torre",
-     "start": 78.23,
-     "ende": 78.532
+     "start": 79.22,
+     "ende": 79.42
     },
     {
      "w": "Eiffel*.",
-     "start": 78.602,
-     "ende": 79.228
+     "start": 79.46,
+     "ende": 79.9
     }
    ],
-   "schnitt": 76.03399999999999,
-   "ende": 79.993
+   "schnitt": 77.6,
+   "ende": 80.0
   },
   {
    "i": 45,
-   "start": 80.053,
-   "sprech_ende": 82.201,
+   "start": 80.06,
+   "sprech_ende": 82.46,
    "words": [
     {
      "w": "Casi",
-     "start": 80.053,
-     "ende": 80.27910526315789
+     "start": 80.06,
+     "ende": 80.31263157894738
     },
     {
      "w": "*siete*",
-     "start": 80.27910526315789,
-     "ende": 80.6747894736842
+     "start": 80.31263157894738,
+     "ende": 80.75473684210526
     },
     {
      "w": "años",
-     "start": 80.6747894736842,
-     "ende": 80.9008947368421
+     "start": 80.75473684210526,
+     "ende": 81.00736842105263
     },
     {
      "w": "antes",
-     "start": 80.9008947368421,
-     "ende": 81.18352631578946
+     "start": 81.00736842105263,
+     "ende": 81.32315789473684
     },
     {
      "w": "del",
-     "start": 81.18352631578946,
-     "ende": 81.35310526315789
+     "start": 81.32315789473684,
+     "ende": 81.51263157894736
     },
     {
      "w": "11",
-     "start": 81.35310526315789,
-     "ende": 81.46615789473684
+     "start": 81.51263157894736,
+     "ende": 81.63894736842104
     },
     {
      "w": "de",
-     "start": 81.46615789473684,
-     "ende": 81.57921052631579
+     "start": 81.63894736842104,
+     "ende": 81.76526315789474
     },
     {
      "w": "septiembre.",
-     "start": 81.57921052631579,
-     "ende": 82.201
+     "start": 81.76526315789474,
+     "ende": 82.46
     }
    ],
-   "schnitt": 79.993,
-   "ende": 82.419
+   "schnitt": 80.0,
+   "ende": 82.64
   },
   {
    "i": 46,
-   "start": 82.479,
-   "sprech_ende": 83.269,
+   "start": 82.7,
+   "sprech_ende": 83.94,
    "words": [
     {
      "w": "¿Y",
-     "start": 82.479,
-     "ende": 82.677
+     "start": 82.7,
+     "ende": 83.02
     },
     {
      "w": "mañana?",
-     "start": 82.758,
-     "ende": 83.269
+     "start": 83.089,
+     "ende": 83.94
     }
    ],
-   "schnitt": 82.419,
-   "ende": 83.592
+   "schnitt": 82.64,
+   "ende": 83.968
   },
   {
    "i": 47,
-   "start": 83.652,
-   "sprech_ende": 84.581,
+   "start": 84.028,
+   "sprech_ende": 85.02,
    "words": [
     {
      "w": "Vendrá",
-     "start": 83.652,
-     "ende": 83.977
+     "start": 84.028,
+     "ende": 84.46
     },
     {
      "w": "*otra*.",
-     "start": 84.035,
-     "ende": 84.581
+     "start": 84.54,
+     "ende": 85.02
     }
    ],
-   "schnitt": 83.592,
-   "ende": 85.421633
+   "schnitt": 83.968,
+   "ende": 85.865714
   }
  ]
 }

@@ -80,16 +80,21 @@ def schreibe_wav(y, p):
 def tts(text, rolle_name, cache, sprache="de", override=None):
     rolle = rolle_name
     r = globals()["rolle"](rolle_name, sprache) if not override else dict(override, effekt="", pegel=0.0)
-    key = hashlib.md5(json.dumps([text, r["id"], r["einstellung"]], sort_keys=True).encode()).hexdigest()[:12]
+    key = hashlib.md5(json.dumps([text, r["id"], r["einstellung"]] + ([r["modell"]] if r.get("modell") else []),
+                                 sort_keys=True).encode()).hexdigest()[:12]
     mp3, js = cache / f"{rolle}_{key}.mp3", cache / f"{rolle}_{key}.json"
     if not (mp3.exists() and js.exists()):
-        body = json.dumps({"text": text, "model_id": MODELL, "voice_settings": r["einstellung"],
+        body = json.dumps({"text": text, "model_id": r.get("modell", MODELL), "voice_settings": r["einstellung"],
                            "language_code": sprache}).encode()
         req = urllib.request.Request(API.format(voice=r["id"]), data=body, method="POST",
                                      headers={"xi-api-key": "proxy-injected", "Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=300) as resp:
             d = json.loads(resp.read())
-        mp3.write_bytes(base64.b64decode(d["audio_base64"])); js.write_text(json.dumps(d["alignment"], ensure_ascii=False))
+        al_ = d["alignment"]
+        if "[" in text:  # eleven_v3-Regieanweisungen nicht als Wörter zählen
+            sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent)); import vo as _vo
+            al_ = _vo.ohne_tags(al_)
+        mp3.write_bytes(base64.b64decode(d["audio_base64"])); js.write_text(json.dumps(al_, ensure_ascii=False))
     y = lade_wav(mp3)
     if r["effekt"]:
         wav = cache / f"{rolle}_{key}_fx.wav"
@@ -146,20 +151,23 @@ def anwenden(ep, folge):
             name = s_.get("titel_sprich") or re.sub(r"[*_]", "", s_["titel"]).strip()
             if name.isupper() and not re.search(r"\d", name):
                 name = " ".join(w.capitalize() if len(w) > 2 else w.lower() for w in name.split())
-            text = name + "."
-            clip, al = tts(text, "erzaehler", cache, getattr(ep, "SPRACHE", "de"),
-                           override={"id": ep.STIMME, "einstellung": ep.STIMM_EINSTELLUNG})
+            text = name if name.rstrip()[-1:] in ".!?" else name + "."
+            ov = {"id": ep.STIMME, "einstellung": getattr(ep, "TITEL_EINSTELLUNG", ep.STIMM_EINSTELLUNG)}
+            if getattr(ep, "TITEL_MODELL", None):
+                ov["modell"] = ep.TITEL_MODELL
+            clip, al = tts(text, "erzaehler", cache, getattr(ep, "SPRACHE", "de"), override=ov)
             chars, st, en = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
             spans = [(m.start(), m.end() - 1) for m in re.finditer(r"\S+", "".join(chars))]
             t0 = max(0.0, st[spans[0][0]] - 0.03); t1 = min(len(clip) / SR, en[spans[-1][1]] + 0.12)
             c = clip[int(t0 * SR):int(t1 * SR)]
             ref = y[int(shots[k + 1]["words"][0]["start"] * SR):int(shots[k + 1]["words"][-1]["ende"] * SR)] \
                 if k + 1 < len(shots) and shots[k + 1]["words"] else c
-            c = c * (rms(ref) / rms(c))
+            c = c * (rms(ref) / rms(c)) * 10 ** (getattr(ep, "TITEL_PEGEL", 0.0) / 20)  # lauter gerufener Name
             a = max(cursor, shots[k]["schnitt"] + 0.05); b = max(a, shots[k]["ende"] - 0.05)
             teile.append(y[int(cursor * SR):int(a * SR)]); teile.append(c)
             neu_a = a + kum
-            toks = re.sub(r"[*_]", "", s_["titel"]).split() if len(s_["titel"].split()) == len(spans) else name.split()
+            toks = re.sub(r"[*_]", "", s_["titel"]).split() if len(s_["titel"].split()) == len(spans) \
+                else re.sub(r"\[[^\]]*\]\s*", "", name).split()
             titel_words[k] = [{"w": tok, "start": neu_a + st[sa] - t0, "ende": neu_a + en[sb] - t0}
                               for tok, (sa, sb) in zip(toks, spans)]
             delta = (t1 - t0) - (b - a)
