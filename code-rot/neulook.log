@@ -16,3 +16,21 @@ FERTIG /home/user/Fernseher/code-rot/folge04_bloque/export/folge04_bloque_aggres
 [21:40] Folge 5: 3D-Renders 720x1280 (neuer Look)
 [22:27] Folge 5: wartet auf Folge 4 (neuer Look)
 [22:27] Folge 5: 3D-Renders 720x1280 (neuer Look)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/447 [00:00<?, ?it/s]Loading weights: 100%|██████████| 447/447 [00:00<00:00, 11936.50it/s]
+Übereinstimmung Skript ↔ Gehörtes: **95%** (gut ab ~85 %).
+
+## E) Lautheit
+Integriert: -27.9 LUFS (Ziel −14 … −16), True Peak: -7.5 dBFS
+
+## Ergebnis
+- Einstellung 3 ('ob du *zurückkommst*.'): Stimme nur 6.7 dB über Hintergrund
+- Einstellung 4 (''): Stimme nur 6.7 dB über Hintergrund
+- Einstellung 6 ('Mai 1960.'): Stimme nur 8.0 dB über Hintergrund
+- Einstellung 14 ('Seit fünfzehn Jahren auf der F'): Stimme nur 12.3 dB über Hintergrund, Geräuschspitze 12.4 dB über Stimme
+[01:55] Folge 5: Schnitt A (Hook 2.0)
+Sprechfluss: Ziel 20.5 Z/s, danach Median 20.5, Streuung 4.0, Dauer 83.7 -> 81.9 s
+Animierte Clips fertig: 53
+FERTIG /home/user/Fernseher/code-rot/folge05_mossad/export/folge05_mossad_aggressiv.mp4
+[02:03] A5_FERTIG
+[02:03] NEULOOK5_ENDE
