@@ -33,6 +33,10 @@ ROLLEN = {
     "schrei": dict(id="U2swAVvmpE98PJAkPUMP", name="Willy Lübke",
                    einstellung={"stability": 0.3, "similarity_boost": 0.8, "style": 0.8, "use_speaker_boost": True, "speed": 1.1},
                    effekt="", pegel=2.0),
+    # junger Mann, laut und erleichtert (Befreiungsruf)
+    "jubel": dict(id="1RqQZf1DSt04oYSqaxNK", name="Lucas (Jubel)",
+                  einstellung={"stability": 0.3, "similarity_boost": 0.8, "style": 0.8, "use_speaker_boost": True, "speed": 1.05},
+                  effekt="", pegel=2.5),
     # junger Mann
     "jung": dict(id="1RqQZf1DSt04oYSqaxNK", name="Lucas",
                  einstellung={"stability": 0.45, "similarity_boost": 0.8, "style": 0.3, "use_speaker_boost": True, "speed": 1.08},
@@ -46,12 +50,14 @@ ROLLEN_SPRACHE = {
            "chef": "3YzGaTGef0x5PLEK9yGq",    # Atlas – tief, rau
            "funk": "3YzGaTGef0x5PLEK9yGq",
            "schrei": "3YzGaTGef0x5PLEK9yGq",
-           "jung": "nHHVbJ6p0mXRxkGrWZI2"},   # Jeff
+           "jung": "nHHVbJ6p0mXRxkGrWZI2",    # Jeff
+           "jubel": "nHHVbJ6p0mXRxkGrWZI2"},
     "es": {"spind": "DWrVftdnFieVgzNH3uzf",   # Jesús – tief, cineastisch (+ Effekt)
            "chef": "vT7H1Y5jYNGFl82cyN9E",    # Krade – tief, mexikanisch
            "funk": "vT7H1Y5jYNGFl82cyN9E",
            "schrei": "vT7H1Y5jYNGFl82cyN9E",
-           "jung": "MFczlrjgpEos5t8Rwlto"},   # Orozco – jung, kolumbianisch
+           "jung": "MFczlrjgpEos5t8Rwlto",    # Orozco – jung, kolumbianisch
+           "jubel": "MFczlrjgpEos5t8Rwlto"},
 }
 
 
