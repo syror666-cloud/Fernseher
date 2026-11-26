@@ -1,0 +1,166 @@
+{
+ "intro": {
+  "frames": 94,
+  "start": {
+   "0": 0,
+   "1": 26,
+   "2": 61,
+   "3": 71
+  },
+  "loop": false
+ },
+ "outro": {
+  "frames": 76,
+  "start": {
+   "61": 0,
+   "62": 20
+  },
+  "loop": false
+ },
+ "anflug": {
+  "frames": 107,
+  "start": {
+   "5": 0,
+   "6": 44
+  },
+  "loop": false
+ },
+ "anflug2": {
+  "frames": 74,
+  "start": {
+   "27": 0,
+   "28": 30
+  },
+  "loop": false
+ },
+ "huegel": {
+  "frames": 113,
+  "start": {
+   "7": 0,
+   "8": 41
+  },
+  "loop": false
+ },
+ "huegel2": {
+  "frames": 73,
+  "start": {
+   "13": 0
+  },
+  "loop": false
+ },
+ "gasse": {
+  "frames": 121,
+  "start": {
+   "11": 0,
+   "23": 55,
+   "25": 85
+  },
+  "loop": false
+ },
+ "gasse_tief": {
+  "frames": 27,
+  "start": {
+   "15": 0
+  },
+  "loop": false
+ },
+ "loop_wagen": {
+  "frames": 120,
+  "start": {
+   "12": 0,
+   "14": 83,
+   "17": 26,
+   "18": 90,
+   "21": 7,
+   "22": 59,
+   "26": 103,
+   "30": 57,
+   "31": 104,
+   "35": 17,
+   "40": 72,
+   "41": 114
+  },
+  "loop": true
+ },
+ "peil_nah": {
+  "frames": 184,
+  "start": {
+   "19": 0,
+   "20": 47,
+   "24": 106,
+   "34": 144
+  },
+  "loop": false
+ },
+ "peil_nah2": {
+  "frames": 60,
+  "start": {
+   "52": 0
+  },
+  "loop": false
+ },
+ "peil_fahrt": {
+  "frames": 100,
+  "start": {
+   "32": 0,
+   "33": 39
+  },
+  "loop": false
+ },
+ "haus": {
+  "frames": 54,
+  "start": {
+   "37": 0
+  },
+  "loop": false
+ },
+ "tuer2": {
+  "frames": 44,
+  "start": {
+   "42": 0
+  },
+  "loop": false
+ },
+ "dach_flucht": {
+  "frames": 71,
+  "start": {
+   "43": 0,
+   "44": 37
+  },
+  "loop": false
+ },
+ "dach_weit": {
+  "frames": 36,
+  "start": {
+   "45": 0,
+   "46": 13
+  },
+  "loop": false
+ },
+ "dach_weit2": {
+  "frames": 96,
+  "start": {
+   "51": 0,
+   "59": 38
+  },
+  "loop": false
+ },
+ "abend": {
+  "frames": 48,
+  "start": {
+   "48": 0
+  },
+  "loop": false
+ },
+ "loop_abend": {
+  "frames": 120,
+  "start": {
+   "47": 0,
+   "50": 38,
+   "53": 94,
+   "54": 36,
+   "58": 95
+  },
+  "loop": true
+ }
+}
