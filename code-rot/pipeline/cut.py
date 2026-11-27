@@ -438,20 +438,48 @@ def fluss_normalisieren(ep, timing, vo_in, vo_out):
         if len(laut):
             i0, i1 = max(0, laut[0] - int(0.03 * SR_)), min(len(roh), laut[-1] + int(0.06 * SR_))
             a, b = a + i0 / SR_, a + i1 / SR_
-        text = _gesprochen(ep, k); dauer = max(b - a - 0.09, 0.15)
+        # Pausen INNERHALB der Einstellung (eleven_v3 macht zwischen zwei Sätzen oft > 1 s Pause) auf 0,22 s kürzen
+        roh2 = y[int(a * SR_):int(b * SR_)]
+        en2 = np.sqrt(np.convolve((roh2 ** 2).mean(axis=1), np.ones(441) / 441, mode="same"))
+        leise = en2 < 10 ** (-42 / 20)
+        weg = []  # (abs_start, abs_ende) entfernte Stücke
+        i_ = 0
+        while i_ < len(leise):
+            if leise[i_]:
+                j_ = i_
+                while j_ < len(leise) and leise[j_]:
+                    j_ += 1
+                if (j_ - i_) / SR_ > 0.30 and i_ > 0 and j_ < len(leise):
+                    m0 = i_ + int(0.11 * SR_); m1 = j_ - int(0.11 * SR_)
+                    weg.append((a + m0 / SR_, a + m1 / SR_))
+                i_ = j_
+            else:
+                i_ += 1
+        if weg:
+            stuecke, pos = [], a
+            for w0, w1 in weg:
+                stuecke.append(y[int(pos * SR_):int(w0 * SR_)]); pos = w1
+            stuecke.append(y[int(pos * SR_):int(b * SR_)])
+            kompakt = np.concatenate(stuecke)
+        else:
+            kompakt = y[int(a * SR_):int(b * SR_)]
+
+        def tmap(x, weg=weg):
+            return x - sum(min(w1, max(x, w0)) - w0 for w0, w1 in weg if x > w0)
+        text = _gesprochen(ep, k); dauer = max(len(kompakt) / SR_ - 0.09, 0.15)
         rate = len(text) / dauer
         kurz = len(text.split()) <= 2
         f = ziel / rate
-        f = min(max(f, 0.95 if kurz else 0.85), 1.15 if kurz else 1.5)
-        seg = _dehnen(y[int(a * SR_):int(b * SR_)], f)
+        f = min(max(f, 0.95 if kurz else 0.85), 1.15 if kurz else 1.65)  # v3 spricht Deutsch sehr langsam
+        seg = _dehnen(kompakt, f)
         start = t
         teile.append(seg); t += len(seg) / SR_
         raten.append(len(text) / (dauer / f))
         # Wortzeiten auf den tatsächlich behaltenen Abschnitt begrenzen (ElevenLabs-Zeitstempel ragen teils weit über
         # das hörbare Ende hinaus; sonst beginnt die nächste Einstellung im Bild zu spät, z. B. die Titelkarte nach dem Namen)
         s_ende = start + len(seg) / SR_
-        nw = [dict(x, start=min(max(start, start + (x["start"] - a) / f), s_ende),
-                   ende=min(max(start, start + (x["ende"] - a) / f), s_ende)) for x in w]
+        nw = [dict(x, start=min(max(start, start + (tmap(x["start"]) - a) / f), s_ende),
+                   ende=min(max(start, start + (tmap(x["ende"]) - a) / f), s_ende)) for x in w]
         neu_shots.append(dict(sh_, schnitt=start, start=nw[0]["start"], sprech_ende=nw[-1]["ende"], words=nw))
         # Pause bis zur nächsten Einstellung
         if k + 1 < len(shots):
